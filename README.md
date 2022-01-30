@@ -1,2 +1,1 @@
-# PEST
-PEST: Project Escape Stone Tablet
+# Interactive Mathematical Publishing Library (IMPL)
