@@ -1,1 +1,1 @@
-# Interactive Mathematical Publishing Library (IMPL)
+# Interactive Publishing Library (IPub)
