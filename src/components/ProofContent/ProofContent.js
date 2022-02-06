@@ -1,10 +1,12 @@
 import React from 'react';
-import styles from './headerProof.module.css';
+
+import styles from './ProofContent.module.css';
 
 var classNames = require('classnames');
 
-const HeaderProof = (props) => {
+const ProofContent = (props) => {
   var container = classNames(styles.container, true);
+  
   return (
     <div className={container}>
       {/* props.children retireves content in-between element/component tags*/}
@@ -13,4 +15,4 @@ const HeaderProof = (props) => {
   )
 }
 
-export default HeaderProof
+export default ProofContent

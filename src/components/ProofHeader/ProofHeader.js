@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './contentProof.module.css';
+import styles from './ProofHeader.module.css';
 
 var classNames = require('classnames');
 
-const ContentProof = (props) => {
+const ProofHeader = (props) => {
   var container = classNames(styles.container, true);
   return (
     <div className={container}>
@@ -13,4 +13,4 @@ const ContentProof = (props) => {
   )
 }
 
-export default ContentProof
+export default ProofHeader
