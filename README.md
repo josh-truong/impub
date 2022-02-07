@@ -1,3 +1,48 @@
+## Available Components
+### `Proof`
+ - Proof, ProofHeader, ProofItem, ProofContent
+
+```
+    <Proof>content</Proof>
+    <ProofHeader>content</ProofHeader>
+    <ProofItem>content</ProofItem>
+    <ProofContent>content</ProofContent>
+```
+ - Ideal Structure
+```
+    <Proof>
+        <ProofHeader>content</ProofHeader>
+        <ProofItem>
+            <ProofHeader>content</ProofHeader>
+            <ProofContent>content</ProofContent>
+        </ProofItem>
+        <ProofItem>
+            <ProofHeader>content</ProofHeader>
+            <ProofContent>content</ProofContent>
+            <ProofContent>content</ProofContent>
+        </ProofItem>
+    </Proof>
+```
+### `Latex`
+ - Latex
+   - Must include inline or display syntax: $, $$, \\(\\), \\[\\]
+   - Use Latex component along with text
+  ```
+    <Latex expr="Latex expressions"/>
+  ```
+  ```
+    <ProofHeader>
+        Assume that <Latex expr="$x < 5$"/>.
+    </ProofHeader>
+    <ProofContent>
+        Assume that <Latex expr="$x < 5$"/>.
+    </ProofContent>
+  ```
+
+ - RenderLatex
+   - Used to render latex, developer use only
+
+---
 ## Available Scripts
 
 In the project directory, you can run:
