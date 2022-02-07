@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styles from './proofItem.module.css';
 
 var classNames = require('classnames');
@@ -12,7 +12,6 @@ const ProofItem = (props) => {
   function toggleProof(e) {
     setToggle(!toggle);
   }
-  console.log(props.children)
   return (
     <div>
       <div onDoubleClick={toggleProof}>{props.children[0]}</div>
