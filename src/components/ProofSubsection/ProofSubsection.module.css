@@ -1,5 +1,6 @@
 .container {
-    /* font-size: 12px; */
+    padding-top: 12px;
+    text-indent: 40px;
 }
 
 .handrail {
@@ -11,10 +12,9 @@
 
 .toggleTD {
     width: 20px;
-    background-color: rgba(169,169,169, 0.5);
 }
 
 .toggleTD:hover {
-    background-color: grey;
+    background-color: rgba(169,169,169, 0.5);
     cursor: pointer;
 }

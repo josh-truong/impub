@@ -5,7 +5,8 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 var classNames = require('classnames');
 
 const ProofSubsection = (props) => {
-  var handrail =  classNames(styles.handrail, true);
+  var container = classNames(styles.container, true);
+  var handrail = classNames(styles.handrail, true);
   var toggleTD = classNames(styles.toggleTD, true);
 
   
@@ -14,7 +15,7 @@ const ProofSubsection = (props) => {
     setToggle(!toggle);
   }
   return (
-    <div>
+    <div className={container}>
       <div onDoubleClick={toggleProof}>{props.children[0]}</div>
       {toggle ? null : <ArrowBackIosIcon style={{transform: "rotate(-90deg)", width:"20px", height:"auto"}} onClick={toggleProof} />}
       { !toggle ? null :
