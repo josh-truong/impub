@@ -1,26 +1,26 @@
 ## Available Components
 ### `Proof`
- - Proof, ProofHeader, ProofItem, ProofContent
+ - Proof, ProofHeader, ProofSubsection, ProofContent
 
 ```
     <Proof>content</Proof>
     <ProofHeader>content</ProofHeader>
-    <ProofItem>content</ProofItem>
+    <ProofSubsection>content</ProofSubsection>
     <ProofContent>content</ProofContent>
 ```
  - Ideal Structure
 ```
     <Proof>
         <ProofHeader>content</ProofHeader>
-        <ProofItem>
+        <ProofSubsection>
             <ProofHeader>content</ProofHeader>
             <ProofContent>content</ProofContent>
-        </ProofItem>
-        <ProofItem>
+        </ProofSubsection>
+        <ProofSubsection>
             <ProofHeader>content</ProofHeader>
             <ProofContent>content</ProofContent>
             <ProofContent>content</ProofContent>
-        </ProofItem>
+        </ProofSubsection>
     </Proof>
 ```
 ### `Latex`

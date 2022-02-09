@@ -5,15 +5,15 @@ import styles from './Proof.module.css';
 var classNames = require('classnames');
 
 /*
-Component Order ( Proof -> ProofHeader -> ProofItem -> ProofHeader -> ProofContent)
+Component Order ( Proof -> ProofHeader -> ProofSubsection -> ProofHeader -> ProofContent)
 Proof
 | ProofHeader
-  | ProofItem
+  | ProofSubsection
   | | ProofHeader
   | | | ProofContent
   | | ProofHeader
   | | | ProofContent
-  | ProofItem
+  | ProofSubsection
   | | ProofHeader
   | | | ProofContent
   | | | ProofContent

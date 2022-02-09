@@ -6,6 +6,15 @@ html {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+
+
+
+  font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+  font-size: 12px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 13.2px;
 }
 
 body {
