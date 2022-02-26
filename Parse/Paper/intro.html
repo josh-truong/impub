@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>!TEX root = main.tex</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">!TEX root = main.tex</h1>
+</header>
+<p>In late 2015, Babai presented a quasipolynomial-time algorithm
+for<br />
+() . This is widely regarded as one of the major breakthroughs in
+theoretical computer science of the past decade. Indeed, has been at the
+heart of complexity theory nearly since its inception: both Cook and
+Levin were thinking about when they defined <span
+class="math inline">\(\cc{NP}\)</span> , played a special role in the
+creation of the class <span class="math inline">\(\cc{AM}\)</span> , and
+it still stands today as one of the few natural candidates for a problem
+that is
+<code>$\cc{NP}$-intermediate,'' that is, in $\cc{NP}$, but neither in $\cc{P}$ nor  $\cc{NP}$-complete \cite{Ladner} (see \cite{StackExchangeIntermediate} for  additional  candidates). Beyond its practical applications (e.\,g., \cite{SV17, irniger} and references therein) and its  naturality, part of its fascination comes from its universal property: \GI is  universal for isomorphism problems for</code>explicitly
+given’’ structures , that is, first-order structures on a set <span
+class="math inline">\(V\)</span> where, e.,g., a <span
+class="math inline">\(k\)</span>-ary relation on <span
+class="math inline">\(V\)</span> is given by listing out a subset <span
+class="math inline">\(R \subseteq V^k\)</span>.</p>
+<p>In light of Babai’s breakthrough on , it is natural to consider
+``what’s next?’’ for isomorphism problems. That is, what isomorphism
+problems stand as crucial bottlenecks to further improvements on , and
+what isomorphism problems should naturally draw our attention for
+further exploration? Of course, one of the main open questions in the
+area remains whether or not is in <span
+class="math inline">\(\cc{P}\)</span>. Babai already lists several
+isomorphism problems for further study, including , , and . In this
+paper we expand this list in what we argue is a very natural direction,
+namely to , also known as tensors.</p>
+<p>3-way arrays are simply arrays with 3 indices, generalizing the case
+of matrices (=2-way arrays). In this paper we consider entries of the
+arrays being from a field <span class="math inline">\(\F\)</span>, so a
+3-way array is just <span
+class="math inline">\(\tA=(a_{i,j,k})\)</span>, <span
+class="math inline">\(i\in[\ell]\)</span>, <span
+class="math inline">\(j\in[n]\)</span>, <span
+class="math inline">\(k\in[m]\)</span>, and <span
+class="math inline">\(a_{i,j,k}\in\F\)</span>.</p>
+<p>Let <span class="math inline">\(\GL(n, \F)\)</span> be the general
+linear group of degree <span class="math inline">\(n\)</span> over <span
+class="math inline">\(\F\)</span>, and let <span
+class="math inline">\(\M(n,\F)\)</span> denote the set of <span
+class="math inline">\(n \times n\)</span> matrices. There are three
+natural group actions on <span class="math inline">\(\M(n,\F)\)</span>:
+for <span class="math inline">\(A \in \M(n,\F)\)</span>, (1) <span
+class="math inline">\((P,Q) \in \GL(n,\F) \times \GL(n,\F)\)</span>
+sends <span class="math inline">\(A\)</span> to <span
+class="math inline">\(P^t A Q\)</span>, (2) <span
+class="math inline">\(P \in \GL(n,\F)\)</span> sends <span
+class="math inline">\(A\)</span> to <span class="math inline">\(P^{-1} A
+P\)</span>, and (3) <span class="math inline">\(P \in \GL(n,\F)\)</span>
+sends <span class="math inline">\(A\)</span> to <span
+class="math inline">\(P^t A P\)</span>. These three actions then endow
+<span class="math inline">\(A\)</span> with different
+algebraic/geometric interpretations: (1) a linear map from a vector
+space <span class="math inline">\(V\)</span> to another vector space
+<span class="math inline">\(W\)</span>, (2) a linear map from <span
+class="math inline">\(V\)</span> to itself, and (3) a bilinear map from
+<span class="math inline">\(V\times V\)</span> to <span
+class="math inline">\(\F\)</span>.</p>
+<p>Likewise, 3-way arrays <span
+class="math inline">\(\tA=(a_{i,j,k})\)</span>, <span
+class="math inline">\(i, j, k\in[n]\)</span>, can be naturally acted by
+<span class="math inline">\(\GL(n, \F)\times \GL(n, \F)\times \GL(n,
+\F)\)</span> in one way, by <span class="math inline">\(\GL(n, \F)\times
+\GL(n, \F)\)</span> in two different ways, and by <span
+class="math inline">\(\GL(n, \F)\)</span> in two different ways. These
+five actions endow various families of 3-way arrays with different
+algebraic/geometric meanings, including 3-tensors, bilinear maps, matrix
+(associative or Lie) algebras, and trilinear forms (a.k.a.
+non-commutative cubic forms). (See for detailed explanations.) Over
+finite fields, the associated isomorphism problems are in <span
+class="math inline">\(\cc{NP}\cap\cc{coAM}\)</span>, following the
+essentially same <span class="math inline">\(\cc{coAM}\)</span> protocol
+as for .</p>
+<p>With these group actions in mind, 3-way arrays capture a variety of
+important structures in several mathematical and computational
+disciplines. They arise naturally in quantum mechanics (states are
+described by tensors), the complexity of matrix multiplication (matrix
+multiplication is described by a tensor, and its algebraic complexity is
+essentially its tensor rank), the Geometric Complexity Theory approach
+to the Permanent versus Determinant Conjecture (tensors describe the
+boundary of the determinant orbit closure, e.,g., and for introductions,
+and for applications), data analysis ,<br />
+machine learning , computational group theory , and cryptography .</p>
+<p>The five natural actions on 3-way arrays mentioned above each lead to
+a different isomorphism problem on 3-way arrays; we discuss these
+problems and their interpretations in . Our first main result, , shows
+that these isomorphism problems for 3-way arrays are all equivalent
+under polynomial-time reductions. Due to the algebraic or geometric
+interpretations, these problems are further equivalent to isomorphism
+problems on certain classes of groups, cubic forms, trilinear forms
+(a.k.a. non-commutative cubic forms), associative algebras, and Lie
+algebras. One consequence of these results (), along with those of , is
+a reduction from for <span class="math inline">\(p\)</span>-groups of
+exponent <span class="math inline">\(p\)</span> and class <span
+class="math inline">\(&lt; p\)</span> to for <span
+class="math inline">\(p\)</span>-groups of exponent <span
+class="math inline">\(p\)</span> and class 2. Although the latter have
+long been believed to be the hardest cases of , as far as we are aware,
+this is the first reduction from a more general class of groups to this
+class.</p>
+<p>Although these equivalences may have been expected by some experts,
+it had not been immediately clear to us for some time during this
+project. To get a sense for the non-obviousness, let us postulate the
+following hypothetical question. Recall that two matrices <span
+class="math inline">\(A, B\in \M(n, \F)\)</span> are called if there
+exists <span class="math inline">\(P, Q\in\GL(n, \F)\)</span> such that
+<span class="math inline">\(P^{-1}AQ=B\)</span>, and they are if there
+exists <span class="math inline">\(P\in \GL(n,\F)\)</span> such that
+<span class="math inline">\(P^{-1}AP=B\)</span>. Can we reduce testing
+to testing ? Of course since they are both in <span
+class="math inline">\(\cc{P}\)</span> there is a trivial reduction; to
+avoid this, let us consider only reductions <span
+class="math inline">\(r\)</span> which send a matrix <span
+class="math inline">\(A\)</span> to a matrix <span
+class="math inline">\(r(A)\)</span> such that <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> are conjugate iff <span
+class="math inline">\(r(A)\)</span> and <span
+class="math inline">\(r(B)\)</span> are equivalent. Nearly all
+reductions between isomorphism problems that we are aware of have this
+form (so-called ``kernel reductions’’ ; cf. functorial reductions ).
+After some thought, we realize that this is essentially impossible. The
+reason is that the equivalence class of a matrix is completely
+determined by its rank, while the conjugacy class of a matrix is
+determined by its rational canonical form. Among <span
+class="math inline">\(n \times n\)</span> matrices there are only <span
+class="math inline">\(n+1\)</span> equivalence classes, but there are at
+least <span class="math inline">\(|\F|^n\)</span> rational canonical
+forms (coming from the choice of minimal polynomial/companion matrix).
+Even when <span class="math inline">\(\F\)</span> is a finite field,
+such a reduction would thus require an exponential increase in
+dimension, and when <span class="math inline">\(\F\)</span> is infinite,
+such a reduction is impossible (regardless of running time).</p>
+<p>Nonetheless, one of our results is that for of matrices (one form of
+3-way arrays), conjugacy testing does indeed reduce to equivalence
+testing! This is in sharp contrast to the case of single matrices. In
+the above setting, it means that there exists a polynomial-time
+computable map <span class="math inline">\(\phi\)</span> from <span
+class="math inline">\(\M(n, \F)\)</span> to <span
+class="math inline">\(\M(s, \F)\)</span>, such that <span
+class="math inline">\(A, B\)</span> are conjugate up to a scalar if and
+only if <span class="math inline">\(\phi(A), \phi(B)\leq \M(s,
+\F)\)</span> are equivalent as matrix spaces. Such a reduction may not
+be clear at first sight.</p>
+<p>Our second main result reduces to , for any fixed <span
+class="math inline">\(d \geq 3\)</span>. From one viewpoint, this can be
+seen as a linear algebraic analogue of the now-classical reduction from
+<span class="math inline">\(d\)</span>-uniform to (e.,g., ). However, as
+the reader will see, the reduction here is quite a bit more involved,
+using quiver algebras and the Wedderburn–Mal’cev Theorem on complements
+of the Jacobson radical in associative algebras. From another viewpoint,
+this can be seen as a step towards showing that is not only universal
+among isomorphism problems on 3-way arrays , but perhaps is already
+universal for isomorphism problems on <span
+class="math inline">\(d\)</span>-way arrays for any <span
+class="math inline">\(d\)</span>; see . These first two results indicate
+the robustness and naturality of the notion of <span
+class="math inline">\(\cc{TI}\)</span>-completeness.</p>
+<p>Our next set of results reduce and to these isomorphism problems for
+3-way arrays (). This shows that these isomorphism problems for 3-way
+arrays form a set of potentially harder problems than these two
+problems, as also supported by the current difference in their practical
+difficulties. It currently seems unlikely to us that either or is <span
+class="math inline">\(\cc{TI}\)</span>-complete.</p>
+<p>Finally, our third main contribution is to show a search-to-decision
+reduction for these tensor problems (), which may be of independent
+interest, leveraging our technique from above. While such a reduction
+has long been known for , for in general this remains a long-standing
+open question. Our techniques allow us to give a<br />
+search-to-decision reduction for isomorphism of <span
+class="math inline">\(p\)</span>-groups of class 2 and exponent <span
+class="math inline">\(p\)</span> in time <span
+class="math inline">\(|G|^{O(\log \log |G|)}\)</span> in the model of
+matrix groups over finite fields. This group class is widely regarded to
+be the hardest cases of . As far as we know, this is the first
+non-trivial search-to-decision reduction for testing isomorphism of a
+class of finite groups.</p>
+<p>Our first main result may partly help to explain the difficulties
+from various areas when dealing with these isomorphism problems. There
+is currently a significant difference between isomorphism problems for
+3-way arrays and that for graphs. Namely, in sharp contrast to —for
+which very effective practical algorithms have existed for some time
+—the problems we consider here all still pose great difficulty even on
+relatively small examples in practice. Indeed, such problems have been
+proposed to be difficult enough for cryptographic purposes . As further
+evidence of their practical difficulty, current algorithms implemented
+for —a problem we show is <span
+class="math inline">\(\cc{TI}\)</span>-complete—can handle the cases
+when the 3-way array is of size <span class="math inline">\(10\times
+10\times 10\)</span> over <span class="math inline">\(\F_{13}\)</span>,
+but absolutely not for 3-way arrays of size <span
+class="math inline">\(100\times 100\times 100\)</span>, even though in
+this case the input can still be stored in only a few megabytes. In ,
+motivated by machine learning applications, computations on one <span
+class="math inline">\(\cc{TI}\)</span>-complete problem were performed
+in Macaulay2 , but these could not go beyond small examples either. Our
+results imply that the complexities of these problems arising in many
+fields% —from computational group theory to cryptography to machine
+learning—are all equivalent.</p>
+<p>In addition to their many incarnations and practical uses mentioned
+above, the isomorphism problems we consider on 3-way arrays can be
+further motivated by their relationship to . Specifically, these
+problems both form a key bottleneck to putting into <span
+class="math inline">\(\cc{P}\)</span>, and pose a great challenge for
+extending techniques used to solve .</p>
+<p>Isomorphism problems for 3-way arrays stand as a key bottleneck to
+put in <span class="math inline">\(\cc{P}\)</span>. This is because, as
+Babai pointed out , is a key bottleneck to putting into <span
+class="math inline">\(\cc{P}\)</span>. Indeed, the current-best upper
+bounds on these two problems are now quite close: <span
+class="math inline">\(n^{O(\log n)}\)</span> for (originally due to ,
+with improved constants<br />
+), and <span class="math inline">\(n^{O(\log^2 n)}\)</span> for (see for
+calculation of the exponent). Within , it is widely regarded, for
+several reasons (e.,g., ), that the bottleneck is the class of <span
+class="math inline">\(p\)</span>-groups of class 2 and exponent <span
+class="math inline">\(p\)</span> (i.e., <span
+class="math inline">\(G/Z(G)\)</span> is abelian and <span
+class="math inline">\(g^p=1\)</span> for all <span
+class="math inline">\(g\)</span>, <span class="math inline">\(p\)</span>
+odd). Then 3-way arrays enter the picture by Baer’s Correspondence ,
+which shows that the isomorphism problem for these groups is equivalent
+to telling whether two linear spaces of skew-symmetric matrices over
+<span class="math inline">\(\F_p\)</span> are equivalent up to
+transformations of the form <span class="math inline">\(A \mapsto P^t A
+P\)</span>. This is the problem, which we show in this paper is <span
+class="math inline">\(\cc{TI}\)</span>-complete.</p>
+<p>To see why the techniques for face great difficulty when dealing with
+isomorphism problems for multi-way arrays, recall that most algorithms
+for , including Babai’s<br />
+, are built on two families of techniques: group-theoretic, and
+combinatorial. One of the main differences is that the underlying group
+action for is a permutation group acting on a combinatorial structure,
+whereas the underlying group actions for isomorphism problems for 3-way
+arrays are matrix groups acting on (multi)linear structures.</p>
+<p>Already in moving from permutation groups to matrix groups, we find
+many new computational difficulties that arise naturally in basic
+subroutines used in isomorphism testing. For example, the membership
+problem for permutation groups is well-known to be efficiently solvable
+by Sims’s algorithm (see, e.,g., for a textbook treatment), while for
+matrix groups this was only recently shown to be solvable with a
+number-theoretic oracle over finite fields of odd characteristic .
+Correspondingly, when moving from combinatorial structures to
+(multi)linear algebraic structures, we also find severe limitation on
+the use of most combinatorial techniques, like individualizing a vertex.
+For example,<br />
+it is quite expensive to enumerate all vectors in a vector space, while
+it is usually considered efficient to go through all elements in a set.
+Similarly, within a set, any subset has a unique complement, whereas
+within <span class="math inline">\(\F_q^n\)</span>, a subspace can have
+up to <span class="math inline">\(q^{\Theta(n^2)}\)</span>
+complements.</p>
+<p>Given all the differences between the combinatorial and
+linear-algebraic worlds, it may be surprising that combinatorial
+techniques for can nonetheless be useful for . Indeed, guided by the
+postulate that alternating matrix spaces can be viewed as a linear
+algebraic analogue of graphs, Li and the second author adapted the
+individualisation and refinement technique, as used by Babai, Erds and
+Selkow , to tackle over <span class="math inline">\(\F_q\)</span>. This
+algorithm was recently improved . However, this technique, though
+helpful to improve from the brute-force <span
+class="math inline">\(q^{n^2}\cdot \poly(n, \log q)\)</span> time, seems
+still limited to getting <span
+class="math inline">\(q^{O(n)}\)</span>-time algorithms.</p>
+<p>Our first new technique for the above results on 3-way arrays is to
+develop a linear-algebraic analogue of the coloring gadget used in the
+context of (see, e.,g., ). These gadgets help us to restrict to various
+subgroups of the general linear group. Recall that, in relating with
+other isomorphism problems, coloring is a very useful idea. Given a
+graph <span class="math inline">\(G=(V, E)\)</span>, a coloring of
+vertices is a function <span class="math inline">\(c:V \to C\)</span>
+where <span class="math inline">\(C\)</span> is a set of
+<code>colors.'' Colored isomorphism between two  vertex-colored graphs asks only for isomorphisms that send vertices of one color  to vertices of that same color. If we are interested in  making a specific vertex $v\in V$ special (</code>individualizing’’
+that vertex), we can assign this vertex a unique color. To reduce to
+ordinary uses certain gadgets, and we adapt this idea to the context of
+3-way arrays. We note that construct a related such gadget. In this
+paper, we develop a new gadget which we use both by itself, and in
+combination with the gadget from (albeit in a new context), see and
+.</p>
+<p>Our second new technique, used to show the reduction from to , is a
+simultaneous generalization of our reduction from to and the technique
+Grigoriev used to show that isomorphism in a certain restricted class of
+algebras is equivalent to . In brief outline: a 3-way array <span
+class="math inline">\(\tA\)</span> specifies the structure constants of
+an algebra with basis <span class="math inline">\(x_1, \dotsc,
+x_n\)</span> via <span class="math inline">\(x_i \cdot x_j := \sum_{k}
+\tA(i,j,k) x_k\)</span>, and this is essentially how we use it in the
+reduction from to . For arbitrary <span class="math inline">\(d \geq
+3\)</span>, we would like to similarly use a <span
+class="math inline">\(d\)</span>-way array <span
+class="math inline">\(\tA\)</span> to specify how <span
+class="math inline">\(d\)</span>-tuples of elements in some algebra
+<span class="math inline">\(\cA\)</span> multiply. The issue is that for
+<span class="math inline">\(\cA\)</span> to be an algebra, our
+construction must still specify how of elements multiply. The basic idea
+is to let pairs (and triples, and so on, up to <span
+class="math inline">\((d-2)\)</span>-tuples) multiply ``freely’’ (that
+is, without additional relations), and then to use <span
+class="math inline">\(\tA\)</span> to rewrite any product of <span
+class="math inline">\(d-1\)</span> generators as a linear combination of
+the original generators. While this construction as described already
+gives one direction of the reduction (if <span class="math inline">\(\tA
+\cong \tB\)</span>, then <span class="math inline">\(\cA \cong
+\cB\)</span>), the other direction is trickier. For that, we modify the
+construction to an algebra in which short products (less than <span
+class="math inline">\(d-2\)</span> generators) do not quite multiply
+freely, but almost. After the fact, we found out that this construction
+generalizes the one used by Grigoriev to show that was equivalent for a
+certain class of algebras (see for a comparison).</p>
+<p>We aim to reach as wide an audience as possible, so we start with a
+detailed introduction to the various isomorphism problems on 3-way
+arrays, and their algebraic and geometric interpretations in . We then
+describe our results in detail in and consider related work in . An
+illustration of the key technique is in . These sections may be viewed
+as an extended abstract.</p>
+<p>The remainder of the paper gives detailed proofs of all results.
+contains additional preliminaries. In , we present those reductions
+which use the linear-algebraic coloring technique, thus proving (<span
+class="math inline">\(\ref{thm:main:isom}\)</span>) and . We then finish
+the proof of by presenting the remaining reductions in . is proved in .
+In , we put forward a theory of universality for basis-explicit linear
+structures, in analogy with . While not yet complete, this seems to
+provide another justification for studying and related problems, and it
+motivates some interesting open questions. In Appendix~<span
+class="math inline">\(\ref{app:cubic}\)</span> we give a reduction from
+to for any <span class="math inline">\(d \geq 3\)</span> (for <span
+class="math inline">\(d &gt; 6\)</span> this is easy; for <span
+class="math inline">\(d=4\)</span> it requires some work).</p>
+<p>The formulas for most natural group actions on 3-way arrays are
+somewhat unwieldy; our experience suggests that they are more easily
+digested when presented in the context of some of the natural
+interpretations of 3-way arrays as mathematical objects. To connect the
+interpretations with the formulas themselves, one technical tool is very
+useful, namely, given a 3-way array <span
+class="math inline">\(\tA(i,j,k)\)</span>, we define its to be the
+matrices <span class="math inline">\(A_k\)</span> defined by <span
+class="math inline">\(A_k(i,j) := \tA(i,j,k)\)</span>; that is, we think
+of the box of <span class="math inline">\(\tA\)</span> as arranged so
+that the <span class="math inline">\(i\)</span> and <span
+class="math inline">\(j\)</span> axes lie in the page, while the <span
+class="math inline">\(k\)</span>-axis is perpendicular to the page.
+Similarly, its (viewing the 3D box of <span
+class="math inline">\(\tA\)</span> ``from the side’’) are defined by
+<span class="math inline">\(L_j(i,k) := \tA(i,j,k)\)</span>. An <span
+class="math inline">\(\ell \times n \times m\)</span> 3-way array thus
+has <span class="math inline">\(m\)</span> frontal slices and <span
+class="math inline">\(n\)</span> lateral slices.</p>
+<p>A natural action on arrays of size <span class="math inline">\(\ell
+\times n \times m\)</span> is that of <span
+class="math inline">\(\GL(\ell, \F) \times \GL(n,\F) \times
+\GL(m,\F)\)</span> by change of basis in each of the 3 directions,
+namely <span class="math inline">\(((P,Q,R) \cdot
+\tA)(i&#39;,j&#39;,k&#39;) = \sum_{i,j,k} \tA(i,j,k) P_{ii&#39;}
+Q_{jj&#39;} R_{kk&#39;}\)</span>. We will see several interpretations of
+this action below.</p>
+<p>A 3-way array <span class="math inline">\(\tA(i,j,k)\)</span>, where
+<span class="math inline">\(i\in[\ell]\)</span>, <span
+class="math inline">\(j\in[n]\)</span>, and <span
+class="math inline">\(k\in[m]\)</span>, is naturally identified as a
+vector in <span
+class="math inline">\(\F^\ell\otimes\F^n\otimes\F^m\)</span>. Letting
+<span class="math inline">\(\vec{e_i}\)</span> denote the <span
+class="math inline">\(i\)</span>th standard basis vector of <span
+class="math inline">\(\F^n\)</span>, a standard basis of <span
+class="math inline">\(\F^\ell\otimes\F^n\otimes\F^m\)</span> is <span
+class="math inline">\(\{\vec{e_i}\otimes\vec{e_j}\otimes\vec{e_k}\}\)</span>.
+Then <span class="math inline">\(\tA\)</span> represents the vector
+<span
+class="math inline">\(\sum_{i,j,k}\tA(i,j,k)\vec{e_i}\otimes\vec{e_j}\otimes\vec{e_j}\)</span>
+in <span class="math inline">\(\F^\ell\otimes\F^n\otimes\F^m\)</span>.
+The natural action by <span class="math inline">\(\GL(\ell,
+\F)\times\GL(n, \F)\times\GL(m, \F)\)</span> above corresponds to
+changes of basis of the three vector spaces in the tensor product. The
+problem of deciding whether two 3-way arrays are the same under this
+action is called .</p>
+<p>Given a 3-way array <span class="math inline">\(\tA\)</span>, it is
+natural to consider the linear span of its frontal slices, <span
+class="math inline">\(\cA = \langle A_1, \dotsc, A_m \rangle\)</span>,
+also called a . One convenience of this viewpoint is that the action of
+<span class="math inline">\(\GL(m,\F)\)</span> becomes implicit: it
+corresponds to change of basis the matrix space <span
+class="math inline">\(\cA\)</span>. This allows us to generalize the
+three natural equivalence relations on matrices to matrix spaces: (1)
+two <span class="math inline">\(\ell \times n\)</span> matrix spaces
+<span class="math inline">\(\cA\)</span> and <span
+class="math inline">\(\cB\)</span> are if there exists <span
+class="math inline">\((P, Q) \in \GL(\ell, \F) \times \GL(n,
+\F)\)</span> such that <span class="math inline">\(P\cA Q =
+\cB\)</span>, where <span class="math inline">\(P\cA Q := \{PA Q : A \in
+\cA\}\)</span>; (2) two <span class="math inline">\(n \times n\)</span>
+matrix spaces <span class="math inline">\(\cA, \cB\)</span> are if there
+exists <span class="math inline">\(P \in \GL(n, \F)\)</span> such that
+<span class="math inline">\(P \cA P^{-1} = \cB\)</span>; and (3) they
+are if <span class="math inline">\(P \cA P^t = \cB\)</span>. The
+corresponding decision problems, when <span
+class="math inline">\(\cA\)</span> is given by a basis <span
+class="math inline">\(A_1, \dotsc, A_d\)</span>, are , , and ,
+respectively.</p>
+<p>If <span class="math inline">\(A,B\)</span> are two subsets of a
+group <span class="math inline">\(G\)</span>, then <span
+class="math inline">\([A,B]\)</span> denotes the sub generated by all
+elements of the form <span class="math inline">\([a,b] =
+aba^{-1}b^{-1}\)</span>, for <span class="math inline">\(a \in A, b \in
+B\)</span>. The of a group <span class="math inline">\(G\)</span> is
+defined as follows: <span class="math inline">\(\gamma_1(G) =
+G\)</span>, <span class="math inline">\(\gamma_{k+1}(G) = [\gamma_k(G),
+G]\)</span>. A group is if there is some <span
+class="math inline">\(c\)</span> such that <span
+class="math inline">\(\gamma_{c+1}(G) = 1\)</span>; the smallest such
+<span class="math inline">\(c\)</span> is called the of <span
+class="math inline">\(G\)</span>, or sometimes just ``class’’ when it is
+understood from context. A finite group is nilpotent if and only if it
+is the product of its Sylow subgroups; in particular, all groups of
+prime power order are nilpotent.</p>
+<p>While the matrix space viewpoint has the merit of drawing an analogy
+with the more familiar object of matrices, other interpretations lead to
+standard complexity problems that may be more familiar to some readers.
+For example, from an <span class="math inline">\(\ell \times n \times
+m\)</span> 3-way array <span class="math inline">\(\tA\)</span>, we can
+construct a bilinear map (=system of <span
+class="math inline">\(m\)</span> bilinear forms) <span
+class="math inline">\(f_\tA:\F^\ell\times\F^n\to\F^m\)</span>, sending
+<span class="math inline">\((u, v)\in \F^\ell\times \F^n\)</span> to
+<span class="math inline">\((u^t A_1 v, \dots, u^tA_m v)^t\)</span>,
+where the <span class="math inline">\(A_k\)</span> are the frontal
+slices of <span class="math inline">\(\tA\)</span>. The group action
+defining is equivalent to the action of <span
+class="math inline">\(\GL(\ell, \F)\times\GL(n, \F)\times \GL(m,
+\F)\)</span> on such bilinear maps.</p>
+<p>When <span class="math inline">\(\ell=n\)</span>, the action in is
+equivalent to the natural action of <span class="math inline">\(\GL(n,
+\F)\times \GL(m, \F)\)</span> on such bilinear maps. Two bilinear maps
+that are essentially the same up to such basis changes are sometimes
+called pseudo-isometric .</p>
+<p>Bilinear maps of the form <span class="math inline">\(V\times V\to
+W\)</span> turn out to arise naturally in group theory and algebraic
+geometry. When <span class="math inline">\(A_k\)</span> are
+skew-symmetric over <span class="math inline">\(\F_p\)</span>, <span
+class="math inline">\(p\)</span> an odd prime, Baer’s correspondence
+gives a bijection between finite <span
+class="math inline">\(p\)</span>-groups of class 2 and exponent <span
+class="math inline">\(p\)</span>, that is, in which <span
+class="math inline">\(g^p = 1\)</span> for all <span
+class="math inline">\(g\)</span> and in which <span
+class="math inline">\([G, G] \leq Z(G)\)</span>, and their corresponding
+bilinear maps <span class="math inline">\(G/Z(G) \times G/Z(G) \to
+[G,G]\)</span>, given by <span class="math inline">\((gZ(G), hZ(G))
+\mapsto [g,h]=ghg^{-1}h^{-1}\)</span>. Two such groups are isomorphic if
+and only if their corresponding bilinear maps are pseudo-isometric, if
+and only if, using the matrix space terminology, the matrix spaces they
+span are isometric. When <span class="math inline">\(A_k\)</span> are
+symmetric, by the classical correspondences between symmetric matrices
+and homogeneous quadratic forms, a symmetric bilinear map naturally
+yields a quadratic map from <span class="math inline">\(\F^n\)</span> to
+<span class="math inline">\(\F^m\)</span>. The two quadratic maps are
+isomorphic if and only if the corresponding bilinear maps are
+pseudo-isometric.</p>
+<p>From a 3-way array <span class="math inline">\(\tA\)</span> we can
+also construct a cubic form (=homogeneous degree 3 polynomial) <span
+class="math inline">\(\sum_{i,j,k} \tA(i,j,k) x_i x_j x_k\)</span>,
+where <span class="math inline">\(x_i\)</span> are formal variables. If
+we consider the variables as commuting—or, equivalently, if <span
+class="math inline">\(\tA\)</span> is symmetric, meaning it is unchanged
+by permuting its three indices—we get an ordinary cubic form; if we
+consider them as non-commuting, we get a trilinear form (or
+``non-commutative cubic form’’). In either case, the natural notion of
+isomorphism here comes from the action of <span
+class="math inline">\(\GL(n,\F)\)</span> on the <span
+class="math inline">\(n\)</span> variables <span
+class="math inline">\(x_i\)</span>, in which <span
+class="math inline">\(P \in \GL(n,\F)\)</span> transforms the preceding
+form into <span class="math inline">\(\sum_{ijk} \tA(i,j,k)
+(\sum_{i&#39;} P_{ii&#39;} x_{i&#39;})(\sum_{j&#39;} P_{jj&#39;}
+x_{j&#39;})(\sum_{k&#39;} P_{kk&#39;} x_{k&#39;})\)</span>. In terms of
+3-way arrays, we get <span class="math inline">\((P \cdot \tA)(i&#39;,
+j&#39;, k&#39;) = \sum_{ijk} \tA(i,j,k) P_{ii&#39;} P_{jj&#39;}
+P_{kk&#39;}\)</span>. The corresponding isomorphism problems are called
+(in the commutative case) and .</p>
+<p>We may also consider a 3-way array <span
+class="math inline">\(\tA(i,j,k)\)</span>, <span
+class="math inline">\(i, j, k\in[n]\)</span>, as the structure constants
+of an algebra (which need not be associative, commutative, nor unital),
+say with basis <span class="math inline">\(x_1, \dotsc, x_n\)</span>,
+and with multiplication given by <span class="math inline">\(x_i \cdot
+x_j = \sum_k \tA(i,j,k) x_k\)</span>, and then extended (bi)linearly.
+Here the natural notion equivalence comes from the action of <span
+class="math inline">\(\GL(n,\F)\)</span> by change of basis on the <span
+class="math inline">\(x_i\)</span>. Despite the seeming similarity of
+this action to that on cubic forms, it turns out to be quite different:
+given <span class="math inline">\(P \in \GL(n,\F)\)</span>, let <span
+class="math inline">\(\vec{x}&#39; = P\vec{x}\)</span>; then we have
+<span class="math inline">\(x_i&#39; \cdot x_j&#39; = (\sum_{i}
+P_{i&#39; i} x_i)\cdot (\sum_{j} P_{j&#39; j} x_j)  = \sum_{i,j}
+P_{i&#39; i} P_{j&#39; j} x_i \cdot x_j\)</span> <span
+class="math inline">\(= \sum_{i,j,k} P_{i&#39; i} P_{j&#39; j}
+\tA(i,j,k) x_k = \sum_{i,j,k} P_{i&#39; i} P_{j&#39; j}  \tA(i,j,k)
+\sum_{k&#39;} (P^{-1})_{kk&#39;} x_{k&#39;}\)</span>. Thus <span
+class="math inline">\(\tA\)</span> becomes <span
+class="math inline">\((P \cdot \tA)(i&#39;,j&#39;,k&#39;) = \sum_{ijk}
+\tA(i,j,k) P_{i&#39; i} P_{j&#39; j} (P^{-1})_{k k&#39;}\)</span>. The
+inverse in the third factor here is the crucial difference between this
+case and that of cubic or trilinear forms above, similar to the
+difference between matrix conjugacy and matrix isometry. The
+corresponding isomorphism problem is called .</p>
+<p>The isomorphism problems of the above structures all have 3-way
+arrays as the underlying object, but are determined by different group
+actions. It is not hard to see that there are essentially five group
+actions in total: , , , , and . It turns out that these cover all the
+natural isomorphism problems on 3-way arrays in which the group acting
+is a product of <span class="math inline">\(\GL(n,\F)\)</span> (where
+<span class="math inline">\(n\)</span> is the side length of the
+arrays); see for discussion.</p>
+We now state our first main theorem.
+<p>Figure~<span class="math inline">\(\ref{fig:main}\)</span> below
+summarizes where the various parts of are proven.</p>
+<p>We then resolve an open question well-known to the experts:</p>
+<p>Since the main result of reduces the problems in Theorem~<span
+class="math inline">\(\ref{thm:main}\)</span> to (cf. ), we have:</p>
+<p>We observe then and reduce to . In particular, the class <span
+class="math inline">\(\cc{TI}\)</span> contains the classical graph
+isomorphism class <span class="math inline">\(\cc{GI}\)</span>.</p>
+<p>Recall asks to decide whether two linear codes are the same up to a
+linear transformation preserving the Hamming weights of codes. Here the
+linear codes are just subspaces of <span
+class="math inline">\(\F_q^n\)</span> of dimension <span
+class="math inline">\(d\)</span>, represented by linear bases. Linear
+transformations preserving the Hamming weights include permutations and
+monomial transformations. Recall that the latter consists of matrices
+where every row and every column has exactly one non-zero entry. Indeed,
+over many fields this is without loss of generality, as
+Hamming-weight-preserving linear maps are always induced by monomial
+transformations (first proved over finite fields , and more recently
+over much more general algebraic objects, e.,g., ). has long been
+studied in the coding theory community; see e.g. .</p>
+For , we observe that previous results already combine to give:
+<p>Using the linear-algebraic coloring gadget, we can extend this to
+equivalence of codes under monomial transformations (see ). Given two
+<span class="math inline">\(d\times n\)</span> matrices <span
+class="math inline">\(A, B\)</span> over <span
+class="math inline">\(\F\)</span> of rank <span
+class="math inline">\(d\)</span>, the problem is to decide whether there
+exist <span class="math inline">\(Q\in \GL(d, \F)\)</span> and a
+monomial matrix <span class="math inline">\(P\in \Mon(n, \F)\leq \GL(n,
+\F)\)</span> (product of a diagonal matrix and a permutation matrix)
+such that <span class="math inline">\(QAP =B\)</span>.</p>
+Since reduces to (see ) and (even over arbitrary fields ), by and , we
+have the following.
+<p>Using our linear-algebraic gadgets, we also reprove this result using
+a much more direct reduction (see ). Besides being a different
+construction, another reason for the additional proof is that the
+technique leads to the search-to-decision reduction, which we discuss
+below.</p>
+<p>For several reasons, the hardest cases of are believed to be <span
+class="math inline">\(p\)</span>-groups of class 2 and exponent <span
+class="math inline">\(p\)</span>; recall that these are groups in which
+every element has order <span class="math inline">\(p\)</span>, the
+order of the group is <span class="math inline">\(p^n\)</span>, and
+<span class="math inline">\(G/Z(G)\)</span> is abelian. See above. While
+this belief<br />
+has been widely held for many decades, we are not aware of any prior
+reduction from a more general class of groups to this class. However, by
+combining our results with the Lazard correspondence, we immediately get
+such a reduction.</p>
+<p>The only obstacle to getting this proof to work in the Cayley table
+model is that our reduction from to () blows up the dimension
+quadratically, which means the size of the group becomes <span
+class="math inline">\(|G|^{O(\log |G|)}\)</span> after the reduction.
+See Question~<span
+class="math inline">\(\ref{question:search_decision}\)</span>.</p>
+<p>Reducing search problems to their associated decision problems is a
+classical and intriguing topic in complexity theory. Aside from the
+now-standard search-to-decision reduction for SAT, one of the earliest
+results in this direction was by Valiant in the 1970’s . A celebrated
+result of Bellare and Goldwasser shows that, assuming <span
+class="math inline">\(\cc{EE}\neq\cc{NEE}\)</span>, there exists a
+language in <span class="math inline">\(\cc{NP}\)</span> for which
+search does not reduce to decision under polynomial-time reductions .
+However, as usual for such statements based on complexity-theoretic
+assumptions, the problems constructed by such a proof are considered
+somewhat unnatural. For natural problems, on the one hand, there are
+search-to-decision reductions for <span
+class="math inline">\(\cc{NP}\)</span>-complete problems and for . On
+the other hand, such is not known, nor expected to be the case, for Nash
+Equilibrium (for which decision is trivial).</p>
+<p>Reducing search to decision is particularly intriguing for testing
+isomorphism of groups. One difficulty is that it is not clear how to
+guess a partial solution, and then make progress by restricting to a
+subgroup. In general, testing isomorphism of certain algebraic
+structures (groups, algebras, etc.) forms a large family of problems for
+which search-to-decision reductions are not known.</p>
+<p>Because of the close relationship between and isomorphism of various
+algebraic structures, one might expect similar difficulties in reducing
+search to decision for , and thus for <span
+class="math inline">\(\cc{TI}\)</span>-complete problems as well.
+Nonetheless, for , we are able to use the linear-algebraic coloring
+gadgets to get a non-trivial search-to-decision reduction.</p>
+<p>As a consequence, a <span
+class="math inline">\(q^{\tilde{O}(\sqrt{n})}\)</span>-time decision
+algorithm would result in a <span
+class="math inline">\(q^{\tilde{O}(n)}\)</span>-time search algorithm,
+in contrast with the brute-force <span
+class="math inline">\(q^{O(n^2)}\)</span> running time. Note that in
+this context, the size of the input is <span
+class="math inline">\(\poly(n,\log q)\)</span>, so a <span
+class="math inline">\(q^{\tilde{O}(\sqrt{n})}\)</span> running time is
+still quite generous.</p>
+<p>By the connection between and for <span
+class="math inline">\(p\)</span>-groups of class <span
+class="math inline">\(2\)</span> and exponent <span
+class="math inline">\(p\)</span>, we have the following. Note that the
+natural succinct input representation mentioned in the following result
+can have size <span class="math inline">\(\poly(\ell, \log p) =
+\poly(\log |G|)\)</span>.</p>
+<p>The most closely related work is that of Futorny, Grochow, and
+Sergeichuk . They show that a large family of isomorphism problems on
+3-way arrays—including those involving multiple 3-way arrays
+simultaneously, or 3-way arrays that are partitioned into blocks, or
+3-way arrays where some of the blocks or sides are acted on by the same
+group (e.,g., )—all reduce to . Our work complements theirs in that all
+our reductions for go in the opposite direction, reducing to other
+problems. Some of our other results relate and to ; the latter problems
+were not considered in . considers <span
+class="math inline">\(d\)</span>-tensors for any <span
+class="math inline">\(d \geq 3\)</span>, which were not considered in
+.</p>
+<p>In , Agrawal and Saxena considered and testing isomorphism of
+commutative, associative, unital algebras. They showed that reduces to ;
+reduces to ; and reduces to assuming that the underlying field has <span
+class="math inline">\(d\)</span>th root for every field element. By
+combining a reduction from , , and , we get a new reduction from to that
+works over any field in which <span class="math inline">\(3!\)</span> is
+a unit, which is fields of characteristic <span
+class="math inline">\(0\)</span> or <span class="math inline">\(p &gt;
+3\)</span>.</p>
+<p>There are several other works which consider related isomorphism
+problems. Grigorev showed that is equivalent to isomorphism of unital,
+associative algebras <span class="math inline">\(A\)</span> such that
+the radical <span class="math inline">\(R(A)\)</span> squares to zero
+and <span class="math inline">\(A/R(A)\)</span> is abelian.
+Interestingly, we show <span
+class="math inline">\(\cc{TI}\)</span>-completeness for conjugacy of
+matrix algebras with the same abstract structure (even when <span
+class="math inline">\(A/R(A)\)</span> is only 1-dimensional). Note the
+latter problem is equivalent to asking whether two representations of
+<span class="math inline">\(A\)</span> are equivalent up to
+automorphisms of <span class="math inline">\(A\)</span>. In the proof of
+, which uses algebras in which <span
+class="math inline">\(R(A)^d=0\)</span> when reducing from , we use
+Grigoriev’s result.</p>
+<p>Brooksbank and Wilson showed a reduction from (when given by
+structure constants) to . Grochow , among other things, showed that and
+reduce to , which is a special case of .</p>
+<p>In , Kayal and Saxena considered testing isomorphism of finite rings
+when the rings are given by structure constants. This problem
+generalizes testing isomorphism of algebras over finite fields. They put
+this problem in <span class="math inline">\(\cc{NP} \cap
+\cc{coAM}\)</span> , reduce to this problem , and prove that counting
+the number of ring automorphism (#RA) is in <span
+class="math inline">\(\cc{FP}^{\cc{AM} \cap \cc{coAM}}\)</span> . They
+also present a <span class="math inline">\(\cc{ZPP}\)</span> reduction
+from to #RA, and show that the decision version of the ring automorphism
+problem is in <span class="math inline">\(\cc{P}\)</span>.</p>
+<p>To summarize this zoo of isomorphism problems and reductions, we
+include Figure~<span class="math inline">\(\ref{fig:summary}\)</span>
+for reference.</p>
+<p>\begin{figure}[!htbp] [ ]</p>
+<p>\caption[Summary of isomorphism problems around and .]{ Summary of
+isomorphism problems around and . <span class="math inline">\(A \to
+B\)</span> indicates that <span class="math inline">\(A\)</span> reduces
+to <span class="math inline">\(B\)</span>, i.,e., <span
+class="math inline">\(A \leq_m^p B\)</span>. Unattributed arrows
+indicate <span class="math inline">\(A\)</span> is clearly a special
+case of <span class="math inline">\(B\)</span>. Note that the definition
+of ring used in is commutative, finite, and unital; by ``algebra’’ we
+mean an algebra (not necessarily associative, let alone commutative nor
+unital) over a field. The reductions between (in the basis
+representation) and and are for rings over a field. The equivalences
+between and <span class="math inline">\(p\)</span>-are for matrix spaces
+over <span class="math inline">\(\F_{p^e}\)</span>. Some -complete
+problems from are left out for clarity.</p>
+<p>These results only hold over fields where every element has a <span
+class="math inline">\(d\)</span>th root. In particular, and are
+-complete over fields with <span class="math inline">\(d\)</span>-th
+roots. A finite field <span class="math inline">\(\F_q\)</span> has this
+property if and only if <span class="math inline">\(d\)</span> is
+coprime to <span class="math inline">\(q-1\)</span>.</p>
+<p>These results only hold over rings where <span
+class="math inline">\(d!\)</span> is a unit.</p>
+<p>Assuming the Generalized Riemann Hypothesis, R'{o}nyai shows a Las
+Vegas randomized polynomial-time reduction from factoring square-free
+integers—probably not much easier than the general case—to isomorphism
+of 4-dimensional algebras over <span class="math inline">\(\Q\)</span>.
+Despite the additional hypotheses, this is notable as the target of the
+reduction is algebras of dimension, in contrast to all other reductions
+in this figure. } \end{figure}</p>
+<p>In this section we describe one of the key new techniques in this
+paper: a linear-algebraic coloring gadget. We exhibit this gadget by
+giving the full proof of as an example. A related gadget was used in to
+show reductions ; our reductions all go in the opposite direction.
+Furthermore, whereas the gadgets used in were primarily to ensure that
+two different blocks could not be mixed, our gadgets allow us to ensure
+that certain slices of a tensor can be permuted, while disallowing more
+general linear transformations.</p>
+<p>In the context of , there are many ways to reduce to ordinary ; here
+we give one example, which will serve as an analogy for our
+linear-algebraic gadget. To individualize a vertex <span
+class="math inline">\(v \in G\)</span> (give it a unique color), attach
+to it a large ``star’’: if <span
+class="math inline">\(|V(G)|=n\)</span>, add <span
+class="math inline">\(n+1\)</span> new vertices to <span
+class="math inline">\(G\)</span> and attach them all to <span
+class="math inline">\(v\)</span>; call the resulting graph <span
+class="math inline">\(G_v\)</span>. This has the effect that any
+automorphism of <span class="math inline">\(G_v\)</span> must fix <span
+class="math inline">\(v\)</span>, since <span
+class="math inline">\(v\)</span> has a degree strictly larger than any
+other vertex. Furthermore, if <span class="math inline">\(H_w\)</span>
+is obtained by a similar construction, then there is an isomorphism
+<span class="math inline">\(G \to H\)</span> which sends <span
+class="math inline">\(v \mapsto w\)</span> if and only if <span
+class="math inline">\(G_v \cong H_w\)</span>. Finally, if we attach
+stars of size <span class="math inline">\(n+1\)</span> to multiple
+vertices <span class="math inline">\(v_1, \dotsc, v_k\)</span>, then any
+automorphism of <span class="math inline">\(G\)</span> must permute the
+<span class="math inline">\(v_i\)</span> amongst themselves, and there
+is an isomorphism <span class="math inline">\(G \to H\)</span> sending
+<span class="math inline">\(\{v_1, \dotsc, v_k\} \mapsto \{w_1, \dotsc,
+w_k \}\)</span> if and only if the corresponding enlarged graphs are
+isomorphic.</p>
+<p>We adapt this idea to the context of 3-way arrays. Let <span
+class="math inline">\(\tA\)</span> be an <span
+class="math inline">\(\ell \times n \times m\)</span> 3-way array, with
+lateral slices <span class="math inline">\(L_1, L_2, \dotsc,
+L_n\)</span> (each an <span class="math inline">\(\ell \times m\)</span>
+matrix). For any vector <span class="math inline">\(v \in \F^n\)</span>,
+we get an associated lateral matrix <span
+class="math inline">\(L_v\)</span>, which is a linear combination of the
+lateral slices as given, namely <span class="math inline">\(L_v :=
+\sum_{j=1}^n v_j L_j\)</span> (note that when <span
+class="math inline">\(v=\vec{e_j}\)</span> is the <span
+class="math inline">\(j\)</span>-th standard basis vector, the
+associated lateral matrix is indeed <span
+class="math inline">\(L_j\)</span>). By analogy with adjacency matrices
+of graphs, <span class="math inline">\(L_v\)</span> is a natural
+analogue of the neighborhood of a vertex in a graph. Correspondingly, we
+get a notion of
+<code>degree,'' which we may define as \begin{eqnarray*} \deg_\tA(v) &amp; := &amp; \rk L_v = \rk (\sum_{j=1}^n v_j L_j)  =  \dim \linspan\{L_v \vec{w} : \vec{w} \in \F^m \}  = \dim \linspan\{\vec{u}^t L_v : \vec{u} \in \F^\ell \} \end{eqnarray*} The last two characterizations are analogous to the fact that the degree of a vertex $v$ in a graph $G$ may be defined as the number of</code>in-neighbors’’
+(nonzero entries the corresponding row of the adjacency matrix) or the
+number of ``out-neighbors’’ (nonzero entries in the corresponding
+column).</p>
+To
+<code>individualize'' $v$,  we can enlarge $\tA$ with a gadget to increase $\deg_\tA(v)$, as in the graph case. Note that $\deg_\tA(v) \leq \min\{\ell,m\}$ because the lateral matrices are all of size $\ell \times m$. For notational simplicity, let us individualize $v = \vec{e_1} = (1,0,\dotsc,0)^t$. To individualize $v$, we will increase its degree by $d = \min\{\ell,m\}+1 &gt; \max_{v \in \F^n} \deg_\tA (v)$. Extend $\tA$ to a new 3-way array $\tA_v$ of size $(\ell+d) \times n \times (m+d)$; in the</code>first’’
+<span class="math inline">\(\ell \times n \times m\)</span> ``corner’‘,
+we will have the original array <span
+class="math inline">\(\tA\)</span>, and then we will append to it an
+identity matrix in one slice to increase <span
+class="math inline">\(\deg(v)\)</span>. More specifically, the lateral
+slices of <span class="math inline">\(\tA_v\)</span> will be [ L_1’ =
+<span class="math display">\[\begin{bmatrix} L_1 &amp; 0 \\ 0 &amp; I_d
+\end{bmatrix}\]</span>
+L_j’ =
+<span class="math display">\[\begin{bmatrix} L_j &amp; 0 \\ 0 &amp; 0
+\end{bmatrix}\]</span>
+<p>( j &gt; 1). ] Now we have that <span
+class="math inline">\(\deg_{\tA_v}(v) \geq d\)</span>. This almost does
+what we want, but now note that any vector <span
+class="math inline">\(w=(w_1,\dotsc,w_n)\)</span> with <span
+class="math inline">\(w_1 \neq 0\)</span> has <span
+class="math inline">\(\deg_{\tA_v}(w) =\rk (w_1 L_1&#39; + \sum_{j \geq
+2} w_j L_j) \geq d\)</span>. We can nonetheless consider this a sort of
+linear-algebraic individualization.</p>
+<p>Leveraging this trick, we can then individualize an entire basis of
+<span class="math inline">\(\F^n\)</span> simultaneously, so that <span
+class="math inline">\(d \leq \deg(v) &lt; 2d\)</span> for any vector
+<span class="math inline">\(v\)</span> in our basis, and <span
+class="math inline">\(\deg(v&#39;) \geq 2d\)</span> for any nonzero
+<span class="math inline">\(v&#39;\)</span> outside the basis<br />
+(not a scalar multiple of one of the basis vectors), as we do in the
+following proof of . This is also a 3-dimensional analogue of the
+reduction from to (where they use Hamming weight instead of rank).</p>
+</body>
+</html>
