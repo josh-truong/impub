@@ -1,0 +1,3082 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Naya Yerolemou and Vidit Nanda" />
+  <title>Morse Theory for Complexes of Groups</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+
+      p,
+      h2,
+      h3 {
+        orphans: 3;
+        widows: 3;
+      }
+
+      h2,
+      h3,
+      h4 {
+        page-break-after: avoid;
+      }
+    }
+
+    p {
+      margin: 1em 0;
+    }
+
+    a {
+      color: #1a1a1a;
+    }
+
+    a:visited {
+      color: #1a1a1a;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 1.4em;
+    }
+
+    h5,
+    h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+
+    h6 {
+      font-weight: normal;
+    }
+
+    ol,
+    ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+
+    li>ol,
+    li>ul {
+      margin-top: 0;
+    }
+
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+
+    div.abstract {
+      margin: 2em 2em 2em 2em;
+      text-align: left;
+      font-size: 85%;
+    }
+
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      padding: 0;
+      margin-bottom: 0.5em;
+    }
+
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+
+    .sourceCode {
+      background-color: transparent;
+      overflow: visible;
+    }
+
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+
+    table caption {
+      margin-bottom: 0.75em;
+    }
+
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+
+    #TOC li {
+      list-style: none;
+    }
+
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+
+    #TOC>ul {
+      padding-left: 0;
+    }
+
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <header id="title-block-header">
+    <h1 class="title">Morse Theory for Complexes of Groups</h1>
+    <p class="author">Naya Yerolemou and Vidit Nanda</p>
+    <div class="abstract">
+      <div class="abstract-title">Abstract</div>
+      <p>We construct an equivariant version of discrete Morse theory for
+        simplicial complexes endowed with group actions. The key ingredient is a
+        2-categorical criterion for making acyclic partial matchings on the
+        quotient space compatible with an overlaid complex of groups. We use the
+        discrete flow category of any such compatible matching to build the
+        corresponding Morse complex of groups. Our main result establishes that
+        the development of the Morse complex of groups recovers the original
+        simplicial complex up to equivariant homotopy equivalence.</p>
+    </div>
+  </header>
+  <nav id="TOC" role="doc-toc">
+    <ul>
+      <li><a href="#sec:intro">Introduction</a>
+        <ul>
+          <li><a href="#complexes-of-groups">Complexes of Groups</a></li>
+          <li><a href="#discrete-morse-theory">Discrete Morse Theory</a></li>
+          <li><a href="#this-paper">This Paper</a></li>
+          <li><a href="#related-work">Related Work</a></li>
+          <li><a href="#outline">Outline</a></li>
+          <li><a href="#acknowledgements">Acknowledgements</a></li>
+        </ul>
+      </li>
+      <li><a href="#sec:lpcat">LP-Categories</a></li>
+      <li><a href="#sec:enrichedcog">Complexes of Groups on LP
+          Categories</a></li>
+      <li><a href="#sec:grpact">Group Actions on LP-Categories</a></li>
+      <li><a href="#sec:dev">Development and the Basic Construction</a></li>
+      <li><a href="#sec:flow">Discrete Morse Theory and the Flow
+          Category</a></li>
+      <li><a href="#sec:morsecog">The Morse Complex of Groups</a></li>
+      <li><a href="#sec:equhomequiv">Equivariant Homotopy Equivalence</a></li>
+      <li><a href="#sec:example">An Example</a></li>
+    </ul>
+  </nav>
+  <h1 id="sec:intro">Introduction</h1>
+  <p>The interplay of ideas between group actions and Morse theory has
+    resulted in several substantial advances across modern geometry and
+    topology. Any highlight reel featuring equivariant Morse theory would
+    certainly include Atiyah and Bott’s seminal study of algebraic bundles
+    on Riemann surfaces <span class="citation" data-cites="atiyahbott"></span>, Hingston’s work on counting closed
+    geodesics in symmetric spaces <span class="citation" data-cites="hingston"></span>, and Kirwan’s investigations of
+    symplectic
+    quotients <span class="citation" data-cites="kirwan"></span>, among
+    other results. Such efforts are motivated (and hindered) by the fact
+    that – unless a group <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span> acts
+    freely on a topological space <span class="math inline">\(X\)</span> –
+    the quotient <span class="math inline">\(Y :=
+      X/{\mathop{\mathrm{{\text{\rm G}}}}}\)</span> is usually far more
+    pathological than <span class="math inline">\(X\)</span> itself. For
+    instance, <span class="math inline">\(Y\)</span> may be singular even
+    when <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span> is a Lie group and <span class="math inline">\(X\)</span>
+    a smooth manifold. Similarly, the quotients of algebraic varieties by
+    algebraic group actions typically fail to be varieties in their own
+    right. In such cases, it becomes necessary to augment <span class="math inline">\(Y\)</span> with additional
+    stabiliser data to form
+    a <span><em>quotient stack</em></span>.</p>
+  <p>Our goal in this paper is to produce an avatar of equivariant Morse
+    theory specially adapted to quotient stacks arising from actions of
+    finite groups <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span> on finite simplicial complexes <span class="math inline">\(X\)</span>. Under mild hypotheses on
+    such actions
+    (called <span><em>regularity</em></span>), one can ensure that the
+    quotient <span class="math inline">\(Y\)</span> is also a simplicial
+    complex and that the canonical projection <span class="math inline">\(X
+      \twoheadrightarrow Y\)</span> is a surjective simplicial map even when
+    the <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>-action is not free. The main instruments of this paper
+    are a pair of 2-functors, one arising from the quotient stack itself and
+    the other from a suitable discretisation of Morse theory.</p>
+  <h2 class="unnumbered" id="complexes-of-groups">Complexes of Groups</h2>
+  <p>Quotient stacks for group actions on simplicial complexes are called
+    complexes of groups, and their study dates back to the work of Corson
+    <span class="citation" data-cites="corson"></span> and Haefliger <span class="citation"
+      data-cites="haefliger"></span> in geometric group
+    theory. A complex of groups associated to the action of <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span> on <span class="math inline">\(X\)</span> amounts to a 2-functor of the form
+    <span class="math display">\[\mathbf{F}{}:\mathbf{Fac}[Y] \to
+      \mathop{\mathrm{\mathbf{Grp}}}.\]</span> Here the domain is the poset of
+    simplices (in the quotient complex <span class="math inline">\(Y =
+      X/{\mathop{\mathrm{{\text{\rm G}}}}}\)</span>) ordered by the co-face
+    relation, while the codomain <span class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}\)</span> is the
+    2-category whose objects are all groups, whose 1-morphisms are ordinary
+    group homomorphisms, and the 2-morphism structure arises from
+    conjugation <span class="citation" data-cites="carbone2020equivariant"></span>. This is the first 2-functor
+    of interest to us in this paper.
+  </p>
+  <p>When <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span> is abelian, there is a considerable simplification since
+    all 2-morphisms in the image of <span class="math inline">\(\mathbf{F}{}\)</span> become identities. For the
+    purposes of these introductory remarks, we employ the following running
+    example: consider the simplicial complex <span class="math inline">\(X\)</span> drawn below</p>
+  <div class="center">
+    <p><embed src="intro_eg.pdf" style="width:50.0%" /></p>
+  </div>
+  <p>The Klein four-group <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}=
+      \langle\sigma,\tau \mid \sigma^2=1=\tau^2\rangle\)</span> acts on <span class="math inline">\(X\)</span> by
+    letting <span class="math inline">\(\sigma\)</span> and <span class="math inline">\(\tau\)</span> induce reflections
+    about the
+    horizontal and vertical axis through the central vertex <span class="math inline">\(\Delta\)</span>, and the
+    resulting quotient <span class="math inline">\(Y\)</span> is:</p>
+  <div class="center">
+    <p><embed src="intro_fd.pdf" style="width:30.0%" /></p>
+  </div>
+  <p>A complex of groups <span class="math inline">\(\mathbf{F}{}\)</span>
+    for this action is illustrated below (all of the 2-morphisms in sight
+    are trivial):</p>
+  <div class="center">
+
+  </div>
+  <p>Note that the group assigned to each simplex of <span class="math inline">\(Y\)</span> is a subgroup of the groups
+    assigned to
+    its faces. Similarly, the trivial <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>-action
+    gives rise to the <span><em>constant</em></span> complex of groups <span
+      class="math inline">\(\underline{{\mathop{\mathrm{{\text{\rm
+      G}}}}}}_{{Y}}\)</span>, where every simplex of <span class="math inline">\(Y\)</span> is assigned <span
+      class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>, all
+    face relations are assigned identity group homomorphisms, and all
+    2-morphisms are trivial. Our complex of groups <span class="math inline">\(\mathbf{F}{}\)</span> admits a natural
+    embedding
+    (i.e., an injective natural transformation) <span class="math inline">\(\Phi:\mathbf{F}{}
+      \hookrightarrow\underline{{\mathop{\mathrm{{\text{\rm
+      G}}}}}}_{{Y}}\)</span> to the constant complex of groups. Associated to
+    this pair <span class="math inline">\((\mathbf{F}{},\Phi)\)</span> is a
+    category <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}(\mathbf{F}{},\Phi)\)</span>,
+    which carries a natural <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>-action
+    and is called the <span><em>development</em></span> of <span class="math inline">\((\mathbf{F}{},\Phi)\)</span>. The
+    following
+    result, paraphrased from <span class="citation" data-cites="bridson2011metric"></span>, is called <span><strong>the
+        basic construction</strong></span>.</p>
+  <div class="theorem*">
+    <p><strong>Theorem 1</strong> (A). <em>Let <span class="math inline">\((\mathbf{F}{},\Phi)\)</span> be the complex
+        of
+        groups and injective natural transformation associated to the action of
+        a group <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span> on a simplicial complex <span class="math inline">\(X\)</span>. Then the nerve of its
+        development
+        <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}(\mathbf{F}{},\Phi)\)</span>
+        is <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span>-equivariantly isomorphic to <span class="math inline">\(X\)</span>.</em></p>
+  </div>
+  <p>In fact, the basic construction is far more general than the above
+    description suggests — one can consider the action of <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span> on an
+    arbitrary loopfree category <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> rather than
+    restricting focus to the poset of simplices in a given simplicial
+    complex <span class="math inline">\(X\)</span>. In this case, the
+    associated development recovers <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> up to <span
+      class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>-equivariant isomorphism.</p>
+  <h2 class="unnumbered" id="discrete-morse-theory">Discrete Morse
+    Theory</h2>
+  <p>The second 2-functor of interest to us here arises from a
+    combinatorial adaptation of Morse theory due to Forman <span class="citation" data-cites="forman1998morse"></span>.
+    The central
+    objects of study here are simplicial (or more generally, regular CW)
+    complexes rather than smooth manifolds. The role of the gradient vector
+    field is played by a partial bijection <span class="math inline">\(\Sigma\)</span> relating adjacent simplices of
+    co-dimension one, subject to a global acyclicity condition. These
+    pairings are typically illustrated as arrows from the lower-dimensional
+    simplex to the higher-dimensional one. Here are two such
+    <span><em>acyclic partial matchings</em></span> on our running example
+    <span class="math inline">\(X\)</span> — the one on the left is <span
+      class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>-equivariant whereas the one on the right is not.
+  </p>
+  <div class="center">
+    <p><embed src="intro_dmt.pdf" style="width:95.0%" /></p>
+  </div>
+  <p>The unpaired simplices are analogous to critical points from smooth
+    Morse theory in the sense that the homotopy type of <span class="math inline">\(X\)</span> may be recovered from a
+    CW complex
+    whose <span class="math inline">\(k\)</span>-cells correspond
+    bijectively with <span class="math inline">\(k\)</span>-dimensional
+    unpaired simplices. In the two acyclic partial matchings on <span class="math inline">\(X\)</span> depicted above,
+    only the central vertex
+    <span class="math inline">\(\Delta\)</span> remains unpaired. Thus, both
+    matchings establish that <span class="math inline">\(X\)</span> is
+    contractible; but the one on the left goes a step further by showing
+    that in fact <span class="math inline">\(X\)</span> is <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>-equivariantly contractible. Indeed, one may view the
+    equivariant matching as a lift of the following acyclic partial matching
+    on the quotient <span class="math inline">\(Y\)</span>:
+  </p>
+  <div class="center">
+    <p><embed src="intro_fd_dmt.pdf" style="width:25.0%" /></p>
+  </div>
+  <p>Unfortunately, the CW complex induced by unpaired simplices is built
+    by induction and its attaching maps are not straightforward to describe
+    in general. To get a better handle on the homotopy type of this complex,
+    we turn to the <span><em>entrance path category</em></span> <span class="math inline">\(\mathbf{Ent}[Y]\)</span> of
+    the quotient
+    simplicial complex <span class="math inline">\(Y\)</span>. This is the
+    2-category whose objects are the simplices of <span class="math inline">\(Y\)</span> and 1-morphisms <span
+      class="math inline">\(y \to y&#39;\)</span> consist of all strictly
+    descending sequences of faces <span class="math display">\[y_0 &gt; y_1
+      &gt; \cdots &gt;y_{k-1} &gt; y_k\]</span> with <span class="math inline">\(y=y_0\)</span> and <span
+      class="math inline">\(y_k=y&#39;\)</span>; the 2-morphisms arise from
+    partially ordering such sequences by inclusion. Every acyclic partial
+    matching <span class="math inline">\(\Sigma\)</span> corresponds to a
+    set of minimal entrance paths, and the key to recovering the homotopy
+    type of <span class="math inline">\(Y\)</span> is to localise <span class="math inline">\(\mathbf{Ent}[Y]\)</span>
+    by formally inverting all
+    the 1-morphisms implicated by <span class="math inline">\(\Sigma\)</span>. The second 2-functor of interest
+    to us is <span class="math display">\[\mathop{\mathrm{\mathbf{L}}}_\Sigma:\mathbf{Ent}[Y]
+      \to \mathbf{Loc}_\Sigma\mathbf{Ent}[Y],\]</span> i.e., the canonical
+    functor from the entrance path category to its localisation about <span class="math inline">\(\Sigma\)</span>. Here
+    is the main result of <span class="citation" data-cites="NANDA2019459"></span>.</p>
+  <div class="theorem*">
+    <p><strong>Theorem 2</strong> (B). <em>If <span class="math inline">\(\Sigma\)</span> is an acyclic partial matching
+        on
+        a simplicial complex <span class="math inline">\(X\)</span>,
+        then</em></p>
+    <ol>
+      <li>
+        <p><em>the localisation functor <span class="math inline">\(\mathop{\mathrm{\mathbf{L}}}_\Sigma\)</span>
+            induces a homotopy equivalence of classifying spaces; and</em></p>
+      </li>
+      <li>
+        <p><em>writing <span class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]\)</span> for the full
+            subcategory of <span class="math inline">\(\mathbf{Loc}_\Sigma\mathbf{Ent}[Y]\)</span>
+            spanned by unpaired simplices, the inclusion <span class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]
+              \hookrightarrow\mathbf{Loc}_\Sigma\mathbf{Ent}[\Sigma]\)</span> also
+            induces a homotopy equivalence.</em></p>
+      </li>
+    </ol>
+  </div>
+  <p>The classifying space of <span class="math inline">\(\mathbf{Ent}[Y]\)</span> is homotopy equivalent to
+    <span class="math inline">\(Y\)</span>, so the above result allows us to
+    recover <span class="math inline">\(Y\)</span> up to homotopy type from
+    the <span><strong>flow category</strong></span> <span class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]\)</span>. This
+    category
+    has the unpaired simplices as objects and (posets of) <span class="math inline">\(\Sigma\)</span>-localised entrance
+    paths as
+    morphisms.
+  </p>
+  <h2 class="unnumbered" id="this-paper">This Paper</h2>
+  <p>Here we simultaneously generalise Theorems (A) and (B) by building a
+    discrete Morse theory for complexes of groups. The basic steps (and our
+    main contributions) are as follows:</p>
+  <ol>
+    <li>
+      <p>We extend complexes of groups and the basic construction to
+        account for group actions on loopfree
+        <span><em>poset-enriched</em></span> categories.
+      </p>
+    </li>
+    <li>
+      <p>We give a criterion for making acyclic partial matchings on the
+        quotient <span class="math inline">\(X/{\mathop{\mathrm{{\text{\rm
+          G}}}}}\)</span> <span><em>compatible</em></span> with the <span
+          class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>-action
+        on <span class="math inline">\(X\)</span> in terms of an associated
+        complex of groups.</p>
+    </li>
+    <li>
+      <p>For any such compatible <span class="math inline">\(\Sigma\)</span>, we construct a pair <span
+          class="math inline">\((\mathbf{M}{},\Psi)\)</span> where <span class="math inline">\(\mathbf{M}{}\)</span> is
+        a new complex of groups
+        on <span class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]\)</span> while
+        <span class="math inline">\(\Psi\)</span> is an injective natural
+        transformation to <span class="math inline">\(\underline{{\mathop{\mathrm{{\text{\rm
+          G}}}}}}_{{\mathbf{Flo}_\Sigma[{Y}]}}\)</span>.
+      </p>
+    </li>
+  </ol>
+  <p>We call <span class="math inline">\(\mathbf{M}{}\)</span> a
+    <span><strong>Morse complex of groups</strong></span> for <span class="math inline">\(\Sigma\)</span>. Here is our
+    main result.
+  </p>
+  <div class="theorem*">
+    <p><strong>Theorem 3</strong>. <em>Let <span class="math inline">\((\mathbf{F}{},\Phi)\)</span> denote a complex of
+        groups and injective natural transformation associated to the regular
+        action of a finite group <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span> on a
+        finite simplicial complex <span class="math inline">\(X\)</span>. Assume
+        that <span class="math inline">\(\Sigma\)</span> is an <span
+          class="math inline">\(\mathbf{F}{}\)</span>-compatible acyclic partial
+        matching on the quotient <span class="math inline">\(Y =
+          X/\mathop{\mathrm{{\text{\rm G}}}}\)</span>. If <span
+          class="math inline">\({\mathbf{M}{}:\mathbf{Flo}_\Sigma[{Y}]\to\mathop{\mathrm{\mathbf{Grp}}}}\)</span>
+        is an associated Morse complex of groups and <span
+          class="math inline">\(\Psi:\mathbf{M}{}\hookrightarrow\mathop{\mathrm{\underline{\mathop{\mathrm{{\text{\rm
+          G}}}}}}}_{\mathbf{Flo}_\Sigma[{Y}]}\)</span> the corresponding injective
+        natural transformation, then the classifying space of the development
+        <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}(\mathbf{M}{},\Psi)\)</span>
+        is <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span>-equivariantly homotopy-equivalent to <span class="math inline">\(X\)</span>.</em></p>
+  </div>
+  <p>The basic strategy of our proof involves lifting <span class="math inline">\(\Sigma\)</span> to a <span
+      class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>-equivariant acyclic partial matching <span class="math inline">\(\tilde{\Sigma}\)</span> on <span
+      class="math inline">\(X\)</span>. We then inherit natural <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>-actions
+    on <span class="math inline">\(\mathbf{Ent}[X]\)</span>, its
+    localisation about <span class="math inline">\(\tilde{\Sigma}\)</span>,
+    and the flow category. Finally, we establish that the development <span
+      class="math inline">\(\mathop{\mathrm{\mathscr{D}}}(\mathbf{M}{},\Psi)\)</span>
+    is isomorphic to the flow category <span class="math inline">\({\bf
+      Flo}_{\tilde{\Sigma}}[X]\)</span>.</p>
+  <h2 class="unnumbered" id="related-work">Related Work</h2>
+  <p>Morse theories for differentiable stacks have been studied by
+    Hepworth <span class="citation" data-cites="hepworth1 hepworth2"></span>
+    as well as Cho-Hong <span class="citation" data-cites="chohong"></span>.
+    Flow categories of standard (i.e., smooth) Morse functions date back to
+    the work of Cohen, Jones and Segal <span class="citation" data-cites="cjs"></span>, although we are unaware of any
+    work relating
+    their smooth flow category to various stacky Morse theories. On the
+    other hand, an equivariant version of discrete Morse theory for
+    simplicial complexes was introduced by Freij in <span class="citation" data-cites="freij"></span>. This theory does
+    not readily descend to
+    quotient stacks — in particular, the group actions considered here are
+    not necessarily regular, and hence do not admit complexes of groups.</p>
+  <h2 class="unnumbered" id="outline">Outline</h2>
+  <p>In Section <a href="#sec:lpcat" data-reference-type="ref" data-reference="sec:lpcat">2</a> we describe loopfree
+    poset-enriched
+    categories and their functors. Sections <a href="#sec:enrichedcog" data-reference-type="ref"
+      data-reference="sec:enrichedcog">3</a>, <a href="#sec:grpact" data-reference-type="ref"
+      data-reference="sec:grpact">4</a> and <a href="#sec:dev" data-reference-type="ref" data-reference="sec:dev">5</a>
+    are dedicated
+    to the study of group actions on these LP-categories, building the
+    associated complexes of groups, and the basic construction. Section <a href="#sec:flow" data-reference-type="ref"
+      data-reference="sec:flow">6</a> tersely summarises the LP-categorical
+    approach to discrete Morse theory via the flow category. Section <a href="#sec:morsecog" data-reference-type="ref"
+      data-reference="sec:morsecog">7</a> forms the heart of this paper — here
+    we describe the compatibility criterion for acyclic partial matchings in
+    the presence of group actions and the construction of Morse complexes of
+    groups for such matchings. Finally, we prove our main result in Section
+    <a href="#sec:equhomequiv" data-reference-type="ref" data-reference="sec:equhomequiv">8</a> and illustrate the
+    entire process
+    via an example in Section <a href="#sec:example" data-reference-type="ref" data-reference="sec:example">9</a>.
+  </p>
+  <h2 class="unnumbered" id="acknowledgements">Acknowledgements</h2>
+  <p>We are grateful to André Henriques and Ulrike Tillmann for insightful
+    discussions. NY is supported by The Alan Turing Institute under the
+    EPSRC grant EP/N510129/1. VN’s work is supported by EPSRC grant
+    EP/R018472/1.</p>
+  <h1 id="sec:lpcat">LP-Categories</h1>
+  <p>A small category <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> is said to
+    be <span><em>poset-enriched</em></span> if for any pair of objects <span class="math inline">\(x\)</span> and <span
+      class="math inline">\(y\)</span> in <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>, the set of
+    morphisms <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}(x,y)\)</span> from
+    <span class="math inline">\(x\)</span> to <span class="math inline">\(y\)</span> is endowed with a partial order
+    <span class="math inline">\(\Rightarrow\)</span> so that across any triple
+    <span class="math inline">\(x,y\)</span> and <span class="math inline">\(z\)</span> of such objects, the map <span
+      class="math display">\[\mathop{\mathrm{\mathscr{C}}}(x,y) \times
+      \mathop{\mathrm{\mathscr{C}}}(y,z) \stackrel{\circ}{\longrightarrow}
+      \mathop{\mathrm{\mathscr{C}}}(x,z)\]</span> sending <span class="math inline">\((f,f&#39;)\)</span> to the
+    composite <span class="math inline">\(f&#39; \circ f\)</span> is order-preserving. In
+    other words, whenever we have <span class="math inline">\(f_0
+      \Rightarrow f_1\)</span> in the poset <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}(x,y)\)</span> and
+    <span class="math inline">\(f&#39;_0 \Rightarrow f&#39;_1\)</span> in
+    the poset <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}(y,z)\)</span>, then
+    we also have the order relation <span class="math inline">\(f&#39;_0
+      \circ f_0 \Rightarrow f&#39;_1 \circ f_1\)</span> between composites in
+    the poset <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}(x,z)\)</span>. We
+    say that <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> is
+    <span><em>loopfree</em></span> if two conditions hold:
+  </p>
+  <ol>
+    <li>
+      <p>for each object <span class="math inline">\(x\)</span>, the poset
+        <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}(x,x)\)</span>
+        only contains the identity morphism, and
+      </p>
+    </li>
+    <li>
+      <p>for objects <span class="math inline">\(x \neq y\)</span>, if
+        <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}(x,y)\)</span>
+        is nonempty then <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}(y,x)\)</span> must
+        be empty.
+      </p>
+    </li>
+  </ol>
+  <p>We will henceforth abbreviate loopfree poset-enriched categories as
+    <span><strong>LP-categories</strong></span>. Given two LP categories
+    <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> and
+    <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}\)</span>, an
+    <span><strong>LP functor</strong></span> <span class="math inline">\(F:\mathop{\mathrm{\mathscr{C}}}\to
+      \mathop{\mathrm{\mathscr{D}}}\)</span> is an ordinary functor with the
+    additional requirement that for any pair of objects <span class="math inline">\(x, y\)</span> in <span
+      class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> the induced
+    map <span class="math display">\[F_{xy}:\mathop{\mathrm{\mathscr{C}}}(x,y) \to
+      \mathop{\mathrm{\mathscr{D}}}(Fx,Fy)\]</span> is order-preserving.
+  </p>
+  <div id="def:catspc" class="defn">
+    <p><strong>Definition 1</strong>. The <strong>geometric nerve <span
+          class="math inline">\({\Delta\mathop{\mathrm{\mathscr{C}}}}\)</span></strong>
+      of an LP category <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> is the
+      simplicial set whose vertices are the objects in <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>, and whose
+      <span class="math inline">\(n\)</span>-simplices spanning objects <span class="math inline">\(x_0,...,x_n\)</span>
+      consist of morphisms <span class="math inline">\(f_{ij}:x_i\to x_j\)</span> satisfying <span
+        class="math inline">\(f_{ik}\Rightarrow f_{jk}\circ f_{ij}\)</span> for
+      all <span class="math inline">\(0\leq i\leq j\leq k\leq n\)</span>, with
+      the convention that <span class="math inline">\(f_{ii}=\text{id}\)</span>. The <strong>classifying
+        space</strong> <span class="math inline">\(|{\Delta\mathop{\mathrm{\mathscr{C}}}}|\)</span>
+      of <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> is
+      the geometric realisation of its nerve.
+    </p>
+  </div>
+  <p>Every LP-functor <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\to
+      \mathop{\mathrm{\mathscr{D}}}\)</span> induces a simplicial map <span
+      class="math inline">\(\Delta\mathop{\mathrm{\mathscr{C}}}\to
+      \Delta\mathop{\mathrm{\mathscr{D}}}\)</span> and hence a continuous map
+    on classifying spaces.</p>
+  <h1 id="sec:enrichedcog">Complexes of Groups on LP Categories</h1>
+  <p>There is a natural 2-categorical extension of the category of groups,
+    where the higher morphisms arise from conjugation. More precisely, the
+    2-category <span class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}\)</span> is defined
+    as follows:</p>
+  <ol>
+    <li>
+      <p>its objects are all groups;</p>
+    </li>
+    <li>
+      <p>the 1-morphisms <span class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}(\mathop{\mathrm{{\text{\rm
+          G}}}},\mathop{\mathrm{{\text{\rm H}}}})\)</span> are group homomorphisms
+        <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\to
+          \mathop{\mathrm{{\text{\rm H}}}}\)</span>; and,
+      </p>
+    </li>
+    <li>
+      <p>the 2-morphisms <span class="math inline">\(\phi
+          \Rightarrow\phi&#39;\)</span> in <span
+          class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}(\mathop{\mathrm{{\text{\rm
+          G}}}},\mathop{\mathrm{{\text{\rm H}}}})\)</span> consist of all group
+        elements <span class="math inline">\(h\)</span> in <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+          H}}}}\)</span> that
+        satisfy <span class="math inline">\(\phi(g) = h \cdot \phi&#39;(g) \cdot
+          h^{-1}\)</span> for all <span class="math inline">\(g\)</span> in <span
+          class="math inline">\(\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span>.</p>
+    </li>
+  </ol>
+  <p>The 1-morphisms in <span class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}\)</span> are
+    composed in the usual manner for group homomorphisms. On the other hand,
+    the 2-morphisms in <span class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}\)</span> will be
+    called <span><em>twisting elements</em></span>, and can be composed
+    along two different axes. The <span><em>vertical</em></span> composition
+    sends each pair <span class="math inline">\((h,h&#39;)\)</span> on the
+    left to their product <span class="math inline">\(h \cdot
+      h&#39;\)</span> in <span class="math inline">\(\mathop{\mathrm{{\text{\rm H}}}}\)</span> on the
+    right: <span class="math display">\[\xymatrixcolsep{1.2in}
+      \xymatrix
+      {
+      \mathop{\mathrm{{\text{\rm
+      G}}}}\ar@/^2.5em/[r]|{\phi}_*+&lt;1em&gt;{\Downarrow h}
+      \ar@{-&gt;}[r]|{\phi&#39;}_*+&lt;.7em&gt;{\Downarrow h&#39;}
+      \ar@/_2.5em/[r]|{\phi&#39;&#39;} &amp; \mathop{\mathrm{{\text{\rm
+      H}}}}&amp; \mathop{\mathrm{{\text{\rm
+      G}}}}\ar@/^2.5em/[r]|{\phi}_*+&lt;3.1em&gt;{\Downarrow h \cdot h&#39;}
+      \ar@/_2.5em/[r]|{\phi&#39;&#39;} &amp; \mathop{\mathrm{{\text{\rm
+      H}}}}}\]</span> We indicate this type of composition (contravariantly)
+    by <span class="math inline">\(h&#39; * h = h \cdot h&#39;\)</span> and
+    note that <span class="math inline">\(h^{-1}\)</span> serves as an
+    inverse for <span class="math inline">\(h\)</span>. Thus, for each pair
+    of objects <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}},\mathop{\mathrm{{\text{\rm H}}}}\)</span> the set <span
+      class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}(\mathop{\mathrm{{\text{\rm
+      G}}}},\mathop{\mathrm{{\text{\rm H}}}})\)</span> forms a 1-category
+    whose morphisms are all invertible (i.e., a groupoid). Conversely, the
+    <span><em>horizontal</em></span> composite sends the pair <span class="math inline">\((h,k)\)</span> on the left to
+    the product <span class="math inline">\(\psi(h) \cdot k\)</span> in <span
+      class="math inline">\(\mathop{\mathrm{{\text{\rm K}}}}\)</span> on the
+    right: <span class="math display">\[\xymatrixcolsep{1.2in}
+      \xymatrix
+      {
+      \mathop{\mathrm{{\text{\rm
+      G}}}}\ar@/^2em/[r]|{\phi}_*+&lt;2.1em&gt;{\Downarrow
+      h} \ar@/_2em/[r]|{\phi&#39;} &amp; \mathop{\mathrm{{\text{\rm
+      H}}}}\ar@/^2em/[r]|{\psi}_*+&lt;2.1em&gt;{\Downarrow
+      k} \ar@/_2em/[r]|{\psi&#39;} &amp; \mathop{\mathrm{{\text{\rm
+      K}}}}&amp; \mathop{\mathrm{{\text{\rm G}}}}\ar@/^2em/[r]|{\psi \circ
+      \phi}_*+&lt;2.1em&gt;{\Downarrow \psi(h) \cdot
+      k} \ar@/_2em/[r]|{\psi&#39; \circ \phi&#39;} &amp;
+      \mathop{\mathrm{{\text{\rm K}}}}
+      }\]</span> This composition is denoted by <span class="math inline">\(k \circ h = \psi(h) \cdot k\)</span>. For
+    any
+    configuration of objects, 1 and 2-morphisms in <span class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}\)</span>
+    of the
+    form <span class="math display">\[\xymatrixcolsep{1.2in}
+      \xymatrix
+      {
+      \mathop{\mathrm{{\text{\rm
+      G}}}}\ar@/^2.5em/[r]|{\phi}_*+&lt;1em&gt;{\Downarrow h}
+      \ar@{-&gt;}[r]|{\phi&#39;}_*+&lt;.7em&gt;{\Downarrow h&#39;}
+      \ar@/_2.5em/[r]|{\phi&#39;&#39;} &amp; \mathop{\mathrm{{\text{\rm
+      H}}}}\ar@/^2.5em/[r]|{\psi}_*+&lt;1em&gt;{\Downarrow k}
+      \ar@{-&gt;}[r]|{\psi&#39;}_*+&lt;.7em&gt;{\Downarrow k&#39;}
+      \ar@/_2.5em/[r]|{\psi&#39;&#39;} &amp; \mathop{\mathrm{{\text{\rm
+      K}}}}},\]</span> the <span><em>interchange law</em></span> holds between
+    the horizontal and vertical compositions; that is, we have <span class="math display">\[(k&#39;*k) \circ (h&#39;*h)
+      = (k&#39;\circ
+      h&#39;) * (k \circ h),\]</span> which confirms that <span
+      class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}\)</span> is a
+    2-category. Our primary interest here is in a certain class of <span
+      class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}\)</span>-valued
+    pseudofunctors, as defined below (see <span class="citation" data-cites="bridson2011metric"></span>).
+  </p>
+  <div id="def:cog" class="defn">
+    <p><strong>Definition 2</strong>. A <span><strong>complex of
+          groups</strong></span> <span class="math inline">\(\mathbf{F}{}\)</span>
+      over an LP-category <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>
+      assigns:</p>
+    <ol>
+      <li>
+        <p>to each object <span class="math inline">\(x\)</span> of <span
+            class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> a group
+          <span class="math inline">\(\mathbf{F}{x}\)</span>,
+        </p>
+      </li>
+      <li>
+        <p>to each pair of objects <span class="math inline">\(x,y\)</span>
+          in <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> a
+          functor <span class="math inline">\(\mathbf{F}{} =
+            \mathbf{F}{}_{xy}\)</span> from the poset <span
+            class="math inline">\(\mathop{\mathrm{\mathscr{C}}}(x,y)\)</span> to the
+          groupoid <span class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}(\mathbf{F}{x},\mathbf{F}{y})\)</span>
+          with <span class="math inline">\(\mathbf{F}{f}:\mathbf{F}{x} \to
+            \mathbf{F}{y}\)</span> injective for all <span class="math inline">\(f:x
+            \to y\)</span> in <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>;
+          and</p>
+      </li>
+      <li>
+        <p>to every pair <span class="math inline">\((f,f&#39;) \in
+            \mathop{\mathrm{\mathscr{C}}}(x,y) \times
+            \mathop{\mathrm{\mathscr{C}}}(y,z)\)</span> of composable morphisms in
+          <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>, a
+          twisting element <span class="math inline">\(\gamma(f,f&#39;) =
+            \gamma_{\mathbf{F}{}}(f,f&#39;)\)</span> of the form <span class="math inline">\(\mathbf{F}{f&#39;} \circ
+            \mathbf{F}{f}
+            \Rightarrow\mathbf{F}{(f&#39; \circ f)}\)</span>.
+        </p>
+      </li>
+    </ol>
+    <p>These assignments are subject to the following axioms: first, given
+      any morphism <span class="math inline">\(f:x \to y\)</span> in <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>, both the
+      twisting elements <span class="math inline">\(\gamma(\text{id}_y,f)\)</span> and <span
+        class="math inline">\(\gamma(f,\text{id}_x)\)</span> equal the identity
+      natural transformation on the functor <span class="math inline">\(\mathbf{F}{f}\)</span>. And second, across any
+      triple of composable morphisms in <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>, say <span
+        class="math display">\[\xymatrixcolsep{.85in}
+        \xymatrix{
+        x_0 \ar@{-&gt;}[r]^{f_1} &amp; x_1 \ar@{-&gt;}[r]^{f_2}
+        &amp; x_2 \ar@{-&gt;}[r]^{f_3} &amp; x_3,
+        }\]</span> the associated twisting elements satisfy the
+      following <span><em>cocycle condition</em></span>: <span class="math display">\[\gamma(f_2,f_3) \cdot
+        \gamma(f_1,f_3\circ f_2) =
+        \mathbf{F}{f_3}(\gamma(f_1,f_2)) \cdot \gamma(f_2\circ
+        f_1,f_3)\]</span> in the group <span class="math inline">\(\mathbf{F}{x_3}\)</span>.</p>
+  </div>
+  <p>Equivalently, <span class="math inline">\(\mathbf{F}{}:
+      \mathop{\mathrm{\mathscr{C}}}\to \mathop{\mathrm{\mathbf{Grp}}}\)</span>
+    is a pseudofunctor that sends every morphism <span class="math inline">\(f:x \to y\)</span> in <span
+      class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> to an
+    injective group homomorphism <span class="math inline">\(\mathbf{F}{f}:
+      \mathbf{F}{x} \hookrightarrow\mathbf{F}{y}\)</span> in <span
+      class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}\)</span>. The
+    cocycle condition described above is designed to ensure that the
+    following associativity diagram commutes in the groupoid <span
+      class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}(\mathbf{F}{x_0},\mathbf{F}{x_3})\)</span>:
+    <span class="math display">\[\xymatrixcolsep{1.2in}
+      \xymatrixrowsep{.75in}
+      \xymatrix{
+      \mathbf{F}{f_3} \circ \mathbf{F}{f_2} \circ \mathbf{F}{f_1}
+      \ar@{=&gt;}[r]^-{\text{id}_{\mathbf{F}{f_3}} \circ \gamma(f_1,f_2)}
+      \ar@{=&gt;}[d]_-{\gamma(f_2,f_3) \circ \text{id}_{\mathbf{F}{f_1}}}
+      &amp; \mathbf{F}{f_3} \circ \mathbf{F}{(f_2 \circ f_1)}
+      \ar@{=&gt;}[d]^{\gamma(f_2 \circ f_1,f_3)}\\
+      \mathbf{F}{(f_3 \circ f_2)} \circ \mathbf{F}{f_1}
+      \ar@{=&gt;}[r]_{\gamma(f_1,f_3 \circ f_2)} &amp; \mathbf{F}{(f_3 \circ
+      f_2 \circ f_1)}
+      }\]</span>
+  </p>
+  <p>The simplest example of a complex of groups, given a fixed group
+    <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>
+    and an LP-category <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>, is the
+    <span><strong>constant</strong></span> <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>-valued
+    complex of groups over <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>. This is
+    denoted <span class="math inline">\(\underline{{\mathop{\mathrm{{\text{\rm
+      G}}}}}}_{{\mathop{\mathrm{\mathscr{C}}}}}\)</span> and determined
+    completely by the following data: it assigns the group <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span> to every
+    object <span class="math inline">\(x\)</span> of <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>,
+    the
+    identity homomorphism <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\to
+      \mathop{\mathrm{{\text{\rm G}}}}\)</span> to every morphism <span class="math inline">\(f:x \to y\)</span>, and
+    the identity twisting
+    element <span class="math inline">\(1_{\mathop{\mathrm{{\text{\rm G}}}}}
+      \in \mathop{\mathrm{{\text{\rm G}}}}\)</span> to every pair of
+    composable morphisms. The following notion (see <span class="citation" data-cites="bridson2011metric"></span> or
+    <span class="citation" data-cites="lim:thomas:08"></span>) provides a suitable framework for
+    comparing two complexes of groups defined on the same LP-category.
+  </p>
+  <div id="eq:coherence" class="defn">
+    <p><strong>Definition 3</strong>. <span id="def:cogmap" label="def:cogmap"></span> A
+      <span><strong>morphism</strong></span>
+      <span class="math inline">\(\Phi:\mathbf{F}{} \to
+        \mathbf{F}{&#39;}{}\)</span> of complexes of groups over the LP-category
+      <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>
+      assigns
+    </p>
+    <ol>
+      <li>
+        <p>to each object <span class="math inline">\(x\)</span> of <span
+            class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> a
+          1-morphism <span class="math inline">\(\Phi_x:\mathbf{F}{x} \to
+            \mathbf{F}{&#39;}{x}\)</span> in <span class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}\)</span>,
+          and</p>
+      </li>
+      <li>
+        <p>to each 1-morphism <span class="math inline">\(f:x \to y\)</span>
+          of <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> a
+          twisting element <span class="math inline">\(\tau(f) =
+            \tau_\Phi(f)\)</span> in <span class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}\)</span> of the
+          form <span class="math inline">\(\Phi_y \circ \mathbf{F}{f}
+            \Rightarrow\mathbf{F}{&#39;}{f}\circ \Phi_x\)</span>: <span class="math display">\[\xymatrixcolsep{0.6in}
+            \xymatrixrowsep{0.15in}
+            \xymatrix{
+            \mathbf{F}{x}
+            \ar@{-&gt;}[dd]_{\mathbf{F}{f}} \ar@{-&gt;}[rr]^{\Phi_x} &amp; &amp;
+            \mathbf{F}{&#39;}{x} \ar@{-&gt;}[dd]^{\mathbf{F}{&#39;}{f}} \\
+            &amp;
+            \scalebox{1.15}{\rotatebox[origin=c]{30}{$\stackrel{\tau(f)}{\implies}$}}
+            &amp; \\
+            \mathbf{F}{y} \ar@{-&gt;}[rr]_{\Phi_y} &amp;
+            &amp; \mathbf{F}{&#39;}{y}
+            }\]</span></p>
+      </li>
+    </ol>
+    <p>so that the following two axioms hold:</p>
+    <ol>
+      <li>
+        <p>the <span><em>identity</em></span> axiom requires <span class="math inline">\(\tau(\text{id}_x)\)</span> to
+          be the identity
+          twisting element <span class="math inline">\(1_{\mathbf{F}{&#39;}{x}}:\Phi_x
+            \Rightarrow\Phi_x\)</span> for each object <span class="math inline">\(x\)</span> of <span
+            class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>,
+          whereas</p>
+      </li>
+      <li>
+        <p>for each pair <span class="math inline">\(x
+            \stackrel{f_1}{\longrightarrow} y \stackrel{f_2}{\longrightarrow}
+            z\)</span> of composable <span class="math inline">\(1\)</span>-morphisms of <span
+            class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>, the
+          <span><em>coherence</em></span> axiom imposes a relation <span
+            class="math display">\[\Phi_z(\gamma_\mathbf{F}{}(f_1,f_2)) \cdot
+            \tau(f_2 \circ f_1) = \tau(f_2) \cdot \mathbf{F}{&#39;}{f_2}(\tau(f_1))
+            \cdot \gamma_{\mathbf{F}{&#39;}{}}(f_1,f_2).\]</span> in the group <span
+            class="math inline">\(\mathbf{F}{&#39;}{z}\)</span> among the associated
+          twisting elements.
+        </p>
+      </li>
+    </ol>
+  </div>
+  <p>We call <span class="math inline">\(\Phi:\mathbf{F}{} \to
+      \mathbf{F}{&#39;}{}\)</span> an epi/mono/iso-morphism of complexes of
+    groups if each <span class="math inline">\(\Phi_x\)</span> is an
+    epi/mono/iso-morphism of groups. The coherence axiom described above
+    enforces the commutativity of the following pentagon in the groupoid
+    <span class="math inline">\(\mathop{\mathrm{\mathbf{Grp}}}(\mathbf{F}{x},\mathbf{F}{&#39;}{z})\)</span>:
+    <span class="math display">\[\xymatrixcolsep{-.1in}
+      \xymatrixrowsep{0.4in}
+      \xymatrix{
+      &amp; \Phi_z \circ \mathbf{F}{f_2} \circ \mathbf{F}{f_1}
+      \ar@{=&gt;}[rr]^-{\tau(f_2) \circ \text{id}_{\mathbf{F}{f_1}}}
+      \ar@{=&gt;}[dl]_-{\text{id}_{\Phi_z} \circ
+      \gamma_\mathbf{F}{}(f_1,f_2)\hspace{1em}} &amp; &amp;
+      \mathbf{F}{&#39;}{f_2} \circ \Phi_y \circ \mathbf{F}{f_1}
+      \ar@{=&gt;}[dr]^-{\text{id}_{\mathbf{F}{&#39;}{f_2}} \circ \tau(f_1)}
+      &amp; \\
+      \Phi_z \circ \mathbf{F}{(f_2 \circ f_1)}
+      \ar@{=&gt;}[drr]_-{\tau(f_2 \circ f_1)\hspace{1em}} &amp; &amp; &amp;
+      &amp; \mathbf{F}{&#39;}{f_2} \circ \mathbf{F}{&#39;}{f_1} \circ \Phi_x
+      \ar@{=&gt;}[dll]^-{\hspace{1em}\gamma_{\mathbf{F}{&#39;}{}}(f_1,f_2)
+      \circ \text{id}_{\Phi_x}} \\
+      &amp; &amp; \mathbf{F}{&#39;}{(f_2 \circ f_1)} \circ \Phi_x
+      &amp; &amp;
+      }\]</span>
+  </p>
+  <p>Our main interest here will be in the somewhat simpler case of
+    monomorphisms <span class="math inline">\(\Phi:\mathbf{F}{}\hookrightarrow\underline{{\mathop{\mathrm{{\text{\rm
+      G}}}}}}_{{\mathop{\mathrm{\mathscr{C}}}}}\)</span>, where <span
+      class="math inline">\(\underline{{\mathop{\mathrm{{\text{\rm
+      G}}}}}}_{{\mathop{\mathrm{\mathscr{C}}}}}\)</span> denotes the constant
+    complex of groups over <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>
+    corresponding to some fixed group <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>.</p>
+  <div class="rem">
+    <p><em>Remark 4</em>. Such a morphism is prescribed by the following
+      data: each object <span class="math inline">\(x\)</span> of <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> is assigned
+      an injective group homomorphism <span class="math inline">\(\Phi_x:\mathbf{F}{x}
+        \hookrightarrow\mathop{\mathrm{{\text{\rm G}}}}\)</span> and each
+      morphism <span class="math inline">\(f:x \to y\)</span> of <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> is assigned
+      a twisting element <span class="math inline">\(\tau_\Phi(f):\mathbf{F}{f} \circ \Phi_y
+        \Rightarrow\Phi_x\)</span>. We further require <span class="math inline">\(\tau_\Phi(\text{id}_x) =
+        1_{\mathop{\mathrm{{\text{\rm G}}}}}\)</span> for each <span class="math inline">\(x\)</span>, and that the
+      relation <span class="math display">\[\begin{aligned}
+        \label{eq:injid}
+        \Phi_z(\gamma_{\mathbf{F}{}}(f_1,f_2)) \cdot \tau_\Phi(f_2\circ f_1)
+        = \tau_\Phi(f_2) \cdot \tau_\Phi(f_1).
+        \end{aligned}\]</span> holds in <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span> across
+      each pair <span class="math inline">\(f_1:x \to y\)</span> and <span class="math inline">\(f_2:y \to z\)</span> of
+      composable morphisms in
+      <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>.
+    </p>
+  </div>
+  <h1 id="sec:grpact">Group Actions on LP-Categories</h1>
+  <p>The <span><em>automorphism group</em></span> <span
+      class="math inline">\(\text{Aut}(\mathop{\mathrm{\mathscr{C}}})\)</span>
+    of an LP-category <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> consists of
+    all invertible LP-functors <span class="math inline">\(F:\mathop{\mathrm{\mathscr{C}}}\to
+      \mathop{\mathrm{\mathscr{C}}}\)</span>. The group structure on <span
+      class="math inline">\(\text{Aut}(\mathop{\mathrm{\mathscr{C}}})\)</span>
+    is obtained by the usual composition of such functors.</p>
+  <div id="item:grpact2" class="defn">
+    <p><strong>Definition 5</strong>. <span id="def:grpact" label="def:grpact"></span> An
+      <span><strong>action</strong></span> of a
+      group <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span> on an LP-category <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> is a group
+      homomorphism <span class="math inline">\(\alpha:\mathop{\mathrm{{\text{\rm G}}}}\to
+        \text{Aut}(\mathop{\mathrm{\mathscr{C}}})\)</span>; in particular, each
+      group element <span class="math inline">\(g\)</span> is sent by <span class="math inline">\(\alpha\)</span> to an
+      invertible functor <span class="math inline">\(\alpha_g:\mathop{\mathrm{\mathscr{C}}}\to
+        \mathop{\mathrm{\mathscr{C}}}\)</span>. Moreover, for every <span class="math inline">\(g \in
+        \mathop{\mathrm{{\text{\rm G}}}}\)</span>
+      and non-identity morphism <span class="math inline">\(f:x \to y\)</span>
+      in <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>,
+      we require:</p>
+    <ol>
+      <li>
+        <p><span class="math inline">\(\alpha_g(x) \neq y\)</span>, and
+          <span id="item:grpact1" label="item:grpact1"></span>
+        </p>
+      </li>
+      <li>
+        <p>if <span class="math inline">\(\alpha_g(x) = x\)</span> then
+          <span class="math inline">\(\alpha_g(f) = f\)</span>.
+        </p>
+      </li>
+    </ol>
+  </div>
+  <p>A large and interesting family of such actions is obtained whenever a
+    group acts on a simplicial complex.</p>
+  <div id="ex:grpactsimp" class="example">
+    <p><strong>Example 6</strong>. Fix a simplicial complex <span class="math inline">\(X\)</span> and a group <span
+        class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span> which
+      acts on <span class="math inline">\(X\)</span> by invertible simplicial
+      self-maps. Such an action is called <span><em>regular</em></span> (see
+      <span class="citation" data-cites="bredon1972compact"></span>) if two
+      conditions hold for every simplex <span class="math inline">\(x\)</span>
+      — writing <span class="math inline">\((v_0,\ldots,v_d)\)</span> for the
+      vertices of <span class="math inline">\(x\)</span>,
+    </p>
+    <ol>
+      <li>
+        <p>every <span class="math inline">\(g\)</span> in the stabiliser
+          <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}_x\)</span>
+          must fix the <span class="math inline">\(v_i\)</span> individually;
+          and
+        </p>
+      </li>
+      <li>
+        <p>every simplex of the form <span class="math inline">\((g_0
+            v_0,\ldots,g_d v_d)\)</span> for <span class="math inline">\(g_i \in
+            \mathop{\mathrm{{\text{\rm G}}}}\)</span> must lie in the orbit <span
+            class="math inline">\({\mathop{\mathrm{{\text{\rm
+            G}}}}}x\)</span>.</p>
+      </li>
+    </ol>
+    <p>Any <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>-action on <span class="math inline">\(X\)</span> can be
+      made regular by passing to the second barycentric subdivision of <span class="math inline">\(X\)</span>. Let <span
+        class="math inline">\(\mathbf{Fac}[X]\)</span> be the set of all
+      simplices in <span class="math inline">\(X\)</span> partially ordered by
+      the co-face relation <span class="math inline">\(x \geq x&#39;\)</span>.
+      This poset is automatically a 1-category and hence an LP-category (with
+      trivial partial orders on all its hom-sets). If <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span> acts
+      regularly on <span class="math inline">\(X\)</span>, then the induced
+      action on <span class="math inline">\(\mathbf{Fac}[X]\)</span> satisfies
+      both requirements of Definition <a href="#def:grpact" data-reference-type="ref"
+        data-reference="def:grpact">[def:grpact]</a>.</p>
+  </div>
+  <p>Fix a group <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>, an LP-category <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>, and an
+    action <span class="math inline">\(\alpha:\mathop{\mathrm{{\text{\rm
+      G}}}}\to \text{Aut}(\mathop{\mathrm{\mathscr{C}}})\)</span> as described
+    above. In the interest of brevity, we will denote images of the form
+    <span class="math inline">\(\alpha_g(x)\)</span> and <span class="math inline">\(\alpha_g(f)\)</span> by <span
+      class="math inline">\(gx\)</span> and <span class="math inline">\(gf\)</span> respectively, thus omitting <span
+      class="math inline">\(\alpha\)</span> from the notation altogether. For
+    each object <span class="math inline">\(x\)</span> and morphism <span class="math inline">\(f:x \to y\)</span> in
+    <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> we have the
+    associated <span><em>object-orbits</em></span> and
+    <span><em>morphism-orbits</em></span> given by <span class="math display">\[{\mathop{\mathrm{{\text{\rm G}}}}}x :=
+      \left\{g x
+      \mid g \in \mathop{\mathrm{{\text{\rm G}}}}\right\} \quad \text{and}
+      \quad {\mathop{\mathrm{{\text{\rm G}}}}}f := \left\{g f \mid g \in
+      \mathop{\mathrm{{\text{\rm G}}}}\right\};\]</span> similarly, we have
+    the corresponding <span><em>stabilisers</em></span> <span class="math display">\[\mathop{\mathrm{{\text{\rm G}}}}_x
+      := \left\{g
+      \in \mathop{\mathrm{{\text{\rm G}}}}\mid g x = x\right\} \quad
+      \text{and} \quad \mathop{\mathrm{{\text{\rm G}}}}_f := \left\{g \in
+      \mathop{\mathrm{{\text{\rm G}}}}\mid g f = f\right\},\]</span> both of
+    which are subgroups of <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>. It
+    follows from Definition <a href="#def:grpact" data-reference-type="ref"
+      data-reference="def:grpact">[def:grpact]</a>(2) that <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}_{f}\)</span> is a
+    subgroup of <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}_{x}\)</span> for every morphism <span class="math inline">\(f:x
+      \to y\)</span> in <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>.
+  </p>
+  <p>Given <span class="math inline">\(g\)</span> in <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span> and
+    <span class="math inline">\(f:x \to y\)</span> in <span
+      class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>, the source
+    and target of <span class="math inline">\(gf\)</span> lie in <span class="math inline">\({\mathop{\mathrm{{\text{\rm
+      G}}}}}x\)</span> and
+    <span class="math inline">\({\mathop{\mathrm{{\text{\rm G}}}}}y\)</span>
+    respectively. And for any pair of <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>-morphisms
+    <span class="math inline">\(f:x \to y\)</span> and <span class="math inline">\(f&#39;:y \to z\)</span>, it is
+    straightforward to
+    check that the composite of any <span class="math inline">\(f_1 \in
+      {\mathop{\mathrm{{\text{\rm G}}}}}f\)</span> with any <span class="math inline">\(f_2 \in
+      {\mathop{\mathrm{{\text{\rm
+      G}}}}}f&#39;\)</span> must lie in the orbit <span class="math inline">\({\mathop{\mathrm{{\text{\rm G}}}}}(f&#39;
+      \circ
+      f)\)</span>. Thus, we have a well-defined (loopfree) 1-category <span
+      class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span> whose
+    objects are <span class="math inline">\(\left\{{{\mathop{\mathrm{{\text{\rm G}}}}}x \mid x
+      \text{ is an object of }\mathop{\mathrm{\mathscr{C}}}}\right\}\)</span>,
+    and similarly for morphisms. In order to define a suitable quotient for
+    the given <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>-action on <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>, it remains
+    to upgrade <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span> to a
+    genuine LP-category by specifying the desired partial orders on its
+    morphism-sets.
+  </p>
+  <div id="prop:quotposet" class="prop">
+    <p><strong>Proposition 7</strong>. <em>Consider the binary relation on
+        the set of all morphisms <span class="math inline">\({\mathop{\mathrm{{\text{\rm G}}}}}x \to
+          {\mathop{\mathrm{{\text{\rm G}}}}}y\)</span> in <span
+          class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span> prescribed
+        by the following rule: <span class="math inline">\({\mathop{\mathrm{{\text{\rm G}}}}}f
+          \Rightarrow{\mathop{\mathrm{{\text{\rm G}}}}}f&#39;\)</span> whenever
+        there exists some <span class="math inline">\(g \in
+          \mathop{\mathrm{{\text{\rm G}}}}\)</span> which satisfies <span class="math inline">\(gf \Rightarrow
+          f&#39;\)</span> in <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>. This
+        binary relation forms a partial order on the set <span
+          class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}({\mathop{\mathrm{{\text{\rm
+          G}}}}}x,{\mathop{\mathrm{{\text{\rm G}}}}}y)\)</span>.</em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> We seek to establish reflexivity, anti-symmetry and
+      transitivity. To this end, note first that <span class="math inline">\({\mathop{\mathrm{{\text{\rm G}}}}}f
+        \Rightarrow{\mathop{\mathrm{{\text{\rm G}}}}}f\)</span> always holds in
+      <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}({\mathop{\mathrm{{\text{\rm
+        G}}}}}x,{\mathop{\mathrm{{\text{\rm G}}}}}y)\)</span> because <span class="math inline">\(f =
+        \text{id}_{\mathop{\mathrm{{\text{\rm G}}}}} f
+        \Rightarrow f\)</span>. Next, if we have <span class="math inline">\({\mathop{\mathrm{{\text{\rm G}}}}}f
+        \Rightarrow{\mathop{\mathrm{{\text{\rm G}}}}}f&#39;
+        \Rightarrow{\mathop{\mathrm{{\text{\rm G}}}}}f\)</span>, then there
+      exist some <span class="math inline">\(g_0\)</span> and <span class="math inline">\(g_1\)</span> in <span
+        class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>
+      satisfying <span class="math inline">\(g_0f \Rightarrow f&#39;\)</span>
+      and <span class="math inline">\(g_1f&#39; \Rightarrow f\)</span>, whence
+      <span class="math display">\[g_1g_0 f \Rightarrow g_1 f&#39; \Rightarrow
+        f.\]</span> Now, <span class="math inline">\(g_1g_0 f \Rightarrow
+        f\)</span>, so <span class="math inline">\(g_1g_0\)</span> fixes the
+      source, hence <span class="math inline">\(g_1g_0\)</span> fixes <span class="math inline">\(f\)</span>, by
+      requirement (2) of Definition <a href="#def:grpact" data-reference-type="ref"
+        data-reference="def:grpact">[def:grpact]</a>. So in fact <span class="math inline">\(f&#39; = g_1^{-1}f\)</span>
+      lies in the orbit
+      <span class="math inline">\({\mathop{\mathrm{{\text{\rm G}}}}}f\)</span>
+      and we have <span class="math inline">\({\mathop{\mathrm{{\text{\rm
+        G}}}}}f = {\mathop{\mathrm{{\text{\rm G}}}}}f&#39;\)</span>. Finally,
+      assume that <span class="math inline">\({\mathop{\mathrm{{\text{\rm
+        G}}}}}f \Rightarrow{\mathop{\mathrm{{\text{\rm G}}}}}f&#39;\)</span> and
+      <span class="math inline">\({\mathop{\mathrm{{\text{\rm G}}}}}f&#39;
+        \Rightarrow{\mathop{\mathrm{{\text{\rm G}}}}}f&#39;&#39;\)</span> both
+      hold in <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}({\mathop{\mathrm{{\text{\rm
+        G}}}}}x,{\mathop{\mathrm{{\text{\rm G}}}}}y)\)</span>, so <span class="math inline">\(gf \Rightarrow
+        f&#39;\)</span> and <span class="math inline">\(g&#39;f&#39; \Rightarrow f&#39;&#39;\)</span> hold
+      for some <span class="math inline">\(g\)</span> and <span class="math inline">\(g&#39;\)</span> in <span
+        class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>. Then,
+      we immediately have <span class="math inline">\(g&#39;g f \Rightarrow
+        f&#39;&#39;\)</span>, and hence <span class="math inline">\({\mathop{\mathrm{{\text{\rm G}}}}}f
+        \Rightarrow{\mathop{\mathrm{{\text{\rm G}}}}}f&#39;&#39;\)</span> as
+      desired. ◻
+    </p>
+  </div>
+  <p>We have now arrived at the desired quotient category.</p>
+  <div class="defn">
+    <p><strong>Definition 8</strong>. The
+      <span><strong>quotient</strong></span> LP-category <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}=
+        \mathop{\mathrm{\mathscr{C}}}/\mathop{\mathrm{{\text{\rm G}}}}\)</span>
+      corresponding to the action of <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span> on <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> is defined
+      by the following data:
+    </p>
+    <ol>
+      <li>
+        <p>its objects are <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>-orbits
+          of <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>’s
+          objects,</p>
+      </li>
+      <li>
+        <p>its morphisms <span class="math inline">\({\mathop{\mathrm{{\text{\rm G}}}}}x \to
+            {\mathop{\mathrm{{\text{\rm G}}}}}x&#39;\)</span> are <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+            G}}}}\)</span>-orbits
+          of <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>’s
+          morphisms <span class="math inline">\(x \to x&#39;\)</span>, partially
+          ordered by <span class="math inline">\({\mathop{\mathrm{{\text{\rm
+            G}}}}}f \Rightarrow{\mathop{\mathrm{{\text{\rm G}}}}}f&#39;\)</span> iff
+          <span class="math inline">\(gf \Rightarrow f&#39;\)</span> holds in
+          <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> for
+          some <span class="math inline">\(g\)</span> in <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+            G}}}}\)</span>.
+        </p>
+      </li>
+    </ol>
+    <p>The composite of <span class="math inline">\({\mathop{\mathrm{{\text{\rm
+        G}}}}}f_1:{\mathop{\mathrm{{\text{\rm G}}}}}x_0 \to
+        {\mathop{\mathrm{{\text{\rm G}}}}}x_1\)</span> and <span class="math inline">\({\mathop{\mathrm{{\text{\rm
+        G}}}}}f_2:{\mathop{\mathrm{{\text{\rm G}}}}}x_1 \to
+        {\mathop{\mathrm{{\text{\rm G}}}}}x_2\)</span> equals <span class="math inline">\({\mathop{\mathrm{{\text{\rm
+        G}}}}}(f_2 \circ
+        f_1)\)</span>.</p>
+  </div>
+  <p>There is a surjective <span><strong>orbit functor</strong></span>
+    <span class="math inline">\(\mathop{\mathrm{\mathbf{P}}}_{\mathop{\mathrm{{\text{\rm
+      G}}}}}:\mathop{\mathrm{\mathscr{C}}}\twoheadrightarrow\mathop{\mathrm{\mathscr{Q}}}\)</span>
+    (of LP-categories) that sends each <span class="math inline">\(x\)</span> to <span
+      class="math inline">\({\mathop{\mathrm{{\text{\rm G}}}}}x\)</span> and
+    each <span class="math inline">\(f:x \to y\)</span> to <span class="math inline">\({\mathop{\mathrm{{\text{\rm
+      G}}}}}f:{\mathop{\mathrm{{\text{\rm G}}}}}x \to
+      {\mathop{\mathrm{{\text{\rm G}}}}}y\)</span>. The following notion
+    arises when trying to find sections of <span
+      class="math inline">\(\mathop{\mathrm{\mathbf{P}}}_{\mathop{\mathrm{{\text{\rm
+      G}}}}}\)</span>.
+  </p>
+  <div id="def:liftfunc" class="defn">
+    <p><strong>Definition 9</strong>. A <span><strong>lift
+          function</strong></span> for the <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>-action
+      on <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> is
+      an assignment <span class="math inline">\(\lambda:\mathop{\mathrm{\mathscr{Q}}}_\text{ob}
+        \to \mathop{\mathrm{\mathscr{C}}}_\text{ob}\)</span> of a <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>-object
+      <span class="math inline">\(\lambda(y)\)</span> to each <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span>-object
+      <span class="math inline">\(y\)</span> for which <span
+        class="math inline">\(\mathop{\mathrm{\mathbf{P}}}_{\mathop{\mathrm{{\text{\rm
+        G}}}}} \circ \lambda(y) = y\)</span> holds.
+    </p>
+  </div>
+  <p>The reader is warned that (in contrast to the orbit functor <span
+      class="math inline">\(\mathop{\mathrm{\mathbf{P}}}_{\mathop{\mathrm{{\text{\rm
+      G}}}}}\)</span>) a lift <span class="math inline">\(\lambda\)</span>
+    need not extend to a functor in general. The difficulty here is that
+    morphisms <span class="math inline">\(y \to y&#39;\)</span> in <span
+      class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span> may not
+    lift to morphisms <span class="math inline">\(\lambda(y) \to
+      \lambda(y&#39;)\)</span> in <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>. For each
+    <span class="math inline">\(f:y \to y&#39;\)</span> in <span
+      class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span>, we are
+    only guaranteed the existence of a (not necessarily unique) group
+    element <span class="math inline">\(g \in \mathop{\mathrm{{\text{\rm
+      G}}}}\)</span> and a unique morphism <span class="math inline">\(\lambda(f):\lambda(y) \to
+      g\lambda(y&#39;)\)</span> in <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> so that
+    <span class="math inline">\(\mathop{\mathrm{\mathbf{P}}}_{\mathop{\mathrm{{\text{\rm
+      G}}}}}(\lambda(f)) = f\)</span>.
+  </p>
+  <div id="def:transfer" class="defn">
+    <p><strong>Definition 10</strong>. A choice of <span><strong>transfer
+          elements</strong></span> for a given lift function <span
+        class="math inline">\(\lambda:\mathop{\mathrm{\mathscr{Q}}}_{\text{ob}}
+        \to \mathop{\mathrm{\mathscr{C}}}_\text{ob}\)</span> assigns to each
+      morphism <span class="math inline">\(f:y \to y&#39;\)</span> in <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span> an element
+      <span class="math inline">\(\sigma := \sigma(f)\)</span> in <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span> so that
+      there is a unique morphism <span class="math inline">\(\lambda(f):\lambda(y) \to
+        \sigma^{-1}\lambda(y&#39;)\)</span> in <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>
+      satisfying
+      <span class="math inline">\(\mathbf{P}_{\mathop{\mathrm{{\text{\rm
+        G}}}}}(\lambda(f)) = f\)</span>. We implicitly require the transfer
+      element <span class="math inline">\(\sigma(\text{id}_y)\)</span>
+      assigned to each identity morphism in <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span> to equal
+      the identity element <span class="math inline">\(1_{\mathop{\mathrm{{\text{\rm G}}}}}\)</span> in
+      <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>.
+    </p>
+  </div>
+  <p>Given a choice of lift function and transfer elements for the action
+    of a group <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span> on an LP-category <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>, there is a
+    standard way to construct a pair <span class="math inline">\((\mathbf{F}{},\Phi)\)</span> where <span
+      class="math inline">\(\mathbf{F}{}\)</span> is a complex of groups on
+    the quotient <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}=
+      \mathop{\mathrm{\mathscr{C}}}/\mathop{\mathrm{{\text{\rm G}}}}\)</span>
+    and <span class="math inline">\(\Phi:\mathbf{F}{}
+      \hookrightarrow\underline{{\mathop{\mathrm{{\text{\rm
+      G}}}}}}_{{\mathop{\mathrm{\mathscr{Q}}}}}\)</span> is an injective
+    morphism on the constant <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>-valued
+    complex of groups on <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span>.</p>
+  <div id="def:actcog" class="defn">
+    <p><strong>Definition 11</strong>. Let <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span> be a
+      group acting on an LP-category <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> with
+      quotient <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span>; let <span
+        class="math inline">\(\lambda:\mathop{\mathrm{\mathscr{Q}}}_\text{ob}
+        \to \mathop{\mathrm{\mathscr{C}}}_\text{ob}\)</span> be an associated
+      lift function and <span class="math inline">\(\left\{{\sigma(h) \mid h:y
+        \to y&#39; \text{ in }\mathop{\mathrm{\mathscr{Q}}}}\right\}\)</span> a
+      choice of transfer elements for <span class="math inline">\(\lambda\)</span>. The <span><strong>complex of
+          groups <span class="math inline">\(\mathbf{F}{}\)</span> associated to
+          these choices</strong></span> is obtained by assigning</p>
+
+
+    <ol>
+      <li>
+        <p>to each object <span class="math inline">\(y\)</span> the
+          stabilizer <span class="math inline">\(\mathbf{F}{y} :=
+            \mathop{\mathrm{{\text{\rm G}}}}_{\lambda(y)}\)</span> of its
+          lift;</p>
+      </li>
+      <li>
+        <p>to each morphism <span class="math inline">\(h:y \to
+            y&#39;\)</span> the group homomorphism <span class="math inline">\(\mathbf{F}{h}:\mathbf{F}{y} \to
+            \mathbf{F}{y&#39;}\)</span> given by conjugation with <span class="math inline">\(\sigma(h)\)</span>,
+          i.e. <span class="math inline">\(\mathbf{F}{h}(k)=\sigma(h)k\sigma(h)^{-1}\)</span>
+          for all <span class="math inline">\(k\in\mathbf{F}{y}\)</span>;</p>
+      </li>
+      <li>
+        <p>to each order relation <span class="math inline">\(h\Rightarrow
+            h^\prime\)</span> the group element <span class="math inline">\(\sigma(h\Rightarrow
+            h^\prime)\coloneqq\sigma(h)\cdot \sigma(h^\prime)^{-1}\)</span>; and
+          finally,</p>
+      </li>
+      <li>
+        <p>to each pair <span class="math inline">\(h_1: y_1 \to
+            y_2\)</span> and <span class="math inline">\(h_2: y_2 \to y_3\)</span>
+          of composable morphisms, the twisting element <span class="math display">\[\gamma_{\mathbf{F}{}}(h_1,h_2) :=
+            g(h_2) \cdot
+            g(h_1) \cdot g(h_2 \circ h_1)^{-1}.\]</span></p>
+      </li>
+    </ol>
+
+
+    <p>Similarly, the <span><strong>associated monomorphism</strong> </span>
+      <span class="math inline">\(\Phi: \mathbf{F}{}
+        \hookrightarrow\underline{{\mathop{\mathrm{{\text{\rm
+        G}}}}}}_{{\mathop{\mathrm{\mathscr{Q}}}}}\)</span> is given by
+      assigning
+    </p>
+    <ol>
+      <li>
+        <p>to each <span class="math inline">\(y\)</span> the inclusion
+          <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+            G}}}}_{\lambda(y)} \hookrightarrow\mathop{\mathrm{{\text{\rm
+            G}}}}\)</span>, and
+        </p>
+      </li>
+      <li>
+        <p>to each <span class="math inline">\(h: y \to y&#39;\)</span> the
+          twisting element <span class="math inline">\(\tau_\Phi(h) :=
+            \sigma(h)\)</span>.</p>
+      </li>
+    </ol>
+  </div>
+  <p>It has been shown in <span class="citation" data-cites="bridson2011metric"></span> that <span
+      class="math inline">\(\mathbf{F}{}\)</span> and <span class="math inline">\(\Phi\)</span> as described above
+    satisfy the
+    requirements of Definitions <a href="#def:cog" data-reference-type="ref" data-reference="def:cog">2</a> and <a
+      href="#def:cogmap" data-reference-type="ref" data-reference="def:cogmap">[def:cogmap]</a>
+    respectively when defined over small loopfree categories; moreover,
+    making a different choice of lift function and transfer elements
+    produces an isomorphic pair <span class="math inline">\((\mathbf{F}{,}\Phi)\)</span>. Similar arguments
+    confirm that the same property holds in our context. Moreover, we have
+    the additional data of a partial order on each hom-set, so we check that
+    <span class="math inline">\(\mathbf{F}{}\)</span> is well-defined.
+  </p>
+  <div id="prop:canonicalcogwd" class="prop">
+    <p><strong>Proposition 12</strong>. <em>The assignments above yield a
+        well-defined complex of groups and associated morphism over an LP
+        category.</em></p>
+  </div>
+  <p>The proof follows from Lemmas <a href="#lem:cancogfunctor" data-reference-type="ref"
+      data-reference="lem:cancogfunctor">13</a>, <a href="#lem:cancogtwisting" data-reference-type="ref"
+      data-reference="lem:cancogtwisting">14</a> and <a href="#lem:canmorph" data-reference-type="ref"
+      data-reference="lem:canmorph">15</a>.</p>
+  <div id="lem:cancogfunctor" class="lemma">
+    <p><strong>Lemma 13</strong>. <em>The assignment <span class="math inline">\(\mathbf{F}{}_{yy^\prime}\)</span> is a
+        functor
+        <span
+          class="math inline">\({\mathop{\mathrm{\mathscr{Q}}}(y,y&#39;)\to\mathop{\mathrm{\mathbf{Grp}}}(\mathbf{F}{y},\mathbf{F}{(}y&#39;))}\)</span>
+        for every pair of objects <span class="math inline">\((y,y^\prime)\)</span>.</em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> For every <span class="math inline">\(f:y\to
+        y^\prime\)</span>, the map <span class="math inline">\(\mathbf{F}{f}\)</span> is an injective group
+      homomorphism because it is conjugation by the chosen transfer element.
+      The homomorphism <span class="math inline">\(\mathbf{F}{f}\)</span> maps
+      from <span class="math inline">\(\mathbf{F}{y}\)</span> to <span
+        class="math inline">\(\mathbf{F}{y^\prime}\)</span>: take any <span class="math inline">\(k\)</span> in <span
+        class="math inline">\(\mathbf{F}{y}\)</span> and recall that the
+      transfer <span class="math inline">\(\sigma(f)\)</span> satisfies that
+      there is a unique morphism <span class="math display">\[\lambda(f):\lambda(y)\to
+        \sigma(f)^{-1}\lambda(y^\prime)\]</span> such that <span
+        class="math inline">\(\mathop{\mathrm{\mathbf{P}}}(\lambda(f))=f\)</span>.
+      By Definition <a href="#def:grpact" data-reference-type="ref" data-reference="def:grpact">[def:grpact]</a><a
+        href="#item:grpact2" data-reference-type="eqref" data-reference="item:grpact2">[item:grpact2]</a>, the morphism
+      <span class="math display">\[k\lambda(f):k\lambda(y)\to
+        k\sigma(f)^{-1}\lambda(y^\prime)\]</span> is equal to <span class="math inline">\(\lambda(f)\)</span>, since
+      <span class="math inline">\(k\lambda(y)=\lambda(y)\)</span>. Hence, <span
+        class="math display">\[k\sigma(f)^{-1}\lambda(y^\prime)=\sigma(f)^{-1}\lambda(y^\prime),\]</span>
+      which implies that <span class="math inline">\(\sigma(f)\cdot k\cdot
+        \sigma(f)^{-1}\in\mathbf{F}{y^\prime}\)</span>, i.e., <span
+        class="math inline">\(\mathbf{F}{f}(k)\in\mathbf{F}{y^\prime}\)</span>.</p>
+    <p>To show that the elements <span class="math inline">\(\sigma\coloneqq
+        \sigma(f\Rightarrow f^\prime)\)</span> are well-defined, we have to
+      check that for any <span class="math inline">\(k\in\mathbf{F}{y}\)</span>, we have <span
+        class="math inline">\(\mathbf{F}{f}(k)=\sigma\cdot\mathbf{F}{f^\prime}(k)\cdot\sigma^{-1}\)</span>.
+      We have, <span class="math display">\[\begin{aligned}
+        \sigma\cdot\mathbf{F}{f^\prime}(k)\cdot\sigma^{-1} &amp;=
+        \sigma(f)\sigma(f^\prime)^{-1}\cdot\left(\sigma(f^\prime)\cdot k\cdot
+        \sigma(f^\prime)^{-1}\right)\cdot\sigma(f^\prime)\sigma(f)^{-1}\\
+        &amp;= \sigma(f)\cdot k\cdot \sigma(f)^{-1}.
+        \end{aligned}\]</span></p>
+    <p>Lastly, we check that <span class="math inline">\(\mathbf{F}{}_{yy^\prime}\)</span> satisfies the
+      identity and associativity laws. The identity law follows immediately
+      from the fact that the transfer element <span class="math inline">\(\sigma(\text{id}_y)\)</span> is the identity
+      element in <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>, so <span
+        class="math inline">\(\mathbf{F}{}_{yy^\prime}(\text{id}_y)=\text{id}_{\mathbf{F}{y^\prime}}\)</span>.</p>
+    <p>For the associativity law to hold, we need to check that for any
+      three morphisms <span
+        class="math inline">\(f,f^\prime,f^{\prime\prime}\in\mathop{\mathrm{\mathscr{Q}}}(y,y^\prime)\)</span>
+      satisfying <span class="math inline">\(f\Rightarrow f^\prime\Rightarrow
+        f^{\prime\prime}\)</span>, the identity <span class="math inline">\({\sigma(f\Rightarrow f^\prime)\cdot
+        \sigma(f^\prime\Rightarrow f^{\prime\prime})}={\sigma(f\Rightarrow
+        f^{\prime\prime})}\)</span> holds: <span class="math display">\[\begin{aligned}
+        \sigma(f\Rightarrow f^\prime)\cdot\sigma(f^\prime\Rightarrow
+        f^{\prime\prime}) &amp;= \left(\sigma(f)\sigma(f^\prime)^{-1}
+        \right)\left(\sigma(f^\prime)\sigma(f^{\prime\prime})^{-1} \right)\\
+        &amp;= \sigma(f)\sigma(f^{\prime\prime})^{-1}\\
+        &amp;= \sigma(f\Rightarrow f^{\prime\prime}),
+        \end{aligned}\]</span> as desired. ◻</p>
+  </div>
+  <div id="lem:cancogtwisting" class="lemma">
+    <p><strong>Lemma 14</strong>. <em>For any pair <span class="math inline">\((f_0,f_1)\)</span> of composable
+        morphisms, the
+        twisting element <span class="math inline">\(\gamma(f_0,f_1)\)</span> is
+        well-defined and satisfies the cocycle condition.</em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> For each pair of composable morphisms <span
+        class="math inline">\(y\xrightarrow{f_0}y&#39;\xrightarrow{f_1}y&#39;&#39;,\)</span>
+      it is a routine calculation to check that the twisting element <span
+        class="math inline">\(\gamma(f_0,f_1)\)</span> satisfies <span
+        class="math display">\[\mathbf{F}{f_1}\circ\mathbf{F}{f_0}(k)=\gamma(f_0,f_1)\cdot\mathbf{F}{}(f_1\circ
+        f_0)(k)\cdot\gamma(f_0,f_1)^{-1}\]</span> for any <span class="math inline">\(k\in\mathbf{F}{y}\)</span>.</p>
+    <p>The twisting elements also satisfy the cocycle condition: for any
+      sequence of composable morphisms <span
+        class="math display">\[y\xrightarrow{f_0}y&#39;\xrightarrow{f_1}y&#39;&#39;\xrightarrow{f_2}y&#39;&#39;&#39;\]</span>
+      both <span class="math inline">\(\gamma(f_1,f_2)\gamma(f_0,f_2\circ
+        f_1)\)</span> and <span class="math inline">\({\mathbf{F}{f_2}(\gamma(f_0,f_1))\gamma(f_1\circ
+        f_0,f_2)}\)</span> are equal to <span class="math display">\[\sigma(f_2)\sigma(f_1)\sigma(f_0)\sigma(f_2\circ
+        f_1\circ f_0)^{-1},\]</span> as desired. ◻</p>
+  </div>
+  <div id="lem:canmorph" class="lemma">
+    <p><strong>Lemma 15</strong>. <em>The morphism <span
+          class="math inline">\(\Phi:\mathbf{F}{}\to\mathop{\mathrm{\underline{\mathop{\mathrm{{\text{\rm
+          G}}}}}}}_{\mathscr{Q}}\)</span> is well-defined and satisfies the
+        coherence axiom.</em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> For any <span class="math inline">\(f:y\to
+        y&#39;\)</span>, it follows immediately from the fact that <span class="math inline">\(\Phi_y\)</span> and <span
+        class="math inline">\(\Phi_{y&#39;}\)</span> are inclusions into <span
+        class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span> and
+      <span class="math inline">\(\mathbf{F}{f}\)</span> is conjugation by
+      <span class="math inline">\(\gamma_\Phi=\sigma(f)\)</span>, that <span
+        class="math inline">\(\gamma_\Phi:\Phi_{y&#39;}\circ\mathbf{F}{f}\Rightarrow\Phi_y\)</span>.
+    </p>
+    <p>The identity axiom is immediately satisfied because the transfer
+      element associated to any identity morphism is the identity element in
+      <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>.
+    </p>
+    <p>Lastly, we check the coherence axiom, for any sequence of composable
+      morphisms <span class="math inline">\(y\xrightarrow{f_0}y&#39;\xrightarrow{f_1}y&#39;&#39;\)</span>.
+      The left-hand side of the coherence axiom (Equation <a href="#eq:coherence" data-reference-type="eqref"
+        data-reference="eq:coherence">[eq:coherence]</a>) yields: <span class="math display">\[\begin{aligned}
+        \Phi_{y&#39;&#39;}\left(\gamma_{\mathbf{F}{}}(f_0,f_1)\right)\cdot
+        \gamma_\Phi(f_1\circ f_0) &amp;=
+        \left(\sigma(f_1)\sigma(f_0)\sigma(f_1\circ f_0)^{-1} \right)\cdot
+        \sigma(f_1\circ f_0) \\
+        &amp;= \sigma(f_1)\sigma(f_0),
+        \end{aligned}\]</span> and the right-hand side yields: <span class="math display">\[\begin{aligned}
+        \gamma_\Phi(f_1)\cdot\mathop{\mathrm{\underline{\mathop{\mathrm{{\text{\rm
+        G}}}}}}}f_1\left(\gamma_\Phi(f_0)
+        \right)\cdot\gamma_{\mathop{\mathrm{\underline{\mathop{\mathrm{{\text{\rm
+        G}}}}}}}}(f_1,f_2) &amp;= \sigma(f_1)\cdot \text{id}(\sigma(f_0))\cdot
+        1_{\mathop{\mathrm{{\text{\rm G}}}}} \\
+        &amp;= \sigma(f_1)\sigma(f_0),
+        \end{aligned}\]</span> as required. ◻</p>
+  </div>
+  <h1 id="sec:dev">Development and the Basic Construction</h1>
+  <p>Our goal here is to prove the following result, which forms a mild
+    enhancement of <span class="citation" data-cites="bridson2011metric"></span> to the poset-enriched setting.
+    Throughout, we fix an LP-category <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span> and a group
+    <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>.
+  </p>
+  <div id="prop:bascon" class="prop">
+    <p><strong>Proposition 16</strong>. <em>Let <span
+          class="math inline">\(\mathbf{F}{}:\mathop{\mathrm{\mathscr{Q}}}\to
+          \mathop{\mathrm{\mathbf{Grp}}}\)</span> be a complex of groups and <span
+          class="math inline">\(\Phi:\mathbf{F}{} \to
+          \underline{{\mathop{\mathrm{{\text{\rm
+          G}}}}}}_{{\mathop{\mathrm{\mathscr{Q}}}}}\)</span> a monomorphism to the
+        constant <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span>-valued complex of groups over <span
+          class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span>. Associated
+        to this pair <span class="math inline">\((\mathbf{F}{},\Phi)\)</span> is
+        a new LP-category <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}=
+          \mathop{\mathrm{\mathscr{D}}}(\mathbf{F}{},\Phi)\)</span> equipped with
+        a natural <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span>-action so that</em></p>
+    <ol>
+      <li>
+        <p><em>the quotient <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}/\mathop{\mathrm{{\text{\rm
+              G}}}}\)</span> is isomorphic to <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span>;
+            moreover,</em></p>
+      </li>
+      <li>
+        <p><em>there exist choices of lift function and transfer elements
+            for the <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+              G}}}}\)</span>-action on <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}\)</span> which
+            produce the pair <span class="math inline">\((\mathbf{F}{},\Phi)\)</span>; and
+            finally,</em></p>
+      </li>
+      <li>
+        <p><em>if <span class="math inline">\(\mathbf{F}{}\)</span> and
+            <span class="math inline">\(\Phi\)</span> are the complex of groups and
+            monomorphism associated to a <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>-action
+            on an LP-category <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> (subject to
+            some choices), then there exists a <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+              G}}}}\)</span>-equivariant isomorphism of LP-categories between <span
+              class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> and <span
+              class="math inline">\(\mathop{\mathrm{\mathscr{D}}}\)</span>.</em></p>
+      </li>
+    </ol>
+  </div>
+  <p>The LP-category <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}\)</span> whose
+    existence and uniqueness (up to equivariant isomorphism) are guaranteed
+    by the above result is called the
+    <span><strong>development</strong></span> of the given pair <span
+      class="math inline">\((\mathbf{F}{},\Phi)\)</span>. For each object
+    <span class="math inline">\(x\)</span> of <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span> and
+    each
+    group element <span class="math inline">\(g\)</span> in <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>, let
+    <span class="math inline">\(\mathop{\mathrm{\mathbf{c}}}_x:\mathop{\mathrm{{\text{\rm
+      G}}}}\twoheadrightarrow \mathop{\mathrm{{\text{\rm
+      G}}}}/\Phi_x(\mathbf{F}{x})\)</span> be the map (of sets) which assigns
+    to each group element <span class="math inline">\(g\)</span> the
+    corresponding left coset <span class="math inline">\(g\Phi_x(\mathbf{F}{x})\)</span>. With this
+    shorthand in place, the development <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}\)</span> can be
+    provisionally defined as follows:
+  </p>
+  <ol>
+    <li>
+      <p>its objects are pairs <span class="math inline">\((x,\mathop{\mathrm{\mathbf{c}}}_x(g))\)</span>
+        where <span class="math inline">\(x\)</span> is an object of <span
+          class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span> and <span class="math inline">\(g\)</span> is an
+        element of <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span>;</p>
+    </li>
+    <li>
+      <p>the morphisms <span class="math inline">\((x,\mathop{\mathrm{\mathbf{c}}}_x(g)) \to
+          (y,\mathop{\mathrm{\mathbf{c}}}_y(h))\)</span> are all pairs <span
+          class="math inline">\((f,\mathop{\mathrm{\mathbf{c}}}_x(g))\)</span>
+        where <span class="math inline">\(f:x \to y\)</span> is a morphism in
+        <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span> and
+        the following cosets coincide: <span class="math display">\[\mathop{\mathrm{\mathbf{c}}}_y(h) =
+          \mathop{\mathrm{\mathbf{c}}}_y\left(g\cdot
+          \tau_\Phi(f)^{-1}\right).\]</span>
+      </p>
+    </li>
+  </ol>
+  <p>Two such morphisms satisfy the partial order relation <span
+      class="math inline">\((f,\mathop{\mathrm{\mathbf{c}}}_x(g))
+      \Rightarrow(f&#39;,\mathop{\mathrm{\mathbf{c}}}_x(g))\)</span> within
+    <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}\)</span>
+    whenever <span class="math inline">\(f \Rightarrow f&#39;\)</span> holds
+    in <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span>,
+    and <span class="math inline">\(\tau_\Phi(f)\cdot\tau_\Phi(f^\prime)^{-1}\)</span>
+    lies in <span class="math inline">\(\Phi_y(\mathbf{F}{y})\)</span>. The
+    composite <span class="math display">\[\begin{aligned}
+      \label{eq:devcomp}
+      \xymatrixcolsep{1in}
+      \xymatrix{
+      (x,\mathop{\mathrm{\mathbf{c}}}_{x}(g_1))
+      \ar@{-&gt;}[r]^-{(f_1,\mathop{\mathrm{\mathbf{c}}}_x(g_1))} &amp;
+      (y,\mathop{\mathrm{\mathbf{c}}}_y(g_2))
+      \ar@{-&gt;}[r]^-{(f_2,\mathop{\mathrm{\mathbf{c}}}_y(g_2))} &amp;
+      (z,\mathop{\mathrm{\mathbf{c}}}_z(g_3))
+      }
+      \end{aligned}\]</span> is given by <span class="math inline">\((f_2\circ f_1,
+      \mathop{\mathrm{\mathbf{c}}}_x(g_1))\)</span>, and the group <span
+      class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span> acts on
+    <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}\)</span> as
+    follows: the element <span class="math inline">\(h \in
+      \mathop{\mathrm{{\text{\rm G}}}}\)</span> sends each object <span
+      class="math inline">\((x,\mathop{\mathrm{\mathbf{c}}}_x(g))\)</span> to
+    <span class="math inline">\((x,\mathop{\mathrm{\mathbf{c}}}_x(h \cdot
+      g))\)</span>, and similarly for morphisms.
+  </p>
+  <p>We first check that the morphisms <span class="math inline">\((f,\mathop{\mathrm{\mathbf{c}}}_x(g))\)</span> of
+    <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}\)</span> are
+    well-defined, i.e., independent of the choice of representative element
+    <span class="math inline">\(g\)</span> of the coset.
+  </p>
+  <div id="prop:Dwelldef" class="prop">
+    <p><strong>Proposition 17</strong>. <em>Let <span class="math inline">\(f:x \to y\)</span> be a morphism in <span
+          class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>. If <span
+          class="math inline">\(\mathop{\mathrm{\mathbf{c}}}_x(g) =
+          \mathop{\mathrm{\mathbf{c}}}_x(h)\)</span> holds for <span class="math inline">\(g,h\)</span> in <span
+          class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>, then we
+        also have <span class="math display">\[\mathop{\mathrm{\mathbf{c}}}_y\left(g \cdot
+          \tau_\Phi(f)^{-1}\right) = \mathop{\mathrm{\mathbf{c}}}_y\left(h \cdot
+          \tau_\Phi(f)^{-1}\right).\]</span></em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> Let <span class="math inline">\(k\)</span> be any
+      element of the group <span class="math inline">\(\mathbf{F}{x}\)</span>;
+      since <span class="math inline">\(\tau_\Phi(f)\)</span> is a twisting
+      element of the form <span class="math inline">\(\mathbf{F}{f} \circ
+        \Phi_y \Rightarrow\Phi_x\)</span> by Definition <a href="#def:cogmap" data-reference-type="ref"
+        data-reference="def:cogmap">[def:cogmap]</a>,
+      we have <span class="math display">\[\tau_\Phi(f)\cdot\Phi_x(k)\cdot\tau_\Phi(f)^{-1}
+        = \Phi_y \circ \mathbf{F}{f}(k).\]</span> Since <span class="math inline">\(\mathbf{F}{f}\)</span> takes values
+      in <span class="math inline">\(\mathbf{F}{y}\)</span>, the cosets <span
+        class="math inline">\(\mathop{\mathrm{\mathbf{c}}}_y(\tau_\Phi(f)^{-1})\)</span>
+      and <span class="math inline">\(\mathop{\mathrm{\mathbf{c}}}_y(\Phi_x(k)\cdot
+        \tau_\Phi(f)^{-1})\)</span> are equal regardless of <span class="math inline">\(k\)</span>, so the desired
+      conclusion
+      follows. ◻</p>
+  </div>
+  <p>Next, we show that the composition of <span
+      class="math inline">\((f_1,\mathop{\mathrm{\mathbf{c}}}_x(g_1))\)</span>
+    with <span class="math inline">\((f_2,\mathop{\mathrm{\mathbf{c}}}_y(g_2))\)</span>,
+    as described in <a href="#eq:devcomp" data-reference-type="eqref" data-reference="eq:devcomp">[eq:devcomp]</a>,
+    produces a morphism <span class="math inline">\((x,\mathop{\mathrm{\mathbf{c}}}_x(g_1)) \to
+      (z,\mathop{\mathrm{\mathbf{c}}}_z(g_3))\)</span> in <span
+      class="math inline">\(\mathop{\mathrm{\mathscr{D}}}\)</span>.</p>
+  <div class="prop">
+    <p><strong>Proposition 18</strong>. <em>If <span class="math inline">\(\mathop{\mathrm{\mathbf{c}}}_y(g_2) =
+          \mathop{\mathrm{\mathbf{c}}}_y(g_1 \cdot \tau_\Phi(f_1)^{-1})\)</span>
+        and <span class="math inline">\(\mathop{\mathrm{\mathbf{c}}}_z(g_3) =
+          \mathop{\mathrm{\mathbf{c}}}_z(g_2 \cdot \tau_\Phi(f_2)^{-1})\)</span>
+        hold, then we also have <span class="math inline">\(\mathop{\mathrm{\mathbf{c}}}_z(g_3) =
+          \mathop{\mathrm{\mathbf{c}}}_z(g_1 \cdot \tau_\Phi(f_2 \circ
+          f_1)^{-1})\)</span>.</em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> Since the cosets <span class="math inline">\(\mathop{\mathrm{\mathbf{c}}}_y(g_2)\)</span> and
+      <span class="math inline">\(\mathop{\mathrm{\mathbf{c}}}_z(g_1 \cdot
+        \tau_\Phi(f_1)^{-1})\)</span> are equal, there exists some <span class="math inline">\(h \in
+        \mathbf{F}{z}\)</span> satisfying <span class="math inline">\(\tau_\Phi(f_1) \cdot g_1^{-1} \cdot g_2 =
+        \Phi_y(h)\)</span>, whence <span class="math display">\[g_2 = g_1 \cdot
+        \tau_\Phi(f_1)^{-1} \cdot \Phi_y(h).\]</span> Using this expression for
+      <span class="math inline">\(g_2\)</span> along with our assumption that
+      <span class="math inline">\(\mathop{\mathrm{\mathbf{c}}}_z(g_3) =
+        \mathop{\mathrm{\mathbf{c}}}_z(g_2 \cdot \tau_\Phi(f_2)^{-1})\)</span>,
+      we obtain <span class="math display">\[\begin{aligned}
+        \mathop{\mathrm{\mathbf{c}}}_z(g_3) &amp;=
+        \mathop{\mathrm{\mathbf{c}}}_z(g_1 \cdot \tau_\Phi(f_1)^{-1} \cdot
+        \Phi_y(h) \cdot \tau_\Phi(f_2)^{-1}) &amp; \\
+        &amp;= \mathop{\mathrm{\mathbf{c}}}_z(g_1 \cdot
+        \tau_\Phi(f_1)^{-1} \cdot \tau_\Phi(f_2)^{-1}) &amp; \text{ by Prop
+        \ref{prop:Dwelldef}}, \\
+        &amp;= \mathop{\mathrm{\mathbf{c}}}_z(g_1 \cdot \tau_\Phi(f_2
+        \circ f_1)^{-1}) &amp; \text{ by \eqref{eq:injid}},
+        \end{aligned}\]</span> as desired. ◻
+    </p>
+  </div>
+  <p>It is not difficult to confirm that <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span> is the
+    quotient <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}/\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>. To obtain <span class="math inline">\((\mathbf{F}{},\Phi)\)</span> for the <span
+      class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>-action
+    on <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}\)</span> as
+    per Definition <a href="#def:actcog" data-reference-type="ref" data-reference="def:actcog">11</a>, one uses the lift
+    function <span class="math inline">\(x \mapsto
+      (x,\mathop{\mathrm{\mathbf{c}}}_y(1_{\mathop{\mathrm{{\text{\rm
+      G}}}}}))\)</span> and the transfer elements <span class="math inline">\(f \mapsto \tau_{\Phi}(f)\)</span> for each
+    object
+    <span class="math inline">\(x\)</span> and morphism <span class="math inline">\(f\)</span> of <span
+      class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span>. Any group
+    element <span class="math inline">\(h\)</span> acts on <span
+      class="math inline">\((x,\mathop{\mathrm{\mathbf{c}}}_y(g))\)</span> by
+    mapping it to <span class="math inline">\((x,\mathop{\mathrm{\mathbf{c}}}_y(h\cdot
+      g))\)</span>. Thus, it only remains to establish the universal property
+    from assertion (3) of Proposition <a href="#prop:bascon" data-reference-type="ref"
+      data-reference="prop:bascon">16</a>.
+  </p>
+  <div class="prop">
+    <p><strong>Proposition 19</strong>. <em>Let <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> be
+        any
+        LP-category upon which <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span> acts
+        with quotient <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}/\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span> equal to <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span>. If there
+        exists a choice of lifts and transfers for this action which produces
+        <span class="math inline">\((\mathbf{F}{,}\Phi)\)</span> as the
+        associated complex of groups and monomorphism to <span
+          class="math inline">\(\underline{{\mathop{\mathrm{{\text{\rm
+          G}}}}}}_{{\mathop{\mathrm{\mathscr{C}}}}}\)</span>, then there exists a
+        <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span>-equivariant isomorphism of LP-categories <span
+          class="math inline">\(\mathop{\mathrm{\mathscr{D}}}(\mathbf{F}{},\Phi)
+          \cong_{\mathop{\mathrm{{\text{\rm G}}}}}
+          {\mathop{\mathrm{\mathscr{C}}}}\)</span>.</em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> Let <span
+        class="math inline">\(\lambda:\mathop{\mathrm{\mathscr{Q}}}_\text{ob}\to\mathop{\mathrm{\mathscr{C}}}_\text{ob}\)</span>
+      and <span class="math inline">\(\left\{{\sigma(f) \mid f:x \to y \text{
+        in }\mathop{\mathrm{\mathscr{Q}}}}\right\}\)</span> be any choice of
+      lift function and associated transfer elements for the <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>-action
+      on <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>
+      that produce <span class="math inline">\(\mathbf{F}{}\)</span> and <span class="math inline">\(\Phi\)</span>. We
+      define a functor <span class="math inline">\(\mathop{\mathrm{\mathbf{H}}}:
+        \mathop{\mathrm{\mathscr{D}}}(\mathbf{F}{},\Phi)\to
+        \mathop{\mathrm{\mathscr{C}}}\)</span> as follows: it sends each object
+      <span class="math inline">\((x,\mathop{\mathrm{\mathbf{c}}}_x(g))\)</span> in
+      <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}\)</span> to
+      <span class="math inline">\(g\lambda(x)\)</span> in <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>. The
+      surjectivity of <span class="math inline">\(\mathop{\mathrm{\mathbf{H}}}\)</span> on objects
+      is clear; injectivity follows easily from the fact that <span
+        class="math inline">\(g\lambda(x)=h\lambda(x)\)</span> if and only if
+      <span class="math inline">\(h^{-1}g\)</span> is in <span class="math inline">\(\Phi_x(\mathbf{F}{x})\)</span>, in
+      which case
+      <span class="math inline">\(c_x(g)=c_x(h)\)</span>.
+    </p>
+    <p>Given any morphism <span class="math inline">\(f:x\to y\)</span> in
+      <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span>, the
+      transfer element <span class="math inline">\(\tau_\Phi(f)\)</span>
+      satisfies that <span class="math display">\[\lambda(f):\lambda(x)\to
+        \tau_\Phi(f)^{-1}\lambda(y)\]</span> is the unique morphism in <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span> with source
+      <span class="math inline">\(\lambda(x)\)</span> such that <span
+        class="math inline">\(\mathop{\mathrm{\mathbf{P}}}(\lambda(f))=f\)</span>.
+      We set the <span class="math inline">\(\mathop{\mathrm{\mathbf{H}}}\)</span>-image of the
+      morphism <span class="math inline">\((f,\mathop{\mathrm{\mathbf{c}}}_x(g))\)</span> to
+      be <span class="math inline">\(g\lambda(f)\)</span>.
+    </p>
+    <p>We check that <span class="math inline">\(\mathop{\mathrm{\mathbf{H}}}\)</span> is
+      order-preserving, i.e., that <span class="math display">\[(f,c_x(g))\Rightarrow(f^\prime,c_x(g))\ \text{if
+        and only if}\ g\lambda(f)\Rightarrow g\lambda(f^\prime).\]</span> If
+      <span
+        class="math inline">\((f,\mathop{\mathrm{\mathbf{c}}}_x(g))\Rightarrow(f^\prime,\mathop{\mathrm{\mathbf{c}}}_x(g))\)</span>
+      in <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}\)</span>,
+      then <span class="math inline">\(f\Rightarrow f^\prime\)</span> in <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span> and <span
+        class="math inline">\(\tau_\Phi(f)\cdot\tau_\Phi(f^\prime)^{-1}\in\Phi_y(\mathbf{F}{y})\)</span>.
+      By definition of the quotient, <span class="math inline">\(f\Rightarrow
+        f^\prime\)</span> in <span class="math inline">\(\mathop{\mathrm{\mathscr{Q}}}\)</span> if and only
+      if there exists <span class="math inline">\(k\in\mathop{\mathrm{{\text{\rm G}}}}\)</span> such
+      that <span class="math inline">\(k\lambda(f)\Rightarrow\lambda(f^\prime)\)</span>.
+      But <span class="math inline">\(\lambda(f)\)</span> and <span class="math inline">\(\lambda(f^\prime)\)</span>
+      have the same source
+      and target, and there is a unique morphism in the orbit of <span class="math inline">\(\lambda(f)\)</span> with
+      this source. Hence, <span class="math inline">\(k=\text{id}_{\mathop{\mathrm{{\text{\rm
+        G}}}}}\)</span> and <span class="math inline">\(g\lambda(f)\Rightarrow
+        g\lambda(f^\prime)\)</span>. The other direction follows from the fact
+      that, if <span class="math inline">\(g\lambda(f)\Rightarrow
+        g\lambda(f^\prime)\)</span> in <span class="math inline">\(\mathop{\mathrm{\mathscr{C}}}\)</span>, then they
+      must have the same target and so <span class="math inline">\(\tau_\Phi(f)\cdot\tau_\Phi(f^\prime)^{-1}\)</span>
+      is in <span class="math inline">\(\Phi_y(\mathbf{F}{y})\)</span>.
+    </p>
+    <p>The fact that <span class="math inline">\(\mathop{\mathrm{\mathbf{H}}}\)</span> is bijective
+      on hom-sets follows from an argument similar to the one above, and some
+      simple computations. The fact that <span class="math inline">\(\mathop{\mathrm{\mathbf{H}}}\)</span> is <span
+        class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>-equivariant follows almost directly from the
+      definition. ◻</p>
+  </div>
+  <p>We introduce a technical lemma relating the development of complexes
+    of groups over isomorphic LP categories, that will be used in Section <a href="#sec:equhomequiv"
+      data-reference-type="ref" data-reference="sec:equhomequiv">8</a>.</p>
+  <div id="lem:cogcommute" class="lemma">
+    <p><strong>Lemma 20</strong>. <em>Suppose that <span class="math inline">\(\mathop{\mathrm{\mathbf{E}}}:X\to
+          X&#39;\)</span>
+        is an isomorphism of LP categories, and that <span
+          class="math inline">\({\mathbf{F}{}:X\to\mathop{\mathrm{\mathbf{Grp}}}}\)</span>
+        and <span class="math inline">\({\mathbf{F}{}&#39;:X&#39;\to\mathop{\mathrm{\mathbf{Grp}}}}\)</span>
+        are complexes of group such that the following diagram commutes: <span class="math display">\[\begin{tikzcd}[row
+          sep=huge, column sep = large]
+          X \arrow[r, &quot;\mathbf{E}&quot;] \arrow[d,
+          &quot;\mathbf{F}&quot;&#39;] &amp; X^\prime \arrow[ld,
+          &quot;\mathbf{F}^\prime&quot;] \\
+          \mathop{\mathrm{\mathbf{Grp}}}&amp;
+          \end{tikzcd}\]</span> If <span
+          class="math inline">\(\Phi:\mathbf{F}{}\to\mathop{\mathrm{\underline{\mathop{\mathrm{{\text{\rm
+          G}}}}}}}_{X}\)</span> and <span
+          class="math inline">\(\Phi&#39;:\mathbf{F}{&#39;}{}\to\mathop{\mathrm{\underline{\mathop{\mathrm{{\text{\rm
+          G}}}}}}}_{X&#39;}\)</span> are morphisms of complexes of groups such
+        that <span class="math inline">\(\Phi_f =
+          \Phi&#39;_{\mathop{\mathrm{\mathbf{E}}}f}\)</span> for every morphism
+        <span class="math inline">\(f\)</span> in <span class="math inline">\(X\)</span>, then there is a <span
+          class="math inline">\(\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span>-equivariant isomorphism of LP categories <span
+          class="math display">\[{\mathop{\mathrm{\mathscr{D}}}(\mathbf{F}{},\Phi)\cong_{\mathop{\mathrm{{\text{\rm
+          G}}}}}\mathop{\mathrm{\mathscr{D}}}(\mathbf{F}{&#39;}{},\Phi&#39;)}.\]</span></em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> First note that by the commutativity of the diagram,
+      the groups <span class="math inline">\(\mathbf{F}{x}\)</span> and <span
+        class="math inline">\(\mathbf{F}{&#39;}{\mathop{\mathrm{\mathbf{E}}}x}\)</span>
+      are equal for every <span class="math inline">\(x\in X\)</span>; hence,
+      the cosets <span class="math inline">\(g\cdot\Phi(\mathbf{F}{x})\)</span> and <span
+        class="math inline">\(g\cdot\Phi&#39;_{\mathop{\mathrm{\mathbf{E}}}x}(\mathbf{F}{&#39;}{\mathop{\mathrm{\mathbf{E}}}x})\)</span>
+      are equal for any group element <span class="math inline">\(g\)</span>,
+      and so the indices <span class="math inline">\([\mathop{\mathrm{{\text{\rm
+        G}}}}:\Phi_x(\mathbf{F}{x})]\)</span> and <span class="math inline">\([\mathop{\mathrm{{\text{\rm
+        G}}}}:\Phi&#39;_{\mathop{\mathrm{\mathbf{E}}}x}(\mathbf{F}{&#39;}{\mathop{\mathrm{\mathbf{E}}}x})]\)</span>
+      are equal.</p>
+    <p>Each object <span class="math inline">\(x\in X\)</span> generates the
+      set <span class="math inline">\(\{(x,g\cdot\Phi_x(\mathbf{F}{x}))\ |\
+        \forall g\in\mathop{\mathrm{{\text{\rm G}}}}\}\)</span> of objects in
+      <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}(\mathbf{F}{},\Phi)\)</span>.
+      This is clearly in bijection with the set of objects <span
+        class="math inline">\({\{(\mathop{\mathrm{\mathbf{E}}}x,g\cdot\Phi&#39;_{\mathop{\mathrm{\mathbf{E}}}x}(\mathbf{F}{&#39;}{\mathop{\mathrm{\mathbf{E}}}x}))\
+        |\ \forall g\in\mathop{\mathrm{{\text{\rm G}}}}\}}\)</span> in <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{D}}}(\mathbf{F}{&#39;}{},\Phi&#39;)\)</span>,
+      since <span class="math inline">\(\mathop{\mathrm{\mathbf{E}}}\)</span>
+      is an isomorphism.
+    </p>
+    <p>The poset of morphisms <span class="math display">\[(x,
+        g\cdot\Phi_x(\mathbf{F}{x}))\to (y,
+        g\cdot\Phi_f^{-1}\Phi_y(\mathbf{F}{y}))\]</span> in <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{D}}}(\mathbf{F}{},\Phi)\)</span>
+      is isomorphic to the poset of morphisms <span class="math display">\[(\mathop{\mathrm{\mathbf{E}}}x,
+        g\cdot\Phi&#39;_{\mathop{\mathrm{\mathbf{E}}}x}(\mathbf{F}{&#39;}{\mathop{\mathrm{\mathbf{E}}}x}))\to
+        (\mathop{\mathrm{\mathbf{E}}}y,
+        g\cdot(\Phi&#39;_{\mathop{\mathrm{\mathbf{E}}}f})^{-1}\Phi&#39;_{\mathop{\mathrm{\mathbf{E}}}y}(\mathbf{F}{&#39;}{\mathop{\mathrm{\mathbf{E}}}y}))\]</span>
+      in <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}(\mathbf{F}{&#39;}{},\Phi&#39;)\)</span>
+      by the arguments above, in addition to the fact that we assume that
+      <span class="math inline">\(\Phi_f=\Phi&#39;_{\mathop{\mathrm{\mathbf{E}}}f}\)</span>.
+    </p>
+    <p>The correspondence between the partial order on morphisms in <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{D}}}(\mathbf{F}{},\Phi)\)</span>
+      and <span class="math inline">\(\mathop{\mathrm{\mathscr{D}}}(\mathbf{F}{&#39;}{},\Phi&#39;)\)</span>
+      follows from the fact that <span class="math inline">\(f\Rightarrow
+        f&#39;\)</span> in <span class="math inline">\(X\)</span> if and only if
+      <span
+        class="math inline">\(\mathop{\mathrm{\mathbf{E}}}{f}\Rightarrow\mathop{\mathrm{\mathbf{E}}}{f&#39;}\)</span>
+      in <span class="math inline">\(X&#39;\)</span>, and <span
+        class="math inline">\(\Phi_f=\Phi&#39;_{\mathop{\mathrm{\mathbf{E}}}f}\)</span>
+      for any morphism <span class="math inline">\(f\in X\)</span>. ◻
+    </p>
+  </div>
+  <h1 id="sec:flow">Discrete Morse Theory and the Flow Category</h1>
+  <p>Let <span class="math inline">\(X\)</span> be a simplicial complex;
+    we will write <span class="math inline">\(x &gt; x&#39;\)</span> to
+    indicate that the simplex <span class="math inline">\(x&#39;\)</span> is
+    a face of the simplex <span class="math inline">\(x\)</span>.</p>
+  <div id="def:acycmatch" class="defn">
+    <p><strong>Definition 21</strong>. A set <span class="math inline">\(\Sigma = \left\{{(x_\bullet &gt;
+        x&#39;_\bullet)}\right\}\)</span> of simplex-pairs in <span class="math inline">\(X\)</span> is called an
+      <span><strong>acyclic
+          partial matching</strong></span> if it satisfies three axioms:</p>
+    <ol>
+      <li>
+        <p><span><strong>dimension:</strong></span> if <span class="math inline">\((x &gt; x&#39;) \in \Sigma\)</span>,
+          then <span class="math inline">\(\dim x - \dim x&#39; = 1\)</span>;</p>
+      </li>
+      <li>
+        <p><span><strong>partition:</strong></span> if <span class="math inline">\((x &gt; x&#39;) \in \Sigma\)</span>,
+          then neither
+          <span class="math inline">\(x\)</span> nor <span class="math inline">\(x&#39;\)</span> lies in any other pair
+          of <span class="math inline">\(\Sigma\)</span>; and,
+        </p>
+      </li>
+      <li>
+        <p><span><strong>acyclicity:</strong></span> the transitive closure
+          of the binary relation <span class="math display">\[(x_0 &gt; x_0&#39;)
+            \blacktriangleright(x_1 &gt; x_1&#39;) \text{ whenever } x_0 &gt;
+            x_1&#39; \text{ in } X\]</span> generates a partial order on <span class="math inline">\(\Sigma\)</span>.
+        </p>
+      </li>
+    </ol>
+  </div>
+  <p>Acyclic partial matchings are analogous to gradient-like vector
+    fields on simplicial complexes; as such, they play a central role in
+    Forman’s <span><em>discrete Morse theory</em></span> <span class="citation"
+      data-cites="forman1998morse chari00discrete"></span>.
+    The simplices of <span class="math inline">\(X\)</span> which do not
+    appear in any <span class="math inline">\(\Sigma\)</span>-pair are
+    called <span><strong>critical</strong></span>, and the gradient paths
+    from a critical simplex <span class="math inline">\(w\)</span> to a
+    critical simplex <span class="math inline">\(z\)</span> are furnished by
+    zigzags of <span class="math inline">\(\blacktriangleright\)</span>-descending <span
+      class="math inline">\(\Sigma\)</span> elements, e.g., <span class="math display">\[\zeta := (w &gt; x&#39;_0 &lt;
+      x_0 &gt; x&#39;_1
+      &lt; x_1 &gt; \cdots &gt; x_k&#39; &lt; x_k &gt; z).\]</span> Here each
+    backward-pointing <span class="math inline">\(x&#39;_i &lt; x_i\)</span>
+    corresponds to an element <span class="math inline">\((x_i &gt;
+      x&#39;_i)\)</span> in <span class="math inline">\(\Sigma\)</span>, and
+    the fact that <span class="math inline">\(x&#39;_{i+1}\)</span> is a
+    face of <span class="math inline">\(x_i\)</span> ensures <span class="math inline">\((x_i &gt; x&#39;_i)
+      \blacktriangleright(x_{i+1}
+      &gt; x&#39;_{i+1})\)</span>. An inductive argument establishes that
+    <span class="math inline">\(X\)</span> is homotopy equivalent to a CW
+    complex whose cells correspond bijectively with the critical simplices
+    of <span class="math inline">\(\Sigma\)</span> — see for instance <span class="citation"
+      data-cites="forman1998morse"></span>. To obtain a more
+    explicit description of this homotopy equivalence in terms of <span class="math inline">\(\Sigma\)</span>-zigzags
+    (such as <span class="math inline">\(\zeta\)</span>), we adopt the perspective of <span class="citation"
+      data-cites="NANDA2019459"></span>. The basic idea is to
+    construct an LP-category whose objects are critical simplices, whose
+    morphisms <span class="math inline">\(w \to z\)</span> consist of <span
+      class="math inline">\(\Sigma\)</span>-zigzags, and whose classifying
+    space is homotopy equivalent to <span class="math inline">\(X\)</span>.
+  </p>
+  <p>Consider two simplices <span class="math inline">\(x, x&#39;\)</span>
+    in <span class="math inline">\(X\)</span>. The set of <span><em>entrance
+        paths</em></span> of <span class="math inline">\(X\)</span> from <span class="math inline">\(x\)</span> to <span
+      class="math inline">\(x&#39;\)</span>, denoted <span class="math inline">\(\mathbf{Ent}[X](x,x&#39;)\)</span>,
+    consists of
+    all strictly descending sequences of faces from <span class="math inline">\(x\)</span> to <span
+      class="math inline">\(x&#39;\)</span>. Thus, each <span class="math inline">\(f \in
+      \mathbf{Ent}[X](x,x&#39;)\)</span> has the
+    form <span class="math display">\[f = (x &gt; x_1 &gt; \cdots &gt; x_k
+      &gt; x&#39;)\]</span> for some length <span class="math inline">\(k \geq
+      0\)</span> where every <span class="math inline">\(x_i\)</span> in sight
+    is a simplex of <span class="math inline">\(X\)</span>. These entrance
+    paths are partially ordered by refinement, so we have <span class="math inline">\(f&#39; \Rightarrow f\)</span>
+    whenever <span class="math inline">\(f&#39;\)</span> is obtained by removing some of
+    the intermediate <span class="math inline">\(x_i\)</span> from <span class="math inline">\(f\)</span>. In
+    particular, we note that the only
+    entrance path from each simplex <span class="math inline">\(x\)</span>
+    to itself is the trivial path <span class="math inline">\((x)\)</span>
+    of length zero.</p>
+  <div class="defn">
+    <p><strong>Definition 22</strong>. The <span><strong>entrance path
+          category</strong></span> of <span class="math inline">\(X\)</span> is
+      the LP-category <span class="math inline">\(\mathbf{Ent}[X]\)</span>
+      prescribed by the following data:</p>
+    <ol>
+      <li>
+        <p>its objects are the simplices of <span class="math inline">\(X\)</span>, and</p>
+      </li>
+      <li>
+        <p>the poset of morphisms <span class="math inline">\(x \to
+            x&#39;\)</span> is <span class="math inline">\(\mathbf{Ent}[X](x,x&#39;)\)</span>.</p>
+      </li>
+    </ol>
+    <p>The composite of <span class="math inline">\(f := (x &gt; x_0 &gt;
+        \cdots &gt; x_k &gt; x&#39;)\)</span> and <span class="math inline">\(f&#39; := (x&#39; &gt; x_0&#39; &gt;
+        \cdots &gt;
+        x_\ell &gt; x&#39;&#39;)\)</span> is the concatenated path <span class="math display">\[f&#39; \circ f := (x
+        &gt; x_0 &gt; \ldots &gt;
+        x_k &gt; x&#39; &gt; x_0&#39; &gt; \cdots &gt; x_\ell &gt;
+        x&#39;&#39;),\]</span> which evidently lies in the poset <span
+        class="math inline">\(\mathbf{Ent}[X](x,x&#39;&#39;)\)</span>. For each
+      cell <span class="math inline">\(x\)</span> of <span class="math inline">\(X\)</span>, the singleton <span
+        class="math inline">\((x)\)</span> serves as the identity morphism,
+      which is the unique element in the poset <span class="math inline">\(\mathbf{Ent}[X](x,x)\)</span></p>
+  </div>
+  <p>The classifying space of <span class="math inline">\(\mathbf{Ent}[X]\)</span> is homotopy equivalent to
+    <span class="math inline">\(X\)</span> (see <span class="citation" data-cites="NANDA2019459"></span>), and every
+    acyclic partial matching
+    <span class="math inline">\(\Sigma = \left\{{(x_\bullet &gt;
+      x&#39;_\bullet)}\right\}\)</span> on <span class="math inline">\(X\)</span> corresponds to a collection of minimal
+    entrance paths <span class="math inline">\(\left\{{f_\bullet:x_\bullet
+      \to x&#39;_\bullet}\right\}\)</span>.
+  </p>
+  <div id="def:catloc" class="defn">
+    <p><strong>Definition 23</strong>. The
+      <span><strong>localisation</strong></span> of <span class="math inline">\(\mathbf{Ent}[X]\)</span> about an
+      acyclic partial
+      matching <span class="math inline">\(\Sigma\)</span> is the LP-category
+      <span class="math inline">\(\mathbf{Loc}_\Sigma\mathbf{Ent}[X]\)</span>
+      whose objects are also the cells of <span class="math inline">\(X\)</span>, while the 1-morphisms are equivalence
+      classes of finite (but arbitrarily long) <span><strong><span
+            class="math inline">\(\Sigma\)</span>-zigzags</strong></span> <span class="math inline">\(\gamma:w \to
+        z\)</span> in <span class="math inline">\(\mathbf{Ent}[X]\)</span>; each such zigzag has the
+      form <span class="math display">\[\xymatrixcolsep{.45in}
+        \xymatrix{
+        w \ar@{-&gt;}[r]^{h_0} &amp; x&#39;_0 &amp;
+        x_0 \ar@{-&gt;}[l]_{f_0} \ar@{-&gt;}[r]^{h_1} &amp; x&#39;_1 &amp;
+        \cdots \ar@{-&gt;}[l]_{f_1} \ar@{-&gt;}[r]^{h_k} &amp; x&#39;_k &amp;
+        x_k \ar@{-&gt;}[l]_{f_k} \ar@{-&gt;}[r]^{h_{k+1}} &amp; z.
+        }\]</span> Here each backward-pointing <span class="math inline">\(f_i\)</span> is required to either lie in
+      <span class="math inline">\(\Sigma\)</span> or be an identity, whereas the
+      forward-pointing <span class="math inline">\(h_i\)</span> are
+      unconstrained entrance paths. (The equivalence relation between such
+      zigzags is defined in Remark <a href="#rem:eqrel" data-reference-type="ref" data-reference="rem:eqrel">24</a>
+      below.) The
+      order relation <span class="math inline">\(\gamma
+        \Rightarrow\gamma&#39;\)</span> holds if there exist zigzag
+      representatives which fit into an <span class="math inline">\(\mathbf{Ent}[X]\)</span>-diagram of the form <span
+        class="math display">\[\xymatrixcolsep{.45in}
+        \xymatrixrowsep{.35in}
+        \xymatrix{
+        w \ar@{=}[d] \ar@{-&gt;}[r]^{h_0} &amp; x&#39;_0
+        \ar@{-&gt;}[d]_{\phi_0} &amp; x_0 \ar@{-&gt;}[d]_{\phi_0}
+        \ar@{-&gt;}[l]_{f_0} \ar@{-&gt;}[r]^{h_1} &amp; x&#39;_1
+        \ar@{-&gt;}[d]_{\phi&#39;_1} &amp; \cdots \ar@{-&gt;}[l]_{f_1}
+        \ar@{-&gt;}[r]^{h_k} &amp; x&#39;_k \ar@{-&gt;}[d]_{\phi&#39;_k} &amp;
+        x_k \ar@{-&gt;}[d]_{\phi_k} \ar@{-&gt;}[l]_{f_k}
+        \ar@{-&gt;}[r]^{h_{k+1}} &amp; z \ar@{=}[d] \\
+        w \ar@{=&gt;}[ur] \ar@{-&gt;}[r]_{h&#39;_0} &amp; y&#39;_0 &amp;
+        y_0 \ar@{=&gt;}[ul] \ar@{=&gt;}[ur] \ar@{-&gt;}[l]^{f&#39;_0}
+        \ar@{-&gt;}[r]_{h&#39;_1} &amp; y&#39;_1 &amp; \cdots
+        \ar@{=&gt;}[ur] \ar@{=&gt;}[ul] \ar@{-&gt;}[l]^{f&#39;_1}
+        \ar@{-&gt;}[r]_{h&#39;_k} &amp; y&#39;_k &amp; y_k w \ar@{=&gt;}[ul]
+        \ar@{=&gt;}[ur] \ar@{-&gt;}[l]^{f&#39;_k} \ar@{-&gt;}[r]_{h&#39;_{k+1}}
+        &amp; z
+        }\]</span> Here all the vertical entrance paths <span class="math inline">\(\phi_i, \phi_i&#39;\)</span> are
+      also constrained
+      to lie in <span class="math inline">\(\Sigma \cup
+        \left\{{\text{identities}}\right\}\)</span>, and all the diagonal
+      double-arrows are to be interpreted as order relations in <span class="math inline">\(\mathbf{Ent}[X]\)</span>.
+    </p>
+  </div>
+  <div id="rem:eqrel" class="rem">
+    <p><em>Remark 24</em>. The equivalence relation among <span class="math inline">\(\Sigma\)</span>-zigzags in the
+      preceding
+      definition is generated by (the transitive closure of) two elementary
+      relations:</p>
+    <ol>
+      <li>
+        <p>two zigzags are <span><em>horizontally</em></span> equivalent if
+          they only differ by (backward or forward pointing) identity morphisms;
+          and</p>
+      </li>
+      <li>
+        <p>two zigzags are <span><em>vertically</em></span> equivalent if
+          they form the top and bottom rows of an <span class="math inline">\(\mathbf{Ent}[X]\)</span>-diagram <span
+            class="math display">\[\xymatrixcolsep{.45in}
+            \xymatrixrowsep{.35in}
+            \xymatrix{
+            w \ar@{=}[d] \ar@{-&gt;}[r]^{h_0} &amp; x&#39;_0
+            \ar@{-&gt;}[d]_{\phi_0} &amp; x_0 \ar@{-&gt;}[d]_{\phi_0}
+            \ar@{-&gt;}[l]_{f_0} \ar@{-&gt;}[r]^{h_1} &amp; x&#39;_1
+            \ar@{-&gt;}[d]_{\phi&#39;_1} &amp; \cdots \ar@{-&gt;}[l]_{f_1}
+            \ar@{-&gt;}[r]^{h_k} &amp; x&#39;_k \ar@{-&gt;}[d]_{\phi&#39;_k} &amp;
+            x_k \ar@{-&gt;}[d]_{\phi_k} \ar@{-&gt;}[l]_{f_k}
+            \ar@{-&gt;}[r]^{h_{k+1}} &amp; z \ar@{=}[d] \\
+            w \ar@{=}[ur] \ar@{-&gt;}[r]_{h&#39;_0} &amp; y&#39;_0 &amp;
+            y_0 \ar@{=}[ul] \ar@{=}[ur] \ar@{-&gt;}[l]^{f&#39;_0}
+            \ar@{-&gt;}[r]_{h&#39;_1} &amp; y&#39;_1 &amp; \cdots
+            \ar@{=}[ur] \ar@{=}[ul] \ar@{-&gt;}[l]^{f&#39;_1}
+            \ar@{-&gt;}[r]_{h&#39;_k} &amp; y&#39;_k &amp; y_k w \ar@{=}[ul]
+            \ar@{=}[ur] \ar@{-&gt;}[l]^{f&#39;_k} \ar@{-&gt;}[r]_{h&#39;_{k+1}}
+            &amp; z
+            }\]</span> (Note that all order relations are identities, so
+          every square in sight commutes).</p>
+      </li>
+    </ol>
+  </div>
+  <p>There is a localisation LP-functor <span class="math display">\[\mathop{\mathrm{\mathbf{L}}}_\Sigma:
+      \mathbf{Ent}[X] \to \mathbf{Loc}_\Sigma\mathbf{Ent}[X],\]</span> which
+    sends each object to itself and each entrance path to its own
+    equivalence class of <span class="math inline">\(\Sigma\)</span>-zigzags. The subcategory of <span
+      class="math inline">\(\mathbf{Loc}_\Sigma\mathbf{Ent}[X]\)</span>
+    spanned by all the critical simplices of <span class="math inline">\(\Sigma\)</span> is called the
+    <span><strong>flow
+        category</strong></span> of <span class="math inline">\(\Sigma\)</span>
+    and denoted <span class="math inline">\(\mathbf{Flo}_\Sigma[{X}]\)</span>. The flow
+    category is naturally embedded into <span class="math inline">\(\mathbf{Loc}_\Sigma\mathbf{Ent}[X]\)</span> via an
+    inclusion LP-functor <span class="math display">\[\mathbf{J}_\Sigma:\mathbf{Flo}_\Sigma[{X}]
+      \hookrightarrow\mathbf{Loc}_\Sigma\mathbf{Ent}[X].\]</span> Here is the
+    main result of <span class="citation" data-cites="NANDA2019459"></span>.</p>
+  <div id="thm:flocat" class="thm">
+    <p><strong>Theorem 25</strong>. <em>If <span class="math inline">\(\Sigma\)</span> is any acyclic partial matching
+        on
+        a simplicial complex <span class="math inline">\(X\)</span>, then both
+        LP-functors <span class="math display">\[\xymatrixcolsep{.45in}
+          \xymatrix{
+          \mathbf{Ent}[X]
+          \ar@{-&gt;}[r]^-{\mathop{\mathrm{\mathbf{L}}}_\Sigma} &amp;
+          \mathbf{Loc}_\Sigma\mathbf{Ent}[X] &amp; \mathbf{Flo}_\Sigma[{X}]
+          \ar@{_{(}-&gt;}[l]_-{\mathbf{J}_\Sigma}
+          }\]</span> induce homotopy equivalence of classifying
+        spaces.</em></p>
+  </div>
+  <p>As an immediate consequence, the classifying space <span
+      class="math inline">\(|\Delta\mathbf{Flo}_\Sigma[{X}]|\)</span> is
+    homotopy equivalent to <span class="math inline">\(X\)</span>.</p>
+  <h1 id="sec:morsecog">The Morse Complex of Groups</h1>
+  <p>In this section, we construct what we call the <em>Morse complex of
+      groups</em>: a complex of groups over the flow category <span
+      class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]\)</span> associated to a
+    certain class of acyclic partial matchings defined on a simplicial
+    complex <span class="math inline">\(Y\)</span>. The first step in this
+    direction is to make an acyclic partial matching <span class="math inline">\(\Sigma\)</span> compatible with a
+    complex of
+    groups over <span class="math inline">\(Y\)</span></p>
+  <div id="def:fcompatible" class="defn">
+    <p><strong>Definition 26</strong>. An acyclic partial matching <span class="math inline">\(\Sigma\)</span> on a
+      simplicial complex <span class="math inline">\(Y\)</span> is <strong>compatible</strong> with a
+      complex of groups <span
+        class="math inline">\(\mathbf{F}{:}\mathbf{Fac}[Y]\to\mathop{\mathrm{\mathbf{Grp}}}\)</span>
+      if it satisfies the following conditions:</p>
+    <ol>
+      <li>
+        <p>for every morphism <span class="math inline">\(f:y\to
+            y&#39;\)</span> in <span class="math inline">\(\Sigma\)</span>, its
+          <span class="math inline">\(\mathbf{F}\)</span>-image <span class="math inline">\(\mathbf{F}{f}\)</span> is an
+          isomorphism,
+          and
+        </p>
+      </li>
+      <li>
+        <p>whenever we have <span class="math display">\[\begin{tikzcd}[row
+            sep = small, column sep = small]
+            w \arrow[rr, &quot;g&quot;] \arrow[rrdd,
+            &quot;g&#39;&quot;&#39;] &amp; &amp; y \arrow[dd,
+            &quot;f&quot;] &amp; &amp; &amp; &amp; y \arrow[dd,
+            &quot;f&quot;&#39;] \arrow[rrdd, &quot;h&#39;&quot;] &amp; &amp; \\
+            &amp; {}
+            \arrow[ru, equals, shorten=2mm] &amp; &amp; &amp;
+            \text{or} &amp; &amp; &amp;
+            {} &amp; \\
+            &amp; &amp;
+            y&#39; &amp; &amp; &amp; &amp; y&#39;
+            \arrow[rr, &quot;h&quot;&#39;] \arrow[ru, equals,
+            shorten=1mm] &amp; &amp; z
+            \end{tikzcd}\]</span> for arbitrary morphisms <span class="math inline">\(g,g&#39;,h, h&#39;\)</span>, the
+          <span class="math inline">\(\mathbf{F}\)</span>-images are, respectively,
+          <span class="math display">\[\begin{tikzcd}[row sep = small, column sep
+            = small]
+            \mathbf{F}{w} \arrow[rr, &quot;\mathbf{F}{g}&quot;]
+            \arrow[rrdd, &quot;\mathbf{F}{g&#39;}&quot;&#39;]
+            &amp; &amp; \mathbf{F}{y} \arrow[dd,
+            &quot;\mathbf{F}{f}&quot;] &amp; &amp; &amp; &amp;
+            \mathbf{F}{y} \arrow[dd, &quot;\mathbf{F}{f}&quot;&#39;] \arrow[rrdd,
+            &quot;\mathbf{F}{h&#39;}&quot;] &amp; &amp; \\
+            &amp; {}
+            \arrow[ru, equals, shorten=2mm] &amp; &amp; &amp;
+            \text{and}
+            &amp; &amp; &amp; {}
+            &amp; \\
+            &amp; &amp;
+            \mathbf{F}{y&#39;} &amp; &amp; &amp; &amp;
+            \mathbf{F}{y&#39;} \arrow[rr, &quot;\mathbf{F}{h}&quot;&#39;] \arrow[ru,
+            equals, shorten=1mm] &amp; &amp; \mathbf{F}{z}
+            \end{tikzcd}\]</span>
+        </p>
+      </li>
+    </ol>
+  </div>
+  <p>Throughout this section, <span class="math inline">\(\mathbf{F}{}\)</span> denotes the complex of
+    groups associated to a regular <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>-action
+    on <span class="math inline">\(X\)</span> (for some choice of lifts and
+    transfers), <span class="math inline">\(\Phi:\mathbf{F}{}\to\mathop{\mathrm{\underline{\mathop{\mathrm{{\text{\rm
+      G}}}}}}}_Y\)</span> denotes the associated monomorphism, and <span class="math inline">\(\Sigma\)</span> is an
+    <span class="math inline">\(\mathbf{F}{}\)</span>-compatible acyclic partial
+    matching on the quotient <span class="math inline">\(Y\)</span>.</p>
+  <div id="def:mcog" class="defn">
+    <p><strong>Definition 27</strong>. The <span><strong>Morse complex of
+          groups</strong></span> associated to <span class="math inline">\(\Sigma\)</span> is the pseudofunctor <span
+        class="math inline">\(\mathbf{M}{}:\mathbf{Flo}_\Sigma[{Y}]\to\mathop{\mathrm{\mathbf{Grp}}}\)</span>
+      prescribed by the following data:</p>
+    <ol>
+      <li>
+        <p>To each object <span class="math inline">\(y\in\mathbf{Flo}_\Sigma[{Y}]\)</span>, the group
+          <span class="math inline">\(\mathbf{M}{y} \coloneqq
+            \mathbf{F}{y}\)</span>.
+        </p>
+      </li>
+      <li>
+        <p>For each equivalence class of 1-morphisms represented by some
+          zigzag <span class="math inline">\(\zeta\)</span> <span class="math display">\[\begin{tikzcd}
+            w \arrow[r, &quot;h_0&quot;] &amp; y_0 &amp; x_0 \arrow[l,
+            &quot;f_0&quot;&#39;] \arrow[r, &quot;h_1&quot;] &amp; y_1 &amp; \cdots
+            \arrow[l, &quot;f_1&quot;&#39;] &amp; x_k \arrow[l,
+            &quot;f_k&quot;&#39;] \arrow[r, &quot;h_{k+1}&quot;] &amp; z
+            \end{tikzcd}\]</span> the homomorphism <span class="math inline">\(\mathbf{M}{\zeta} :
+            \mathbf{M}{w}\to\mathbf{M}{z}\)</span> is the composite <span
+            class="math display">\[\mathbf{F}{h_{k+1}}\circ\mathbf{F}{f_k}^{-1}\circ\cdots\circ\mathbf{F}{h_1}\circ\mathbf{F}{f_0}^{-1}\circ\mathbf{F}{h_0},\]</span>
+          i.e., <span class="math inline">\(\mathbf{M}{\zeta}\)</span> is
+          conjugation by the product of transfer elements <span class="math display">\[\sigma(\zeta)\coloneqq
+            \sigma(h_{k+1})\cdot
+            \sigma(f_k)^{-1}\cdots \sigma(h_1)\cdot \sigma(f_0)^{-1}\cdot
+            \sigma(h_0).\]</span></p>
+      </li>
+      <li>
+        <p>For any two morphisms <span class="math inline">\(\zeta,\zeta^\prime:w\to z\)</span> in <span
+            class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]\)</span> satisfying <span
+            class="math inline">\(\zeta^\prime\Rightarrow\zeta\)</span>, fitting
+          into a diagram <span class="math display">\[\label{diag:2morphisms}
+            \begin{tikzcd}
+            w \arrow[r, &quot;h_0&quot;] \arrow[d] &amp; y_0
+            \arrow[d, &quot;u_0&quot;] &amp; x_0 \arrow[l, &quot;f_0&quot;&#39;]
+            \arrow[r, &quot;h_1&quot;] \arrow[d, &quot;v_0&quot;] &amp; y_1
+            \arrow[d, &quot;u_1&quot;] &amp; \cdots \arrow[l,
+            &quot;f_1&quot;&#39;] &amp; x_k \arrow[l,
+            &quot;f_k&quot;&#39;] \arrow[r, &quot;h_{k+1}&quot;] \arrow[d,
+            &quot;v_k&quot;] &amp; z \arrow[d] \\
+            w \arrow[r, &quot;h&#39;_0&quot;&#39;] \arrow[ru,
+            Rightarrow] &amp; y&#39;_0 &amp; x&#39;_0 \arrow[l,
+            &quot;f&#39;_0&quot;] \arrow[r, &quot;h&#39;_1&quot;&#39;] \arrow[ru,
+            Rightarrow] \arrow[lu, Rightarrow] &amp; y&#39;_1 &amp;
+            \cdots \arrow[l, &quot;f&#39;_1&quot;] \arrow[lu, Rightarrow] &amp;
+            x&#39;_k \arrow[l, &quot;f&#39;_k&quot;] \arrow[r,
+            &quot;h&#39;_{k+1}&quot;&#39;] \arrow[lu, Rightarrow] \arrow[ru,
+            Rightarrow] &amp; z
+            \end{tikzcd}\]</span> where <span class="math inline">\(\zeta,\zeta^\prime\)</span> form the top and
+          bottom rows respectively, <span
+            class="math inline">\({\mathbf{M}{(\zeta^\prime\Rightarrow\zeta)}:\mathbf{M}{\zeta^\prime}\Rightarrow\mathbf{M}{\zeta}}\)</span>
+          is the product <span class="math inline">\(\sigma(\zeta^\prime)\cdot\sigma(\zeta)^{-1}.\)</span></p>
+      </li>
+      <li>
+        <p>For any composable morphisms <span
+            class="math inline">\(y\xrightarrow{\zeta}y&#39;\xrightarrow{\zeta^\prime}y&#39;&#39;\)</span>,
+          the twisting element is <span
+            class="math display">\[\gamma_{\mathbf{M}{}}(\zeta,\zeta&#39;)=\sigma(\zeta&#39;)\cdot\sigma(\zeta)\cdot\sigma(\zeta&#39;\circ\zeta)^{-1}.\]</span>
+        </p>
+      </li>
+    </ol>
+  </div>
+  <p>Whilst the complex of groups in Definition <a href="#def:actcog" data-reference-type="ref"
+      data-reference="def:actcog">11</a> summarises
+    a group action, the Morse version tracks how this layer of data changes
+    after applying discrete Morse theory to the quotient. The associated
+    monomorphism <span class="math inline">\(\Psi:\mathbf{M}{}\to\mathop{\mathrm{\underline{\mathop{\mathrm{{\text{\rm
+      G}}}}}}}_{\mathbf{Flo}_\Sigma[{Y}]}\)</span> assigns</p>
+  <ol>
+    <li>
+      <p>to each object <span class="math inline">\(y\in\mathbf{Flo}_\Sigma[{Y}]\)</span> the
+        inclusion <span class="math inline">\(\mathbf{M}{y}\hookrightarrow\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span>, and</p>
+    </li>
+    <li>
+      <p>to each <span class="math inline">\(\zeta:y\to y&#39;\)</span>
+        the twisting element <span class="math inline">\(\tau_{\Psi}(\zeta)\coloneqq
+          \sigma(\zeta)\)</span>.</p>
+    </li>
+  </ol>
+  <div id="prop:morsecogwd" class="prop">
+    <p><strong>Proposition 28</strong>. <em><span class="math inline">\(\mathbf{M}{}\)</span> is a well-defined complex
+        of
+        groups.</em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> This follows from a sequence of claims:</p>
+    <ol>
+      <li>
+        <p><em>Claim:</em> The 1-morphisms are well-defined, that is, for
+          two zigzags <span class="math inline">\(\zeta\sim\zeta^\prime\)</span>,
+          we have <span class="math inline">\(\mathbf{M}{\zeta}
+            \equiv\mathbf{M}{\zeta^\prime}\)</span>, and every <span class="math inline">\(\mathbf{M}{\zeta}\)</span> is
+          injective.<br />
+          <em>Proof:</em> If <span class="math inline">\(\zeta\)</span> and <span
+            class="math inline">\(\zeta^\prime\)</span> are horizontally equivalent
+          then clearly <span class="math inline">\(\mathbf{M}{\zeta}\equiv\mathbf{M}{\zeta^\prime}\)</span>
+          because <span class="math inline">\(\mathbf{F}{\text{id}_y} =
+            \text{id}_{\mathbf{F}{y}}\)</span> for all objects <span class="math inline">\(y\in
+            \mathbf{Fac}[Y]\)</span>. If <span class="math inline">\(\zeta\)</span> and <span
+            class="math inline">\(\zeta^\prime\)</span> are vertically equivalent,
+          then they fit into a diagram as follows. <span class="math display">\[\begin{tikzcd}
+            w \arrow[r, &quot;g_0&quot;] \arrow[d] &amp; y_0 \arrow[d,
+            &quot;u_0&quot;] &amp; x_0 \arrow[l, &quot;f_0&quot;&#39;] \arrow[r,
+            &quot;g_1&quot;] \arrow[d, &quot;v_0&quot;] &amp; y_1 \arrow[d,
+            &quot;u_1&quot;] &amp; \cdots \arrow[l,
+            &quot;f_1&quot;&#39;] &amp; x_k \arrow[l,
+            &quot;f_k&quot;&#39;] \arrow[r, &quot;g_{k+1}&quot;] \arrow[d,
+            &quot;v_k&quot;] &amp; z \arrow[d] \\
+            w \arrow[r, &quot;g&#39;_0&quot;&#39;] \arrow[ru, equals] &amp;
+            y&#39;_0 &amp; x&#39;_0 \arrow[l, &quot;f&#39;_0&quot;]
+            \arrow[r, &quot;g&#39;_1&quot;&#39;] \arrow[ru, equals] \arrow[lu,
+            equals] &amp; y&#39;_1 &amp; \cdots \arrow[l,
+            &quot;f&#39;_1&quot;] \arrow[lu, equals] &amp; x&#39;_k \arrow[l,
+            &quot;f&#39;_k&quot;] \arrow[r, &quot;g&#39;_{k+1}&quot;&#39;]
+            \arrow[lu, equals] \arrow[ru, equals] &amp; z
+            \end{tikzcd}\]</span> By the second compatibility criterion for
+          <span class="math inline">\(\Sigma\)</span> (Definition <a href="#def:fcompatible" data-reference-type="ref"
+            data-reference="def:fcompatible">26</a>), for each backward-pointing
+          column we have <span class="math display">\[\mathbf{F}{u_i}\circ\mathbf{F}{f_i} =
+            \mathbf{F}{f_i^\prime\circ v_i} =
+            \mathbf{F}{f_i^\prime}\circ\mathbf{F}{v_i},\]</span> and similarly, for
+          each forward-pointing column we have <span
+            class="math display">\[\mathbf{F}{u_i}\circ\mathbf{F}{h_i}=\mathbf{F}{h_i^\prime}\circ\mathbf{F}{v_{i-1}},\]</span>
+          with the convention that <span class="math inline">\(v_{-1}=\text{id}_z\)</span> and <span
+            class="math inline">\(u_{k+1}=\text{id}_w\)</span>. These equations
+          yield the relations <span class="math display">\[\begin{aligned}
+            \mathbf{F}{f_i}^{-1} &amp;=
+            \mathbf{F}{v_i}^{-1}\circ\mathbf{F}{f_i^\prime}^{-1}\circ\mathbf{F}{u_i}
+            \\
+            \mathbf{F}{h_i} &amp;=
+            \mathbf{F}{u_i}^{-1}\circ\mathbf{F}{h_i^\prime}\circ\mathbf{F}{v_{i-1}},
+            \end{aligned}\]</span> for all suitable <span class="math inline">\(i\)</span>, and are well-defined since
+          <span class="math inline">\(f_i,u_i,v_i\)</span> are either identities or are
+          in <span class="math inline">\(\Sigma\)</span>, so their <span
+            class="math inline">\(\mathbf{F}{}\)</span>-images are isomorphisms by
+          the first compatibility criterion. Substituting into <span class="math inline">\(\mathbf{M}{\zeta}\)</span>,
+          we have that <span class="math display">\[\begin{aligned}
+            \mathbf{M}{\zeta} &amp;=
+            \mathbf{F}{h_{k+1}}\circ\mathbf{F}{f_k}^{-1}\circ\cdots\circ\mathbf{F}{h_1}\circ\mathbf{F}{f_0}^{-1}\circ\mathbf{F}{h_0}
+            \\
+            &amp;= \left(\mathbf{F}{h_{k+1}^\prime}\circ\mathbf{F}{v_k}
+            \right)\circ\cdots\circ\left(\mathbf{F}{v_0}^{-1}\circ\mathbf{F}{f_0^\prime}^{-1}\circ\mathbf{F}{u_0}
+            \right)\circ\left(\mathbf{F}{u_0}^{-1}\circ\mathbf{F}{h_0^\prime}
+            \right) \\
+            &amp;=
+            \mathbf{F}{h_{k+1}^\prime}\circ\mathbf{F}{f_k^\prime}^{-1}\circ\cdots\circ\mathbf{F}{h_1^\prime}\circ\mathbf{F}{f_0^\prime}^{-1}\circ\mathbf{F}{h_0^\prime}
+            \\
+            &amp;= \mathbf{M}{\zeta^\prime},
+            \end{aligned}\]</span> as required. By construction, each <span
+            class="math inline">\(\mathbf{M}{\zeta}\)</span> is the composite of
+          finitely many injective homomorphisms, and is therefore injective.<br />
+        </p>
+      </li>
+      <li>
+        <p><em>Claim:</em> The 2-morphism <span
+            class="math inline">\({\mathbf{M}{(\zeta^\prime\Rightarrow\zeta)}}\)</span>
+          satisfies <span class="math display">\[\mathbf{M}{\zeta^\prime}(k) =
+            \mathbf{M}{(\zeta^\prime\Rightarrow\zeta)}\cdot\mathbf{M}{\zeta}(k)\cdot\mathbf{M}{(\zeta^\prime\Rightarrow\zeta)}^{-1},\]</span>
+          for all <span class="math inline">\(k\in\mathbf{M}{w}\)</span>.<br />
+          <em>Proof:</em> This follows from a routine calculation.<br />
+        </p>
+      </li>
+      <li>
+        <p><em>Claim:</em> <span class="math inline">\(\mathbf{M}{}\)</span>
+          satisfies the cocycle condition.<br />
+          <em>Proof:</em> If <span class="math inline">\(\zeta_0, \zeta_1\)</span>
+          and <span class="math inline">\(\zeta_2\)</span> are three composable
+          <span class="math inline">\(\Sigma\)</span>-zigzags <span
+            class="math inline">\(\bullet\xrightarrow{\zeta_0}\bullet\xrightarrow{\zeta_1}\bullet\xrightarrow{\zeta_2}\bullet\)</span>,
+          then both <span class="math inline">\(\gamma(\zeta_1,\zeta_2)\cdot\gamma(\zeta_0,\zeta_2\circ\zeta_1)\)</span>
+          and <span
+            class="math inline">\(\mathbf{M}{\zeta_2}(\gamma(\zeta_0,\zeta_1))\cdot\gamma(\zeta_1\circ\zeta_0,\zeta_2)\)</span>
+          are equal to <span
+            class="math display">\[\sigma(\zeta_2)\sigma(\zeta_1)\sigma(\zeta_0)\sigma(\zeta_2\circ\zeta_1\circ\zeta_0)^{-1},\]</span>
+          as desired.
+        </p>
+      </li>
+    </ol>
+    <p>This concludes the argument. ◻</p>
+  </div>
+  <p>It follows from similar computations that <span class="math inline">\(\Psi\)</span> is a well-defined monomorphism.
+  </p>
+  <div class="rem">
+    <p><em>Remark 29</em>. We can define the 2-morphisms <span
+        class="math inline">\({\mathbf{M}{(\zeta^\prime\Rightarrow\zeta)}}\)</span>
+      in a more intuitive way: for any pair of morphisms fitting into a
+      diagram like <a href="#diag:2morphisms" data-reference-type="eqref"
+        data-reference="diag:2morphisms">[diag:2morphisms]</a>, the functor
+      <span class="math inline">\(\mathbf{F}{}\)</span> maps it to a diagram
+      of the form: <span class="math display">\[\label{diag:teardrop}
+        \begin{tikzcd}[row sep=0.5cm, column sep=0.8cm]
+        &amp;
+        {} &amp; &amp;
+        {} &amp; &amp;
+        {} &amp; &amp;
+        {} &amp; &amp;
+        {} &amp; \\
+        \mathbf{F}{w} \arrow[rr,
+        &quot;\mathbf{F}{u_0}\circ\mathbf{F}{h_0}&quot;, bend left=74]
+        \arrow[rr, &quot;\mathbf{F}{h_0^\prime}&quot;&#39;, bend right=74]
+        &amp; &amp; \mathbf{F}{y_0^\prime}
+        &amp; &amp; \mathbf{F}{x_0} \arrow[ll,
+        &quot;\mathbf{F}{u_0}\circ \mathbf{F}{f_0}&quot;&#39;, bend right=74]
+        \arrow[rr, &quot;\mathbf{F}{u_1}\circ\mathbf{F}{h_1}&quot;, bend
+        left=74] \arrow[ll,
+        &quot;\mathbf{F}{f_0^\prime}\circ\mathbf{F}{v_0}&quot;, bend left=74]
+        \arrow[rr, &quot;\mathbf{F}{h_1^\prime}\circ\mathbf{F}{v_0}&quot;&#39;,
+        bend right=74] &amp; &amp; \cdots
+        &amp; &amp; \mathbf{F}{x_k} \arrow[ll,
+        &quot;\mathbf{F}{u_k}\circ\mathbf{F}{ f_k}&quot;&#39;, bend right=74]
+        \arrow[rr, &quot;\mathbf{F}{h_{k+1}}&quot;, bend left=74] \arrow[ll,
+        &quot;\mathbf{F}{f_k^\prime}\circ\mathbf{F}{v_k}&quot;, bend left=74]
+        \arrow[rr,
+        &quot;\mathbf{F}{h_{k+1}^\prime}\circ\mathbf{F}{v_k}&quot;&#39;, bend
+        right=74] &amp; &amp; \mathbf{F}{z} \\
+        &amp;
+        {} \arrow[uu, &quot;t_0&quot;&#39;, Rightarrow] &amp; &amp;
+        {} \arrow[uu, &quot;1_{\mathop{\mathrm{{\text{\rm G}}}}}&quot;&#39;,
+        Rightarrow]
+        &amp; &amp;
+        {} \arrow[uu, &quot;t_1&quot;&#39;, Rightarrow] &amp; &amp; {}
+        \arrow[uu, &quot;1_{\mathop{\mathrm{{\text{\rm G}}}}}&quot;&#39;,
+        Rightarrow]
+        &amp; [] &amp;
+        {} \arrow[uu, &quot;t_{k+1}&quot;&#39;, Rightarrow] &amp;
+        \end{tikzcd}\]</span> where each <span class="math inline">\(t_i\)</span> is the 2-morphism assigned by <span
+        class="math inline">\(\mathbf{F}{}\)</span>. We can define <span
+        class="math inline">\({\mathbf{M}{(\zeta^\prime\Rightarrow\zeta)}}\)</span>
+      to be the horizontal composition <span class="math inline">\(t_0\cdots
+        t_{k+1}\)</span> of the <span class="math inline">\(t_i\)</span>’s
+      across this diagram. This definition is, in fact, equivalent to the one
+      given above, but we omit the details here.
+    </p>
+  </div>
+  <h1 id="sec:equhomequiv">Equivariant Homotopy Equivalence</h1>
+  <p>We are now ready to state our main result, which combines the Basic
+    Construction with discrete Morse theory:</p>
+  <div id="thm:homequiv" class="thm">
+    <p><strong>Theorem 30</strong>. <em>Given a regular simplicial action
+        <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span> on
+        <span class="math inline">\(X\)</span>, let <span class="math inline">\(\mathbf{F}{}\)</span> and <span
+          class="math inline">\(\Phi\)</span> denote the complex of groups and
+        morphism associated to this action, for some choice of lift and
+        transfers. If <span class="math inline">\(\Sigma\)</span> is an <span
+          class="math inline">\(\mathbf{F}{}\)</span>-compatible acyclic partial
+        matching on the quotient <span class="math inline">\(Y\)</span>, then
+        the Morse complex of groups <span
+          class="math inline">\({\mathbf{M}{:}\mathbf{Flo}_\Sigma[{Y}]\to\mathop{\mathrm{\mathbf{Grp}}}}\)</span>
+        and associated monomorphism <span
+          class="math inline">\(\Psi:\mathbf{M}{\to}\mathop{\mathrm{\underline{\mathop{\mathrm{{\text{\rm
+          G}}}}}}}_{\mathbf{Flo}_\Sigma[{Y}]}\)</span> satisfy the following
+        property: the classifying space of the development <span
+          class="math inline">\(|\Delta\mathop{\mathrm{\mathscr{D}}}(\mathbf{M}{,}\Psi)|\)</span>
+        is <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span>-equivariantly homotopy-equivalent to <span class="math inline">\(X\)</span>.</em></p>
+  </div>
+  <p>Throughout this section, we assume that the hypotheses of Theorem <a href="#thm:homequiv" data-reference-type="ref"
+      data-reference="thm:homequiv">30</a> hold. The proof of this theorem
+    follows from a sequence of results, and the approach is summarised in
+    Figure <a href="#fig:thmpf" data-reference-type="ref" data-reference="fig:thmpf">[fig:thmpf]</a>. The high-level
+    strategy is
+    to lift the acyclic partial matching <span class="math inline">\(\Sigma\)</span> on <span
+      class="math inline">\(Y\)</span> to a matching <span class="math inline">\(\tilde{\Sigma}\)</span> in <span
+      class="math inline">\(X\)</span>, to push the <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>-action
+    on <span class="math inline">\(X\)</span> to <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>,
+    and to
+    show that <span class="math inline">\(\mathbf{M}\)</span> arises as the
+    complex of groups for this action, for some choices dependent on the
+    original choices made to construct <span class="math inline">\(\mathbf{F}{}\)</span>.</p>
+  <div id="lem:sigmatilde" class="lemma">
+    <p><strong>Lemma 31</strong>. <em>If <span class="math inline">\(\Sigma=\{f_i:x_i\to y_i\}\)</span> is an acyclic
+        partial matching on the quotient <span class="math inline">\(Y\)</span>,
+        then <span class="math inline">\(\tilde{\Sigma}\coloneqq \bigcup_i
+          \mathop{\mathrm{{\text{\rm G}}}}f_i\)</span> is an acyclic partial
+        matching on <span class="math inline">\(X\)</span>.</em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> We have to prove that <span class="math inline">\(\tilde{\Sigma}\)</span> satisfies the
+      dimension,
+      partition and acyclicity conditions from Definition <a href="#def:acycmatch" data-reference-type="ref"
+        data-reference="def:acycmatch">21</a>. The dimension property follows
+      immediately since <span class="math inline">\(\text{dim}(\tilde{z})=\text{dim}(z)\)</span> for
+      any <span class="math inline">\(\tilde{z}\)</span> satisfying <span
+        class="math inline">\(\mathop{\mathrm{\mathbf{P}}}(\tilde{z})=z\)</span>.</p>
+    <p>Since <span class="math inline">\(\Sigma\)</span> satisfies the
+      partition property, it follows that <span class="math inline">\({\mathop{\mathrm{{\text{\rm G}}}}f_i\cap
+        \mathop{\mathrm{{\text{\rm G}}}}f_j=\emptyset}\)</span> for <span class="math inline">\(i\neq j\)</span>. So it
+      remains to show that for a
+      given <span class="math inline">\(f\in\Sigma\)</span>, the orbit <span
+        class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}f\subset\tilde{\Sigma}\)</span> contains no repeated objects. This
+      could occur in precisely two ways, as illustrated in Figure <a href="#fig:sigmatildetwo" data-reference-type="ref"
+        data-reference="fig:sigmatildetwo">[fig:sigmatildetwo]</a>. Without loss
+      of generality, we can assume that one of the morphisms violating the
+      partition property has source <span class="math inline">\(\lambda(x)\)</span>.</p>
+    <div class="figure*">
+
+    </div>
+    <p>Case 1 cannot occur because there is a unique morphism with a given
+      source in <span class="math inline">\(\lambda(f)\)</span>’s orbit, so
+      <span class="math inline">\(g\lambda(f)=\lambda(f)\)</span>. Suppose we
+      are in Case 2; then <span class="math inline">\(g\sigma(f)^{-1}\lambda(y)=\sigma(f)^{-1}\lambda(y)\)</span>
+      and so <span class="math inline">\(\sigma(f)g\sigma(f)^{-1}\in\mathbf{F}{y}\)</span>.
+      Recall that since <span class="math inline">\(\Sigma\)</span> is <span
+        class="math inline">\(\mathbf{F}{}\)</span>-compatible, the homomorphism
+      <span class="math inline">\(\mathbf{F}{f}\)</span> is an isomorphism for
+      every <span class="math inline">\(f\in\Sigma\)</span>. Hence, there is a
+      <span class="math inline">\(k\in\mathbf{F}{x}\)</span> such that <span
+        class="math display">\[\mathbf{F}{f}(k)=\sigma(f)\cdot
+        k\cdot\sigma(f)^{-1}=\sigma(f)\cdot g\cdot\sigma(f)^{-1}.\]</span> So
+      <span class="math inline">\(k=g\)</span>, and <span class="math inline">\(g\lambda(x)=\lambda(x)\)</span> and so
+      we satisfy
+      the partition property.
+    </p>
+    <p>Suppose that <span class="math inline">\(\tilde{\Sigma}\)</span> is
+      not acyclic, i.e., that there exists a sequence (writing <span class="math inline">\(\tilde{x}_i\)</span> for
+      <span class="math inline">\(\lambda(x_i)\)</span> and similarly for <span class="math inline">\(y_i\)</span>):
+      <span
+        class="math display">\[g_1\sigma(f_1)^{-1}\tilde{y}_1&lt;g_1\tilde{x}_1&gt;g_2\sigma(f_2)^{-1}\tilde{y}_2&lt;\cdots&gt;g_n\sigma(f_n)^{-1}\tilde{y}_n&lt;g_n\tilde{x}_n,\]</span>
+      with <span class="math inline">\(g_n\tilde{x}_n&gt;g_1\sigma(f_1)^{-1}\tilde{y}_1.\)</span>
+      The projection of this sequence <span
+        class="math display">\[y_1&lt;x_1&gt;y_2&lt;x_2&gt;\cdots&gt;y_n&lt;x_n\]</span>
+      to the quotient has the property that <span class="math inline">\(x_n&gt;y_1\)</span>.</p>
+    <p>This projected sequence could contain repeats if any of the <span class="math inline">\(\tilde{x}_i\)</span> are
+      in the same orbit, for
+      example; if, say, the pair <span class="math inline">\(y_i&lt;x_i\)</span> is equal to <span
+        class="math inline">\(y_j&lt;x_j\)</span> for some <span class="math inline">\(i&lt;j\)</span>, remove from the
+      projected
+      sequence the entire portion between these two pairs, inclusive of <span class="math inline">\(y_j&lt;x_j\)</span>.
+    </p>
+    <p>If this sequence has length strictly bigger than one, it contradicts
+      the acyclicity of <span class="math inline">\(\Sigma\)</span>. This
+      reduced sequence will have length equal to one if and only if all pairs
+      involving <span class="math inline">\(\tilde{y}_i\)</span> and<span class="math inline">\(\tilde{x}_i\)</span> lie
+      in the same orbit. But
+      this contradicts condition <a href="#item:grpact2" data-reference-type="eqref"
+        data-reference="item:grpact2">[item:grpact2]</a> from Definition <a href="#def:grpact" data-reference-type="ref"
+        data-reference="def:grpact">[def:grpact]</a>, because this would require
+      the existence of relations of the form <span
+        class="math inline">\(g_1\tilde{y}&lt;\tilde{x}&gt;g_2\tilde{y}\)</span>
+      for some group elements <span class="math inline">\(g_1\)</span> and
+      <span class="math inline">\(g_2\)</span>, i.e., it would require two
+      distinct morphisms in the same orbit with the same source. ◻
+    </p>
+  </div>
+  <p>Using the action on <span class="math inline">\(X\)</span>, we can
+    define an action on <span class="math inline">\(\mathbf{Loc}_{\tilde{\Sigma}}[X]\)</span>: the
+    objects of both categories are the same, and the action on objects
+    remains the same. On morphisms, each <span class="math inline">\(g\in\mathop{\mathrm{{\text{\rm G}}}}\)</span> acts
+    individually on each arrow in the zigzag. More precisely, if <span class="math inline">\(\zeta\)</span> is the <span
+      class="math inline">\(\tilde{\Sigma}\)</span> zigzag <span class="math display">\[\begin{tikzcd}
+      w \arrow[r, &quot;h_0&quot;] &amp; y_0 &amp; x_0 \arrow[l,
+      &quot;f_0&quot;&#39;] \arrow[r, &quot;h_1&quot;] &amp; y_1 &amp; \cdots
+      \arrow[l, &quot;f_1&quot;&#39;] &amp; x_k \arrow[l,
+      &quot;f_k&quot;&#39;] \arrow[r, &quot;h_{k+1}&quot;] &amp; z,
+      \end{tikzcd}\]</span> then the morphism <span class="math inline">\(g\cdot\zeta\)</span> is defined to be <span
+      class="math display">\[\begin{tikzcd}
+      gw \arrow[r, &quot;g\cdot h_0&quot;] &amp; gy_0 &amp; gx_0
+      \arrow[l, &quot;g\cdot f_0&quot;&#39;] \arrow[r, &quot;g\cdot h_1&quot;]
+      &amp; gy_1 &amp; \cdots \arrow[l, &quot;g\cdot f_1&quot;&#39;] &amp;
+      gx_k \arrow[l, &quot;g\cdot f_k&quot;&#39;] \arrow[r, &quot;g\cdot
+      h_{k+1}&quot;] &amp; gz.
+      \end{tikzcd}\]</span> The following result confirms that this action
+    is well-defined, and also that it restricts to <span
+      class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>.</p>
+  <div id="lem:floaction" class="lemma">
+    <p><strong>Lemma 32</strong>. <em>The induced <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span>-action
+        on <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>
+        is well-defined.</em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> First note that the objects of <span
+        class="math inline">\(\mathbf{Loc}_{\tilde{\Sigma}}[X]\)</span> are the
+      same as for <span class="math inline">\(X\)</span>, and so is the action
+      on the objects; for the action to be well-defined on <span
+        class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>, we need
+      that the orbits of critical objects contain only critical objects, and
+      similarly for non-critical objects. But this follows trivially from the
+      fact that <span class="math inline">\(\tilde{\Sigma}\)</span> is <span
+        class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>-invariant by construction.</p>
+    <p>The <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>-invariance of <span class="math inline">\(\tilde{\Sigma}\)</span> also guarantees that <span
+        class="math inline">\(\tilde{\Sigma}\)</span>-zigzags are sent to <span
+        class="math inline">\(\tilde{\Sigma}\)</span>-zigzags under the action.
+      That is, if <span class="math inline">\(\zeta\)</span> is the <span class="math inline">\(\tilde{\Sigma}\)</span>
+      zigzag <span class="math display">\[\begin{tikzcd}
+        w \arrow[r, &quot;h_0&quot;] &amp; y_0 &amp; x_0 \arrow[l,
+        &quot;f_0&quot;&#39;] \arrow[r, &quot;h_1&quot;] &amp; y_1 &amp; \cdots
+        \arrow[l, &quot;f_1&quot;&#39;] &amp; x_k \arrow[l,
+        &quot;f_k&quot;&#39;] \arrow[r, &quot;h_{k+1}&quot;] &amp; z,
+        \end{tikzcd}\]</span> then the morphism <span class="math inline">\(g\cdot\zeta\)</span> <span
+        class="math display">\[\begin{tikzcd}
+        gw \arrow[r, &quot;g\cdot h_0&quot;] &amp; gy_0 &amp; gx_0
+        \arrow[l, &quot;g\cdot f_0&quot;&#39;] \arrow[r, &quot;g\cdot h_1&quot;]
+        &amp; gy_1 &amp; \cdots \arrow[l, &quot;g\cdot f_1&quot;&#39;] &amp;
+        gx_k \arrow[l, &quot;g\cdot f_k&quot;&#39;] \arrow[r, &quot;g\cdot
+        h_{k+1}&quot;] &amp; gz,
+        \end{tikzcd}\]</span> is also a <span class="math inline">\(\tilde{\Sigma}\)</span>-zigzag because each <span
+        class="math inline">\(g\cdot f_i\)</span> is in <span class="math inline">\(\tilde{\Sigma}\)</span> by
+      definition of <span class="math inline">\(\tilde{\Sigma}\)</span>.</p>
+    <p>Next we check that if <span class="math inline">\(\zeta\sim\xi\)</span> then <span
+        class="math inline">\(g\zeta\sim g\xi\)</span>, for any <span
+        class="math inline">\(g\in\mathop{\mathrm{{\text{\rm G}}}}\)</span>. If
+      <span class="math inline">\(\zeta\)</span> and <span class="math inline">\(\xi\)</span> are horizontally
+      equivalent, then
+      their <span class="math inline">\(g\)</span>-images are also
+      horizontally equivalent because <span class="math inline">\(g\cdot
+        \text{id}_z=\text{id}_{g\cdot z}\)</span> for any object <span class="math inline">\(z\)</span>. If <span
+        class="math inline">\(\zeta\)</span> and <span class="math inline">\(\xi\)</span> are vertically equivalent,
+      then they
+      fit into a diagram as follows <span class="math display">\[\begin{tikzcd}
+        w \arrow[d,equals] \arrow[r] &amp; y_0 \arrow[d] &amp; x_0
+        \arrow[d] \arrow[r] \arrow[l] &amp; \cdots \arrow[r]
+        &amp; z \arrow[d,equals] \\
+        w \arrow[r] \arrow[ru,equals] &amp; y_0^\prime &amp; x_0^\prime
+        \arrow[r] \arrow[l] \arrow[lu,equals] \arrow[ru,equals] &amp; \cdots
+        \arrow[r] &amp; z \arrow[lu,equals]
+        \end{tikzcd}\]</span> which maps to the following under <span class="math inline">\(g\)</span>: <span
+        class="math display">\[\begin{tikzcd}
+        g\cdot w \arrow[d,equals] \arrow[r] &amp; g\cdot y_0 \arrow[d]
+        &amp; g\cdot x_0 \arrow[d] \arrow[r] \arrow[l] &amp;
+        \cdots \arrow[r] &amp; g\cdot z \arrow[d,equals] \\
+        g\cdot w \arrow[r] \arrow[ru,equals] &amp; g\cdot
+        y_0^\prime &amp; g\cdot x_0^\prime \arrow[r] \arrow[l]
+        \arrow[lu,equals] \arrow[ru,equals] &amp; \cdots \arrow[r] &amp; g\cdot
+        z \arrow[lu,equals]
+        \end{tikzcd}\]</span> The equality of composites in each square
+      follows from the fact that the original action on <span class="math inline">\(X\)</span> respects the partial
+      order on
+      morphisms, and each composite consists of morphisms from <span class="math inline">\(X\)</span>. Hence, the
+      morphism <span class="math inline">\(g\cdot\zeta\)</span> is vertically equivalent to
+      <span class="math inline">\(g\cdot\xi\)</span> and so the induced action
+      is well-defined on equivalence classes of morphisms.
+    </p>
+    <p>Lastly, we need to check that the induced action still satisfies the
+      two properties in Definition <a href="#def:grpact" data-reference-type="ref"
+        data-reference="def:grpact">[def:grpact]</a>.
+      Suppose that <span class="math inline">\(\zeta\)</span> is the morphism
+      <span class="math display">\[\begin{tikzcd}
+        w \arrow[r, &quot;h_0&quot;] &amp; y_0 &amp; x_0 \arrow[l,
+        &quot;f_0&quot;&#39;] \arrow[r, &quot;h_1&quot;] &amp; y_1 &amp; \cdots
+        \arrow[l, &quot;f_1&quot;&#39;] &amp; x_k \arrow[l,
+        &quot;f_k&quot;&#39;] \arrow[r, &quot;h_{k+1}&quot;] &amp; z,
+        \end{tikzcd}\]</span> and suppose also that <span class="math inline">\(g\cdot w=z\)</span>. Then the morphism
+      <span class="math inline">\(g\cdot\zeta\)</span> <span class="math display">\[\begin{tikzcd}
+        z \arrow[r, &quot;g\cdot h_0&quot;] &amp; gy_0 &amp; gx_0
+        \arrow[l, &quot;g\cdot f_0&quot;&#39;] \arrow[r, &quot;g\cdot h_1&quot;]
+        &amp; gy_1 &amp; \cdots \arrow[l, &quot;g\cdot f_1&quot;&#39;] &amp;
+        gx_k \arrow[l, &quot;g\cdot f_k&quot;&#39;] \arrow[r, &quot;g\cdot
+        h_{k+1}&quot;] &amp; gz
+        \end{tikzcd}\]</span> projects under the orbit functor to a cycle in
+      <span class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]\)</span>,
+      contradicting the acyclicity of <span class="math inline">\(\Sigma\)</span>.
+    </p>
+    <p>If instead that there is some <span class="math inline">\(g\in\mathop{\mathrm{{\text{\rm G}}}}\)</span>
+      fixing <span class="math inline">\(w\)</span>, then <span class="math inline">\(gh_0:w\to gy_0\)</span>. But,
+      since the group
+      action on <span class="math inline">\(X\)</span> satisfies property <a href="#item:grpact2"
+        data-reference-type="eqref" data-reference="item:grpact2">[item:grpact2]</a> of Definition <a href="#def:grpact"
+        data-reference-type="ref" data-reference="def:grpact">[def:grpact]</a>, we must have that <span
+        class="math inline">\(g h_0=h_0\)</span>, and in particular that <span class="math inline">\(gy_0=y_0\)</span>.
+      Since <span class="math inline">\(\tilde{\Sigma}\)</span> satisfies the partition
+      property, we have <span class="math inline">\(gx_0=x_0\)</span> and
+      <span class="math inline">\(gf_0=f_0\)</span>, because <span class="math inline">\(y_0\)</span> cannot appear as
+      the target of any
+      other morphism in <span class="math inline">\(\tilde{\Sigma}\)</span>.
+      Applying this argument to the rest of the chain of morphisms forming
+      <span class="math inline">\(\zeta\)</span> implies that, if <span class="math inline">\(g\)</span> fixes <span
+        class="math inline">\(w\)</span>, then <span class="math inline">\(g\)</span> also fixes <span
+        class="math inline">\(\zeta\)</span>. ◻
+    </p>
+  </div>
+  <p>We will construct a functor <span class="math inline">\(\mathop{\mathrm{\mathbf{E}}}\)</span> between the
+    quotient <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]
+      /\mathop{\mathrm{{\text{\rm G}}}}\)</span> and the flow category on the
+    original quotient <span class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]\)</span>, and show it is
+    an isomorphism of categories. This will enable us to relate our Morse
+    complex of groups and the canonical complex of groups over the orbit
+    space of the action on <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>.</p>
+  <p>Let <span class="math inline">\(\mathop{\mathrm{\mathbf{P}}}\)</span>
+    denote the usual orbit functor. Using <span class="math inline">\([\bullet]_X\)</span> to denote orbit classes,
+    define <span
+      class="math inline">\(\mathbf{\tilde{P}}:\mathbf{Flo}_{\tilde{\Sigma}}[X]\to\mathbf{Flo}_\Sigma[{Y}]\)</span>
+    to be the functor mapping each <span class="math inline">\(\tilde{\Sigma}\)</span>-zigzag <span
+      class="math display">\[\tilde{h}_{k+1}\circ
+      \tilde{f}_{k}^{-1}\circ\cdots\circ \tilde{f}_{0}^{-1}\circ
+      \tilde{h}_0\]</span> to the <span class="math inline">\(\Sigma\)</span>-zigzag <span
+      class="math display">\[[\tilde{h}_{k+1}]_X\circ
+      [\tilde{f}_{k}^{-1}]_X\circ\cdots\circ [\tilde{f}_{0}^{-1}]_X\circ
+      [\tilde{h}_0]_X.\]</span></p>
+  <div id="lemma:ptilde" class="lemma">
+    <p><strong>Lemma 33</strong>. <em><span class="math inline">\(\mathbf{\tilde{P}}\)</span> is a surjective LP
+        functor.</em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> It is a routine calculation to check that <span class="math inline">\(\tilde{\mathbf{P}}\)</span>
+      is an LP functor.
+      Every constituent morphism <span class="math inline">\({h:x\to
+        y}\)</span> in a <span class="math inline">\(\Sigma\)</span>-zigzag can
+      be lifted to a morphism in its orbit class with prescribed source <span
+        class="math inline">\(g\lambda(x)\)</span>, for any <span class="math inline">\(g\in\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>.
+      Also, any morphism in <span class="math inline">\(\Sigma\)</span> is
+      lifted to a morphism in <span class="math inline">\(\tilde{\Sigma}\)</span>. Hence, we can find a
+      <span class="math inline">\(\tilde{\Sigma}\)</span> morphism <span class="math inline">\(\tilde{\zeta}\)</span> in
+      <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span> such
+      that <span class="math inline">\(\tilde{\mathbf{P}}(\tilde{\zeta})=\zeta\)</span>. ◻
+    </p>
+  </div>
+  <p><span class="math display">\[\begin{tikzcd}[column sep=small]
+      &amp;
+      {\mathbf{Flo}_{\tilde{\Sigma}}[X]} \arrow[ldd,
+      &quot;\mathbf{P}&quot;&#39;, two heads] \arrow[rdd,
+      &quot;\mathbf{\tilde{P}}&quot;] &amp; \\
+      &amp; &amp; \\
+      {\mathbf{Flo}_{\tilde{\Sigma}}[X]/\mathop{\mathrm{{\text{\rm G}}}}}
+      \arrow[rr, &quot;\mathbf{E}&quot;&#39;]
+      &amp; &amp;
+      \mathbf{Flo}_\Sigma[{Y}]
+      \end{tikzcd}\]</span></p>
+  <p>Observe that the sets of objects in <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]/G\)</span> and
+    <span class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]\)</span> are the
+    same; first note that the <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>-action
+    on <span class="math inline">\(X\)</span> and <span class="math inline">\(\mathbf{Loc}_{\tilde{\Sigma}}[X]\)</span>
+    is the
+    same on objects<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, so the sets of
+    orbit classes in
+    <span class="math inline">\(\mathbf{Loc}_{\tilde{\Sigma}}[X]/\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span> and <span class="math inline">\(\mathbf{Loc}_{\Sigma}[Y]\)</span> are the same.
+    Secondly, it is clear from the construction of <span class="math inline">\(\tilde{\Sigma}\)</span> that an object
+    <span class="math inline">\([x]\in\mathbf{Loc}_{\Sigma}[Y]\)</span> is <span
+      class="math inline">\(\Sigma\)</span>-critical if and only if <span class="math inline">\(gx\)</span> is <span
+      class="math inline">\(\tilde{\Sigma}\)</span>-critical for every <span
+      class="math inline">\(g\in\mathop{\mathrm{{\text{\rm G}}}}\)</span>.
+    Hence, when we restrict to the flow categories, the sets of classes of
+    objects are identical.
+  </p>
+  <p>Thus, we define <span class="math inline">\(\mathbf{E}:\mathbf{Flo}_{\tilde{\Sigma}}[X]/\mathop{\mathrm{{\text{\rm
+      G}}}}\to\mathbf{Flo}_\Sigma[{Y}]\)</span> to be the identity on objects.
+    Since <span class="math inline">\(\mathbf{P}\)</span> is surjective, for
+    each orbit class of morphisms <span class="math inline">\([\zeta]\in\mathbf{Flo}_{\tilde{\Sigma}}[X]
+      /\mathop{\mathrm{{\text{\rm G}}}}\)</span> there exists a morphism <span
+      class="math inline">\(\tilde{\zeta}\in\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>
+    projecting to <span class="math inline">\(\zeta\)</span>. Define <span
+      class="math display">\[\mathbf{E}([\zeta])\coloneqq\mathbf{\tilde{P}}(\tilde{\zeta}).\]</span></p>
+  <p>Clearly <span
+      class="math inline">\(\mathop{\mathrm{\mathbf{E}}}(\text{id}_x)=\text{id}_{\mathop{\mathrm{\mathbf{E}}}x}=\text{id}_x\)</span>
+    because the only morphisms in <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>
+    projecting to the identity are identities on <span class="math inline">\(g\lambda(x)\)</span>, for all <span
+      class="math inline">\(g\in\mathop{\mathrm{{\text{\rm G}}}}\)</span>. Any
+    such map projects to <span class="math inline">\(\text{id}_x\)</span>
+    under <span class="math inline">\(\tilde{\mathbf{P}}\)</span>. Also,
+    <span
+      class="math inline">\(\mathop{\mathrm{\mathbf{E}}}([\zeta\circ\zeta&#39;])=\mathop{\mathrm{\mathbf{E}}}([\zeta])\circ\mathop{\mathrm{\mathbf{E}}}([\zeta&#39;])\)</span>,
+    and any lifted morphism projecting to <span class="math inline">\(\zeta\circ\zeta&#39;\)</span> can be separated
+    into composable choices of <span class="math inline">\(\tilde{\zeta}\)</span> and <span
+      class="math inline">\(\tilde{\zeta&#39;}\)</span>. Whilst choices made
+    separately for <span
+      class="math inline">\(\mathop{\mathrm{\mathbf{E}}}([\zeta])\circ\mathop{\mathrm{\mathbf{E}}}([\zeta&#39;])\)</span>
+    may not be composable in <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>, they
+    will lie in the same respective orbits, and so will project to the same
+    morphisms under <span class="math inline">\(\tilde{\mathbf{P}}\)</span>.
+  </p>
+  <div id="prop:catiso" class="prop">
+    <p><strong>Proposition 34</strong>. <em>The functor <span
+          class="math inline">\(\mathop{\mathrm{\mathbf{E}}}:\mathbf{Flo}_{\tilde{\Sigma}}[X]/\mathop{\mathrm{{\text{\rm
+          G}}}}\to\mathbf{Flo}_\Sigma[Y]\)</span> is a well-defined isomorphism of
+        categories.</em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> This follows from the following claims:</p>
+    <ol>
+      <li>
+        <p><em>Claim:</em> The functor <span class="math inline">\(\mathop{\mathrm{\mathbf{E}}}\)</span> is
+          independent of choice of <span class="math inline">\(\tilde{\zeta}\)</span> in <span
+            class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>.<br />
+          <em>Proof:</em> If <span class="math inline">\(\tilde{\zeta}\)</span>
+          and <span class="math inline">\(\tilde{\zeta}^\prime\)</span> are two
+          <span class="math inline">\(\tilde{\Sigma}\)</span>-zigzags such that
+          <span class="math inline">\(\mathbf{P}(\tilde{\zeta})=\mathbf{P}(\tilde{\zeta}^\prime)\)</span>,
+          then there exists a group element <span class="math inline">\(g\in\mathop{\mathrm{{\text{\rm G}}}}\)</span>
+          such
+          that <span class="math inline">\(g\cdot\tilde{\zeta}=\tilde{\zeta}^\prime\)</span>.
+          But <span
+            class="math inline">\({\tilde{\mathbf{P}}(g\cdot\tilde{\zeta})=\tilde{\mathbf{P}}(\tilde{\zeta})}\)</span>
+          because each forward or backwards pointing arrow comprising <span
+            class="math inline">\(g\cdot\tilde{\zeta}\)</span> and <span class="math inline">\(\tilde{\zeta}\)</span>
+          are in the same orbit
+          class.<span id="claim:1" label="claim:1"></span>
+        </p>
+      </li>
+      <li>
+        <p><em>Claim:</em> If <span class="math inline">\(\zeta\)</span> and
+          <span class="math inline">\(\xi\)</span> are representatives of the same
+          orbit class, then <span
+            class="math inline">\({\mathop{\mathrm{\mathbf{E}}}([\zeta])=\mathop{\mathrm{\mathbf{E}}}([\xi])}\)</span>.<br />
+          <em>Proof:</em> We can either make the same choice of lifted morphism in
+          <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>,
+          or note that by the argument in the proof of Claim <a href="#claim:1" data-reference-type="eqref"
+            data-reference="claim:1">[claim:1]</a>, two
+          different choices in the same orbit map to the same morphism under <span
+            class="math inline">\(\tilde{\mathbf{P}}\)</span>.
+        </p>
+      </li>
+      <li>
+        <p><em>Claim:</em> The functor <span class="math inline">\(\mathop{\mathrm{\mathbf{E}}}\)</span> is
+          independent of choice of <span class="math inline">\(\tilde{\Sigma}\)</span>-equivalence class of <span
+            class="math inline">\(\tilde{\zeta}\)</span>.<br />
+          <em>Proof:</em> Suppose first that <span class="math inline">\(\tilde{\zeta}\)</span> and <span
+            class="math inline">\(\tilde{\zeta}^\prime\)</span> are horizontally
+          equivalent. By definition, they differ by an identity morphisms, which
+          maps to an identity morphism under <span class="math inline">\(\tilde{\mathbf{P}}\)</span>. Hence, <span
+            class="math inline">\(\tilde{\mathbf{P}}(\tilde{\zeta})\)</span> is
+          horizontally equivalent to <span class="math inline">\(\tilde{\mathbf{P}}(\tilde{\zeta}^\prime)\)</span>
+          in <span class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]\)</span>.
+        </p>
+        <p>Suppose instead that <span class="math inline">\(\tilde{\zeta}\)</span> and <span
+            class="math inline">\(\tilde{\zeta}^\prime\)</span> are vertically
+          equivalent, i.e. they fit into a ladder diagram, which is mapped by
+          <span class="math inline">\(\tilde{\mathbf{P}}\)</span> to a diagram of
+          the same form because <span class="math inline">\(\tilde{\mathbf{P}}\)</span> is an LP-functor
+          (Lemma <a href="#lemma:ptilde" data-reference-type="ref" data-reference="lemma:ptilde">33</a>). So <span
+            class="math inline">\(\tilde{\mathbf{P}}(\tilde{\zeta})\)</span> and
+          <span class="math inline">\(\tilde{\mathbf{P}}(\tilde{\zeta}^\prime)\)</span>
+          are vertically equivalent in <span class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]\)</span>.
+        </p>
+      </li>
+      <li>
+        <p><em>Claim:</em> The functor <span class="math inline">\(\mathop{\mathrm{\mathbf{E}}}\)</span> is an
+          isomorphism.<br />
+          <em>Proof:</em> We prove this by showing that <span
+            class="math inline">\(\mathop{\mathrm{\mathbf{E}}}\)</span> is a
+          bijection on the sets of objects, and <span class="math inline">\(\mathop{\mathrm{\mathbf{E}}}\)</span> is an
+          order-preserving bijection on each hom-set. The bijection on objects
+          follows immediately since <span class="math inline">\(\mathop{\mathrm{\mathbf{E}}}\)</span> is the
+          identity on objects. <span class="math inline">\(\mathop{\mathrm{\mathbf{E}}}\)</span> is injective
+          because: <span class="math display">\[\begin{aligned}
+            \mathop{\mathrm{\mathbf{E}}}([\zeta])=\mathop{\mathrm{\mathbf{E}}}([\zeta^\prime])&amp;\implies
+            \tilde{\mathbf{P}}(\zeta)=\tilde{\mathbf{P}}(\zeta) \\
+            &amp;\implies \text{$\tilde{\zeta}$ and $\tilde{\zeta}^\prime$ are
+            in the same orbit class}\\ &amp;\implies
+            \tilde{\zeta}\sim\tilde{\zeta}^\prime\\ &amp;\implies
+            [\zeta]=[\zeta^\prime].
+            \end{aligned}\]</span> Surjectivity follows from the fact that both
+          <span class="math inline">\(\mathbf{P}\)</span> and <span class="math inline">\(\tilde{\mathbf{P}}\)</span>
+          are surjective.
+          Similarly, both functors are order-preserving, so <span
+            class="math inline">\(\mathop{\mathrm{\mathbf{E}}}\)</span> is also
+          order-preserving.
+        </p>
+      </li>
+    </ol>
+    <p>Hence, the categories <span class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]\)</span> and <span
+        class="math inline">\(\textbf{Flo}_{\tilde{\Sigma}}[X]/\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span> are isomorphic. ◻</p>
+  </div>
+  <p>Proposition <a href="#prop:catiso" data-reference-type="ref" data-reference="prop:catiso">34</a> tells us that
+    finding an acyclic
+    partial matching on the quotient and passing to the discrete flow
+    category is the same (up to isomorphism) as finding an equivariant
+    acyclic partial matching in the original space and taking the quotient
+    of this larger flow category.</p>
+  <p>This gives us the tools to relate the Morse complex of groups over
+    <span class="math inline">\(\mathbf{Flo}_\Sigma[{X}]\)</span> to a
+    complex of groups over the quotient <span
+      class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]/\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>. In particular, we will use Lemma <a href="#lem:cogcommute" data-reference-type="ref"
+      data-reference="lem:cogcommute">20</a> to find a complex of groups over
+    <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]/\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span> associated to the <span class="math inline">\(\mathop{\mathrm{{\text{\rm G}}}}\)</span>-action
+    on <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>
+    so that its development is isomorphic to that of <span class="math inline">\(\mathbf{M}{}\)</span>.
+  </p>
+  <p>Let <span class="math inline">\(\lambda\)</span> denote the choice of
+    lift function made to construct <span class="math inline">\(\mathbf{F}{}\)</span>.</p>
+  <div id="prop:liftscommute" class="prop">
+    <p><strong>Proposition 35</strong>. <em>There is a choice of lifts and
+        transfers for the canonical complex of groups <span class="math inline">\(\mathbf{M}^\prime\)</span> and
+        monomorphism <span class="math inline">\(\Psi&#39;\)</span> associated to the action on
+        <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>,
+        such that the following diagram commutes:</em></p>
+    <p><em><span class="math display">\[\begin{tikzcd}
+          {\mathbf{Flo}_{\tilde{\Sigma}}[X]/\mathop{\mathrm{{\text{\rm G}}}}}
+          \arrow[rr, &quot;\mathop{\mathrm{\mathbf{E}}}&quot;] \arrow[rdd,
+          &quot;\mathbf{M&#39;}&quot;&#39;] &amp; &amp;
+          \mathbf{Flo}_\Sigma[{Y}] \arrow[ldd, &quot;\mathbf{M}&quot;] \\
+          &amp;
+          {} &amp; \\
+          &amp;
+          \mathop{\mathrm{\mathbf{Grp}}}&amp;
+          \end{tikzcd}\]</span> and <span
+          class="math inline">\(\Psi&#39;_\zeta=\Psi_{\mathop{\mathrm{\mathbf{E}}}\zeta}\)</span>
+        for every morphism <span
+          class="math inline">\(\zeta\in\mathbf{Flo}_{\tilde{\Sigma}}[X]/\mathop{\mathrm{{\text{\rm
+          G}}}}\)</span>.</em></p>
+  </div>
+  <div class="proof">
+    <p><em>Proof.</em> We define a lift function <span class="math inline">\(\mu\)</span> for <span
+        class="math inline">\(\mathbf{M}{}&#39;\)</span>: for any object <span class="math inline">\([x]\)</span>, set
+      <span class="math inline">\(\mu([x])\coloneqq
+        \lambda(\mathop{\mathrm{\mathbf{E}}}([x]))\)</span>. For any morphism
+      <span class="math inline">\(\zeta\)</span> with representative <span class="math display">\[\begin{tikzcd}
+        w \arrow[r, &quot;h_0&quot;] &amp; y_0 &amp; x_0 \arrow[l,
+        &quot;f_0&quot;&#39;] \arrow[r, &quot;h_1&quot;] &amp; y_1 &amp; \cdots
+        \arrow[l, &quot;f_1&quot;&#39;] &amp; x_k \arrow[l,
+        &quot;f_k&quot;&#39;] \arrow[r, &quot;h_{k+1}&quot;] &amp; z,
+        \end{tikzcd}\]</span> choose the transfer element <span class="math inline">\(\sigma\coloneqq
+        \sigma(\mathop{\mathrm{\mathbf{E}}}\zeta)\)</span>, which is (by
+      definition of the Morse complex of groups), <span class="math display">\[\sigma(\mathop{\mathrm{\mathbf{E}}}\zeta)
+        =
+        \sigma(h_{k+1})\sigma(f_k)^{-1}\cdots
+        \sigma(h_1)\sigma(f_0)^{-1}\sigma(h_0).\]</span> We need to check that
+      <span class="math inline">\(\sigma\)</span> is a valid choice of
+      transfer element, i.e., that the morphism <span
+        class="math inline">\({\lambda(\zeta):\lambda(w)\to\sigma^{-1}\lambda(z)}\)</span>
+      is the unique <span class="math inline">\(\tilde{\Sigma}\)</span>-zigzag
+      with source <span class="math inline">\(\lambda(w)\)</span> such that
+      <span class="math inline">\(\mathbf{P}(\lambda(\zeta))=\zeta\)</span>.
+    </p>
+    <p>To simplify notation, write <span class="math display">\[\begin{aligned}
+        \tilde{u} &amp;\coloneqq \lambda(u),\ \text{for any object $u$}\\
+        \alpha_i &amp;\coloneqq
+        \sigma(h_0)^{-1}\sigma(f_0)\sigma(h_1)^{-1}\cdots \sigma(h_i)^{-1},\
+        \text{and} \\
+        \beta_i &amp;\coloneqq
+        \sigma(h_0)^{-1}\sigma(f_0)\sigma(h_1)^{-1}\cdots
+        \sigma(h_i)^{-1}\sigma(f_{i}).\end{aligned}\]</span> Note that <span class="math inline">\(\beta_{k+1} =
+        \sigma^{-1}\)</span>. Each <span class="math inline">\(\beta_i\)</span> is such that <span
+        class="math inline">\(\beta_i\tilde{h}_i:\beta_i\tilde{x}_{i-1}\to\alpha_{i+1}\tilde{y}_{i+1}\)</span>
+      is the unique morphism with source <span class="math inline">\(\beta_i\tilde{x}_{i-1}\)</span> projecting to
+      <span class="math inline">\(h_i\)</span> under <span class="math inline">\(\mathop{\mathrm{\mathbf{P}}}\)</span>.
+      Similarly,
+      each <span class="math inline">\(\alpha_i\)</span> is such that <span
+        class="math inline">\(\alpha_i\tilde{f}_i^{-1}:\alpha_i\tilde{x}_{i-1}\to\beta_i\tilde{y}_i\)</span>
+      is the unique morphism in the orbit of <span class="math inline">\(\tilde{f}_i^{-1}\)</span> with source <span
+        class="math inline">\(\alpha_i\tilde{x}_{i-1}\)</span>. This follows
+      from the definition of each transfer element <span class="math inline">\(\sigma(h_i)\)</span> and <span
+        class="math inline">\(\sigma(f_i)\)</span>.
+    </p>
+    <p>Hence, <span class="math inline">\(\tilde{\zeta}\)</span> can be
+      written explicitly as the composition: <span class="math display">\[\begin{tikzcd}
+        \tilde{w} \arrow[r, &quot;\tilde{h}_0&quot;] &amp; \alpha_0\tilde{y}_0
+        \arrow[r, &quot;\alpha_0\tilde{f}_0^{-1}&quot;] &amp; \beta_0\tilde{x}_0
+        \arrow[r, &quot;\beta_0\tilde{h}_1&quot;] &amp; \alpha_1\tilde{y}_1
+        \arrow[r, &quot;\alpha_1\tilde{f}_1^{-1}&quot;] &amp; \cdots \arrow[r,
+        &quot;\alpha_k\tilde{f}_k^{-1}&quot;] &amp; \beta_k\tilde{x}_k \arrow[r,
+        &quot;\beta_k\tilde{h}_k&quot;] &amp; \alpha_{k+1}\tilde{z},
+        \end{tikzcd}\]</span></p>
+    <p>which is a morphism such that <span class="math inline">\(\mathbf{P}(\tilde{\zeta})=\zeta\)</span>, with
+      source <span class="math inline">\(\lambda(w)\)</span> and target <span
+        class="math inline">\(\sigma^{-1}\lambda(z)\)</span>, as required. Its
+      uniqueness follows from the uniqueness of each constituent morphism in
+      the composition. By Proposition <a href="#prop:morsecogwd" data-reference-type="ref"
+        data-reference="prop:morsecogwd">28</a>, this
+      is well-defined on equivalence classes.</p>
+    <p>The commutativity of the diagram then follows immediately from this
+      construction, because the 1-morphisms, 2-morphisms and twisting elements
+      for <span class="math inline">\(\mathbf{M}&#39;\)</span> and <span class="math inline">\(\mathbf{M}{}\)</span> are
+      constructed in the same
+      way from the transfer elements, and the maps on objects are the
+      same.</p>
+    <p>To see that <span class="math inline">\(\Phi_\zeta =
+        \Phi_{\mathop{\mathrm{\mathbf{E}}}\zeta}\)</span> for any morphism <span class="math inline">\(\zeta\)</span>,
+      note again that it is defined as
+      conjugation by the transfer element corresponding to <span class="math inline">\(\zeta\)</span>. But this was
+      chosen precisely so
+      that <span class="math inline">\(\sigma(\zeta)=\sigma(\mathop{\mathrm{\mathbf{E}}}\zeta)\)</span>. ◻</p>
+  </div>
+  <div class="rem">
+    <p><em>Remark 36</em>. Note that by definition of the induced action on
+      <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>,
+      the localisation and inclusion functors <span class="math inline">\(\mathbf{L}_{\tilde{\Sigma}}\)</span> and <span
+        class="math inline">\(\mathbf{J}_{\tilde{\Sigma}}\)</span> are both
+      <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>-equivariant.
+    </p>
+  </div>
+  <div class="proof">
+    <p><em>Proof of Theorem <a href="#thm:homequiv" data-reference-type="ref" data-reference="thm:homequiv">30</a>.</em>
+      Given <span class="math inline">\(\mathbf{F}{}\)</span> and <span class="math inline">\(\Phi\)</span>, we can
+      construct the Morse complex
+      of groups <span class="math inline">\(\mathbf{M}{}\)</span> and
+      associated monomorphism <span class="math inline">\(\Psi\)</span>, as
+      described in Section <a href="#sec:morsecog" data-reference-type="ref" data-reference="sec:morsecog">7</a>. Since
+      <span class="math inline">\(\Sigma\)</span> is <span class="math inline">\(\mathbf{F}{}\)</span>-compatible, we
+      can build an
+      equivariant acyclic partial matching <span class="math inline">\(\tilde{\Sigma}\)</span> on <span
+        class="math inline">\(X\)</span> (Lemma <a href="#lem:sigmatilde" data-reference-type="ref"
+        data-reference="lem:sigmatilde">31</a>).
+      Furthermore, the <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>-action on <span class="math inline">\(X\)</span> pushes
+      to an action on <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>
+      (Lemma <a href="#lem:floaction" data-reference-type="ref" data-reference="lem:floaction">32</a>), and the quotient
+      <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]/\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span> is isomorphic to <span class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]\)</span> (Proposition <a
+        href="#prop:catiso" data-reference-type="ref" data-reference="prop:catiso">34</a>). There is a choice of lifts
+      and
+      transfers to build the canonical complex of groups <span class="math inline">\(\mathbf{M}^\prime\)</span> and
+      morphism <span class="math inline">\(\Psi^\prime\)</span> associated to the action on
+      <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>
+      making the diagram <span class="math display">\[\begin{tikzcd}
+        {\mathbf{Flo}_{\tilde{\Sigma}}[X]/\mathop{\mathrm{{\text{\rm G}}}}}
+        \arrow[rr, &quot;\mathop{\mathrm{\mathbf{E}}}&quot;] \arrow[rdd,
+        &quot;\mathbf{\tilde{M}}&quot;&#39;] &amp; &amp;
+        \mathbf{Flo}_\Sigma[{Y}] \arrow[ldd, &quot;\mathbf{M}&quot;] \\
+        &amp;
+        {} &amp; \\
+        &amp;
+        \mathop{\mathrm{\mathbf{Grp}}}&amp;
+        \end{tikzcd}\]</span> commute (Proposition <a href="#prop:liftscommute" data-reference-type="ref"
+        data-reference="prop:liftscommute">35</a>).
+      Hence, <span
+        class="math inline">\({\mathop{\mathrm{\mathscr{D}}}(\mathbf{M}{},\Psi)\cong\mathop{\mathrm{\mathscr{D}}}(\mathbf{M}{}^\prime,\Psi^\prime)}\)</span>
+      as categories (Lemma <a href="#lem:cogcommute" data-reference-type="ref" data-reference="lem:cogcommute">20</a>).
+      By the Basic Construction
+      (Proposition <a href="#prop:bascon" data-reference-type="ref" data-reference="prop:bascon">16</a>), <span
+        class="math inline">\(\mathop{\mathrm{\mathscr{D}}}(\mathbf{M}{}^\prime,\Psi^\prime)\)</span>
+      is <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>-equivariantly isomorphic to <span
+        class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>, and the
+      latter has classifying space homotopy-equivalent to <span class="math inline">\(X\)</span> (Theorem <a
+        href="#thm:flocat" data-reference-type="ref" data-reference="thm:flocat">25</a>). Since the
+      localisation and inclusion functors, <span class="math inline">\(\mathbf{L}_{\tilde{\Sigma}}\)</span> and <span
+        class="math inline">\(\mathbf{J}_{\tilde{\Sigma}}\)</span>, are <span
+        class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>-equivariant with respect to the induced <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>-action
+      on <span class="math inline">\(\mathbf{Loc}_{\tilde{\Sigma}}[X]\)</span>
+      and <span class="math inline">\(\mathbf{Flo}_{\tilde{\Sigma}}[X]\)</span>, the
+      classifying space <span class="math inline">\(|\Delta\mathop{\mathrm{\mathscr{D}}}(\mathbf{M}{},\Psi)|\)</span>
+      of the development of the Morse complex of groups and its associated
+      monomorphism is <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+        G}}}}\)</span>-equivariantly homotopy-equivalent to <span class="math inline">\(X\)</span>, as required. ◻
+    </p>
+  </div>
+  <h1 id="sec:example">An Example</h1>
+  <p>We present a detailed example to demonstrate the entire process, from
+    a regular action on a simplicial complex to the higher development of
+    the associated discrete Morse complex about an acyclic partial matching
+    on the orbit space.<br />
+    Let <span class="math inline">\(X\)</span> be the triangulation of an
+    annulus, as show in Figure <a href="#fig:action" data-reference-type="ref"
+      data-reference="fig:action">[fig:action]</a>,
+    equipped with the (regular) left action of <span class="math inline">\(D_8=\langle r,s\ |\
+      r^4=s^2=e,r^3s=sr\rangle\)</span>, where <span class="math inline">\(r\)</span> is the anticlockwise rotation by
+    <span class="math inline">\(\pi/2\)</span> and <span class="math inline">\(s\)</span> is a reflection in the <span
+      class="math inline">\(y\)</span>-axis. The orbit space <span class="math inline">\(Y\)</span> in this case is a
+    fundamental domain,
+    <em>i.e.</em> a subcomplex of <span class="math inline">\(X\)</span>; it
+    is a simplicial complex with four 0-simplices <span class="math inline">\(\{v_0,...,v_3\}\)</span>, five 1-simplices
+    <span class="math inline">\(\{u_0,...,u_4\}\)</span> and two 2-simplices <span
+      class="math inline">\(\{w_0,w_1\}\)</span>.<br />
+  </p>
+  <p>To construct the complex of groups associated to this action, as well
+    as the morphism of complexes of groups, we make a choice of lifts and
+    transfers; for each <span class="math inline">\(y\in Y\)</span> we
+    choose a simplex <span class="math inline">\(\overline{y}\in X\)</span>
+    such that <span class="math inline">\(p(\overline{y})=y\)</span>, and
+    these choices are highlighted on the left of Figure <a href="#fig:cog" data-reference-type="ref"
+      data-reference="fig:cog">[fig:cog]</a>. For
+    each pair <span class="math inline">\(x\to y\)</span> of simplices
+    related by a face relation in <span class="math inline">\(Y\)</span>
+    (<em>i.e. </em>for each pair of simplices related by a morphism in <span
+      class="math inline">\(\mathbf{Fac}[Y]\)</span>) we choose a group
+    element <span class="math inline">\(g\in\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span> such that <span class="math inline">\(g^{-1}\cdot\overline{y}\)</span> is a face of
+    <span class="math inline">\(\overline{x}\)</span> in <span class="math inline">\(X\)</span>. For example, <span
+      class="math inline">\(\overline{w_1}\)</span> and <span class="math inline">\(\overline{u_4}\)</span> are adjacent
+    in <span class="math inline">\(X\)</span> so their transfer is trivial; however,
+    <span class="math inline">\(r^2s\cdot\overline{u_1}\)</span> is a face
+    of <span class="math inline">\(\overline{w_0}\)</span> (whereas <span class="math inline">\(\overline{u_1}\)</span>
+    is not), so in the complex
+    of groups, the morphism between the stabilisers <span class="math inline">\(\mathbf{F}{}_{w_0} \to
+      \mathbf{F}{}_{u_1}\)</span>
+    is conjugation by <span class="math inline">\((r^2s)^{-1}=r^2s\)</span>.
+    After making all of these choices, we obtain a complex of groups over
+    <span class="math inline">\(Y\)</span>, as illustrated in Figure <a href="#fig:cog" data-reference-type="ref"
+      data-reference="fig:cog">[fig:cog]</a>. The morphism <span
+      class="math inline">\(\Phi:\mathbf{F}{}\to\mathop{\mathrm{\underline{\mathop{\mathrm{{\text{\rm
+      G}}}}}}}\)</span> follows immediately from the choice of <span class="math inline">\(\overline{y}\)</span> for
+    each <span class="math inline">\(y\in Y\)</span> and transfers.<br />
+  </p>
+  <p>Equipped with a complex of groups and a morphism into <span
+      class="math inline">\(\mathop{\mathrm{\underline{\mathop{\mathrm{{\text{\rm
+      G}}}}}}}\)</span>, we have enough data to use Proposition <a href="#prop:bascon" data-reference-type="ref"
+      data-reference="prop:bascon">16</a> to build a simplicial complex that
+    is <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>-equivariantly isomorphic to <span class="math inline">\(X\)</span>. However, we are looking to
+    reduce the
+    size of <span class="math inline">\(Y\)</span> by finding an acyclic
+    partial matching on <span class="math inline">\(Y\)</span> before
+    building a complex of groups to reconstruct. We choose the smallest
+    non-trivial matching consisting of a single pairing <span class="math inline">\(\Sigma=\{f:u_4\rightarrow w_1
+      \}\)</span>. This
+    leads to the discrete flow category displayed on the right hand side of
+    Figure <a href="#fig:flowcat" data-reference-type="ref" data-reference="fig:flowcat">[fig:flowcat]</a>. The lifts of
+    <span class="math inline">\(u_4\)</span> and <span class="math inline">\(w_1\)</span> are adjacent in <span
+      class="math inline">\(X\)</span>, yielding a compatible matching. On the
+    right, the discrete flow category <span class="math inline">\(\mathbf{Flo}_\Sigma[{Y}]\)</span>; there are no
+    objects corresponding to cells <span class="math inline">\(u_4\)</span>
+    or <span class="math inline">\(w_1\)</span> as these are not critical.
+    Each morphism is an equivalence class of zigzags under the relations
+    given in Definition <a href="#def:catloc" data-reference-type="ref" data-reference="def:catloc">23</a>, with
+    representative zigzags
+    decorating the morphisms above. There is a (non-trivial) poset of
+    morphisms for each of the pairs of objects <span class="math inline">\((w_0,v_2)\)</span> and <span
+      class="math inline">\((w_0,v_0)\)</span>.<br />
+  </p>
+  <p>The discrete flow category is the domain of our Morse complex of
+    groups <span class="math inline">\(\mathbf{M}{}\)</span>, which is
+    constructed in full at the top of Figure <a href="#fig:morsecog" data-reference-type="ref"
+      data-reference="fig:morsecog">[fig:morsecog]</a>. At the bottom, we see
+    part of its higher development, whose classifying space is <span class="math inline">\(\mathop{\mathrm{{\text{\rm
+      G}}}}\)</span>-equivariantly homotopy equivalent to <span class="math inline">\(X\)</span>.</p>
+  <div class="thebibliography">
+    <p><span>10</span></p>
+    <p>M. F. Atiyah and R. Bott. The <span>Yang-Mills</span> equations over
+      <span>R</span>iemann surfaces. , 308(523–615):523–615, 1982.
+    </p>
+    <p>G. E. Bredon. . Number 46 in Pure and Applied Mathematics. Academic
+      Press, 1972.</p>
+    <p>M. Bridson and A. H<span>ä</span>fliger. . Grundlehren der
+      mathematischen Wissenschaften. Springer Berlin Heidelberg, 2011.</p>
+    <p>L. Carbone, V. Nanda, and Y. Naqvi. Equivariant simplicial
+      reconstruction. , 4(4):532–552, 2020.</p>
+    <p>M. K. Chari. On discrete <span>M</span>orse functions and
+      combinatorial decompositions. , 217(1-3):101–113, 2000.</p>
+    <p>C.-H. Cho and H. Hong. Orbifold morse–smale–witten complexes. , 25,
+      2014.</p>
+    <p>R. Cohen, J. Jones, and G. Segal. Morse theory and classifying
+      spaces. , 1995.</p>
+    <p>J. M. Corson. Complexes of groups. , 3(65):199–224, 1992.</p>
+    <p>R. Forman. Morse theory for cell complexes. , 134:90–145, 1998.</p>
+    <p>R. Freij. Equivariant discrete morse theory. , 309(12):3821–3829,
+      2009.</p>
+    <p>A. Haefliger. Extensions of complexes of groups. , 42(1-2):275–311,
+      1992.</p>
+    <p>R. Hepworth. orse inequalities for orbifold cohomology. ,
+      9:1105–1175, 2009.</p>
+    <p>R. Hepworth. Vector fields and flows on differentiable stacks. ,
+      22:542–587, 2009.</p>
+    <p>N. Hingston. Equivariant <span>M</span>orse theory and closed
+      geodesics. , 19(1):85–116, 1984.</p>
+    <p>F. C. Kirwan. , volume 31 of <span><em>Mathematical
+          Notes</em></span>. Princeton University Press, 1984.</p>
+    <p>S. Lim and A. Thomas. Covering theory for complexes of groups. ,
+      212(7):1632–1663, 2008.</p>
+    <p>V. Nanda. Discrete <span>M</span>orse theory and localization. ,
+      223(2):459–488, 2019.</p>
+  </div>
+  <section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+    <hr />
+    <ol>
+      <li id="fn1" role="doc-endnote">
+        <p>Recall that these two categories have
+          the same objects, i.e., elements of the poset <span class="math inline">\(\mathbf{Fac}[X]\)</span>.<a
+            href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p>
+      </li>
+    </ol>
+  </section>
+</body>
+
+</html>
