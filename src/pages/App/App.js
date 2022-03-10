@@ -1,11 +1,11 @@
-// import Main from '../Main/Main';
-// import HTMLparse from "../HTMLparse/HTMLparse";
-import Scrap from "../Scrap/Scrap";
+import DisplayProof from '../DisplayProof/DisplayProof';
+import DisplayDefRef from '../DisplayDefRef/DisplayDefRef';
+
 function App() {
   return (
     <div className="container">
-      {/* <Main/> */}
-      <Scrap/>
+      {/* <DisplayProof/> */}
+      <DisplayDefRef/>
     </div>
   );
 }

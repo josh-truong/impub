@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ProofHeader.module.css';
+import styles from '../css/ProofHeader.module.css';
 
 var classNames = require('classnames');
 

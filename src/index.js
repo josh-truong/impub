@@ -6,7 +6,7 @@ import RenderLatex from './components/Latex/RenderLatex';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RenderLatex>
+      <RenderLatex>
       <App />
     </RenderLatex>
   </React.StrictMode>,

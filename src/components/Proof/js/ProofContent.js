@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './ProofContent.module.css';
+import styles from '../css/ProofContent.module.css';
 
 var classNames = require('classnames');
 

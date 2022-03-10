@@ -1,11 +1,8 @@
 import React from 'react';
-import Proof from '../../components/Proof/Proof';
-import ProofHeader from '../../components/ProofHeader/ProofHeader';
-import ProofContent from '../../components/ProofContent/ProofContent';
-import ProofSubsection from '../../components/ProofSubsection/ProofSubsection';
-import Latex from '../../components/Latex/Latex'
+import Latex from "../../components/Latex/Latex"
+import {Proof, ProofHeader, ProofContent, ProofSubsection} from '../../components/Proof/ProofModule'
 
-function Main() {
+function DisplayProof() {
   return (
     <div>
         <Proof>
@@ -98,4 +95,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default DisplayProof;

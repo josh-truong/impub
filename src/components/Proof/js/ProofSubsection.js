@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from './ProofSubsection.module.css';
+import styles from '../css/ProofSubsection.module.css';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 var classNames = require('classnames');
