@@ -18,9 +18,10 @@ const Latex = (props) => {
       }
     });
   }
+  
   return (
     <>
-      {props.expr}
+      {props.expr ? props.expr : props.children}
     </>
   )
 }
