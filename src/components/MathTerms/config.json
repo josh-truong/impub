@@ -1,0 +1,17 @@
+{
+    "_comment": "Custom math term components must be added to valid_terms",
+    "ref": "Ref",
+    "valid_terms": [
+        "Corollary",
+        "Definition",
+        "Example",
+        "Lemma",
+        "Notation",
+        "Observation",
+        "Proposition",
+        "Remark",
+        "Theorem"
+    ]
+}
+
+

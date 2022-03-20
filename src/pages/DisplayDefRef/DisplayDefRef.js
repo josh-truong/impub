@@ -1,15 +1,15 @@
 import React from 'react'
 
 import {Corollary, Definition, Example, Lemma, Notation, Observation,
-        ParentSection, Proposition, Ref, Remark, Theorem}
-    from '../../components/DefineSection/DefineSection'
+  MathTerms, Proposition, Ref, Remark, Theorem}
+    from '../../components/MathTerms/MathTerms'
 
 import Latex from "../../components/Latex/Latex"
 
 const DisplayDefRef = () => {
   return (
     <div>
-        <ParentSection>
+        <MathTerms>
             {/* <Corollary name="Corollary">3-Tensor Isomorphism reduces to Symmetric Matrix Space Isometry</Corollary>
             <Definition name="Definition">(Constructive version of Baer’s correspondence for matrix groups).</Definition>
             <Example name="Example">Example <Latex expr="$4 \cdot 4$"/> </Example>
@@ -22,7 +22,7 @@ const DisplayDefRef = () => {
             
             <Ref name="Corollary"/>
             <Ref name="Example"/> */}
-
+            
             <Proposition id="7.3">
               3-Tensor Isomorphism reduces to Alternating Matrix Space Isometry. Symbolically, isomorphism in U ⊗ V ⊗ W reduces to isomorphism in V ′ ⊗ V ′ ⊗ W ′
               (or even to∧2 V ′ ⊗ W ), where ℓ = dim U ≤ n = dim V and m = dim W , dim V ′ = ℓ + 7n + 3 and dim W ′ = m + ℓ(2n + 1) + n(4n + 2).
@@ -49,7 +49,7 @@ const DisplayDefRef = () => {
             nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
-        </ParentSection>
+        </MathTerms>
     </div>
   )
 }

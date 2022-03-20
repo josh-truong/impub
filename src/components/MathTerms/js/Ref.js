@@ -5,6 +5,7 @@ const Ref = (props) => {
   function popup(e) {
     setToggle(!toggle);
   }
+
   return (
     <div onMouseEnter={popup} onMouseLeave={popup} style={{display:"inline"}} key={props.ref_number}>
       {toggle && <dialog style={{zIndex:"1", backgroundColor:"white"}} open>{props.context}</dialog>}
