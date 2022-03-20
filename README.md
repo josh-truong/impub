@@ -29,18 +29,42 @@
    - Use Latex component along with text
   ```
     <Latex expr="Latex expressions"/>
+    or
+    <Latex>
+        Latex expressions
+    </Latex>
   ```
   ```
     <ProofHeader>
         Assume that <Latex expr="$x < 5$"/>.
     </ProofHeader>
-    <ProofContent>
-        Assume that <Latex expr="$x < 5$"/>.
-    </ProofContent>
+    <ProofHeader>
+        Assume that <Latex>$x < 5$</Latex>.
+    </ProofHeader>
   ```
+### MathTerms
+ - Must include parent component
 
- - RenderLatex
-   - Used to render latex, developer use only
+```
+    <MathTerms><MathTerms\>
+```
+
+ - Terms to use under parent section
+```
+    <Corollary id="unique section name">[Content]</Corollary>
+    <Definition id="unique section name">[Content]</Definition>
+    <Example id="unique section name">[Content]</Example>
+    <Lemma id="unique section name">[Content]</Lemma>
+    <Notation id="unique section name">[Content]</Notation>
+    <Observation id="unique section name">[Content]</Observation>
+    <Proposition id="unique section name">[Content]</Proposition>
+    <Remark id="unique section name">[Content]</Remark>
+    <Theorem id="unique section name">[Content]</Theorem>
+```
+ - To refer sections while in parent section
+```
+    <Ref id="unique section name"/>
+```
 
 ---
 ## Available Scripts
