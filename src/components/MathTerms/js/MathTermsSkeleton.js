@@ -1,10 +1,17 @@
 import React from 'react'
+import { set_dict } from '../js/GlobalVar'
 
 const MathTermsSkeleton = (props) => {
-    props = props.children
+    
+    var id = props.children.id
+    var term_name = props.id
+    var content = props.children.children
+    
+    set_dict(id, content);
+    
     return (
-        <div key={props.section_number} id={props.id}>
-            <b>{props.section_name} {props.id}. </b>{props.children}
+        <div key={id} id={id}>
+            <b>{term_name} {id}. </b>{content}
         </div>
     )
 }

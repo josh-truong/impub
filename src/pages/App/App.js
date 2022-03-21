@@ -1,5 +1,5 @@
-import DisplayProof from '../DisplayProof/DisplayProof';
-import DisplayDefRef from '../DisplayDefRef/DisplayDefRef';
+// import DisplayProof from '../DisplayProof/DisplayProof';
+// import DisplayDefRef from '../DisplayDefRef/DisplayDefRef';
 import Features from '../Features/Features';
 // import InteractiveCalculator from "../InteractiveCalculator/InteractiveCalculator";
 function App() {

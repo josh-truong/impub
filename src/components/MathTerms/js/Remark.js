@@ -3,7 +3,7 @@ import MathTermsSkeleton from './MathTermsSkeleton'
 
 const Remark = (props) => {
   return (
-    <MathTermsSkeleton>
+    <MathTermsSkeleton id="Remark">
       {props}
     </MathTermsSkeleton>
   )

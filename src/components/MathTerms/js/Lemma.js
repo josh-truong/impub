@@ -3,7 +3,7 @@ import MathTermsSkeleton from './MathTermsSkeleton'
 
 const Lemma = (props) => {
   return (
-    <MathTermsSkeleton>
+    <MathTermsSkeleton id="Lemma">
       {props}
     </MathTermsSkeleton>
   )

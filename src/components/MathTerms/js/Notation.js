@@ -3,7 +3,7 @@ import MathTermsSkeleton from './MathTermsSkeleton'
 
 const Notation = (props) => {
   return (
-    <MathTermsSkeleton>
+    <MathTermsSkeleton id="Notation">
       {props}
     </MathTermsSkeleton>
   )

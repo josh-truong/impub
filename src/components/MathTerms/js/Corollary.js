@@ -3,7 +3,7 @@ import MathTermsSkeleton from './MathTermsSkeleton'
 
 const Corollary = (props) => {
   return (
-    <MathTermsSkeleton>
+    <MathTermsSkeleton id="Corollary">
       {props}
     </MathTermsSkeleton>
   )

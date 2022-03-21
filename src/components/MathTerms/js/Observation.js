@@ -3,7 +3,7 @@ import MathTermsSkeleton from './MathTermsSkeleton'
 
 const Observation = (props) => {
   return (
-    <MathTermsSkeleton>
+    <MathTermsSkeleton id="Observation">
       {props}
     </MathTermsSkeleton>
   )
