@@ -29,6 +29,7 @@ const Features = () => {
             </Lemma>
             
             <Proof>
+                <Definition id="4.5">Nested Definition</Definition>
                 <ProofHeader> Proof. </ProofHeader>
                 <ProofSubsection>
                     <ProofHeader>

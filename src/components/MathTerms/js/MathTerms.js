@@ -2,7 +2,7 @@ import React from 'react'
 import config from '../config.json'
 import Ref from './Ref'
 
-// function LinkRef(grandparent, glossary) {
+// function LinkRef(grandparent, glossary, acc=[]) {
 //   if (grandparent.hasOwnProperty('props') && grandparent.props.hasOwnProperty('children') && typeof grandparent.props.children === 'object') {
 //     var parent = grandparent.props.children
 //     if (parent instanceof Array) {
@@ -10,20 +10,36 @@ import Ref from './Ref'
 //         if (typeof child !== 'string') {
 //           if (child.type.name === 'Ref') {
 //             var section_id = child.props.id
-            
-//             return (
-//               <div style={{display:"inline"}}>
-//                 {/* <Ref id={section_id} ref_number="1" context={glossary[section_id]} /> */}
-//                 {React.cloneElement(child, {ref_number:"1", context:glossary[section_id]})}
-//               </div>
-//             );
+//             LinkRef(child, glossary, acc.push({section_id:section_id, ref_number:"1", context:glossary[section_id]}))
+//             // return (
+//             //   <div style={{display:"inline"}}>
+//             //     {/* <Ref id={section_id} ref_number="1" context={glossary[section_id]} /> */}
+//             //     {React.cloneElement(child, {ref_number:"1", context:glossary[section_id]})}
+//             //   </div>
+//             // );
 //           }
 //           LinkRef(child, glossary)
 //         }
 //       })
 //     }
 //   }
+//   return acc
 // }
+
+var dictionary = {
+  "Corollary": {
+    "7.3": "7.3 definitions",
+    "7.5": "7.5 definitions"
+  },
+  "Proposition": {
+    "3.2": "3.2 definitions",
+    "3.5": "3.5 definitions",
+    "4.1": "4.1 definitions"
+  },
+  "Lemma": {
+    "6.5": "6.5 definitions"
+  }
+}
 
 
 const MathTerms = (props) => {
@@ -38,29 +54,7 @@ const MathTerms = (props) => {
   var glossary = {}
 
 
-  function LinkRef(grandparent) {
-    if (grandparent.hasOwnProperty('props') && grandparent.props.hasOwnProperty('children') && typeof grandparent.props.children === 'object') {
-      var parent = grandparent.props.children
-      if (parent instanceof Array) {
-        parent.map((child) => {
-          if (typeof child !== 'string') {
-            if (child.type.name === 'Ref') {
-              var section_id = child.props.id
-              
-              return (
-                <div style={{display:"inline"}}>
-                  {/* <Ref id={section_id} ref_number="1" context={glossary[section_id]} /> */}
-                  <div>Hello</div>
-                  {/* {React.cloneElement(child, {ref_number:"1", context:glossary[section_id]})} */}
-                </div>
-              );
-            }
-            LinkRef(child, glossary)
-          }
-        })
-      }
-    }
-  }
+
 
   return (
     <div>
@@ -74,6 +68,8 @@ const MathTerms = (props) => {
           try { section_id = child.props.id } catch { section_id = "" }
           try { section_children = child.props.children } catch { section_children = "" }
 
+
+ 
           
           // Add definition to glossary
           if (section_name in section_count) {
@@ -87,7 +83,7 @@ const MathTerms = (props) => {
           }
 
 
-          LinkRef(child, glossary)
+          // console.log(LinkRef(child, glossary))
 
           // // Link Ref to glossary
           // if (section_name in ref_count) {
