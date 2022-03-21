@@ -43,13 +43,6 @@
     </ProofHeader>
   ```
 ### MathTerms
- - Must include parent component
-
-```
-    <MathTerms><MathTerms\>
-```
-
- - Terms to use under parent section
 ```
     <Corollary id="unique section name">[Content]</Corollary>
     <Definition id="unique section name">[Content]</Definition>
@@ -61,7 +54,7 @@
     <Remark id="unique section name">[Content]</Remark>
     <Theorem id="unique section name">[Content]</Theorem>
 ```
- - To refer sections while in parent section
+ - To refer sections
 ```
     <Ref id="unique section name"/>
 ```
