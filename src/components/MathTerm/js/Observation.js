@@ -1,11 +1,11 @@
 import React from 'react'
-import MathTermsSkeleton from './MathTermsSkeleton'
+import MathTermSkeleton from './MathTermSkeleton'
 
 const Observation = (props) => {
   return (
-    <MathTermsSkeleton id="Observation">
+    <MathTermSkeleton id="Observation">
       {props}
-    </MathTermsSkeleton>
+    </MathTermSkeleton>
   )
 }
 

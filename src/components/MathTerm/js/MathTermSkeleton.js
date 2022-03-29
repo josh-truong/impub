@@ -1,7 +1,7 @@
 import React from 'react'
-import { set_dict } from '../js/GlobalVar'
+import { set_dict } from './GlobalVar'
 
-const MathTermsSkeleton = (props) => {
+const MathTermSkeleton = (props) => {
     
     var id = props.children.id
     var term_name = props.id
@@ -16,4 +16,4 @@ const MathTermsSkeleton = (props) => {
     )
 }
 
-export default MathTermsSkeleton
+export default MathTermSkeleton

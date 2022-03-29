@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { get_dict } from '../js/GlobalVar'
+import { get_dict } from './GlobalVar'
 
 const Ref = (props) => {
   const [toggle, setToggle] = useState(false);

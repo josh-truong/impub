@@ -2,7 +2,7 @@ import React from 'react'
 
 import {Corollary, Definition, Example, Lemma, Notation,
         Observation, Proposition, Ref, Remark, Theorem}
-    from '../../components/MathTerms/MathTerms'
+    from '../../components/MathTerm/MathTerm'
 
 import Latex from "../../components/Latex/Latex"
 

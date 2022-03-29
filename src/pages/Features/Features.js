@@ -3,7 +3,7 @@ import Latex from "../../components/Latex/Latex"
 import {Proof, ProofHeader, ProofContent, ProofSubsection} from '../../components/Proof/ProofModule'
 import {Corollary, Definition, Example, Lemma, Notation,
         Observation, Proposition, Ref, Remark, Theorem}
-from '../../components/MathTerms/MathTerms'
+from '../../components/MathTerm/MathTerm'
 
 
 const Features = () => {
