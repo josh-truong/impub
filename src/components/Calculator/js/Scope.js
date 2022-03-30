@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types';
-import { env, getScope, setScope } from './GlobalVar'
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 import Slider from './Slider'
 import Latex from '../../Latex/Latex'
@@ -13,8 +12,8 @@ var math = require('mathjs')
 const Scope = () => {
   const [error, setError] = useState(false)
   const [scope, setScope] = useState({ k:0, n:0 }) // Variable scope
-  const [mathJsExpr, setMathJsExpr] = useState('k*n+1') // math js expression to evaluate
-  const [latexExpr, setLatexExpr] = useState(math.parse(mathJsExpr).toTex()) // Convert math js expression to tex
+  const mathJsExpr = 'k*n+1' // math js expression to evaluate
+  const latexExpr = math.parse(mathJsExpr).toTex() // Convert math js expression to tex
   const [result, setResult] = useState(0) // Store evaluated expression
   let expr;
 
@@ -32,7 +31,7 @@ const Scope = () => {
     try { setResult(expr.evaluate(scope)) } // Evaluate expression
     catch(error) { setError(true); console.log(error) }
   }
-  
+
   return (
     <div>
       {
@@ -46,30 +45,3 @@ const Scope = () => {
 }
 
 export default Scope
-
-
-
-// const Scope = (props) => {
-//   const [error, setError] = useState(false)
-//   const [scope, setScope] = useState({}) // Variable scope
-//   const [mathJsExpr, setMathJsExpr] = useState('') // math js expression to evaluate
-//   const [latexExpr, setLatexExpr] = useState('') // Convert math js expression to tex
-//   const [result, setResult] = useState(0) // Store evaluated expression
-
-//   const id = props.id
-//   const variable = props.variable
-//   const expr = props.expr
-
-//   // variable.map((key) => scope[key] = 0 )
-//   // setScope(id, scope);
-  
-
-  
-//   return (
-//     <div>
-      
-//     </div>
-//   )
-// }
-
-// export default Scope
