@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types';
+import { env, getScope, setScope } from './GlobalVar'
 
 import Slider from './Slider'
 import Latex from '../../Latex/Latex'
@@ -15,7 +16,7 @@ const Scope = () => {
   const [mathJsExpr, setMathJsExpr] = useState('k*n+1') // math js expression to evaluate
   const [latexExpr, setLatexExpr] = useState(math.parse(mathJsExpr).toTex()) // Convert math js expression to tex
   const [result, setResult] = useState(0) // Store evaluated expression
-
+  let expr;
 
 
   function handleCallBack(e) {
@@ -24,17 +25,12 @@ const Scope = () => {
       ...prevState,
       [key]: e[key] // Update variable value
     }))
-
     
-    let expr;
     try { expr = math.parse(mathJsExpr).compile() } // Compile expression
     catch(error) { setError(true); console.log(error) }
 
-
-    try { // Evaluate given expression
-      const output = expr.evaluate(scope) // Evaluate expression
-      setResult(output)
-    } catch(error) { setError(true); console.log(error) }
+    try { setResult(expr.evaluate(scope)) } // Evaluate expression
+    catch(error) { setError(true); console.log(error) }
   }
   
   return (
@@ -53,19 +49,27 @@ export default Scope
 
 
 
-/*
-  <Scope>
-    - Input
-      - Array of variables
-      - Expression to evaluate
+// const Scope = (props) => {
+//   const [error, setError] = useState(false)
+//   const [scope, setScope] = useState({}) // Variable scope
+//   const [mathJsExpr, setMathJsExpr] = useState('') // math js expression to evaluate
+//   const [latexExpr, setLatexExpr] = useState('') // Convert math js expression to tex
+//   const [result, setResult] = useState(0) // Store evaluated expression
 
-    - Process
-      - How to refer a variable within scope
-        - Can global variables work?
+//   const id = props.id
+//   const variable = props.variable
+//   const expr = props.expr
 
-  - If not all variables are present and math.evaluate returns compile error display only latex and change stated variable to number
+//   // variable.map((key) => scope[key] = 0 )
+//   // setScope(id, scope);
+  
 
+  
+//   return (
+//     <div>
+      
+//     </div>
+//   )
+// }
 
-
-
-*/
+// export default Scope
