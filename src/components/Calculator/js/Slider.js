@@ -20,6 +20,11 @@ const Slider = ({id, value, min=0, max=1, step=1}) => {
 
         var obj = {}
         obj[id] = val
+
+        // Use for Evaluate
+        // value(val) // Return value to parent, must have "value" as param for callback
+
+        // Use for Scope
         value(obj) // Return value to parent, must have "value" as param for callback
     }, [val])
 
