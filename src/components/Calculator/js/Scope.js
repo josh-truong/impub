@@ -36,7 +36,7 @@ const Scope = () => {
     <div>
       {
         Object.keys(scope).map((key) => (
-          <Slider key={key} id={key} value={handleCallBack} max={10} />
+          <Slider key={key} id={key} value={handleCallBack} min={1} max={10} />
         ))
       }
       <Latex expr={`$${latexExpr} = $`} /> {error ? <span style={{color:'red'}}>{result}</span> : result }
