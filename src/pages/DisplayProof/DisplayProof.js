@@ -1,6 +1,6 @@
 import React from 'react';
-import Latex from "../../components/Latex/Latex"
-import {Proof, ProofHeader, ProofContent, ProofSubsection} from '../../components/Proof/ProofModule'
+import Latex from "../../components/Latex"
+import {Proof, ProofHeader, ProofContent, ProofSubsection} from '../../components/Proof'
 
 function DisplayProof() {
   return (

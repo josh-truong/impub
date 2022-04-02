@@ -2,17 +2,37 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import Slider from './Slider'
-import Latex from '../../Latex/Latex'
+import Latex from '../../Latex'
 var math = require('mathjs')
 
 /*
   Reference:
   - https://mathjs.org/docs/expressions/parsing.html
 */
+
+function recursive_items(dict, variables={}) { // tail recursion method
+  for (const [key,value] of Object.entries(dict)) {
+    if (key === 'args' && dict[key] instanceof Array) {
+      dict[key].forEach(elt => {
+        if (elt.hasOwnProperty('name')) {
+          variables[Object.values(elt)[0]] = 0
+        }
+        else if (elt.hasOwnProperty('content')) {
+          recursive_items(elt.content, variables)
+        } else {
+          recursive_items(elt, variables)
+        }
+      })
+    }
+  }
+  return variables
+}
+
 const Scope = () => {
-  const [error, setError] = useState(false)
-  const [scope, setScope] = useState({ k:0, n:0 }) // Variable scope
   const mathJsExpr = 'k*n+1' // math js expression to evaluate
+  const [error, setError] = useState(false)
+  const [scope, setScope] = useState(recursive_items(math.parse(mathJsExpr))) // Variable scope
+  
   const latexExpr = math.parse(mathJsExpr).toTex() // Convert math js expression to tex
   const [result, setResult] = useState(0) // Store evaluated expression
   let expr;

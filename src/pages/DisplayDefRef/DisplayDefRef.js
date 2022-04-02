@@ -2,9 +2,9 @@ import React from 'react'
 
 import {Corollary, Definition, Example, Lemma, Notation,
         Observation, Proposition, Ref, Remark, Theorem}
-    from '../../components/MathTerm/MathTerm'
+    from '../../components/MathTerm'
 
-import Latex from "../../components/Latex/Latex"
+import Latex from "../../components/Latex"
 
 const DisplayDefRef = () => {
   return (

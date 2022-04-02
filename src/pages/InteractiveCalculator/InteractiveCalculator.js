@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
-import { Var, Evaluate, Scope } from "../../components/Calculator/Calculator"
+import { Var, Evaluate, Scope } from "../../components/Calculator"
+
+
 const InteractiveCalculator = () => {
   const [val, setVal] = useState({});
   
-
   return (
     <div>
       <Scope />

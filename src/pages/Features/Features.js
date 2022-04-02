@@ -1,9 +1,9 @@
 import React from 'react'
-import Latex from "../../components/Latex/Latex"
-import {Proof, ProofHeader, ProofContent, ProofSubsection} from '../../components/Proof/ProofModule'
+import Latex from "../../components/Latex"
+import {Proof, ProofHeader, ProofContent, ProofSubsection} from '../../components/Proof'
 import {Corollary, Definition, Example, Lemma, Notation,
         Observation, Proposition, Ref, Remark, Theorem}
-from '../../components/MathTerm/MathTerm'
+from '../../components/MathTerm'
 
 
 const Features = () => {
