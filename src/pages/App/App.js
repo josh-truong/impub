@@ -1,20 +1,26 @@
 import { DisplayProof, DisplayDefRef, Features, InteractiveCalculator }
   from '../index.js';
 import  { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../../actions/index'
-
+import { ADD_SCOPE, UPDATE_VARIABLE } from '../../constants'
 
 function App() {
-  const counter = useSelector(state => state.counterReducer)
-  const isLogged = useSelector(state => state.loggedReducer)
+  const calculator = useSelector(state => state.calcReducer)
   const dispatch = useDispatch();
   return (
     <div className="container">
-      <h1>Counter {counter}</h1>
-      <button onClick={() => dispatch(increment())}>+</button>
-      <button onClick={() => dispatch(decrement())}>-</button>
 
-      {isLogged ? <h3>Oops</h3> : ''}
+      <button onClick={() => dispatch({ type: ADD_SCOPE, scope:'eq1', expr:'k*n+1'})}>
+        Add Scope1
+      </button>
+      <button onClick={() => dispatch({ type: ADD_SCOPE, scope:'eq2', expr:'k*n+1'})}>
+        Add Scope2
+      </button>
+      <button onClick={() => dispatch({ type: UPDATE_VARIABLE, scope:'eq1', var:'k', val:10 })}>
+        Update Variable
+      </button>
+      <button onClick={() => dispatch({ type: UPDATE_VARIABLE, scope:'eq2', var:'k', val:100 })}>
+        Update Variable
+      </button>
 
 
       {/* <DisplayProof/> */}
