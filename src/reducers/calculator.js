@@ -1,4 +1,3 @@
-import { re } from "mathjs"
 import { ADD_SCOPE, EVAL_EXPR, UPDATE_VARIABLE } from "../constants"
 var math = require('mathjs')
 
