@@ -6,8 +6,8 @@ function App() {
     <div className="container">
       {/* <DisplayProof/> */}
       {/* <DisplayDefRef/> */}
-      {/* <Features/> */}
-      <InteractiveCalculator/>
+      <Features/>
+      {/* <InteractiveCalculator/> */}
     </div>
   );
 }

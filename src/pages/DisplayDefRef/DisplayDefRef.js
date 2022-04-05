@@ -42,7 +42,7 @@ const DisplayDefRef = () => {
       
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <i>Proof.</i> Combine Proposition <Ref id="7.3"/> with Lemma <Ref id="7.5"/>. Note that for this direction
-      of the reduction, we only need the function <Latex expr="$G$"/> from Lemma <Ref id="7.5"/>, which can be computed
+      of the reduction, we only need the function <Latex expr="$G$"/> from Lemma <Ref id="7.7"/>, which can be computed
       in time <Latex expr="$poly(n,\log p)$"/>.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
       incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
       aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
