@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
-const Slider = ({id, value, min=0, max=1, step=1}) => {
-    const [toggle, setToggle] = useState(true);
+const Slider = ({ id, value, min = 0, max = 1, step = 1 }) => {
+    const [toggle, setToggle] = useState(false);
     const [val, setVal] = useState(min);
     min = Number(min) ? Number(min) : 0
     max = Number(max) ? Number(max) : 1
 
-    function toggleInputBox(e) {
-        setToggle(!toggle)
-    }
+    function popup(e) { setToggle(!toggle) }
 
     useEffect(() => { // useEffect for better update
         var num = Number(val) ? Number(val) : min
@@ -23,26 +21,24 @@ const Slider = ({id, value, min=0, max=1, step=1}) => {
     }, [val])
 
     return (
-        <table>
-            <tbody>
-                <tr>
-                    <td>
+        <div onMouseEnter={popup} onMouseLeave={popup} style={{ display: 'inline', cursor: 'pointer' }} key={id}>
+            {toggle ?
+                <div className='row' style={{ display: 'inline-block' }}>
+                    <div className='col'>
                         {id} = {
-                            toggle ? 
-                            <span style={{cursor:'pointer', color:'#39FF14'}} onChange={e => setVal(e.target.value)} onClick={toggleInputBox} onDoubleClick={toggleInputBox}>
-                                {val}
-                            </span> :
-                            <input onChange={e => setVal(e.target.value)} onDoubleClick={toggleInputBox}/>
+                            <input style={{ width: '60px', height: '20px' }} value={val}
+                                onChange={e => setVal(e.target.value)} onDoubleClick={popup} />
                         }
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="range" min={min} max={max} value={val} onChange={e => setVal(e.target.value)} step={step} />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                    </div>
+                    <div className='col'>
+                        <input type="range"
+                            onChange={e => setVal(e.target.value)}
+                            min={min} max={max} value={val} step={step} />
+                    </div>
+                </div>
+                : <span style={{ color: '#39FF14' }}>{val}</span>
+            }
+        </div>
     )
 }
 
