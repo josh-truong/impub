@@ -2,7 +2,7 @@ import { ADD_SCOPE, EVAL_EXPR, UPDATE_VARIABLE } from "../constants"
 import getVariables from "./helpers/getVariables";
 var math = require('mathjs')
 
-const calcReducer = (state={}, action) => {
+const CalcReducer = (state={}, action) => {
     switch (action.type) {
         case ADD_SCOPE:
             const mathJsExpr = action.expr; // math js expression to evaluate
@@ -34,7 +34,7 @@ const calcReducer = (state={}, action) => {
             } catch (error) { throw `Scope ${action.scope} has not been declared!` }
             if (status) { throw `Variable ${action.var} does not exists within scope ${action.scope}!` }
 
-            return calcReducer({
+            return CalcReducer({
                 ...state,
                 [action.scope]: {
                     ...state[action.scope],
@@ -67,4 +67,4 @@ const calcReducer = (state={}, action) => {
     }
 }
 
-export default calcReducer
+export default CalcReducer
