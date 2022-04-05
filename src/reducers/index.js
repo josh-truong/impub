@@ -1,8 +1,10 @@
-import calcReducer from './calculator'
+import CalcReducer from './CalcReducer'
+import DefReducer from './DefReducer'
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-    calcReducer
+    CalcReducer,
+    DefReducer
 });
 
 export default rootReducer
