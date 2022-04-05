@@ -18,7 +18,6 @@ const Var = (props) => {
 
     useEffect(() => {
         dispatch({ type: UPDATE_VARIABLE, scope:scope_id, var:var_name, val:val })
-        console.log(typeof val)
     }, [dispatch, val])
 
 
