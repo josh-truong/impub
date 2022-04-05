@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 const Result = (props) => {
     const result = useSelector(state => {
         try {
-            return state.calcReducer[props.scope].result;
+            return state.CalcReducer[props.scope].result;
         } catch(error) { return null }
     });
 
