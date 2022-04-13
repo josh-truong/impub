@@ -36,7 +36,7 @@ const Slider = ({ id, value, min = 0, max = 1, step = 1 }) => {
                             min={min} max={max} value={val} step={step} />
                     </div>
                 </div>
-                : <span style={{ color: '#39FF14' }}>{val}</span>
+                : <span style={{ color: '#39FF14' }}>{id}({val})</span>
             }
         </div>
     )

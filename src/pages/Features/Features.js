@@ -65,41 +65,40 @@ const Features = () => {
             <Proof>
                 <ProofHeader>
                     <Theorem id='Pigeonhole Principle'>
-                        A function <Latex expr='$f$' /> from a set with <Latex expr='$k+1$' /> elements to a set with <Latex expr='$k$' /> elements is not one-to-one.
+                        <Proposition id='PHP1'>
+                            (The Pigeonhole Principle, simple version.) If <Latex expr='$k + 1$' /> or more pigeons are distributed among <Latex expr='$k$' /> pigeonholes,
+                            then at least one pigeonhole contains two or more pigeons.
+                        </Proposition>
                     </Theorem>
                 </ProofHeader>
                 <ProofSubsection>
-                    <ProofHeader> Proof: Use the Pigeonhole Principle</ProofHeader>
+                    <ProofHeader> Proof.</ProofHeader>
                     <ProofContent>
-                        <ul>
-                            <li>
-                                Create a box for each element <Latex expr='$y$' /> in the codomain of <Latex expr='$f$' />.
-                            </li>
-                            <li>
-                                Put in the box for <Latex expr='$y$' /> all of the elements <Latex expr='$x$' /> from the domain such that <Latex expr='$f(x)=y$' />.
-                            </li>
-                            <li>
-                                Because there are <Latex expr='$k+1$' /> elements and only <Latex expr='$k$' /> boxes, at least on box has two or more elenments.
-                            </li>
-                        </ul>
-                        Hence, <Latex expr='$f$' /> can't be one-to-one.
+                        The contrapositive of the statement is: If each pigeonhole contains at most one pigeon,
+                        then there are at most <Latex expr='$k$' /> pigeons. This is easily seen to be true.
+                        The same argument can be used to prove a variety of different statements. We prove
+                        the general version of the Pigeonhole Principle and leave the others as exercises.
                     </ProofContent>
                 </ProofSubsection>
-                {/* <ProofSubsection>
-                    <ProofHeader> Example of the Pigeonhole Principle</ProofHeader>
+                <ProofHeader>
+                    <Theorem id='Pigeonhole Principle'>
+                        <Proposition id='PHP2'>
+                            <Scope scope='pigeonhole' expr='ceil(n/k)' />
+                            (The Pigeonhole Principle.) If n or more pigeons are distributed among <Latex expr='$k$' />
+                            (<Var scope='pigeonhole' var='k' min={0} max={10} />)<Latex expr='$ > 0$' /> pigeonholes,
+                            then at least one pigeonhole contains at least <MathTex scope='pigeonhole' /> pigeons.
+                        </Proposition>
+                    </Theorem>
+                </ProofHeader>
+                <ProofSubsection>
+                    <ProofHeader> Proof.</ProofHeader>
                     <ProofContent>
-                        <Scope scope='pigeonhole' expr='(k*n+1)/n' />
-                        If <Latex expr='$(Kn+1)$' /> pigeons are kept in <Var scope='pigeonhole' var='n' /> pigeon holes
-                        where K(<Var scope='pigeonhole' var='k' min={1} max={100} />) is a positive integer,
-                        what is the average no. of pigeons per pigeon hole?
-
-
+                        Suppose each pigeonhole contains at most <MathTex scope='pigeonhole' /><Latex expr='$-1$'/> pigeons.
+                        Then, the total number of pigeons is at most <Latex expr='$k(\left\lceil\frac{ n}{ k}\right\rceil-1) < k(\frac{n}{k})=n $'/> pigeons 
+                        (because <Latex expr='$\left\lceil\frac{ n}{ k}\right\rceil - 1 < \frac{n}{k} \leq \left\lceil\frac{ n}{ k}\right\rceil)$'/>).
                     </ProofContent>
-                </ProofSubsection> */}
+                </ProofSubsection>
             </Proof>
-
-
-
         </div>
     )
 }
