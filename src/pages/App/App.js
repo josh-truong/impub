@@ -4,10 +4,10 @@ import { DisplayProof, DisplayDefRef, Features, InteractiveCalculator }
 function App() {
   return (
     <div className="container">
-      {/* <DisplayProof/> */}
+      <DisplayProof/>
       {/* <DisplayDefRef/> */}
       {/* <Features/> */}
-      <InteractiveCalculator/>
+      {/* <InteractiveCalculator/> */}
     </div>
   );
 }

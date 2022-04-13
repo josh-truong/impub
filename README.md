@@ -1,3 +1,9 @@
+##### ToDOs
+- [Algebraic](https://www.npmjs.com/package/algebrite) - Partial Expression
+- Make a demo of all the features
+- Documentation
+- Error handling
+- Remove ProofHeader dependency in ProofSubsection
 ## Available Components
 ### `Proof`
  - Proof, ProofHeader, ProofSubsection, ProofContent
@@ -23,23 +29,23 @@
         </ProofSubsection>
     </Proof>
 ```
-### `Latex`
- - Latex
+### `Tex`
+ - Tex
    - Must include inline or display syntax: $, $$, \\(\\), \\[\\]
-   - Use Latex component along with text
+   - Use Tex component along with text
   ```
-    <Latex expr="Latex expressions"/>
+    <Tex expr="Tex expressions"/>
     or
-    <Latex>
-        Latex expressions
-    </Latex>
+    <Tex>
+        Tex expressions
+    </Tex>
   ```
   ```
     <ProofHeader>
-        Assume that <Latex expr="$x < 5$"/>.
+        Assume that <Tex expr="$x < 5$"/>.
     </ProofHeader>
     <ProofHeader>
-        Assume that <Latex>$x < 5$</Latex>.
+        Assume that <Tex>$x < 5$</Tex>.
     </ProofHeader>
   ```
 ### MathTerms
