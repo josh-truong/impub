@@ -1,5 +1,5 @@
 import React from 'react'
-import Latex from '../../Latex'
+import Tex from '../../Tex'
 
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
@@ -11,7 +11,7 @@ const MathTex = (props) => {
         } catch (error) { return null }
     });
     return (
-        <Latex expr={`$${latexExpr}$`} />
+        <Tex expr={`$${latexExpr}$`} />
     )
 }
 

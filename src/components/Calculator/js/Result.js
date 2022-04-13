@@ -11,7 +11,7 @@ const Result = (props) => {
     });
 
     return (
-        <span style={{color:'#0000FF'}}>{result}</span>
+        <span style={{color:'#2695fd'}}>{result}</span>
     )
 }
 

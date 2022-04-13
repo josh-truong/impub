@@ -6,14 +6,14 @@ import {
 }
   from '../../components/MathTerm'
 
-import Latex from "../../components/Latex"
+import Tex from "../../components/Tex"
 
 const DisplayDefRef = () => {
   return (
     <div>
       {/* <Corollary id="a">3-Tensor Isomorphism reduces to Symmetric Matrix Space Isometry</Corollary>
       <Definition id="b">(Constructive version of Baer’s correspondence for matrix groups).</Definition>
-      <Example id="c">Example <Latex expr="$4 \cdot 4$"/> </Example>
+      <Example id="c">Example <Tex expr="$4 \cdot 4$"/> </Example>
       <Lemma id="d">Lemma</Lemma>
       <Notation id="e">Notation</Notation>
       <Observation id="f">Observation</Observation>
@@ -44,8 +44,8 @@ const DisplayDefRef = () => {
 
       <div style={{marginTop:"100%"}}>
         <i>Proof.</i> Combine Proposition <Ref id="7.3" /> with Lemma <Ref id="7.5" />. Note that for this direction
-        of the reduction, we only need the function <Latex expr="$G$" /> from Lemma <Ref id="7.7" />, which can be computed
-        in time <Latex expr="$poly(n,\log p)$" />.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        of the reduction, we only need the function <Tex expr="$G$" /> from Lemma <Ref id="7.7" />, which can be computed
+        in time <Tex expr="$poly(n,\log p)$" />.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
         aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
         nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

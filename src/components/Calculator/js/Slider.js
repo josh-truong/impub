@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
 const Slider = ({ id, value, min = 0, max = 1, step = 1 }) => {
     const [toggle, setToggle] = useState(false);
@@ -21,23 +21,14 @@ const Slider = ({ id, value, min = 0, max = 1, step = 1 }) => {
     }, [val])
 
     return (
-        <div onMouseEnter={popup} onMouseLeave={popup} style={{ display: 'inline', cursor: 'pointer' }} key={id}>
-            {toggle ?
-                <div className='row' style={{ display: 'inline-block' }}>
-                    <div className='col'>
-                        {id} = {
-                            <input style={{ width: '60px', height: '20px' }} value={val}
-                                onChange={e => setVal(e.target.value)} onDoubleClick={popup} />
-                        }
-                    </div>
-                    <div className='col'>
-                        <input type="range"
-                            onChange={e => setVal(e.target.value)}
-                            min={min} max={max} value={val} step={step} />
-                    </div>
-                </div>
-                : <span style={{ color: '#39FF14' }}>{id}({val})</span>
-            }
+        <div key={id}
+            onMouseEnter={popup}
+            onMouseLeave={popup}
+            style={{ display:'inline',cursor:'pointer'}}
+        >
+            <input type="range"
+                onChange={e => setVal(e.target.value)}
+                min={min} max={max} value={val} step={step} />
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const Latex = (props) => {
+const Tex = (props) => {
   let node = React.createRef();
   const renderMath = () => {
     window.MathJax.Hub.Queue([
@@ -28,4 +28,4 @@ const Latex = (props) => {
   )
 }
 
-export default Latex
+export default Tex
