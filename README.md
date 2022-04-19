@@ -1,8 +1,6 @@
 ##### ToDOs
 - [Algebraic](https://www.npmjs.com/package/algebrite) - Partial Expression
 - Make a demo of all the features
-- Documentation
-- Error handling
 - Remove ProofHeader dependency in ProofSubsection
 ## Available Components
 ### `Proof`

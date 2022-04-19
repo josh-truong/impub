@@ -1,6 +1,8 @@
 import { ADD_SCOPE, EVAL_EXPR, UPDATE_VARIABLE } from "../constants"
 import getVariables from "./helpers/getVariables";
-var math = require('mathjs')
+var math = require('mathjs');
+var Algebrite = require('algebrite');
+console.log();
 
 /**
  * 
