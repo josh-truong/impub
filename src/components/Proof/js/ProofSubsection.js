@@ -4,6 +4,28 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 var classNames = require('classnames');
 
+
+/**
+ * ProofSubsection component <br/>
+ * 
+ * Takes the Header and Content component and turns it into an 
+ * expand/contract section. 
+ * 
+ * @component
+ * 
+ * @param {Object} props - Component props
+ * 
+ * @property {String} props.children - Content between tags
+ * 
+ * @requires Proof
+ * @requires ProofHeader
+ * @requires ProofContent
+ * 
+ * @returns {React_Elements} Returns React Element
+ * 
+ * @example
+ * <ProofSubsection>Content</ProofSubsection>
+*/
 const ProofSubsection = (props) => {
   var container = classNames(styles.container, true);
   var handrail = classNames(styles.handrail, true);

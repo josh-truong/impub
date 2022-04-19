@@ -1,5 +1,10 @@
 import { ADD_TERM } from "../constants";
 
+
+/**
+ * DefReducer part of react redux store for MathTerm module. 
+ * Has 1 switch case for adding definitions.
+*/
 const DefReducer = (state={}, action) => {
     switch (action.type) {
         case ADD_TERM:

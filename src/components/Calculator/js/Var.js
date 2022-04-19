@@ -12,6 +12,28 @@ import { UPDATE_VARIABLE } from '../../../constants';
 import styles from './style.module.css';
 var classNames = require('classnames');
 
+
+/**
+ * The Var component can change the value of a variable given a scope and variable name.
+ * Uses react redux to store global changes. Refer to src/reducers.
+ * 
+ * @component
+ * 
+ * @param {Object} props - Component props
+ * 
+ * @property {Object} props.id - Id identifies both scope and variable name
+ * @property {Bool} props.mode - (optional) Visible/invisible slider, default=false
+ * @property {Int} props.min - (optional) min range
+ * @property {Int} props.max - (optional) max range
+ * @property {Int} props.step - (optional) step range
+ * 
+ * @requires Scope
+ * 
+ * @returns {React_Elements} Returns React Element
+ * 
+ * @example
+ * <Var id={{'scope_name':'variable_name'}} mode={false} min={0} max={1} step={1}/>
+*/
 const Var = (props) => {
     const scope_name = Object.keys(props.id)[0];
     const var_name = props.id[scope_name];

@@ -1,14 +1,24 @@
 import React from 'react';
 
-import styles from '../css/ProofContent.module.css';
-
-var classNames = require('classnames');
-
+/**
+ * ProofContent component
+ * 
+ * @component
+ * 
+ * @param {Object} props - Component props
+ * 
+ * @property {String} props.children - Content between tags
+ * 
+ * @requires Proof
+ * 
+ * @returns {React_Elements} Returns React Element
+ * 
+ * @example
+ * <ProofContent>Content</ProofContent>
+*/
 const ProofContent = (props) => {
-  var container = classNames(styles.container, true);
-  
   return (
-    <div className={container}>
+    <div>
       {/* props.children retireves content in-between element/component tags*/}
       {props.children}
     </div>

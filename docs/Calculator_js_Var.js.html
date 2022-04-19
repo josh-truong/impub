@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Calculator/js/Var.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Calculator/js/Var.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
+// Custom Components
+import Slider from './Slider';
+import Tex from '../../Tex';
+
+// Redux Store
+import { useDispatch } from 'react-redux';
+import { UPDATE_VARIABLE } from '../../../constants';
+
+import styles from './style.module.css';
+var classNames = require('classnames');
+
+
+/**
+ * The Var component can change the value of a variable given a scope and variable name.
+ * Uses react redux to store global changes. Refer to src/reducers.
+ * 
+ * @component
+ * 
+ * @param {Object} props - Component props
+ * 
+ * @property {Object} props.id - Id identifies both scope and variable name
+ * @property {Bool} props.mode - (optional) Visible/invisible slider, default=false
+ * @property {Int} props.min - (optional) min range
+ * @property {Int} props.max - (optional) max range
+ * @property {Int} props.step - (optional) step range
+ * 
+ * @requires Scope
+ * 
+ * @returns {React_Elements} Returns React Element
+ * 
+ * @example
+ * &lt;Var id={{'scope_name':'variable_name'}} mode={false} min={0} max={1} step={1}/>
+*/
+const Var = (props) => {
+    const scope_name = Object.keys(props.id)[0];
+    const var_name = props.id[scope_name];
+    const mode = props.mode;
+    const min = props.min;
+    const max = props.max;
+    const step = props.step;
+
+    const dispatch = useDispatch();
+    const [val, setVal] = useState(0);
+    const [onClick, setOnClick] = useState(false);
+    const [offset, setOffset] = useState({ x: 0, y: 0 });
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+
+    const tooltip = classNames(styles.tooltip);
+    const tooltiptext = classNames(styles.tooltiptext);
+    const dragging = classNames(styles.dragging);
+
+    useEffect(() => {
+        dispatch({ type: UPDATE_VARIABLE, scope: scope_name, var: var_name, val: val })
+    }, [dispatch, val])
+
+
+    function updatePos(e) {
+        if (onClick) {
+            setPosition({
+                x: e.screenX - offset.x,
+                y: e.screenY - offset.y
+            })
+            let num = (position.x + position.y) * step
+            if (props.min !== 0 || props.max !== 1 || props.step !== 1) {
+                var limit = (num > max) ? max : num
+                limit = (limit &lt; min) ? min : limit
+                setVal(limit)
+            } else {
+                setVal(num)
+            }
+        }
+    }
+    function handleOnClick(e) {
+        setOnClick(true);
+        setOffset({
+            x: e.screenX,
+            y: e.screenY
+        })
+    }
+    return (
+        &lt;>
+            {onClick ?
+                &lt;div className={dragging}
+                    onMouseUp={(e) => setOnClick(false)}
+                    onMouseMove={(e) => updatePos(e)}
+                /> : ''}
+            &lt;div style={{ color: '#39FF14', display: 'inline-block' }}>
+                {mode ?
+                    &lt;div className={tooltip}>
+                        &lt;Tex expr={`$${var_name}$`} />({val})
+                        &lt;span className={tooltiptext}>
+                            &lt;Slider key={`${scope_name}+${var_name}`} id={var_name} value={(e) => setVal(e)} min={props.min} max={props.max} step={props.step} />
+                        &lt;/span>
+                    &lt;/div> :
+                    &lt;div onMouseDown={(e) => handleOnClick(e)} style={{ cursor: 'e-resize', borderBottom: '1px dotted black' }}>
+                        &lt;span>
+                            &lt;Tex expr={`$${var_name}$`} />({val})
+                        &lt;/span>
+                    &lt;/div>
+                }
+            &lt;/div>
+        &lt;/>
+    )
+}
+
+Var.propTypes = {
+    id: PropTypes.object.isRequired,
+    mode: PropTypes.bool,
+    min: PropTypes.number,
+    max: PropTypes.number,
+    step: PropTypes.number,
+}
+
+Var.defaultProps = {
+    mode: false,
+    min: 0,
+    max: 1,
+    step: 1,
+}
+
+
+export default Var
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Corollary">Corollary</a></li><li><a href="global.html#Definition">Definition</a></li><li><a href="global.html#Example">Example</a></li><li><a href="global.html#Lemma">Lemma</a></li><li><a href="global.html#MathTermSkeleton">MathTermSkeleton</a></li><li><a href="global.html#MathTex">MathTex</a></li><li><a href="global.html#Notation">Notation</a></li><li><a href="global.html#Observation">Observation</a></li><li><a href="global.html#Proof">Proof</a></li><li><a href="global.html#ProofContent">ProofContent</a></li><li><a href="global.html#ProofHeader">ProofHeader</a></li><li><a href="global.html#ProofSubsection">ProofSubsection</a></li><li><a href="global.html#Proposition">Proposition</a></li><li><a href="global.html#Ref">Ref</a></li><li><a href="global.html#Remark">Remark</a></li><li><a href="global.html#Result">Result</a></li><li><a href="global.html#Scope">Scope</a></li><li><a href="global.html#Tex">Tex</a></li><li><a href="global.html#Theorem">Theorem</a></li><li><a href="global.html#Var">Var</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Apr 19 2022 01:29:47 GMT-0600 (Mountain Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

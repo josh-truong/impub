@@ -2,6 +2,14 @@ import { ADD_SCOPE, EVAL_EXPR, UPDATE_VARIABLE } from "../constants"
 import getVariables from "./helpers/getVariables";
 var math = require('mathjs')
 
+/**
+ * 
+ * CalcReducer part of redux store for Calculator module. Curently 
+ * has 3 switch cases: ADD_SCOPE, UPDATE_VARIABLE, and EVAL_EXPR. These 
+ * cases belongs to the following components, respectively: Scope, Var, and 
+ * Result. 
+ * 
+*/
 const CalcReducer = (state={}, action) => {
     switch (action.type) {
         case ADD_SCOPE:

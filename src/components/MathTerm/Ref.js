@@ -3,6 +3,22 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
+/**
+ * Ref component - retrieves definition of a declared MathTerm component
+ * 
+ * @component
+ * 
+ * @param {Object} props - Component props
+ * 
+ * @property {String} props.id - Unique MathTerm id
+ * 
+ * @requires MathTermSkeleton
+ * 
+ * @returns {React_Elements} Returns React Element
+ * 
+ * @example
+ * <Ref id="id"/>
+*/
 const Ref = (props) => {
   const [toggle, setToggle] = useState(false);
   const [error, setError] = useState(false);

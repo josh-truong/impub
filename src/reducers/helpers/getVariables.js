@@ -16,6 +16,11 @@
 //     return variables
 // }
 
+/**
+ * 
+ * Retrieves variables from MathJs node tree
+ * 
+*/
 function getVariables(node) {
     const filtered = node.filter(function (node) {
         return (node.isSymbolNode && node.name)

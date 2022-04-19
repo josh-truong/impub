@@ -11,6 +11,16 @@ import { ADD_TERM } from '../../constants'
  * use other definitions/terms in their work, but does not exists
  * within the current library.
  * 
+ * @component
+ * 
+ * @param {Object} props - Component props
+ * 
+ * @property {String} props.children.id - To identify MathTerm component name
+ * @property {String} props.id - A unique identifier for reference
+ * @property {Element} props.children - Essenntially content in-between tags
+ * 
+ * @returns {React_Elements} Returns React Element
+ * 
  * @example
  * <Corollary id="unique section name">[Content]</Corollary>
  * <Definition id="unique section name">[Content]</Definition>
@@ -21,12 +31,6 @@ import { ADD_TERM } from '../../constants'
  * <Proposition id="unique section name">[Content]</Proposition>
  * <Remark id="unique section name">[Content]</Remark>
  * <Theorem id="unique section name">[Content]</Theorem>
- * @function MathTermSkeleton
- * @param {Object} props - Component props
- * @property {String} props.children.id - To identify 
- * @property {String} props.id - 
- * @property {Element} props.children.children - 
- * 
 */
 const MathTermSkeleton = (props) => {
     const dispatch = useDispatch();
