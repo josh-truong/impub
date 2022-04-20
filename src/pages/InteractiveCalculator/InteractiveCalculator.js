@@ -9,13 +9,19 @@ const InteractiveCalculator = () => {
   }, [on])
   return (
     <div>
-      <Scope scope='eq1' expr='k*n+1' />
+      
 
       {/* If we let <Var id={{'eq1':'k'}} min={1} max={10} /> and <Var id={{'eq1':'n'}} /> for 
       the expression f = <MathTex scope='eq1'/>, then f = <Result scope='eq1' />. */}
-
-      If we let <Var id={{'eq1':'k'}} /> for 
+      <Scope scope='eq1' expr='k*n+1' />
+      If we let <Var id={{'eq1':'n'}} /> for 
       the expression f = <MathTex scope='eq1'/>, then f = <Result scope='eq1' />.
+
+        <br />
+
+      <Scope scope='eq2' expr='k*n+1' />
+      If we let <Var id={{'eq2':'k'}} /> for 
+      the expression f = <MathTex scope='eq2'/>, then f = <Result scope='eq2' />.
     </div>
   )
 }
