@@ -43,7 +43,7 @@ const Var = (props) => {
     const step = props.step;
 
     const dispatch = useDispatch();
-    const [val, setVal] = useState(0);
+    const [val, setVal] = useState(props.min);
     const [onClick, setOnClick] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
     const [position, setPosition] = useState({ x: 0, y: 0 });

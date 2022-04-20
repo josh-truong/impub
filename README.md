@@ -1,7 +1,3 @@
-##### ToDOs
-- [Algebraic](https://www.npmjs.com/package/algebrite) - Partial Expression
-- Make a demo of all the features
-- Remove ProofHeader dependency in ProofSubsection
 ## Available Components
 ### `Proof`
  - Proof, ProofHeader, ProofSubsection, ProofContent

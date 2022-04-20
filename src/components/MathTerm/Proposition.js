@@ -19,8 +19,8 @@ import MathTermSkeleton from './MathTermSkeleton'
 */
 const Proposition = (props) => {
   return (
-    <MathTermSkeleton id="Proposition">
-      {props}
+    <MathTermSkeleton term_name="Proposition" id={props.id}>
+      {props.children}
     </MathTermSkeleton>
   )
 }

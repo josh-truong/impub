@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import Tex from '../../Tex';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
@@ -27,7 +27,10 @@ const Result = (props) => {
     });
 
     return (
-        <span style={{color:'#2695fd'}}>{result}</span>
+        <span style={{color:'#2695fd'}}>
+            {/* <Tex expr={`$${result}$`} /> */}
+            {result}
+        </span>
     )
 }
 

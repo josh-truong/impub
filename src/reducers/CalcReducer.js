@@ -2,7 +2,6 @@ import { ADD_SCOPE, EVAL_EXPR, UPDATE_VARIABLE } from "../constants"
 import getVariables from "./helpers/getVariables";
 var math = require('mathjs');
 var Algebrite = require('algebrite');
-console.log();
 
 /**
  * 
@@ -68,9 +67,23 @@ const CalcReducer = (state={}, action) => {
                 }
             }
             catch(error) {
-                // Return latex format as a result
-                    // if there are unintialized variables
-                return state
+                let partial_eval = '';
+                const scope_var = state[action.scope].var
+                for (const variable in scope_var) {
+                    if (scope_var[variable] !== null) {
+                        partial_eval += `${variable}=${scope_var[variable]}\n`
+                    }
+                }
+                partial_eval += `${state[action.scope].mathJsExpr}`;
+                const evaluated = Algebrite.run(partial_eval);
+                return {
+                    ...state,
+                    [action.scope]: {
+                        ...state[action.scope],
+                        // result: Algebrite.run(`printlatex(${evaluated})`)
+                        result: evaluated
+                    }
+                }
             }
         default:
             return state

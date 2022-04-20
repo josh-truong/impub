@@ -5,9 +5,9 @@ import { DisplayProof, DisplayDefRef, Features, InteractiveCalculator }
 function App() {
   return (
     <div className="container">
-      {/* <DisplayProof/>
-      <DisplayDefRef/>
-      <Features/> */}
+      {/* <DisplayProof/> */}
+      {/* <DisplayDefRef/> */}
+      {/* <Features/> */}
       <InteractiveCalculator/>
     </div>
   );

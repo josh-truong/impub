@@ -34,10 +34,9 @@ import { ADD_TERM } from '../../constants'
 */
 const MathTermSkeleton = (props) => {
     const dispatch = useDispatch();
-
-    const id = props.children.id
-    const term_name = props.id
-    const def = props.children.children
+    const term_name = props.term_name
+    const id = props.id
+    const def = props.children
 
     useEffect(() => {
         dispatch({ type: ADD_TERM, id, def })
