@@ -1,7 +1,10 @@
 import React from 'react';
+import styles from './css/ProofHeader.module.css';
+
+var classNames = require('classnames');
 
 /**
- * ProofContent component
+ * ProofHeader component
  * 
  * @component
  * 
@@ -14,15 +17,16 @@ import React from 'react';
  * @returns {React_Elements} Returns React Element
  * 
  * @example
- * <ProofContent>Content</ProofContent>
+ * <ProofHeader>Content</ProofHeader>
 */
-const ProofContent = (props) => {
+const ProofHeader = (props) => {
+  var container = classNames(styles.container, true);
   return (
-    <div>
+    <div className={container}>
       {/* props.children retireves content in-between element/component tags*/}
       {props.children}
     </div>
   )
 }
 
-export default ProofContent
+export default ProofHeader

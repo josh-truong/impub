@@ -1,4 +1,3 @@
-export {default as Proof} from "./js/Proof";
-export {default as ProofContent} from "./js/ProofContent";
-export {default as ProofHeader} from "./js/ProofHeader";
-export {default as ProofSubsection} from "./js/ProofSubsection";
+export {default as Proof} from "./Proof";
+export {default as ProofHeader} from "./ProofHeader";
+export {default as ProofContent} from "./ProofContent";
