@@ -32,7 +32,7 @@ const Ref = (props) => {
   })
 
   useEffect(() => {
-    if (def == undefined) { setError(true) }
+    if (def === undefined) { setError(true) }
     else { setError(false) }
   })
   
