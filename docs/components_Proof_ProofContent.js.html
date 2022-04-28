@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Tex/index.js</title>
+    <title>JSDoc: Source: components/Proof/ProofContent.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Tex/index.js</h1>
+    <h1 class="page-title">Source: components/Proof/ProofContent.js</h1>
 
     
 
@@ -26,52 +26,60 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { useEffect } from 'react';
+            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react'
+import styles from './css/ProofContent.module.css';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+
+var classNames = require('classnames');
 
 /**
- * Tex Component uses MathJax CDN to render Latex expressions.
- * &lt;br/> - MathJax.Hub.Queue is needed to re-render expressions
- * &lt;br/> - MathJax.Hub.Config configurates MathJax.
+ * ProofContent component &lt;br/>
+ * 
+ * Takes the Header and Content component and turns it into an 
+ * expand/contract section. 
  * 
  * @component
  * 
  * @param {Object} props - Component props
  * 
- * @property {String} props.expr -(Explicit usage) Tex Expression to render using MathJax
- * @property {Elements} props.children - (Implicit usage) Tex Expression to render using MathJax
+ * @property {String} props.children - Content between tags
  * 
- * @returns {React_Elements} Returns React Element either props.expr or props.children
+ * @requires Proof
+ * 
+ * @returns {React_Elements} Returns React Element
  * 
  * @example
- * &lt;Tex expr='MathJax Valid Expressions' />
- * &lt;Tex>MathJax Valid Expressions&lt;/Tex>
- */
+ * &lt;ProofContent>Content&lt;/ProofContent>
+*/
+const ProofContent = (props) => {
+  var container = classNames(styles.container, true);
+  var handrail = classNames(styles.handrail, true);
+  var toggleTD = classNames(styles.toggleTD, true);
 
-const Tex = (props) => {
-  const renderMath = () => {
-    window.MathJax.Hub.Queue([
-      "Typeset",
-      window.MathJax.Hub
-    ]);
-    window.MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']]
-      }
-    });
-  }
-
-  useEffect(() => {
-    renderMath();
-  });
-
+  const [toggle, setToggle] = useState(true);
+  function toggleProof(e) { setToggle(!toggle); }
   return (
-    &lt;>
-      {props.expr ? props.expr : props.children}
-    &lt;/>
+    &lt;div className={container}>
+      {toggle ? null : &lt;ArrowBackIosIcon style={{transform: "rotate(-90deg)", width:"20px", height:"auto"}} onClick={toggleProof} />}
+      { !toggle ? null :
+        &lt;table>
+          &lt;tbody>
+            &lt;tr>
+              &lt;td className={toggleTD} onClick={toggleProof}>&lt;/td>
+              &lt;td>
+                &lt;div className={handrail}>
+                  {props.children}
+                &lt;/div>
+              &lt;/td>
+            &lt;/tr>
+          &lt;/tbody>
+        &lt;/table>}
+      
+    &lt;/div>
   )
 }
 
-export default Tex
+export default ProofContent
 </code></pre>
         </article>
     </section>

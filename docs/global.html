@@ -104,97 +104,6 @@
     
 
     
-    <h4 class="name" id="CalcReducer"><span class="type-signature"></span>CalcReducer<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    CalcReducer part of redux store for Calculator module. Curently 
-has 3 switch cases: ADD_SCOPE, UPDATE_VARIABLE, and EVAL_EXPR. These 
-cases belongs to the following components, respectively: Scope, Var, and 
-Result.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="reducers_CalcReducer.js.html">reducers/CalcReducer.js</a>, <a href="reducers_CalcReducer.js.html#line14">line 14</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
     <h4 class="name" id="Corollary"><span class="type-signature"></span>Corollary<span class="signature">(props)</span><span class="type-signature"> &rarr; {React_Elements}</span></h4>
     
 
@@ -691,6 +600,97 @@ Has 1 switch case for adding definitions.
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="reducers_DefReducer.js.html">reducers/DefReducer.js</a>, <a href="reducers_DefReducer.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="EvalReducer"><span class="type-signature"></span>EvalReducer<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    EvalReducer part of redux store for Calculator module. Curently 
+has 3 switch cases: ADD_SCOPE, UPDATE_VARIABLE, and EVAL_EXPR. These 
+cases belongs to the following components, respectively: Scope, Var, and 
+Result.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="reducers_EvalReducer.js.html">reducers/EvalReducer.js</a>, <a href="reducers_EvalReducer.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -1684,7 +1684,7 @@ which then gets converted into latex expression via Tex component.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Calculator_js_MathTex.js.html">components/Calculator/js/MathTex.js</a>, <a href="components_Calculator_js_MathTex.js.html#line25">line 25</a>
+        <a href="components_Evaluate_js_MathTex.js.html">components/Evaluate/js/MathTex.js</a>, <a href="components_Evaluate_js_MathTex.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -2347,7 +2347,7 @@ which then gets converted into latex expression via Tex component.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Proof_js_Proof.js.html">components/Proof/js/Proof.js</a>, <a href="components_Proof_js_Proof.js.html#line36">line 36</a>
+        <a href="components_Proof_Proof.js.html">components/Proof/Proof.js</a>, <a href="components_Proof_Proof.js.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -2418,7 +2418,10 @@ which then gets converted into latex expression via Tex component.
 
 
 <div class="description">
-    ProofContent component
+    ProofContent component <br/>
+
+Takes the Header and Content component and turns it into an 
+expand/contract section.
 </div>
 
 
@@ -2563,7 +2566,7 @@ which then gets converted into latex expression via Tex component.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Proof_js_ProofContent.js.html">components/Proof/js/ProofContent.js</a>, <a href="components_Proof_js_ProofContent.js.html#line19">line 19</a>
+        <a href="components_Proof_ProofContent.js.html">components/Proof/ProofContent.js</a>, <a href="components_Proof_ProofContent.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -2784,7 +2787,7 @@ which then gets converted into latex expression via Tex component.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Proof_js_ProofHeader.js.html">components/Proof/js/ProofHeader.js</a>, <a href="components_Proof_js_ProofHeader.js.html#line22">line 22</a>
+        <a href="components_Proof_ProofHeader.js.html">components/Proof/ProofHeader.js</a>, <a href="components_Proof_ProofHeader.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -2843,231 +2846,6 @@ which then gets converted into latex expression via Tex component.
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>&lt;ProofHeader>Content&lt;/ProofHeader></code></pre>
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="ProofSubsection"><span class="type-signature"></span>ProofSubsection<span class="signature">(props)</span><span class="type-signature"> &rarr; {React_Elements}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    ProofSubsection component <br/>Takes the Header and Content component and turns it into an expand/contract section.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>props</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Component props</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>props.children</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Content between tags</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Proof_js_ProofSubsection.js.html">components/Proof/js/ProofSubsection.js</a>, <a href="components_Proof_js_ProofSubsection.js.html#line29">line 29</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-<h5>Requires:</h5>
-<ul>
-    <li>module:Proof</li>
-
-    <li>module:ProofHeader</li>
-
-    <li>module:ProofContent</li>
-</ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Returns React Element
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">React_Elements</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>&lt;ProofSubsection>Content&lt;/ProofSubsection></code></pre>
 
 
 
@@ -3893,7 +3671,7 @@ which then gets converted into latex expression via Tex component.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Calculator_js_Result.js.html">components/Calculator/js/Result.js</a>, <a href="components_Calculator_js_Result.js.html#line22">line 22</a>
+        <a href="components_Evaluate_js_Result.js.html">components/Evaluate/js/Result.js</a>, <a href="components_Evaluate_js_Result.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -4137,7 +3915,7 @@ which then gets converted into latex expression via Tex component.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Calculator_js_Scope.js.html">components/Calculator/js/Scope.js</a>, <a href="components_Calculator_js_Scope.js.html#line22">line 22</a>
+        <a href="components_Evaluate_js_Scope.js.html">components/Evaluate/js/Scope.js</a>, <a href="components_Evaluate_js_Scope.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -4909,7 +4687,7 @@ Uses react redux to store global changes. Refer to src/reducers.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Calculator_js_Var.js.html">components/Calculator/js/Var.js</a>, <a href="components_Calculator_js_Var.js.html#line37">line 37</a>
+        <a href="components_Evaluate_js_Var.js.html">components/Evaluate/js/Var.js</a>, <a href="components_Evaluate_js_Var.js.html#line37">line 37</a>
     </li></ul></dd>
     
 
@@ -4987,13 +4765,13 @@ Uses react redux to store global changes. Refer to src/reducers.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CalcReducer">CalcReducer</a></li><li><a href="global.html#Corollary">Corollary</a></li><li><a href="global.html#Definition">Definition</a></li><li><a href="global.html#DefReducer">DefReducer</a></li><li><a href="global.html#Example">Example</a></li><li><a href="global.html#getVariables">getVariables</a></li><li><a href="global.html#Lemma">Lemma</a></li><li><a href="global.html#MathTermSkeleton">MathTermSkeleton</a></li><li><a href="global.html#MathTex">MathTex</a></li><li><a href="global.html#Notation">Notation</a></li><li><a href="global.html#Observation">Observation</a></li><li><a href="global.html#Proof">Proof</a></li><li><a href="global.html#ProofContent">ProofContent</a></li><li><a href="global.html#ProofHeader">ProofHeader</a></li><li><a href="global.html#ProofSubsection">ProofSubsection</a></li><li><a href="global.html#Proposition">Proposition</a></li><li><a href="global.html#Ref">Ref</a></li><li><a href="global.html#Remark">Remark</a></li><li><a href="global.html#Result">Result</a></li><li><a href="global.html#Scope">Scope</a></li><li><a href="global.html#Tex">Tex</a></li><li><a href="global.html#Theorem">Theorem</a></li><li><a href="global.html#Var">Var</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Corollary">Corollary</a></li><li><a href="global.html#Definition">Definition</a></li><li><a href="global.html#DefReducer">DefReducer</a></li><li><a href="global.html#EvalReducer">EvalReducer</a></li><li><a href="global.html#Example">Example</a></li><li><a href="global.html#getVariables">getVariables</a></li><li><a href="global.html#Lemma">Lemma</a></li><li><a href="global.html#MathTermSkeleton">MathTermSkeleton</a></li><li><a href="global.html#MathTex">MathTex</a></li><li><a href="global.html#Notation">Notation</a></li><li><a href="global.html#Observation">Observation</a></li><li><a href="global.html#Proof">Proof</a></li><li><a href="global.html#ProofContent">ProofContent</a></li><li><a href="global.html#ProofHeader">ProofHeader</a></li><li><a href="global.html#Proposition">Proposition</a></li><li><a href="global.html#Ref">Ref</a></li><li><a href="global.html#Remark">Remark</a></li><li><a href="global.html#Result">Result</a></li><li><a href="global.html#Scope">Scope</a></li><li><a href="global.html#Tex">Tex</a></li><li><a href="global.html#Theorem">Theorem</a></li><li><a href="global.html#Var">Var</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Apr 20 2022 09:22:27 GMT-0600 (Mountain Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu Apr 28 2022 14:52:35 GMT-0600 (Mountain Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

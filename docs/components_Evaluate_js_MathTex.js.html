@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Tex/index.js</title>
+    <title>JSDoc: Source: components/Evaluate/js/MathTex.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Tex/index.js</h1>
+    <h1 class="page-title">Source: components/Evaluate/js/MathTex.js</h1>
 
     
 
@@ -26,52 +26,46 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { useEffect } from 'react';
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import Tex from '../../Tex'
+
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+
 
 /**
- * Tex Component uses MathJax CDN to render Latex expressions.
- * &lt;br/> - MathJax.Hub.Queue is needed to re-render expressions
- * &lt;br/> - MathJax.Hub.Config configurates MathJax.
+ * The MathTex component retrieves a converted/valid mathjs expression
+ * which then gets converted into latex expression via Tex component.
  * 
  * @component
  * 
  * @param {Object} props - Component props
  * 
- * @property {String} props.expr -(Explicit usage) Tex Expression to render using MathJax
- * @property {Elements} props.children - (Implicit usage) Tex Expression to render using MathJax
+ * @property {String} props.scope - Scope name 
  * 
- * @returns {React_Elements} Returns React Element either props.expr or props.children
+ * @requires Scope
+ * 
+ * @returns {React_Elements} Returns React Element
  * 
  * @example
- * &lt;Tex expr='MathJax Valid Expressions' />
- * &lt;Tex>MathJax Valid Expressions&lt;/Tex>
- */
-
-const Tex = (props) => {
-  const renderMath = () => {
-    window.MathJax.Hub.Queue([
-      "Typeset",
-      window.MathJax.Hub
-    ]);
-    window.MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']]
-      }
+ * &lt;MathTex scope='scope name'/>
+*/
+const MathTex = (props) => {
+    const latexExpr = useSelector(state => {
+        try {
+            return state.EvalReducer[props.scope].latexExpr;
+        } catch (error) { return null }
     });
-  }
-
-  useEffect(() => {
-    renderMath();
-  });
-
-  return (
-    &lt;>
-      {props.expr ? props.expr : props.children}
-    &lt;/>
-  )
+    return (
+        &lt;Tex expr={`$${latexExpr}$`} />
+    )
 }
 
-export default Tex
+MathTex.propTypes = {
+    scope: PropTypes.string.isRequired
+};
+
+export default MathTex
 </code></pre>
         </article>
     </section>

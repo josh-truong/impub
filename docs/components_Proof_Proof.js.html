@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Tex/index.js</title>
+    <title>JSDoc: Source: components/Proof/Proof.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Tex/index.js</h1>
+    <h1 class="page-title">Source: components/Proof/Proof.js</h1>
 
     
 
@@ -26,52 +26,36 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { useEffect } from 'react';
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import styles from './css/Proof.module.css';
+var classNames = require('classnames');
+
 
 /**
- * Tex Component uses MathJax CDN to render Latex expressions.
- * &lt;br/> - MathJax.Hub.Queue is needed to re-render expressions
- * &lt;br/> - MathJax.Hub.Config configurates MathJax.
+ * Proof component
  * 
  * @component
  * 
  * @param {Object} props - Component props
  * 
- * @property {String} props.expr -(Explicit usage) Tex Expression to render using MathJax
- * @property {Elements} props.children - (Implicit usage) Tex Expression to render using MathJax
+ * @property {String} props.children - Content between tags
  * 
- * @returns {React_Elements} Returns React Element either props.expr or props.children
+ * @returns {React_Elements} Returns React Element
  * 
  * @example
- * &lt;Tex expr='MathJax Valid Expressions' />
- * &lt;Tex>MathJax Valid Expressions&lt;/Tex>
- */
-
-const Tex = (props) => {
-  const renderMath = () => {
-    window.MathJax.Hub.Queue([
-      "Typeset",
-      window.MathJax.Hub
-    ]);
-    window.MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']]
-      }
-    });
-  }
-
-  useEffect(() => {
-    renderMath();
-  });
+ * &lt;Proof>Content&lt;/Proof>
+*/
+const Proof = (props) => {
+  var container = classNames(styles.container, true);
 
   return (
-    &lt;>
-      {props.expr ? props.expr : props.children}
-    &lt;/>
+    &lt;div className={container}>
+      &lt;b>Proof.&lt;/b> {props.children}
+    &lt;/div>
   )
 }
 
-export default Tex
+export default Proof
 </code></pre>
         </article>
     </section>
