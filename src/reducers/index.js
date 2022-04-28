@@ -1,9 +1,9 @@
-import CalcReducer from './CalcReducer'
+import EvalReducer from './EvalReducer'
 import DefReducer from './DefReducer'
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-    CalcReducer,
+    EvalReducer,
     DefReducer
 });
 

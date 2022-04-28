@@ -5,13 +5,13 @@ var Algebrite = require('algebrite');
 
 /**
  * 
- * CalcReducer part of redux store for Calculator module. Curently 
+ * EvalReducer part of redux store for Calculator module. Curently 
  * has 3 switch cases: ADD_SCOPE, UPDATE_VARIABLE, and EVAL_EXPR. These 
  * cases belongs to the following components, respectively: Scope, Var, and 
  * Result. 
  * 
 */
-const CalcReducer = (state={}, action) => {
+const EvalReducer = (state={}, action) => {
     switch (action.type) {
         case ADD_SCOPE:
             const mathJsExpr = action.expr; // math js expression to evaluate
@@ -43,7 +43,7 @@ const CalcReducer = (state={}, action) => {
             } catch (error) { throw `Scope ${action.scope} has not been declared!` }
             if (status) { throw `Variable ${action.var} does not exists within scope ${action.scope}!` }
 
-            return CalcReducer({
+            return EvalReducer({
                 ...state,
                 [action.scope]: {
                     ...state[action.scope],
@@ -74,8 +74,16 @@ const CalcReducer = (state={}, action) => {
                         partial_eval += `${variable}=${scope_var[variable]}\n`
                     }
                 }
-                partial_eval += `${state[action.scope].mathJsExpr}`;
-                const evaluated = Algebrite.run(partial_eval);
+
+                var evaluated;
+                if (partial_eval !== '') {
+                    partial_eval += `${state[action.scope].mathJsExpr}`;
+                    
+                    evaluated = Algebrite.run(partial_eval);
+                } else {
+                    evaluated = state[action.scope].mathJsExpr
+                }
+                
                 return {
                     ...state,
                     [action.scope]: {
@@ -90,4 +98,4 @@ const CalcReducer = (state={}, action) => {
     }
 }
 
-export default CalcReducer
+export default EvalReducer
