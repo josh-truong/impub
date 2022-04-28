@@ -10,7 +10,7 @@ const DefReducer = (state={}, action) => {
         case ADD_TERM:
             let requiredProps = action.hasOwnProperty('id') &&
                                 action.hasOwnProperty('def');
-            if (!requiredProps) { throw 'Props requires id and def' }
+            if (!requiredProps) { console.error('Props requires id and def') }
             return {
                 ...state,
                 [action.id]: action.def
