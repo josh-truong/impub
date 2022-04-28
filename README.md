@@ -10,68 +10,7 @@ Work on Demo
 - Meeting on May 5th demo presentation
 Work on visualize demo, 3d matrix with left/right/rotate/zoom in and out
 
-## Available Components
-### `Proof`
- - Proof, ProofHeader, ProofSubsection, ProofContent
 
-```
-    <Proof>content</Proof>
-    <ProofHeader>content</ProofHeader>
-    <ProofSubsection>content</ProofSubsection>
-    <ProofContent>content</ProofContent>
-```
- - Ideal Structure
-```
-    <Proof>
-        <ProofHeader>content</ProofHeader>
-        <ProofSubsection>
-            <ProofHeader>content</ProofHeader>
-            <ProofContent>content</ProofContent>
-        </ProofSubsection>
-        <ProofSubsection>
-            <ProofHeader>content</ProofHeader>
-            <ProofContent>content</ProofContent>
-            <ProofContent>content</ProofContent>
-        </ProofSubsection>
-    </Proof>
-```
-### `Tex`
- - Tex
-   - Must include inline or display syntax: $, $$, \\(\\), \\[\\]
-   - Use Tex component along with text
-  ```
-    <Tex expr="Tex expressions"/>
-    or
-    <Tex>
-        Tex expressions
-    </Tex>
-  ```
-  ```
-    <ProofHeader>
-        Assume that <Tex expr="$x < 5$"/>.
-    </ProofHeader>
-    <ProofHeader>
-        Assume that <Tex>$x < 5$</Tex>.
-    </ProofHeader>
-  ```
-### MathTerms
-```
-    <Corollary id="unique section name">[Content]</Corollary>
-    <Definition id="unique section name">[Content]</Definition>
-    <Example id="unique section name">[Content]</Example>
-    <Lemma id="unique section name">[Content]</Lemma>
-    <Notation id="unique section name">[Content]</Notation>
-    <Observation id="unique section name">[Content]</Observation>
-    <Proposition id="unique section name">[Content]</Proposition>
-    <Remark id="unique section name">[Content]</Remark>
-    <Theorem id="unique section name">[Content]</Theorem>
-```
- - To refer sections
-```
-    <Ref id="unique section name"/>
-```
-
----
 ## Available Scripts
 
 In the project directory, you can run:
