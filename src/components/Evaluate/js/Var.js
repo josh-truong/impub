@@ -57,8 +57,16 @@ const Var = (props) => {
     }, [dispatch, val])
 
 
-    function updatePos(e) {
-        if (onClick) {
+
+    function handleOnClick(e) {
+        if (e.nativeEvent.which === 1 && e.type === 'mousedown') {
+            setOnClick(true);
+            setOffset({
+                x: e.screenX,
+                y: e.screenY
+            })
+        }
+        else if (e.nativeEvent.which === 1 && e.type === 'mousemove' && onClick) {
             setPosition({
                 x: e.screenX - offset.x,
                 y: e.screenY - offset.y
@@ -72,24 +80,22 @@ const Var = (props) => {
                 setVal(num)
             }
         }
+        else if (e.nativeEvent.which === 3 && e.type === 'contextmenu') {
+            e.preventDefault()
+            setVal(null)
+        }
     }
-    function handleOnClick(e) {
-        setOnClick(true);
-        setOffset({
-            x: e.screenX,
-            y: e.screenY
-        })
-    }
+
     return (
         <>
             {onClick ?
                 <div className={dragging}
                     onMouseUp={(e) => setOnClick(false)}
-                    onMouseMove={(e) => updatePos(e)}
+                    onMouseMove={(e) => handleOnClick(e)}
                 /> : ''}
-            <div style={{ color: '#39FF14', display: 'inline-block' }}>
+            <div style={{ color: '#39FF14', display: 'inline-block' }} onContextMenu={(e) => handleOnClick(e)}>
                 {mode ?
-                    <div className={tooltip}>
+                    <div className={tooltip} >
                         <Tex expr={`$${var_name}$`} />({val})
                         <span className={tooltiptext}>
                             <Slider key={`${scope_name}+${var_name}`} id={var_name} value={(e) => setVal(e)} min={props.min} max={props.max} step={props.step} />

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import Tex from '../../Tex';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
@@ -22,7 +21,7 @@ import { useSelector } from 'react-redux';
 const Result = (props) => {
     const result = useSelector(state => {
         try {
-            return state.CalcReducer[props.scope].result;
+            return state.EvalReducer[props.scope].result;
         } catch(error) { return null }
     });
 

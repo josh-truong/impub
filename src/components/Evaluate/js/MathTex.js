@@ -25,7 +25,7 @@ import { useSelector } from 'react-redux';
 const MathTex = (props) => {
     const latexExpr = useSelector(state => {
         try {
-            return state.CalcReducer[props.scope].latexExpr;
+            return state.EvalReducer[props.scope].latexExpr;
         } catch (error) { return null }
     });
     return (
