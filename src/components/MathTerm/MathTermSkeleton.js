@@ -35,17 +35,17 @@ import { ADD_TERM } from '../../constants'
 const MathTermSkeleton = (props) => {
     const dispatch = useDispatch();
     const term_name = props.term_name
-    const id = props.id
+    const term_id = props.id
     const def = props.children
 
     useEffect(() => {
-        dispatch({ type: ADD_TERM, id, def })
+        dispatch({ type: ADD_TERM, term_name, term_id, def })
     }, [dispatch])
 
 
     return (
-        <div key={id} id={id}>
-            <b>{term_name} {id}. </b>{def}<br />
+        <div key={term_id} id={term_id}>
+            <b>{term_name} {term_id}. </b>{def}<br />
         </div>
     )
 }

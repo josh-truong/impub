@@ -8,12 +8,17 @@ import { ADD_TERM } from "../constants";
 const DefReducer = (state={}, action) => {
     switch (action.type) {
         case ADD_TERM:
-            let requiredProps = action.hasOwnProperty('id') &&
+            let requiredProps = action.hasOwnProperty('term_name') &&
+                                action.hasOwnProperty('term_id') &&
                                 action.hasOwnProperty('def');
-            if (!requiredProps) { console.error('Props requires id and def') }
+            if (!requiredProps) { console.error('Props requires term_name, term_id and def') }
+
             return {
                 ...state,
-                [action.id]: action.def
+                [action.term_name]: {
+                    ...state[action.term_name],
+                    [action.term_id]:[action.def]
+                }
             };
         default:
             return state

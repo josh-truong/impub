@@ -1,6 +1,6 @@
 import React from 'react';
 import { Lemma, Proposition, Theorem, Ref } from '../../components/MathTerm';
-import { Proof, ProofHeader, ProofContent } from '../../components/Proof';
+import { Proof, ProofContent } from '../../components/Proof';
 import Tex from '../../components/Tex';
 
 const Demo = () => {
@@ -32,10 +32,11 @@ const Demo = () => {
       <Lemma id='3.3'>
         There is a transformation <Tex expr='$h$' />, computable in time polynomial in <Tex expr='$m$' /> and the order of the matrix, that maps 
         matrices with elements from the set <Tex expr='$\{0,1,...,m\}$' /> to (0,1)-matrices such 
-        that <Tex expr='$$\forall A \;\; \text{Perm}A = \text{Perm }h(A)$$' />.
+        that <Tex expr='$$\forall A \;\; \text{Perm}A = \text{Perm }h(A).$$' />
       </Lemma>
 
-      Before proving Lemmas <Ref id='3.1'/> and <Ref id='3.3'/> we observe that Theorems <Ref id='1'/> and <Ref id='2'/> follow from them.
+      {/* Before proving Lemmas <Ref id='3.1'/> and <Ref id='3.3'/> we observe that Theorems <Ref id='1'/> and <Ref id='2'/> follow from them. */}
+      <Ref id={{'Lemma':'3.3'}}/>
       
       {/* <Proposition id='3.4'>
 

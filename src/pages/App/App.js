@@ -1,5 +1,5 @@
 import React from 'react';
-import { InteractiveCalculator, Demo }
+import { Demo }
   from '../index.js';
 
 function App() {

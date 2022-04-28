@@ -24,10 +24,11 @@ const Ref = (props) => {
   const [error, setError] = useState(false);
   function popup(e) { setToggle(!toggle); }
 
-  const id = props.id
+  const term_name = Object.keys(props.id)[0]
+  const term_id = props.id[term_name]
   const def = useSelector((state) => {
     try {
-      return state.DefReducer[id]
+      return state.DefReducer[term_name][term_id]
     } catch (err) { return null }
   })
 
@@ -37,15 +38,15 @@ const Ref = (props) => {
   })
   
   return (
-    <div onMouseEnter={popup} onMouseLeave={popup} style={{display:"inline"}} key={id}>
+    <div onMouseEnter={popup} onMouseLeave={popup} style={{display:"inline"}} key={term_id}>
       {!error && toggle && <dialog style={{zIndex:"1", backgroundColor:"white"}} open>{def}</dialog>}
-      {!error && <a href={`#${id}`} style={{display:"inline", textDecoration:"None"}}>[{id}]</a>}
-      {error && <label style={{display:"inline", color:"red"}}>[{id}]</label>}
+      {!error && <a href={`#${term_id}`} style={{display:"inline", textDecoration:"None"}}>[{term_id}]</a>}
+      {error && <label style={{display:"inline", color:"red"}}>[{term_id}]</label>}
     </div>
   )
 }
 Ref.propTypes = {
-  id: PropTypes.string.isRequired
+  id: PropTypes.object.isRequired
 }
 
 export default Ref
