@@ -31,9 +31,9 @@ const Ref = (props) => {
       return state.DefReducer[term_name][term_id]
     } catch (err) { return null }
   })
-
+  
   useEffect(() => {
-    if (def === undefined) { setError(true) }
+    if (def === undefined || def === null) { setError(true) }
     else { setError(false) }
   })
   

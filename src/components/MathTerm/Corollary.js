@@ -20,7 +20,7 @@ import MathTermSkeleton from './MathTermSkeleton'
 const Corollary = (props) => {
   return (
     <MathTermSkeleton id="Corollary">
-      {props}
+      {props.children}
     </MathTermSkeleton>
   )
 }

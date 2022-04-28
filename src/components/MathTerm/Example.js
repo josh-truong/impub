@@ -20,7 +20,7 @@ import MathTermSkeleton from './MathTermSkeleton'
 const Example = (props) => {
   return (
     <MathTermSkeleton id="Example">
-      {props}
+      {props.children}
     </MathTermSkeleton>
   )
 }
