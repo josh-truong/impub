@@ -19,7 +19,7 @@ import MathTermSkeleton from './MathTermSkeleton'
 */
 const Notation = (props) => {
   return (
-    <MathTermSkeleton id="Notation">
+    <MathTermSkeleton term_name="Notation" id={props.id}>
       {props.children}
     </MathTermSkeleton>
   )

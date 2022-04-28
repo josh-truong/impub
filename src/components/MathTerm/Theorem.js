@@ -19,7 +19,7 @@ import MathTermSkeleton from './MathTermSkeleton'
 */
 const Theorem = (props) => {
   return (
-    <MathTermSkeleton id="Theorem">
+    <MathTermSkeleton term_name="Theorem" id={props.id}>
       {props.children}
     </MathTermSkeleton>
   )
