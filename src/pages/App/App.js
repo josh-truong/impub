@@ -1,14 +1,12 @@
 import React from 'react';
-import { DisplayProof, DisplayDefRef, Features, InteractiveCalculator }
+import { InteractiveCalculator, Demo }
   from '../index.js';
 
 function App() {
   return (
     <div className="container">
-      {/* <DisplayProof/> */}
-      {/* <DisplayDefRef/> */}
-      {/* <Features/> */}
-      <InteractiveCalculator/>
+      {/* <InteractiveCalculator/> */}
+      <Demo />
     </div>
   );
 }
