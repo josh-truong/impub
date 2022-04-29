@@ -15,4 +15,6 @@ html {
   font-variant: normal;
   font-weight: 700;
   line-height: 13.2px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }

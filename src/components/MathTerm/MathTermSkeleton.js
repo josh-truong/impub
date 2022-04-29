@@ -46,7 +46,7 @@ const MathTermSkeleton = (props) => {
 
     return (
         <div key={term_id} id={term_id}>
-            <b>{term_name} {term_id}. </b>{def}<br />
+            <b>{term_name} {term_id}. </b>{def}
         </div>
     )
 }

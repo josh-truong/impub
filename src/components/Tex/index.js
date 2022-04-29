@@ -20,7 +20,7 @@ import React, { useEffect } from 'react';
  */
 
 const Tex = (props) => {
-  const renderMath = () => {
+  async function renderMath() {
     window.MathJax.Hub.Queue([
       "Typeset",
       window.MathJax.Hub

@@ -37,8 +37,8 @@ const Ref = (props) => {
   })
   
   return (
-    <div onMouseEnter={popup} onMouseLeave={popup} style={{display:"inline"}} key={term_id}>
-      {!error && toggle && <dialog style={{zIndex:"1", backgroundColor:"white"}} open>{def}</dialog>}
+    <div onMouseEnter={popup} onMouseLeave={popup} style={{display:"inline"}} key={term_id} onClick={popup}>
+      {!error && toggle && <dialog style={{zIndex:"999", backgroundColor:"white"}} open>{def}</dialog>}
       {!error && <a href={`#${term_id}`} style={{display:"inline", textDecoration:"None"}}>[{term_id}]</a>}
       {error && <label style={{display:"inline", color:"red"}}>[{term_id}]</label>}
     </div>

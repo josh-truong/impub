@@ -1,6 +1,4 @@
 import React from 'react';
-import styles from './css/Proof.module.css';
-var classNames = require('classnames');
 
 
 /**
@@ -18,11 +16,10 @@ var classNames = require('classnames');
  * <Proof>Content</Proof>
 */
 const Proof = (props) => {
-  var container = classNames(styles.container, true);
-
+  const proof_header = (props.title) ? props.title : 'Proof.'
   return (
-    <div className={container}>
-      <b>Proof.</b> {props.children}
+    <div>
+      <b>{proof_header}</b> {props.children}
     </div>
   )
 }
