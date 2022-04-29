@@ -1,3 +1,8 @@
+### Credits
+- Joshua Grochow: Supervisor
+- Joshua Truong
+
+
 ## ToDos
 Modify Var component of calculator to reset variable to null.
 - On right click: modify variable to null
