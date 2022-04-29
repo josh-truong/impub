@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Import Main Application
-import App from './pages/App/App';
+import App from './views/App/App';
 import './index.css';
 
 // Redux Imports
