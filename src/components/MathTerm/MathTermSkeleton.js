@@ -15,9 +15,9 @@ import { ADD_TERM } from '../../constants'
  * 
  * @param {Object} props - Component props
  * 
- * @property {String} props.children.id - To identify MathTerm component name
- * @property {String} props.id - A unique identifier for reference
- * @property {Element} props.children - Essenntially content in-between tags
+ * @property {String} props.term_name - MathTerm Component Name
+ * @property {String} props.id - Unique Id of MathTerm
+ * @property {Element} props.children - Definition of term
  * 
  * @returns {React_Elements} Returns React Element
  * 

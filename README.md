@@ -1,13 +1,8 @@
-##
+## ToDos
 Modify Var component of calculator to reset variable to null.
 - On right click: modify variable to null
     - Enabling partial expressions to be evaluated
 
-Work on Demo
-- Final product for interaction
-- Talk about code
-- What's next
-- Meeting on May 5th demo presentation
 Work on visualize demo, 3d matrix with left/right/rotate/zoom in and out
 
 
