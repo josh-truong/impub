@@ -18,3 +18,8 @@ html {
   padding-top: 100px;
   padding-bottom: 100px;
 }
+
+img {
+  display: block;
+  margin: auto;
+}
