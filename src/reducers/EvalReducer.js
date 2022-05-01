@@ -56,6 +56,7 @@ const EvalReducer = (state = {}, action) => {
         case EVAL_EXPR: {
             const scope = state[action.scope].var;
             const mathJsExpr = state[action.scope].mathJsExpr;
+            const latexExpr = state[action.scope].latexExpr;
             let result = '';
             
             try { // If all variables are not null value
@@ -66,7 +67,7 @@ const EvalReducer = (state = {}, action) => {
                 for (const variable in scope) { // Substitute variables with it's assigned value
                     partial_eval = (scope[variable] === null) ? partial_eval : Algebrite.run(`printlatex(subst(${scope[variable]}, ${variable}, ${partial_eval}))`);
                 }
-                result = (partial_eval === "") ? mathJsExpr : partial_eval;
+                result = (partial_eval === mathJsExpr) ? latexExpr : partial_eval;
             }
             
             return {
