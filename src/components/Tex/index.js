@@ -5,6 +5,8 @@ import React, { useEffect } from 'react';
  * <br/> - MathJax.Hub.Queue is needed to re-render expressions
  * <br/> - MathJax.Hub.Config configurates MathJax.
  * 
+ * Additionally, you can use backticks for inline rendering
+ * 
  * @component
  * 
  * @param {Object} props - Component props
@@ -17,19 +19,34 @@ import React, { useEffect } from 'react';
  * @example
  * <Tex expr='MathJax Valid Expressions' />
  * <Tex>MathJax Valid Expressions</Tex>
+ * `Math Expressions` - Is not valid if you need to use {}
  */
 
 const Tex = (props) => {
   async function renderMath() {
-    window.MathJax.Hub.Queue([
-      "Typeset",
-      window.MathJax.Hub
-    ]);
     window.MathJax.Hub.Config({
       tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']]
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
       }
     });
+    window.MathJax.Hub.Register.StartupHook("End", function () {
+      window.MathJax.Hub.Queue([
+        "Typeset",
+        window.MathJax.Hub,
+        "TFS"]);
+
+    });
+
+
+    // window.MathJax.Hub.Queue([
+    //   "Typeset",
+    //   window.MathJax.Hub
+    // ]);
+    // window.MathJax.Hub.Config({
+    //   tex2jax: {
+    //     inlineMath: [['$','$'], ['\\(','\\)']]
+    //   }
+    // });
   }
 
   useEffect(() => {
