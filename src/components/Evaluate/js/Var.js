@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 // Custom Components
 import Slider from './Slider';
-import Tex from '../../Tex';
+import { Tex } from '../../Tex';
 
 // Redux Store
 import { useDispatch } from 'react-redux';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Lemma, Proposition, Theorem, Ref } from '../../components/MathTerm';
 import { Proof, ProofContent } from '../../components/Proof';
-import Tex from '../../components/Tex';
+import { Tex } from '../../components/Tex';
 import fig1 from './fig1.png'
 import fig2 from './fig2.png'
 
@@ -56,7 +56,7 @@ const Demo = () => {
       {tab}Before proving Lemmas {lemma_3_1} and {lemma_3_3} we observe that
       Theorems <Ref id={{ 'Theorem': '1' }} /> and <Ref id={{ 'Theorem': '2' }} /> follow from them.
       <Proposition id='3.4'>
-        For some positive constant <Tex expr='$d$' /> the problem of computing the permanent mod <Tex expr='$r$' />, given 
+        For some positive constant <Tex expr='$d$' /> the problem of computing the permanent mod <Tex expr='$r$' />, given
         an <Tex expr='$n \times n$' /> `(0,1)`-matrix and a positive integer <Tex expr='$r < d n \log_2 n$' />, is # P-hard.
       </Proposition>
 
@@ -66,7 +66,7 @@ const Demo = () => {
         <ProofContent>
           To compute <Tex expr='$\text{Perm } C$' /> it is sufficient to compute its value <Tex expr='$\text{mod } p_i$' /> for each <Tex expr='$p_i$' /> in some set
           <Tex expr='$\{p_i,...p_t\}$' /> of distinct prime numbers whose product exceeds <Tex expr='$2\mu^n \cdot n!$' /> For some constant <Tex expr="$d'$" /> it is
-          always sufficient that each <Tex expr="$p_i < d'n(\log_2 \mu n)$" /> [7, p.342]. But, by Lemma {lemma_3_3}, for each `p_i`, <Tex expr='$C \text{ mod } p_i$' /> can 
+          always sufficient that each <Tex expr="$p_i < d'n(\log_2 \mu n)$" /> [7, p.342]. But, by Lemma {lemma_3_3}, for each `p_i`, <Tex expr='$C \text{ mod } p_i$' /> can
           be transformed in polynomial time into a `(0,1)`-matrix with the same permanent. The result
           therefore follows from Lemmas {lemma_3_1} and {lemma_3_2}.
         </ProofContent>
@@ -113,7 +113,7 @@ const Demo = () => {
           <Tex expr='$x_5$' /> occurs in <Tex expr='$C_2$' /> and <Tex expr='$C_5$' />, and <Tex expr='$\bar{x}_5$' /> in <Tex expr='$C_3$' />.
           <br />
           {tab}We assume that all the edges outside junctions or internal junctions are weighted one.
-          <img src={fig1}/><br />
+          <img src={fig1} alt='Fig. 1' /><br />
 
           {tab}The crucial part of the construction is the structure of the junctions. The junctions and internal junctions are all identical four-node
           weighted digraphs corresponding to the following <Tex expr='$4 \times 4$' /> matrix {X}.
@@ -123,7 +123,7 @@ const Demo = () => {
                           1 & -1 & 1 & 1 \\
                           0 & 1 & 1 & 2 \\
                           0 & 1 & 3 & 0
-                          \end{bmatrix}.$$' 
+                          \end{bmatrix}.$$'
           />
 
           Each one has external connections only via nodes 1 and 4 and not via 2 or 3.
@@ -172,7 +172,7 @@ const Demo = () => {
           of these edges from {x} to {y} in <Tex expr='$h(A)$' />. Then there are five ways of covering the remainder, each
           corresponding to the inclusion of a different self-loop.
           <br />
-          <img src={fig2} />
+          <img src={fig2}  alt='Fig. 2'/>
           {tab}To obtain our main positive result we generalise the Gaussian elimination technique.
         </ProofContent>
       </Proof>

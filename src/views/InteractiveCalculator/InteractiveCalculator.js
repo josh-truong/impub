@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Var, Scope, Result, MathTex } from "../../components/Evaluate"
-import Tex from '../../components/Tex'
 
 const InteractiveCalculator = () => {
-  const sf = [1, 2, 3, 4, 5]
-  const [on, seton] = useState(0)
-  useEffect(() => {
-  }, [on])
   return (
     <div>
 
