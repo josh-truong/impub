@@ -58,18 +58,16 @@ const EvalReducer = (state = {}, action) => {
             const mathJsExpr = state[action.scope].mathJsExpr;
             let result = '';
             
-            try {
+            try { // If all variables are not null value
                 const code = math.parse(mathJsExpr).compile();
                 result = code.evaluate(scope);
-            }
-            catch (error) {
-                let partial_eval = '';
+            } catch (error) { // Some or none of variables have null value
+                let partial_eval = mathJsExpr;
                 for (const variable in scope) {
-                    const assignVar = (scope[variable] === null) ? '' : `${variable}=${scope[variable]}\n`;
-                    partial_eval += assignVar;
+                    console.log(partial_eval)
+                    partial_eval = (scope[variable] === null) ? partial_eval : Algebrite.run(`subst(${scope[variable]}, ${variable}, ${partial_eval})`);
                 }
-                partial_eval += `${state[action.scope].mathJsExpr}`;
-                result = (partial_eval === mathJsExpr) ? mathJsExpr : Algebrite.run(partial_eval);
+                result = (partial_eval === "") ? mathJsExpr : partial_eval;
             }
             
             return {
