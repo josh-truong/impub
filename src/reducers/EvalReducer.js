@@ -34,13 +34,13 @@ const EvalReducer = (state = {}, action) => {
         case UPDATE_VARIABLE: {
             const requires = ['scope', 'var', 'val']
             const requiredProps = checkProps(requires, action)
-            if (!requiredProps) { throw `[EvalReducer] UPDATE_VARIABLE - Requires ${requires}` }
+            if (!requiredProps) { console.error(`[EvalReducer] UPDATE_VARIABLE - Requires ${requires}`) }
 
             // Validate if the declared variable is within scope
             let status = false;
             try { status = !checkProps([action.var], state[action.scope].var) }
-            catch (error) { throw `[EvalReducer] UPDATE_VARIABLE - Undeclared Scope (${action.scope})!` }
-            if (status) { throw `[EvalReducer] UPDATE_VARIABLE - Undeclared Variable (${action.var}) within scope(${action.scope})!` }
+            catch (error) { console.error(`[EvalReducer] UPDATE_VARIABLE - Undeclared Scope (${action.scope})!`) }
+            if (status) { console.error(`[EvalReducer] UPDATE_VARIABLE - Undeclared Variable (${action.var}) within scope(${action.scope})!`) }
 
             return EvalReducer({
                 ...state,
@@ -63,9 +63,8 @@ const EvalReducer = (state = {}, action) => {
                 result = code.evaluate(scope);
             } catch (error) { // Some or none of variables have null value
                 let partial_eval = mathJsExpr;
-                for (const variable in scope) {
-                    console.log(partial_eval)
-                    partial_eval = (scope[variable] === null) ? partial_eval : Algebrite.run(`subst(${scope[variable]}, ${variable}, ${partial_eval})`);
+                for (const variable in scope) { // Substitute variables with it's assigned value
+                    partial_eval = (scope[variable] === null) ? partial_eval : Algebrite.run(`printlatex(subst(${scope[variable]}, ${variable}, ${partial_eval}))`);
                 }
                 result = (partial_eval === "") ? mathJsExpr : partial_eval;
             }
