@@ -21,10 +21,19 @@ const EvalReducer = (state = {}, action) => {
             const parser = math.parse(mathJsExpr) // Retrieve Abstract Syntax Tree (AST)
             const variables = getVariables(parser) // Retrieve variables
 
+            let result = null
+            try {
+                result = Algebrite.run(`printlatex(${mathJsExpr})`)
+            }
+            catch(error) {
+                console.error('Cannot Evaluate Expression!')
+            }
+
+
             return {
                 ...state,
                 [action.scope]: {
-                    'result': null,
+                    'result': result,
                     'mathJsExpr': mathJsExpr,
                     'latexExpr': latexExpr,
                     'var': variables

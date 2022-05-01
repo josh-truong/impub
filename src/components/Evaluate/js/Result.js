@@ -30,8 +30,8 @@ const Result = (props) => {
 
     return (
         <span style={{color:'#2695fd'}}>
-            <MathComponent tex={`${result}`} display={false} />
-            {/* {result} */}
+            {/* <MathComponent tex={`${result}`} display={false} /> */}
+            {`$${result}$`}
         </span>
     )
 }
