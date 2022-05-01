@@ -1,12 +1,12 @@
 import React from 'react';
-import { Demo }
+import { InteractiveCalculator, Demo }
   from '../index.js';
 
 function App() {
   return (
     <div className="container">
-      {/* <InteractiveCalculator/> */}
-      <Demo />
+      <InteractiveCalculator/>
+      {/* <Demo /> */}
     </div>
   );
 }

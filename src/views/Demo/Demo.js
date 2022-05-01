@@ -45,19 +45,19 @@ const Demo = () => {
         By a modification of Cook's construction [3] using the idea of [2]. See [19] or [25].
       </Proof>
 
-      {tab}To obtain results for (0,1)-matrices we also need the following:
+      {tab}To obtain results for `(0,1)`-matrices we also need the following:
 
       <Lemma id='3.3'>
         There is a transformation <Tex expr='$h$' />, computable in time polynomial in {M} and the order of the matrix, that maps
-        matrices with elements from the set <Tex expr='$\{0,1,...,m\}$' /> to (0,1)-matrices such
+        matrices with elements from the set <Tex expr='$\{0,1,...,m\}$' /> to `(0,1)`-matrices such
         that <Tex expr='$$\forall A \;\; \text{Perm}A = \text{Perm }h(A).$$' />
       </Lemma>
 
       {tab}Before proving Lemmas {lemma_3_1} and {lemma_3_3} we observe that
       Theorems <Ref id={{ 'Theorem': '1' }} /> and <Ref id={{ 'Theorem': '2' }} /> follow from them.
       <Proposition id='3.4'>
-        For some positive constant <Tex expr='$d$' /> the problem of computing the permanent mod <Tex expr='$r$' />, given an
-        <Tex expr='$n \times n$' /> (0,1)-matrix and a positive integer <Tex expr='$r < d n \log_2 n$' />, is # P-hard.
+        For some positive constant <Tex expr='$d$' /> the problem of computing the permanent mod <Tex expr='$r$' />, given 
+        an <Tex expr='$n \times n$' /> `(0,1)`-matrix and a positive integer <Tex expr='$r < d n \log_2 n$' />, is # P-hard.
       </Proposition>
 
       <Proof>
@@ -66,14 +66,14 @@ const Demo = () => {
         <ProofContent>
           To compute <Tex expr='$\text{Perm } C$' /> it is sufficient to compute its value <Tex expr='$\text{mod } p_i$' /> for each <Tex expr='$p_i$' /> in some set
           <Tex expr='$\{p_i,...p_t\}$' /> of distinct prime numbers whose product exceeds <Tex expr='$2\mu^n \cdot n!$' /> For some constant <Tex expr="$d'$" /> it is
-          always sufficient that each <Tex expr="$p_i < d'n(\log_2 \mu n)$" /> [7, p.342]. But, by Lemma {lemma_3_3}, for each
-          <Tex expr='$p_i$' />, <Tex expr='$C \text{ mod } p_i$' /> can be transformed in polynomial time into a (0,1)-matrix with the same permanent. The result
+          always sufficient that each <Tex expr="$p_i < d'n(\log_2 \mu n)$" /> [7, p.342]. But, by Lemma {lemma_3_3}, for each `p_i`, <Tex expr='$C \text{ mod } p_i$' /> can 
+          be transformed in polynomial time into a `(0,1)`-matrix with the same permanent. The result
           therefore follows from Lemmas {lemma_3_1} and {lemma_3_2}.
         </ProofContent>
       </Proof>
 
       <Theorem id='1'>
-        Computing the permanent of a (0,1)-matrix is # P-complete.
+        Computing the permanent of a `(0,1)`-matrix is # P-complete.
       </Theorem>
 
       <Proof>
@@ -82,7 +82,7 @@ const Demo = () => {
 
       <Theorem id='2'>
         For any fixed positive integer {K} that is not an exact power of two, computing the permanent <Tex expr='$\text{mod} K$' /> of
-        (0,1)-matrices is UP-hard.
+        `(0,1)`-matrices is UP-hard.
       </Theorem>
 
       <Proof>
