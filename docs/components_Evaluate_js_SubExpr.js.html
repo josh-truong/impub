@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: reducers/helpers/getVariables.js</title>
+    <title>JSDoc: Source: components/Evaluate/js/SubExpr.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: reducers/helpers/getVariables.js</h1>
+    <h1 class="page-title">Source: components/Evaluate/js/SubExpr.js</h1>
 
     
 
@@ -26,22 +26,46 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
+            <pre class="prettyprint source linenums"><code>import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { SUB_EXPR } from '../../../constants';
+
+/**
+ * The SubExpr component was made with the intent of interacting with 
+ * variables that were already declared within the scope. 
  * 
- * Retrieves variables from MathJs node tree
+ * @component
  * 
+ * @param {Object} scope - Existing scope name
+ * @param {Object} expr - Expression that currently uses the variables declared within scope
+ * 
+ * @returns {React_Elements} Returns React Element
+ * 
+ * @example
+ * &lt;SubExpr scope='existing_scope_name' expr='expression that must only include var declared within scope' />
 */
-function getVariables(node) {
-    const filtered = node.filter(function (node) {
-        return (node.isSymbolNode &amp;&amp; node.name)
-    })
-    const distinct = Array.from(new Set(filtered.map((elt) => elt.name)))
-    var var_dict = {}
-    distinct.map((elt) =>  var_dict[elt] = null)
-    return var_dict
+const SubExpr = ({ scope, expr }) => {
+  const dispatch = useDispatch();
+  const result = useSelector(state => {
+    try {
+      return [state.EvalReducer[scope][expr],state.EvalReducer[scope].var];
+    } catch (error) { return [null,null] }
+  });
+
+  useEffect(() => {
+    dispatch({ type: SUB_EXPR, scope: scope, expr: expr })
+  }, [result])
+
+  return (
+    &lt;span style={{ color: '#2695fd' }}>
+      {`$${result[0]}$`}
+    &lt;/span>
+  )
 }
 
-export default getVariables</code></pre>
+
+export default SubExpr
+</code></pre>
         </article>
     </section>
 

@@ -24,7 +24,7 @@ const Scope = (props) => {
 
   useEffect(() => {
     dispatch({ type: ADD_SCOPE, scope:props.scope, expr:props.expr})
-  }, [dispatch])
+  })
   
   return (
     <>{props.children}</>

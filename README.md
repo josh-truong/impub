@@ -2,6 +2,8 @@
 - Joshua Grochow: Supervisor
 - Joshua Truong
 
+4^t(F) = Perm X(1 ; 4) = Perm X(4; 1) <--> Add Slider to display changing values
+
 
 ## ToDos
 Work on visualize demo, 3d matrix with left/right/rotate/zoom in and out

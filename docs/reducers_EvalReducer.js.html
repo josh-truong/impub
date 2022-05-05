@@ -26,8 +26,9 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { ADD_SCOPE, EVAL_EXPR, UPDATE_VARIABLE } from "../constants"
+            <pre class="prettyprint source linenums"><code>import { ADD_SCOPE, EVAL_EXPR, UPDATE_VARIABLE, SUB_EXPR } from "../constants"
 import getVariables from "./helpers/getVariables";
+import checkProps from "./helpers/checkProps";
 var math = require('mathjs');
 var Algebrite = require('algebrite');
 
@@ -39,37 +40,44 @@ var Algebrite = require('algebrite');
  * Result. 
  * 
 */
-const EvalReducer = (state={}, action) => {
+const EvalReducer = (state = {}, action) => {
     switch (action.type) {
-        case ADD_SCOPE:
+        case ADD_SCOPE: {
             const mathJsExpr = action.expr; // math js expression to evaluate
             const latexExpr = math.parse(mathJsExpr).toTex() // Convert math js expression to tex
-        
+
             const parser = math.parse(mathJsExpr) // Retrieve Abstract Syntax Tree (AST)
             const variables = getVariables(parser) // Retrieve variables
+
+            let result = null
+            try {
+                result = Algebrite.run(`printlatex(${mathJsExpr})`)
+            }
+            catch (error) {
+                console.error('Cannot Evaluate Expression!')
+            }
+
 
             return {
                 ...state,
                 [action.scope]: {
-                    'result': null,
+                    'result': result,
                     'mathJsExpr': mathJsExpr,
                     'latexExpr': latexExpr,
                     'var': variables
                 }
             };
-        case UPDATE_VARIABLE:
-            // Check if all required props has been declared
-            let requiredProps = action.hasOwnProperty('scope') &amp;&amp;
-                                action.hasOwnProperty('var') &amp;&amp;
-                                action.hasOwnProperty('val');
-            if (!requiredProps) { throw 'Props requires scope, var, and val.' }
+        }
+        case UPDATE_VARIABLE: {
+            const requires = ['scope', 'var', 'val']
+            const requiredProps = checkProps(requires, action)
+            if (!requiredProps) { console.error(`[EvalReducer] UPDATE_VARIABLE - Requires ${requires}`) }
 
             // Validate if the declared variable is within scope
             let status = false;
-            try {
-                status = !(state[action.scope].var.hasOwnProperty(action.var))
-            } catch (error) { throw `Scope ${action.scope} has not been declared!` }
-            if (status) { throw `Variable ${action.var} does not exists within scope ${action.scope}!` }
+            try { status = !checkProps([action.var], state[action.scope].var) }
+            catch (error) { console.error(`[EvalReducer] UPDATE_VARIABLE - Undeclared Scope (${action.scope})!`) }
+            if (status) { console.error(`[EvalReducer] UPDATE_VARIABLE - Undeclared Variable (${action.var}) within scope(${action.scope})!`) }
 
             return EvalReducer({
                 ...state,
@@ -80,47 +88,49 @@ const EvalReducer = (state={}, action) => {
                         [action.var]: action.val
                     }
                 }
-            }, { type: EVAL_EXPR, scope: action.scope})
+            }, { type: EVAL_EXPR, scope: action.scope })
+        }
+        case EVAL_EXPR: {
+            const scope = state[action.scope].var;
+            const mathJsExpr = state[action.scope].mathJsExpr;
+            const latexExpr = state[action.scope].latexExpr;
+            let result = '';
 
-        case EVAL_EXPR:
-            try {
-                const code = math.parse(state[action.scope].mathJsExpr).compile();
-                const scope = state[action.scope].var;
-                return {
-                    ...state,
-                    [action.scope]: {
-                        ...state[action.scope],
-                        result: code.evaluate(scope)
-                    }
+            try { // If all variables are not null value
+                const code = math.parse(mathJsExpr).compile();
+                result = code.evaluate(scope);
+                result = Algebrite.run(`printlatex(${result})`)
+            } catch (error) { // Some or none of variables have null value
+                let partial_eval = mathJsExpr;
+                for (const variable in scope) { // Substitute variables with it's assigned value
+                    partial_eval = (scope[variable] === null) ? partial_eval : Algebrite.run(`printlatex(subst(${scope[variable]}, ${variable}, ${partial_eval}))`);
+                }
+                result = (partial_eval === mathJsExpr) ? latexExpr : partial_eval;
+            }
+            return {
+                ...state,
+                [action.scope]: {
+                    ...state[action.scope],
+                    result: result
                 }
             }
-            catch(error) {
-                let partial_eval = '';
-                const scope_var = state[action.scope].var
-                for (const variable in scope_var) {
-                    if (scope_var[variable] !== null) {
-                        partial_eval += `${variable}=${scope_var[variable]}\n`
-                    }
-                }
+        }
+        case SUB_EXPR: {
+            const scope = state[action.scope].var;
+            let partial_eval = action.expr;
+            for (const variable in scope) { // Substitute variables with it's assigned value
+                partial_eval = (scope[variable] === null) ? partial_eval : Algebrite.run(`subst(${scope[variable]}, ${variable}, ${partial_eval})`);
+            }
+            partial_eval = Algebrite.run(`printlatex(${partial_eval})`);
 
-                var evaluated;
-                if (partial_eval !== '') {
-                    partial_eval += `${state[action.scope].mathJsExpr}`;
-                    
-                    evaluated = Algebrite.run(partial_eval);
-                } else {
-                    evaluated = state[action.scope].mathJsExpr
-                }
-                
-                return {
-                    ...state,
-                    [action.scope]: {
-                        ...state[action.scope],
-                        // result: Algebrite.run(`printlatex(${evaluated})`)
-                        result: evaluated
-                    }
+            return {
+                ...state,
+                [action.scope]: {
+                    ...state[action.scope],
+                    [action.expr]: partial_eval
                 }
             }
+        }
         default:
             return state
     }
@@ -137,13 +147,13 @@ export default EvalReducer
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Corollary">Corollary</a></li><li><a href="global.html#Definition">Definition</a></li><li><a href="global.html#DefReducer">DefReducer</a></li><li><a href="global.html#EvalReducer">EvalReducer</a></li><li><a href="global.html#Example">Example</a></li><li><a href="global.html#getVariables">getVariables</a></li><li><a href="global.html#Lemma">Lemma</a></li><li><a href="global.html#MathTermSkeleton">MathTermSkeleton</a></li><li><a href="global.html#MathTex">MathTex</a></li><li><a href="global.html#Notation">Notation</a></li><li><a href="global.html#Observation">Observation</a></li><li><a href="global.html#Proof">Proof</a></li><li><a href="global.html#ProofContent">ProofContent</a></li><li><a href="global.html#Proposition">Proposition</a></li><li><a href="global.html#Ref">Ref</a></li><li><a href="global.html#Remark">Remark</a></li><li><a href="global.html#Result">Result</a></li><li><a href="global.html#Scope">Scope</a></li><li><a href="global.html#Tex">Tex</a></li><li><a href="global.html#Theorem">Theorem</a></li><li><a href="global.html#Var">Var</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#checkProps">checkProps</a></li><li><a href="global.html#Corollary">Corollary</a></li><li><a href="global.html#Definition">Definition</a></li><li><a href="global.html#DefReducer">DefReducer</a></li><li><a href="global.html#EvalReducer">EvalReducer</a></li><li><a href="global.html#Example">Example</a></li><li><a href="global.html#getVariables">getVariables</a></li><li><a href="global.html#Lemma">Lemma</a></li><li><a href="global.html#MathTermSkeleton">MathTermSkeleton</a></li><li><a href="global.html#MathTex">MathTex</a></li><li><a href="global.html#Notation">Notation</a></li><li><a href="global.html#Observation">Observation</a></li><li><a href="global.html#Proof">Proof</a></li><li><a href="global.html#ProofContent">ProofContent</a></li><li><a href="global.html#Proposition">Proposition</a></li><li><a href="global.html#Ref">Ref</a></li><li><a href="global.html#Remark">Remark</a></li><li><a href="global.html#Result">Result</a></li><li><a href="global.html#Scope">Scope</a></li><li><a href="global.html#SubExpr">SubExpr</a></li><li><a href="global.html#Tex">Tex</a></li><li><a href="global.html#Theorem">Theorem</a></li><li><a href="global.html#Var">Var</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu Apr 28 2022 18:44:04 GMT-0600 (Mountain Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu May 05 2022 01:08:48 GMT-0600 (Mountain Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

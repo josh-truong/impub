@@ -104,6 +104,188 @@
     
 
     
+    <h4 class="name" id="checkProps"><span class="type-signature"></span>checkProps<span class="signature">(keyLst, action)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Check for all required props
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>keyLst</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">List of strings</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>action</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">-</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="reducers_helpers_checkProps.js.html">reducers/helpers/checkProps.js</a>, <a href="reducers_helpers_checkProps.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - true if all keys in list is in action
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="Corollary"><span class="type-signature"></span>Corollary<span class="signature">(props)</span><span class="type-signature"> &rarr; {React_Elements}</span></h4>
     
 
@@ -690,7 +872,7 @@ Result.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="reducers_EvalReducer.js.html">reducers/EvalReducer.js</a>, <a href="reducers_EvalReducer.js.html#line14">line 14</a>
+        <a href="reducers_EvalReducer.js.html">reducers/EvalReducer.js</a>, <a href="reducers_EvalReducer.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -999,7 +1181,7 @@ Result.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="reducers_helpers_getVariables.js.html">reducers/helpers/getVariables.js</a>, <a href="reducers_helpers_getVariables.js.html#line24">line 24</a>
+        <a href="reducers_helpers_getVariables.js.html">reducers/helpers/getVariables.js</a>, <a href="reducers_helpers_getVariables.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -1358,7 +1540,7 @@ within the current library.
 
         <tr>
             
-                <td class="name"><code>props.children.id</code></td>
+                <td class="name"><code>props.term_name</code></td>
             
 
             <td class="type">
@@ -1374,7 +1556,7 @@ within the current library.
 
             
 
-            <td class="description last">To identify MathTerm component name</td>
+            <td class="description last">MathTerm Component Name</td>
         </tr>
 
     
@@ -1397,7 +1579,7 @@ within the current library.
 
             
 
-            <td class="description last">A unique identifier for reference</td>
+            <td class="description last">Unique Id of MathTerm</td>
         </tr>
 
     
@@ -1420,7 +1602,7 @@ within the current library.
 
             
 
-            <td class="description last">Essenntially content in-between tags</td>
+            <td class="description last">Definition of term</td>
         </tr>
 
     
@@ -3450,7 +3632,7 @@ expand/contract section.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Evaluate_js_Result.js.html">components/Evaluate/js/Result.js</a>, <a href="components_Evaluate_js_Result.js.html#line21">line 21</a>
+        <a href="components_Evaluate_js_Result.js.html">components/Evaluate/js/Result.js</a>, <a href="components_Evaluate_js_Result.js.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -3757,6 +3939,194 @@ expand/contract section.
     
 
     
+    <h4 class="name" id="SubExpr"><span class="type-signature"></span>SubExpr<span class="signature">(scope, expr)</span><span class="type-signature"> &rarr; {React_Elements}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    The SubExpr component was made with the intent of interacting with 
+variables that were already declared within the scope.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Existing scope name</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>expr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Expression that currently uses the variables declared within scope</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_Evaluate_js_SubExpr.js.html">components/Evaluate/js/SubExpr.js</a>, <a href="components_Evaluate_js_SubExpr.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Returns React Element
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React_Elements</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>&lt;SubExpr scope='existing_scope_name' expr='expression that must only include var declared within scope' /></code></pre>
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="Tex"><span class="type-signature"></span>Tex<span class="signature">(props)</span><span class="type-signature"> &rarr; {React_Elements}</span></h4>
     
 
@@ -3768,6 +4138,8 @@ expand/contract section.
     Tex Component uses MathJax CDN to render Latex expressions.
 <br/> - MathJax.Hub.Queue is needed to re-render expressions
 <br/> - MathJax.Hub.Config configurates MathJax.
+
+Additionally, you can use backticks for inline rendering
 </div>
 
 
@@ -3935,7 +4307,7 @@ expand/contract section.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Tex_index.js.html">components/Tex/index.js</a>, <a href="components_Tex_index.js.html#line22">line 22</a>
+        <a href="components_Tex_Tex.js.html">components/Tex/Tex.js</a>, <a href="components_Tex_Tex.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -3989,7 +4361,8 @@ expand/contract section.
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>&lt;Tex expr='MathJax Valid Expressions' />
-&lt;Tex>MathJax Valid Expressions&lt;/Tex></code></pre>
+&lt;Tex>MathJax Valid Expressions&lt;/Tex>
+`Math Expressions` - Is not valid if you need to use {}</code></pre>
 
 
 
@@ -4544,13 +4917,13 @@ Uses react redux to store global changes. Refer to src/reducers.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Corollary">Corollary</a></li><li><a href="global.html#Definition">Definition</a></li><li><a href="global.html#DefReducer">DefReducer</a></li><li><a href="global.html#EvalReducer">EvalReducer</a></li><li><a href="global.html#Example">Example</a></li><li><a href="global.html#getVariables">getVariables</a></li><li><a href="global.html#Lemma">Lemma</a></li><li><a href="global.html#MathTermSkeleton">MathTermSkeleton</a></li><li><a href="global.html#MathTex">MathTex</a></li><li><a href="global.html#Notation">Notation</a></li><li><a href="global.html#Observation">Observation</a></li><li><a href="global.html#Proof">Proof</a></li><li><a href="global.html#ProofContent">ProofContent</a></li><li><a href="global.html#Proposition">Proposition</a></li><li><a href="global.html#Ref">Ref</a></li><li><a href="global.html#Remark">Remark</a></li><li><a href="global.html#Result">Result</a></li><li><a href="global.html#Scope">Scope</a></li><li><a href="global.html#Tex">Tex</a></li><li><a href="global.html#Theorem">Theorem</a></li><li><a href="global.html#Var">Var</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#checkProps">checkProps</a></li><li><a href="global.html#Corollary">Corollary</a></li><li><a href="global.html#Definition">Definition</a></li><li><a href="global.html#DefReducer">DefReducer</a></li><li><a href="global.html#EvalReducer">EvalReducer</a></li><li><a href="global.html#Example">Example</a></li><li><a href="global.html#getVariables">getVariables</a></li><li><a href="global.html#Lemma">Lemma</a></li><li><a href="global.html#MathTermSkeleton">MathTermSkeleton</a></li><li><a href="global.html#MathTex">MathTex</a></li><li><a href="global.html#Notation">Notation</a></li><li><a href="global.html#Observation">Observation</a></li><li><a href="global.html#Proof">Proof</a></li><li><a href="global.html#ProofContent">ProofContent</a></li><li><a href="global.html#Proposition">Proposition</a></li><li><a href="global.html#Ref">Ref</a></li><li><a href="global.html#Remark">Remark</a></li><li><a href="global.html#Result">Result</a></li><li><a href="global.html#Scope">Scope</a></li><li><a href="global.html#SubExpr">SubExpr</a></li><li><a href="global.html#Tex">Tex</a></li><li><a href="global.html#Theorem">Theorem</a></li><li><a href="global.html#Var">Var</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu Apr 28 2022 18:44:04 GMT-0600 (Mountain Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu May 05 2022 01:08:48 GMT-0600 (Mountain Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

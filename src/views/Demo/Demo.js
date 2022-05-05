@@ -1,4 +1,5 @@
 import React from 'react';
+import { Var, Scope, Result, MathTex, SubExpr } from "../../components/Evaluate";
 import { Lemma, Proposition, Theorem, Ref } from '../../components/MathTerm';
 import { Proof, ProofContent } from '../../components/Proof';
 import { Tex } from '../../components/Tex';
@@ -117,14 +118,35 @@ const Demo = () => {
 
           {tab}The crucial part of the construction is the structure of the junctions. The junctions and internal junctions are all identical four-node
           weighted digraphs corresponding to the following <Tex expr='$4 \times 4$' /> matrix {X}.
-          <Tex expr='$$X = 
+
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+              <Tex expr="$X =$" /><MathTex scope='mat' />=
+            </div>
+            <div style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+              <Scope scope='mat' expr='[[x11,x12,x13,x14],[x21,x22,x23,x24],[x31,x32,x33,x34],[x41,x42,x43,x44]]' />
+              {/* <br /> */}
+              <Var id={{ 'mat': 'x11' }} val={0} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x12' }} val={1} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x13' }} val={-1} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x14' }} val={-1} />
+              <br />
+              <Var id={{ 'mat': 'x21' }} val={1} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x22' }} val={-1} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x23' }} val={1} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x24' }} val={1} />
+              <br />
+              <Var id={{ 'mat': 'x31' }} val={0} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x32' }} val={1} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x33' }} val={1} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x34' }} val={2} />
+              <br />
+              <Var id={{ 'mat': 'x41' }} val={0} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x42' }} val={1} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x43' }} val={3} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x44' }} val={0} />
+            </div>
+            <div style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+              = <Result scope='mat' />
+            </div>
+          </div>
+          <br />
+          {/* <Tex expr='$$X = 
                           \begin{bmatrix}
                           0 & 1 & -1 & -1 \\
                           1 & -1 & 1 & 1 \\
                           0 & 1 & 1 & 2 \\
                           0 & 1 & 3 & 0
                           \end{bmatrix}.$$'
-          />
+          /> */}
 
           Each one has external connections only via nodes 1 and 4 and not via 2 or 3.
           <br />
@@ -132,11 +154,25 @@ const Demo = () => {
           columns <Tex expr='$\delta$' /> removed, the following properties of {X} can be verified:
           <br />
           <ol type="i">
-            <li><Tex expr='$\text{Perm }X = 0$' /></li>
-            <li><Tex expr='$\text{Perm }X(1;1) = 0$' /></li>
-            <li><Tex expr='$\text{Perm }X(4;4) = 0$' /></li>
-            <li><Tex expr='$\text{Perm }X(1,4;1,4) = 0$' /></li>
-            <li><Tex expr='$\text{Perm }X(1;4) = \text{Perm }X(4;1) = \text{nonzero constant }(=4)$' /></li>
+            <li>
+              <Tex expr='$\text{Perm }X = 0$' />
+            </li>
+            <li>
+              <Tex expr='$\text{Perm} X(1;1) = $' /> <SubExpr scope='mat' expr='x22*x33*x44+x23*x34*x42+x24*x32*x43+x22*x34*x43+x24*x33*x42+x23*x32*x44' />
+            </li>
+            <li>
+              <Tex expr='$\text{Perm} X(4;4) = $' /> <SubExpr scope='mat' expr='x11*x22*x33+x12*x23*x31+x13*x21*x32+x11*x23*x32+x13*x22*x31+x12*x21*x33' />
+            </li>
+            <li>
+              <Tex expr='$\text{Perm} X(1,4; 1,4) = $' /> <SubExpr scope='mat' expr='x22*x33+x23*x32' />
+              <br />
+              {tab}<Tex expr='$\text{Perm} X(1;4) = \text{Perm} X(4;1) = \text{nonzero constant(=4)}$' />
+              <br />
+              {tab}<Tex expr='$\text{Perm} X(1;4) = $' /> <SubExpr scope='mat' expr='x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41' />
+            </li>
+            <li>
+              <Tex expr='$\text{Perm} X(4;1) = $' /> <SubExpr scope='mat' expr='x12*x23*x34+x13*x24*x32+x14*x22*x33+x12*x24*x33+x13*x22*x34+x14*x23*x32' />
+            </li>
           </ol>
           [N.R. The given X is about the simplest possible among all matrices with properties (i)-(v) if <Tex expr='$\{1, 4\}$' /> is
           taken to denote an arbitrary pair of indices, and any nonzero constant is allowed in (v). This can be seen from the following easily proved facts:
@@ -172,7 +208,7 @@ const Demo = () => {
           of these edges from {x} to {y} in <Tex expr='$h(A)$' />. Then there are five ways of covering the remainder, each
           corresponding to the inclusion of a different self-loop.
           <br />
-          <img src={fig2}  alt='Fig. 2'/>
+          <img src={fig2} alt='Fig. 2' />
           {tab}To obtain our main positive result we generalise the Gaussian elimination technique.
         </ProofContent>
       </Proof>

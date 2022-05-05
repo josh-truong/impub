@@ -1,4 +1,4 @@
-import { ADD_SCOPE, EVAL_EXPR, UPDATE_VARIABLE } from "../constants"
+import { ADD_SCOPE, EVAL_EXPR, UPDATE_VARIABLE, SUB_EXPR } from "../constants"
 import getVariables from "./helpers/getVariables";
 import checkProps from "./helpers/checkProps";
 var math = require('mathjs');
@@ -25,7 +25,7 @@ const EvalReducer = (state = {}, action) => {
             try {
                 result = Algebrite.run(`printlatex(${mathJsExpr})`)
             }
-            catch(error) {
+            catch (error) {
                 console.error('Cannot Evaluate Expression!')
             }
 
@@ -67,10 +67,11 @@ const EvalReducer = (state = {}, action) => {
             const mathJsExpr = state[action.scope].mathJsExpr;
             const latexExpr = state[action.scope].latexExpr;
             let result = '';
-            
+
             try { // If all variables are not null value
                 const code = math.parse(mathJsExpr).compile();
                 result = code.evaluate(scope);
+                result = Algebrite.run(`printlatex(${result})`)
             } catch (error) { // Some or none of variables have null value
                 let partial_eval = mathJsExpr;
                 for (const variable in scope) { // Substitute variables with it's assigned value
@@ -78,12 +79,27 @@ const EvalReducer = (state = {}, action) => {
                 }
                 result = (partial_eval === mathJsExpr) ? latexExpr : partial_eval;
             }
-            
             return {
                 ...state,
                 [action.scope]: {
                     ...state[action.scope],
                     result: result
+                }
+            }
+        }
+        case SUB_EXPR: {
+            const scope = state[action.scope].var;
+            let partial_eval = action.expr;
+            for (const variable in scope) { // Substitute variables with it's assigned value
+                partial_eval = (scope[variable] === null) ? partial_eval : Algebrite.run(`subst(${scope[variable]}, ${variable}, ${partial_eval})`);
+            }
+            partial_eval = Algebrite.run(`printlatex(${partial_eval})`);
+
+            return {
+                ...state,
+                [action.scope]: {
+                    ...state[action.scope],
+                    [action.expr]: partial_eval
                 }
             }
         }

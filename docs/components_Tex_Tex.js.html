@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: reducers/helpers/getVariables.js</title>
+    <title>JSDoc: Source: components/Tex/Tex.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: reducers/helpers/getVariables.js</h1>
+    <h1 class="page-title">Source: components/Tex/Tex.js</h1>
 
     
 
@@ -26,22 +26,57 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
+            <pre class="prettyprint source linenums"><code>import React, { useEffect } from 'react';
+
+
+/**
+ * Tex Component uses MathJax CDN to render Latex expressions.
+ * &lt;br/> - MathJax.Hub.Queue is needed to re-render expressions
+ * &lt;br/> - MathJax.Hub.Config configurates MathJax.
  * 
- * Retrieves variables from MathJs node tree
+ * Additionally, you can use backticks for inline rendering
  * 
-*/
-function getVariables(node) {
-    const filtered = node.filter(function (node) {
-        return (node.isSymbolNode &amp;&amp; node.name)
-    })
-    const distinct = Array.from(new Set(filtered.map((elt) => elt.name)))
-    var var_dict = {}
-    distinct.map((elt) =>  var_dict[elt] = null)
-    return var_dict
+ * @component
+ * 
+ * @param {Object} props - Component props
+ * 
+ * @property {String} props.expr -(Explicit usage) Tex Expression to render using MathJax
+ * @property {Elements} props.children - (Implicit usage) Tex Expression to render using MathJax
+ * 
+ * @returns {React_Elements} Returns React Element either props.expr or props.children
+ * 
+ * @example
+ * &lt;Tex expr='MathJax Valid Expressions' />
+ * &lt;Tex>MathJax Valid Expressions&lt;/Tex>
+ * `Math Expressions` - Is not valid if you need to use {}
+ */
+const Tex = (props) => {
+  async function renderMath() {
+    window.MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    });
+    window.MathJax.Hub.Register.StartupHook("End", function () {
+      window.MathJax.Hub.Queue([
+        "Typeset",
+        window.MathJax.Hub,
+        "TFS"]);
+    });
+  }
+
+  useEffect(() => {
+    renderMath();
+  });
+
+  return (
+    &lt;>
+      {props.expr ? props.expr : props.children}
+    &lt;/>
+  )
 }
 
-export default getVariables</code></pre>
+export default Tex</code></pre>
         </article>
     </section>
 

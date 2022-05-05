@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers'
 const store = createStore(
   rootReducer, /* preloadedState */
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() /* Redux devtools extension for browser */
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() /* Redux devtools extension for browser */
 );
 
 

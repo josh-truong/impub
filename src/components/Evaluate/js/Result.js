@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { MathComponent } from 'mathjax-react'
 /**
  * Returns the result of an evaluted expression, may contain partial expression or a numeric answer.
  * 
@@ -30,7 +29,6 @@ const Result = (props) => {
 
     return (
         <span style={{color:'#2695fd'}}>
-            {/* <MathComponent tex={`${result}`} display={false} /> */}
             {`$${result}$`}
         </span>
     )

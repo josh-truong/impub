@@ -43,7 +43,7 @@ const Var = (props) => {
     const step = props.step;
 
     const dispatch = useDispatch();
-    const [val, setVal] = useState(props.min);
+    const [val, setVal] = useState(props.val ? props.val : 0);
     const [onClick, setOnClick] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
     const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -54,7 +54,7 @@ const Var = (props) => {
 
     useEffect(() => {
         dispatch({ type: UPDATE_VARIABLE, scope: scope_name, var: var_name, val: val })
-    }, [dispatch, val])
+    }, [val])
 
 
 
@@ -82,7 +82,7 @@ const Var = (props) => {
         }
         else if (e.nativeEvent.which === 3 && e.type === 'contextmenu') {
             e.preventDefault()
-            setVal(null)
+            setVal(props.val)
         }
     }
 
@@ -91,7 +91,7 @@ const Var = (props) => {
             {onClick ?
                 <div className={dragging}
                     onMouseUp={(e) => setOnClick(false)}
-                    onMouseMove={(e) => handleOnClick(e)}
+                    onMouseMove={(e) => handleOnClick(e) }
                 /> : ''}
             <div style={{ color: '#39FF14', display: 'inline-block' }} onContextMenu={(e) => handleOnClick(e)}>
                 {mode ?

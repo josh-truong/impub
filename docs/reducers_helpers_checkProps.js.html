@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: reducers/helpers/getVariables.js</title>
+    <title>JSDoc: Source: reducers/helpers/checkProps.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: reducers/helpers/getVariables.js</h1>
+    <h1 class="page-title">Source: reducers/helpers/checkProps.js</h1>
 
     
 
@@ -27,21 +27,20 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * 
- * Retrieves variables from MathJs node tree
- * 
+ * Check for all required props
+ * @param {object} keyLst - List of strings
+ * @param {object} action - 
+ * @returns {boolean} - true if all keys in list is in action
 */
-function getVariables(node) {
-    const filtered = node.filter(function (node) {
-        return (node.isSymbolNode &amp;&amp; node.name)
-    })
-    const distinct = Array.from(new Set(filtered.map((elt) => elt.name)))
-    var var_dict = {}
-    distinct.map((elt) =>  var_dict[elt] = null)
-    return var_dict
+function checkProps(keyLst, action) {
+    const init_value = 1;
+    const res = keyLst.reduce(
+        (res, key) => res * action.hasOwnProperty(key), 
+        init_value)
+    return res
 }
 
-export default getVariables</code></pre>
+export default checkProps</code></pre>
         </article>
     </section>
 

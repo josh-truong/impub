@@ -33,7 +33,6 @@ import { ADD_TERM } from '../../constants'
  * <Theorem id="unique section name">[Content]</Theorem>
 */
 const MathTermSkeleton = (props) => {
-    console.log(props)
     const dispatch = useDispatch();
     const term_name = props.term_name
     const term_id = props.id
