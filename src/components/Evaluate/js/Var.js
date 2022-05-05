@@ -88,6 +88,7 @@ const Var = (props) => {
         else if (e.nativeEvent.which === 3 && e.type === 'contextmenu') {
             e.preventDefault()
             setGlobalVal(props.val)
+            setLocalVal(props.val)
         }
     }
 
