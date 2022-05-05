@@ -1,15 +1,15 @@
 {
-  "main.css": "/impub/static/css/main.778fa612.chunk.css",
-  "main.js": "/impub/static/js/main.0f821366.chunk.js",
-  "main.js.map": "/impub/static/js/main.0f821366.chunk.js.map",
+  "main.css": "/impub/static/css/main.aa9220fe.chunk.css",
+  "main.js": "/impub/static/js/main.e29f0c8a.chunk.js",
+  "main.js.map": "/impub/static/js/main.e29f0c8a.chunk.js.map",
   "static/js/1.83915027.chunk.js": "/impub/static/js/1.83915027.chunk.js",
   "static/js/1.83915027.chunk.js.map": "/impub/static/js/1.83915027.chunk.js.map",
   "runtime~main.js": "/impub/static/js/runtime~main.8e332a64.js",
   "runtime~main.js.map": "/impub/static/js/runtime~main.8e332a64.js.map",
   "static/media/fig1.png": "/impub/static/media/fig1.cd8beb2e.png",
   "static/media/fig2.png": "/impub/static/media/fig2.4dc5a65f.png",
-  "static/css/main.778fa612.chunk.css.map": "/impub/static/css/main.778fa612.chunk.css.map",
+  "static/css/main.aa9220fe.chunk.css.map": "/impub/static/css/main.aa9220fe.chunk.css.map",
   "index.html": "/impub/index.html",
-  "precache-manifest.705165e3f1d6f742620b48f556f5602c.js": "/impub/precache-manifest.705165e3f1d6f742620b48f556f5602c.js",
+  "precache-manifest.8311281f65487007f062eb9958edb038.js": "/impub/precache-manifest.8311281f65487007f062eb9958edb038.js",
   "service-worker.js": "/impub/service-worker.js"
 }
