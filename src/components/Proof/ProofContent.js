@@ -32,8 +32,14 @@ const ProofContent = (props) => {
   function toggleProof(e) { setToggle(!toggle); }
   return (
     <div className={container}>
-      {toggle ? null : <ArrowBackIosIcon style={{transform: "rotate(-90deg)", width:"20px", height:"auto"}} onClick={toggleProof} />}
-      { !toggle ? null :
+      {toggle ? null :
+        <div>
+          <ArrowBackIosIcon style={{ transform: "rotate(-90deg)", width: "20px", height: "auto" }} onClick={toggleProof} />
+          <span style={{ padding: "0 5px" }} /><b>{props.label ? props.label : 'Show more'}</b>
+        </div>
+      }
+
+      {!toggle ? null :
         <table>
           <tbody>
             <tr>
@@ -46,7 +52,7 @@ const ProofContent = (props) => {
             </tr>
           </tbody>
         </table>}
-      
+
     </div>
   )
 }
