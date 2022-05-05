@@ -102,7 +102,7 @@ const Demo = () => {
         with <Tex expr='$f(F)$' /> the cycle covers that correspond to satisfying assignments of <Tex expr='$F$' /> will each
         contribute <Tex expr='$4^{t(F)}$' /> to the permanent, while the contributions of all the “spurious” cycle covers will cancel each other out.
         <br />
-        <ProofContent>
+        <ProofContent label='Expand Proof'>
           {tab}Let <Tex expr='$F = C_1 \wedge C_2 \wedge \dots \wedge C_r$' /> where <Tex expr='$C_i = (y_{i1} \vee y_{i2} \vee y_{i3})$' /> with
           &nbsp; <Tex expr='$y_{ij} \in \{x_1,\bar{x}_1,x_2,\bar{x}_2\},\ldots,x_m,\bar{x}_m$' />. (N.B. This assumption of 3-form is not essential.) We
           construct the graph <Tex expr='$G = f(F)$' /> by superposing the following structures: a track <Tex expr='$T_k$' /> for each variable {x_k},
@@ -118,16 +118,6 @@ const Demo = () => {
 
           {tab}The crucial part of the construction is the structure of the junctions. The junctions and internal junctions are all identical four-node
           weighted digraphs corresponding to the following <Tex expr='$4 \times 4$' /> matrix {X}.
-
-          <Tex expr='$$X = 
-                          \begin{bmatrix}
-                          0 & 1 & -1 & -1 \\
-                          1 & -1 & 1 & 1 \\
-                          0 & 1 & 1 & 2 \\
-                          0 & 1 & 3 & 0
-                          \end{bmatrix}.$$'
-          />
-
 
           <div style={{ textAlign: 'center' }}>
             <h5>Demo</h5>
@@ -145,8 +135,19 @@ const Demo = () => {
               <br />
               <Var id={{ 'mat': 'x41' }} val={0} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x42' }} val={1} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x43' }} val={3} />&nbsp;&nbsp;&nbsp;<Var id={{ 'mat': 'x44' }} val={0} />
             </div>
-            <div style={{ display: 'inline-block', verticalAlign: 'middle' }}>
-              = <Result scope='mat' />
+            <br /><br />
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+                {/* <Tex expr='$X = 
+                          \begin{bmatrix}
+                          0 & 1 & -1 & -1 \\
+                          1 & -1 & 1 & 1 \\
+                          0 & 1 & 1 & 2 \\
+                          0 & 1 & 3 & 0
+                          \end{bmatrix}$'
+                /> */}
+                <Tex expr="$X =$" /><Result scope='mat' />
+              </div>
             </div>
           </div>
           <br />
@@ -185,7 +186,7 @@ const Demo = () => {
           A route is good if every junction and internal junction is entered exactly once the left exactly once and at the opposite end. Routes may
           fail to be good either because (a) some junction or internal junction is not entered and left, or (b) because it is entered and left at the same end, or (c)
           because it is entered twice and left twice. By virtue of conditions (i) for (a), (ii) and (iii) for (b) and (iv) f or ( c ) an y route that is not good
-          contributes zero to the permanent. Condition (v) ensures that any good route contributes exactly <Tex expr='$4^{t(F)}$' />(=<SubExpr scope='mat' expr='x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41' />).
+          contributes zero to the permanent. Condition (v) ensures that any good route contributes exactly <SubExpr scope='mat' expr='(x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41)^t(F)' />.
           <br />
           {tab}It is clear that in any track <Tex expr='$T_k$' /> of any good route either all junctions on the left are
           “picked up” by the track and all the ones on the right by interchanges, or vice versa (corresponding to {x_k} and
@@ -194,8 +195,8 @@ const Demo = () => {
           picked up by the tracks, then all the remaining ones will be picked up by {R_i} in the unique good route available.
           <br />
           {tab}Using the obvious correspondence between good routes and assignments of truth values, we conclude that there is a one-one correspondence
-          between good routes in the graph, each of which contributes <Tex expr='$4^{t(F)}$' />(=<SubExpr scope='mat' expr='x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41' />)
-          to the permanent, and satisfying assignment of <Tex expr='$F$' />. The result follows.
+          between good routes in the graph, each of which contributes <SubExpr scope='mat' expr='(x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41)^t(F)' /> to
+          the permanent, and satisfying assignment of <Tex expr='$F$' />. The result follows.
         </ProofContent>
       </Proof>
 
