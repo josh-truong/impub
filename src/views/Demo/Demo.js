@@ -119,7 +119,18 @@ const Demo = () => {
           {tab}The crucial part of the construction is the structure of the junctions. The junctions and internal junctions are all identical four-node
           weighted digraphs corresponding to the following <Tex expr='$4 \times 4$' /> matrix {X}.
 
+          <Tex expr='$$X = 
+                          \begin{bmatrix}
+                          0 & 1 & -1 & -1 \\
+                          1 & -1 & 1 & 1 \\
+                          0 & 1 & 1 & 2 \\
+                          0 & 1 & 3 & 0
+                          \end{bmatrix}.$$'
+          />
+
+
           <div style={{ textAlign: 'center' }}>
+            <h5>Demo</h5>
             <div style={{ display: 'inline-block', verticalAlign: 'middle' }}>
               <Tex expr="$X =$" /><MathTex scope='mat' />=
             </div>
@@ -139,14 +150,6 @@ const Demo = () => {
             </div>
           </div>
           <br />
-          {/* <Tex expr='$$X = 
-                          \begin{bmatrix}
-                          0 & 1 & -1 & -1 \\
-                          1 & -1 & 1 & 1 \\
-                          0 & 1 & 1 & 2 \\
-                          0 & 1 & 3 & 0
-                          \end{bmatrix}.$$'
-          /> */}
 
           Each one has external connections only via nodes 1 and 4 and not via 2 or 3.
           <br />
@@ -165,14 +168,12 @@ const Demo = () => {
             </li>
             <li>
               <Tex expr='$\text{Perm} X(1,4; 1,4) = $' /> <SubExpr scope='mat' expr='x22*x33+x23*x32' />
-              <br />
-              {tab}<Tex expr='$\text{Perm} X(1;4) = \text{Perm} X(4;1) = \text{nonzero constant(=4)}$' />
-              <br />
-              {tab}<Tex expr='$\text{Perm} X(1;4) = $' /> <SubExpr scope='mat' expr='x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41' />
             </li>
             <li>
-              <Tex expr='$\text{Perm} X(4;1) = $' /> <SubExpr scope='mat' expr='x12*x23*x34+x13*x24*x32+x14*x22*x33+x12*x24*x33+x13*x22*x34+x14*x23*x32' />
+              <Tex expr='$\text{Perm} X(1;4) = \text{Perm} X(4;1) = \text{nonzero constant(=4)}$' />
             </li>
+            {tab}<Tex expr='$\text{Perm} X(1;4) = $' /> <SubExpr scope='mat' expr='x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41' />
+            {tab}<Tex expr='$\text{Perm} X(4;1) = $' /> <SubExpr scope='mat' expr='x12*x23*x34+x13*x24*x32+x14*x22*x33+x12*x24*x33+x13*x22*x34+x14*x23*x32' />
           </ol>
           [N.R. The given X is about the simplest possible among all matrices with properties (i)-(v) if <Tex expr='$\{1, 4\}$' /> is
           taken to denote an arbitrary pair of indices, and any nonzero constant is allowed in (v). This can be seen from the following easily proved facts:
@@ -184,7 +185,7 @@ const Demo = () => {
           A route is good if every junction and internal junction is entered exactly once the left exactly once and at the opposite end. Routes may
           fail to be good either because (a) some junction or internal junction is not entered and left, or (b) because it is entered and left at the same end, or (c)
           because it is entered twice and left twice. By virtue of conditions (i) for (a), (ii) and (iii) for (b) and (iv) f or ( c ) an y route that is not good
-          contributes zero to the permanent. Condition (v) ensures that any good route contributes exactly <Tex expr='$4^{t(F)}$' />.
+          contributes zero to the permanent. Condition (v) ensures that any good route contributes exactly <Tex expr='$4^{t(F)}$' />(=<SubExpr scope='mat' expr='x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41' />).
           <br />
           {tab}It is clear that in any track <Tex expr='$T_k$' /> of any good route either all junctions on the left are
           “picked up” by the track and all the ones on the right by interchanges, or vice versa (corresponding to {x_k} and
@@ -193,8 +194,8 @@ const Demo = () => {
           picked up by the tracks, then all the remaining ones will be picked up by {R_i} in the unique good route available.
           <br />
           {tab}Using the obvious correspondence between good routes and assignments of truth values, we conclude that there is a one-one correspondence
-          between good routes in the graph, each of which contributes <Tex expr='$4^{t(F)}$' /> to the permanent, and satisfying assignment
-          of <Tex expr='$F$' />. The result follows.
+          between good routes in the graph, each of which contributes <Tex expr='$4^{t(F)}$' />(=<SubExpr scope='mat' expr='x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41' />)
+          to the permanent, and satisfying assignment of <Tex expr='$F$' />. The result follows.
         </ProofContent>
       </Proof>
 
