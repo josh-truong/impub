@@ -1,8 +1,6 @@
-### Credits
-- Joshua Grochow: Supervisor
+### Contributor
+- [Supervisor] Joshua Grochow: Added suggestions to build Evaluate, MathTerm, Proof, and Tex component
 - Joshua Truong
-
-4^t(F) = Perm X(1 ; 4) = Perm X(4; 1) <--> Add Slider to display changing values
 
 
 ## ToDos
