@@ -1,7 +1,7 @@
 {
   "main.css": "/impub/static/css/main.aa9220fe.chunk.css",
-  "main.js": "/impub/static/js/main.f61c6d9b.chunk.js",
-  "main.js.map": "/impub/static/js/main.f61c6d9b.chunk.js.map",
+  "main.js": "/impub/static/js/main.24d30c91.chunk.js",
+  "main.js.map": "/impub/static/js/main.24d30c91.chunk.js.map",
   "static/js/1.83915027.chunk.js": "/impub/static/js/1.83915027.chunk.js",
   "static/js/1.83915027.chunk.js.map": "/impub/static/js/1.83915027.chunk.js.map",
   "runtime~main.js": "/impub/static/js/runtime~main.8e332a64.js",
@@ -10,6 +10,6 @@
   "static/media/fig2.png": "/impub/static/media/fig2.4dc5a65f.png",
   "static/css/main.aa9220fe.chunk.css.map": "/impub/static/css/main.aa9220fe.chunk.css.map",
   "index.html": "/impub/index.html",
-  "precache-manifest.cfb2489fada4fdfb2204553001723f13.js": "/impub/precache-manifest.cfb2489fada4fdfb2204553001723f13.js",
+  "precache-manifest.8c5a2784bfb43bc7bd2abd5da19689b1.js": "/impub/precache-manifest.8c5a2784bfb43bc7bd2abd5da19689b1.js",
   "service-worker.js": "/impub/service-worker.js"
 }

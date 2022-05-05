@@ -159,7 +159,13 @@ const Demo = () => {
           <br />
           <ol type="i">
             <li>
-              <Tex expr='$\text{Perm }X = 0$' />
+              <Tex expr='$\text{Perm }X = $' /> <SubExpr 
+                                                  scope='mat'
+                                                  expr='x11*(x22*x33*x44+x23*x34*x42+x24*x32*x43+x22*x34*x43+x24*x33*x42+x23*x32*x44)
+                                                       +x12*(x21*x33*x44+x12*x34*x43+x23*x31*x44+x23*x34*x41+x24*x31*x43+x24*x41*x33)
+                                                       +x13*(x21*x32*x44+x21*x34*x42+x22*x31*x44+x22*x34*x41+x24*x31*x42+x24*x32*x41)
+                                                       +x14*(x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41)
+                                                       ' />
             </li>
             <li>
               <Tex expr='$\text{Perm} X(1;1) = $' /> <SubExpr scope='mat' expr='x22*x33*x44+x23*x34*x42+x24*x32*x43+x22*x34*x43+x24*x33*x42+x23*x32*x44' />
@@ -184,9 +190,10 @@ const Demo = () => {
           <br />
           {tab}Let a route in the graph <Tex expr='$f(F)$' /> be the set of all cycle covers that have the same set of edges outside the junctions.
           A route is good if every junction and internal junction is entered exactly once the left exactly once and at the opposite end. Routes may
-          fail to be good either because (a) some junction or internal junction is not entered and left, or (b) because it is entered and left at the same end, or (c)
-          because it is entered twice and left twice. By virtue of conditions (i) for (a), (ii) and (iii) for (b) and (iv) f or ( c ) an y route that is not good
-          contributes zero to the permanent. Condition (v) ensures that any good route contributes exactly <SubExpr scope='mat' expr='(x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41)^t(F)' />.
+          fail to be good either because (a) some junction or internal junction is not entered and left, or (b) because it is entered and left at the same end,  
+          or (c) because it is entered twice and left twice. By virtue of conditions (i) for (a), (ii) and (iii) for (b) and (iv) f or ( c ) an y route that is
+          not good contributes zero to the permanent. Condition (v) ensures that any good route contributes 
+          exactly <SubExpr scope='mat' expr='(x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41)^t(F)' />.
           <br />
           {tab}It is clear that in any track <Tex expr='$T_k$' /> of any good route either all junctions on the left are
           “picked up” by the track and all the ones on the right by interchanges, or vice versa (corresponding to {x_k} and
@@ -195,7 +202,8 @@ const Demo = () => {
           picked up by the tracks, then all the remaining ones will be picked up by {R_i} in the unique good route available.
           <br />
           {tab}Using the obvious correspondence between good routes and assignments of truth values, we conclude that there is a one-one correspondence
-          between good routes in the graph, each of which contributes <SubExpr scope='mat' expr='(x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41)^t(F)' /> to
+          between good routes in the graph, each of which 
+          contributes <SubExpr scope='mat' expr='(x21*x32*x43+x22*x33*x41+x23*x31*x42+x21*x33*x42+x22*x31*x43+x23*x32*x41)^t(F)' /> to
           the permanent, and satisfying assignment of <Tex expr='$F$' />. The result follows.
         </ProofContent>
       </Proof>
