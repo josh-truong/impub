@@ -43,7 +43,9 @@ const Var = (props) => {
     const step = props.step;
 
     const dispatch = useDispatch();
-    const [val, setVal] = useState(props.val ? props.val : 0);
+    const [globalVal, setGlobalVal] = useState(props.val ? props.val : 0); // Set to redux store to avoid unnecessary amount of rendering slow downs
+    const [localVal, setLocalVal] = useState(props.val ? props.val : 0); // Change the values of Var
+
     const [onClick, setOnClick] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
     const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -53,8 +55,8 @@ const Var = (props) => {
     const dragging = classNames(styles.dragging);
 
     useEffect(() => {
-        dispatch({ type: UPDATE_VARIABLE, scope: scope_name, var: var_name, val: val })
-    }, [val])
+        dispatch({ type: UPDATE_VARIABLE, scope: scope_name, var: var_name, val: globalVal })
+    }, [globalVal])
 
 
 
@@ -66,23 +68,26 @@ const Var = (props) => {
                 y: e.screenY
             })
         }
+        else if (e.nativeEvent.which === 1 && e.type === 'mouseup') {
+            // Update global variable value using local
+            setOnClick(false)
+            setGlobalVal(localVal)
+        }
         else if (e.nativeEvent.which === 1 && e.type === 'mousemove' && onClick) {
             setPosition({
                 x: e.screenX - offset.x,
                 y: e.screenY - offset.y
             })
             let num = (position.x + position.y) * step
-            if (props.min !== 0 || props.max !== 1 || props.step !== 1) {
-                var limit = (num > max) ? max : num
-                limit = (limit < min) ? min : limit
-                setVal(limit)
-            } else {
-                setVal(num)
-            }
+            setLocalVal(
+                (props.min !== 0 || props.max !== 1 || props.step !== 1) ?
+                    (((num > max) ? max : num) < min) ? min : ((num > max) ? max : num) : // min-max boundary of value if set
+                    num
+            )
         }
         else if (e.nativeEvent.which === 3 && e.type === 'contextmenu') {
             e.preventDefault()
-            setVal(props.val)
+            setGlobalVal(props.val)
         }
     }
 
@@ -90,20 +95,20 @@ const Var = (props) => {
         <>
             {onClick ?
                 <div className={dragging}
-                    onMouseUp={(e) => setOnClick(false)}
-                    onMouseMove={(e) => handleOnClick(e) }
+                    onMouseUp={(e) => handleOnClick(e)}
+                    onMouseMove={(e) => handleOnClick(e)}
                 /> : ''}
             <div style={{ color: '#39FF14', display: 'inline-block' }} onContextMenu={(e) => handleOnClick(e)}>
                 {mode ?
                     <div className={tooltip} >
-                        <Tex expr={`$${var_name}$`} />({val})
+                        <Tex expr={`$${var_name}$`} />({localVal})
                         <span className={tooltiptext}>
-                            <Slider key={`${scope_name}+${var_name}`} id={var_name} value={(e) => setVal(e)} min={props.min} max={props.max} step={props.step} />
+                            <Slider key={`${scope_name}+${var_name}`} id={var_name} value={(e) => setLocalVal(e)} min={props.min} max={props.max} step={props.step} />
                         </span>
                     </div> :
                     <div onMouseDown={(e) => handleOnClick(e)} style={{ cursor: 'e-resize', borderBottom: '1px dotted black' }}>
                         <span>
-                            <Tex expr={`$${var_name}$`} />({val})
+                            <Tex expr={`$${var_name}$`} />({localVal})
                         </span>
                     </div>
                 }
