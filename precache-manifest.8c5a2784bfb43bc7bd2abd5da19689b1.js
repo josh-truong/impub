@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "f61c6d9b940ea3563641",
+    "revision": "24d30c91706230faa2d3",
     "url": "/impub/static/css/main.aa9220fe.chunk.css"
   },
   {
-    "revision": "f61c6d9b940ea3563641",
-    "url": "/impub/static/js/main.f61c6d9b.chunk.js"
+    "revision": "24d30c91706230faa2d3",
+    "url": "/impub/static/js/main.24d30c91.chunk.js"
   },
   {
     "revision": "83915027d7687e7f20ff",
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/impub/static/media/fig2.4dc5a65f.png"
   },
   {
-    "revision": "777fd1a3d88c3a5e05806822ce2d0fe3",
+    "revision": "c715076247ce93d7766b244f4e82b690",
     "url": "/impub/index.html"
   }
 ];
